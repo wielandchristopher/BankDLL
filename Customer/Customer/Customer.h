@@ -7,10 +7,13 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+	//Hier werden alle Funktionsdefinitionen reingeschrieben, 
+	//welche über die Schnittstelle übertragen werden sollen.
 	CUSTOMER_API void print();
 
 #ifdef __cplusplus
 }
 #endif
+
+
 
