@@ -11,7 +11,19 @@ extern "C" {
 #endif
 	//Hier werden alle Funktionsdefinitionen reingeschrieben, 
 	//welche über die Schnittstelle übertragen werden sollen.
-	CUSTOMER_API void CustomerModul();
+	typedef struct CUSTOMER CUSTOMER;
+	typedef struct SparKonto SparKonto;
+	typedef struct KreditKonto KreditKonto;
+	
+	CUSTOMER_API CUSTOMER* NeuerKunde();
+	CUSTOMER_API CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde);
+	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
+	CUSTOMER_API SparKonto* NeuesSparkonto(CUSTOMER* Kunde);
+	CUSTOMER_API KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde);
+	CUSTOMER_API SparKonto* Sparkontoverwaltung(SparKonto* Konto);
+	CUSTOMER_API KreditKonto* Kreditkontoverwaltung(KreditKonto* Konto);
+	CUSTOMER_API void Sparkontoentfernen(SparKonto* Konto);
+	CUSTOMER_API void Kreditkontoentfernen(KreditKonto* Konto);
 
 #ifdef __cplusplus
 }

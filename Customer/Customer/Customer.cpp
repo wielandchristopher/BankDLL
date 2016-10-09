@@ -4,31 +4,11 @@
 #include "stdafx.h"
 #include "Klassen.h"
 #include "Customer.h"
-#include "Account.h"
 #include <stdio.h>
 #include <string>
 #include <iostream>
 
 using namespace std;
-
-class IKONTO {
-
-public:
-	//virtual void Kontoverwaltung();
-	virtual void Kontoschließung() { delete this; };
-
-	
-};
-class SparKonto : IKONTO {
-public:
-
-
-};
-class KreditKonto : IKONTO {
-public:
-
-
-};
 
 class CUSTOMER {
 public:
@@ -89,11 +69,6 @@ public:
 		this->Telefon = _Telefon;
 	}
 
-	void Kundeentfernen(CUSTOMER* Kunde) { 
-		free(Kunde);
-		cout << "\nDer Kunde wurde erfolgreich entfernt." << endl;
-	}
-
 private:
 	string Vorname;
 	string Nachname;
@@ -104,26 +79,31 @@ private:
 	string Wohnort;
 	string Telefon;
 };
-
-//Diese Testfunktion wird an die Main.c übergeben
-void KontoAuswahl() {
-
-	int Kontoart;
-
-	cout << "\nWelche Art von Konto soll erstellt werden?\n\t ein Sparkonto (1)\n\n\t ein KreditKonto (2)" << endl;
-	cin >> Kontoart;
-
-	if (Kontoart == 1) {
-
-		SparKonto *WahlKonto = new SparKonto();
-		cout << "\nDas Sparkonto wurde erfolgreich angelegt\n" << endl;
+class SparKonto {
+public:
+	CUSTOMER SparKonto::getInhaber() {
+		return *KontoInhaber;
 	}
-	else if (Kontoart == 2) {
-
-		KreditKonto *WahlKonto = new KreditKonto();
-		cout << "\nDas KreditKonto wurde erfolgreich angelegt\n" << endl;
+	void SparKonto::setInhaber(CUSTOMER* _KontoInhaber) {
+		this->KontoInhaber = _KontoInhaber;
 	}
 
+
+private:
+	CUSTOMER* KontoInhaber;
+};
+class KreditKonto{
+public:
+	CUSTOMER KreditKonto::getInhaber() {
+		return *KontoInhaber;
+	}
+	void KreditKonto::setInhaber(CUSTOMER* _KontoInhaber) {
+		this->KontoInhaber = _KontoInhaber;
+	}
+
+
+private:
+	CUSTOMER* KontoInhaber;
 };
 
 CUSTOMER* NeuerKunde() {
@@ -180,7 +160,7 @@ CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde) {
 	string Telefon;
 
 start:
-	cout << "KUNDENDATEN AENDERN:\nBitte waehlen Sie eine Option aus:\n 1 - Vorname aendern\n 2 - Nachname aendern\n 3 - Adresse aendern\n 4 - Hausnummer aendern\n 5 - Postleitzahl aendern\n 6 - Wohnort aendern\n 7 - Telefonnummer aendern\n q - Exit\n" << endl;
+	cout << "KUNDENDATEN AENDERN:\nBitte waehlen Sie eine Option aus:\n 1 - Vorname aendern\n 2 - Nachname aendern\n 3 - Adresse aendern\n 4 - Hausnummer aendern\n 5 - Postleitzahl aendern\n 6 - Wohnort aendern\n 7 - Telefonnummer aendern\n" << endl;
 	cin >> optionenauswahl;
 
 	if (optionenauswahl == "1") {
@@ -192,7 +172,6 @@ start:
 		return Kunde;
 		goto start;
 	}
-
 	else if (optionenauswahl == "2") {
 		cout << "\nBitte geben Sie einen neuen Nachnamen ein:" << endl;
 		cin >> Nachname;
@@ -202,7 +181,6 @@ start:
 		return Kunde;
 		goto start;
 	}
-
 	else if (optionenauswahl == "3") {
 		cout << "\nBitte geben Sie einen neue Adresse ein:" << endl;
 		cin >> adresse;
@@ -221,7 +199,6 @@ start:
 		return Kunde;
 		goto start;
 	}
-
 	else if (optionenauswahl == "5") {
 		cout << "\nBitte geben Sie einen neue Postleitzahl ein:" << endl;
 		cin >> Postleitzahl;
@@ -249,61 +226,54 @@ start:
 		return Kunde;
 		goto start;
 	}
-
-	else if (optionenauswahl == "q") {
-		CustomerModul();
-	}
 	else {
 		cout << "\nBitte waehlen Sie nur eine verfuegbare Option!\n\n" << endl;
 		goto start;
 	}
 }
+//? delete ?
+void Kundeentfernen(CUSTOMER* Kunde) {
+	if (Kunde != NULL) {
+		delete Kunde;
+	}
+	cout << "\nDer Kunde wurde erfolgreich entfernt." << endl;
+}
 
-void CustomerModul() {
+SparKonto* NeuesSparkonto(CUSTOMER* Kunde) {
 
-	string optionenauswahl;
-	CUSTOMER *Kunde = NULL;
+	SparKonto *Konto = new SparKonto();
+	Konto->setInhaber(Kunde);
+	cout << "Das SparKonto wurde erfolgreich erstellt.\n" << endl;
+	return Konto;
+};
+KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde) {
 
-	start:
-	cout << "Guten Tag! \nBitte waehlen Sie eine Option aus:\n\n \t1 - Neuen Kunden anlegen\n \t2 - Kundendaten aendern\n \t3 - Kunde loeschen\n \t4 - Ein neues Konto erstellen\n \tq - Exit\n" << endl;
-	cin >> optionenauswahl;
+	KreditKonto *Konto = new KreditKonto();
+	Konto->setInhaber(Kunde);
+	cout << "Das KreditKonto wurde erfolgreich erstellt.\n" << endl;
+	return Konto;
+};
+//Noch in Arbeit
+SparKonto* Sparkontoverwaltung(SparKonto* Konto) {
 
-		if (optionenauswahl == "1") {
-			Kunde = NeuerKunde();
-			goto start;
-		}
-		else if (optionenauswahl == "2") {
-			if (Kunde == NULL) {
-				cout << "\nBitte legen Sie zuerst einen Kunden an.\n" << endl;
-				goto start;
-			}
-			else {
-				Kunde = Kundendatenänderung(Kunde);
-			}
-			goto start;
-		}
-		else if (optionenauswahl == "3") {
-			if (Kunde == NULL) {
-				cout << "\nBitte legen Sie zuerst einen Kunden an.\n" << endl;
-				goto start;
-			}
-			else {
-				if (Kunde != NULL) {
-					Kunde->Kundeentfernen(Kunde);
-				}
-				Kunde == NULL;
-			}
-			goto start;
-		}
-		else if (optionenauswahl == "4") {
-			KontoAuswahl();
-			goto start;
-		}
-		else if (optionenauswahl == "q") {
-			return;
-		}
-		else {
-			cout << "\nBitte waehlen Sie nur eine verfuegbare Option!\n\n" << endl;
-			goto start;
-		}
+	return Konto;
+}
+//Noch in Arbeit
+KreditKonto* Kreditkontoverwaltung(KreditKonto* Konto) {
+
+	return Konto;
+}
+//? delete ?
+void Sparkontoentfernen(SparKonto* Konto) {
+	if (Konto != NULL) {
+		delete Konto;
+	}
+	cout << "\nás Konto wurde erfolgreich entfernt." << endl;
+}
+//? delete ?
+void Kreditkontoentfernen(KreditKonto* Konto) {
+	if (Konto != NULL) {
+		delete Konto;
+	}
+	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
 }

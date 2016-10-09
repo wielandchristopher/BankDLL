@@ -1,5 +1,10 @@
 ﻿  Customer.cpp
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(294): warning C4553: "==": Operator hat keine Auswirkungen; ist "=" beabsichtigt?
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(260): warning C4715: "Kundendatenänderung": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(13): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(13): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(82): warning C4099: "SparKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(82): note: Siehe Deklaration von "SparKonto"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(95): warning C4099: "KreditKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(95): note: Siehe Deklaration von "KreditKonto"
+     Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.exp" werden erstellt.
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.dll
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.pdb (Full PDB)
