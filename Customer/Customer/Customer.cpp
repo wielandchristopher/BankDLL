@@ -2,8 +2,8 @@
 // Compile by using: cl /EHsc /DCUSTOMER_EXPORTS /LD Customer.cpp
 
 #include "stdafx.h"
-#include "Klassen.h"
 #include "Customer.h"
+
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -231,7 +231,6 @@ start:
 		goto start;
 	}
 }
-//? delete ?
 void Kundeentfernen(CUSTOMER* Kunde) {
 	if (Kunde != NULL) {
 		delete Kunde;
@@ -253,6 +252,20 @@ KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde) {
 	cout << "Das KreditKonto wurde erfolgreich erstellt.\n" << endl;
 	return Konto;
 };
+void Sparkontoentfernen(SparKonto* Konto) {
+	if (Konto != NULL) {
+		delete Konto;
+	}
+	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
+}
+void Kreditkontoentfernen(KreditKonto* Konto) {
+	if (Konto != NULL) {
+		delete Konto;
+	}
+	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
+}
+
+
 //Noch in Arbeit
 SparKonto* Sparkontoverwaltung(SparKonto* Konto) {
 
@@ -263,17 +276,6 @@ KreditKonto* Kreditkontoverwaltung(KreditKonto* Konto) {
 
 	return Konto;
 }
-//? delete ?
-void Sparkontoentfernen(SparKonto* Konto) {
-	if (Konto != NULL) {
-		delete Konto;
-	}
-	cout << "\nás Konto wurde erfolgreich entfernt." << endl;
-}
-//? delete ?
-void Kreditkontoentfernen(KreditKonto* Konto) {
-	if (Konto != NULL) {
-		delete Konto;
-	}
-	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
-}
+
+
+
