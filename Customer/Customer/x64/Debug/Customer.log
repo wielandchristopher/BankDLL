@@ -1,2 +1,5 @@
-﻿  Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\Customer\x64\Debug\Customer.dll
-  Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\Customer\x64\Debug\Customer.pdb (Full PDB)
+﻿  Customer.cpp
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(294): warning C4553: "==": Operator hat keine Auswirkungen; ist "=" beabsichtigt?
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(260): warning C4715: "Kundendatenänderung": Nicht alle Steuerelementpfade geben einen Wert zurück.
+  Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.dll
+  Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.pdb (Full PDB)

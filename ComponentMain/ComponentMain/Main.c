@@ -3,6 +3,5 @@
 
 int main(){
 	//Führt die Funktion aus der Customer.dll aus 
-	print();
-
+	CustomerModul();
 }
