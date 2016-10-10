@@ -4,8 +4,8 @@ int main(){
 
 	//Führt die Funktion aus der Customer.dll aus 
 	CUSTOMER* Kunde;
-	SparKonto* Sparen;
-	KreditKonto* Giro;
+	SPARKONTO* Sparen;
+	KREDITKONTO* Giro;
 	
 	Kunde = NeuerKunde();
 	Sparen = NeuesSparkonto(Kunde,1);

@@ -12,16 +12,16 @@ extern "C" {
 	//Hier werden alle Funktionsdefinitionen reingeschrieben, 
 	//welche über die Schnittstelle übertragen werden sollen.
 	typedef struct CUSTOMER CUSTOMER;
-	typedef struct SparKonto SparKonto;
-	typedef struct KreditKonto KreditKonto;
+	typedef struct SPARKONTO SPARKONTO;
+	typedef struct KREDITKONTO KREDITKONTO;
 	
 	CUSTOMER_API CUSTOMER* NeuerKunde();
 	CUSTOMER_API CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde);
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
-	CUSTOMER_API SparKonto* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl);
-	CUSTOMER_API KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl);
-	CUSTOMER_API void Sparkontoentfernen(SparKonto* Konto);
-	CUSTOMER_API void Kreditkontoentfernen(KreditKonto* Konto);
+	CUSTOMER_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl);
+	CUSTOMER_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl);
+	CUSTOMER_API void Sparkontoentfernen(SPARKONTO* Konto);
+	CUSTOMER_API void Kreditkontoentfernen(KREDITKONTO* Konto);
 
 #ifdef __cplusplus
 }
