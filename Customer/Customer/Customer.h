@@ -23,8 +23,14 @@ extern "C" {
 	CUSTOMER_API CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort);
 	CUSTOMER_API CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon);
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
-	CUSTOMER_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl);
-	CUSTOMER_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl);
+	CUSTOMER_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde);
+	CUSTOMER_API SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2);
+	CUSTOMER_API SPARKONTO* NeuesSparkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3);
+	CUSTOMER_API SPARKONTO* NeuesSparkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4);
+	CUSTOMER_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde);
+	CUSTOMER_API KREDITKONTO* NeuesKreditkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2);
+	CUSTOMER_API KREDITKONTO* NeuesKreditkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3);
+	CUSTOMER_API KREDITKONTO* NeuesKreditkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4);
 	CUSTOMER_API void Sparkontoentfernen(SPARKONTO* Konto);
 	CUSTOMER_API void Kreditkontoentfernen(KREDITKONTO* Konto);
 

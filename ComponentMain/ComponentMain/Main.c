@@ -8,10 +8,11 @@ int main(){
 	CUSTOMER* Mallory = NULL;
 	SPARKONTO* Sparen;
 	KREDITKONTO* Giro;
-	
+	char* test = "Test";
 	
 	Spezi = NeuerKunde("Vorname", "Nachname", "11.03.1993", "Adresse test", "Postleitzahl", "Wohnort", "Telefonnummer");
-	Sparen = NeuesSparkonto(Spezi, 1);
+	//BAD
+	Sparen = NeuesSparkonto(test);
 
 	Kundeentfernen(Spezi);
 

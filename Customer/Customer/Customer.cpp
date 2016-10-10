@@ -413,109 +413,169 @@ void Kundeentfernen(CUSTOMER *Kunde) {
 
 //Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu. der 2. parameter lässt zu, 
 //dass mehrere Kunden ein Konto besitzen können. Es können maximal 4 Kunden über ein Konto verfügen. Übergeben wird hier 1-4. 
-SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
-
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
+SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde) {
+	
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
 		return NULL;
 	}
-	if (verfügeranzahl >4) {
-		LOGGING("Es können nur maximal 4 Verfüger einem Konto hinzugefügt werden.", "ERROR");
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+	SPARKONTO *Konto = new SPARKONTO();
+	int SparKontonummer = Konto->getKontonummer();
+		Konto->setVerfüger(Kunde);
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
+
+return Konto;
+};
+SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2) {
+
+	if ((Kunde == NULL) || (Kunde2 == NULL)) {
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
+		return NULL;
+	}
+
+	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer")) {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
 		return NULL;
 	}
 
 	SPARKONTO *Konto = new SPARKONTO();
 	int SparKontonummer = Konto->getKontonummer();
-	if (verfügeranzahl == 1) {
-		Konto->setVerfüger(Kunde);
-		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-	if (verfügeranzahl == 2) {
-		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		Konto->setoptVerfüger1(optKunde1);
-		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-	if (verfügeranzahl == 3) {
-		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		Konto->setoptVerfüger1(optKunde1);
-		Konto->setoptVerfüger2(optKunde2);
-		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-	if (verfügeranzahl == 4) {
-		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		CUSTOMER* optKunde3 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		Konto->setoptVerfüger1(optKunde1);
-		Konto->setoptVerfüger2(optKunde2);
-		Konto->setoptVerfüger3(optKunde3);
-		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
+
+	Konto->setVerfüger(Kunde);
+	Konto->setoptVerfüger1(Kunde2);
+	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
+		
+return Konto;
 };
-KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
+SPARKONTO* NeuesSparkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3) {
+
+	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL)) {
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
+		return NULL;
+	}	
+	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer")) {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
+	SPARKONTO *Konto = new SPARKONTO();
+	int SparKontonummer = Konto->getKontonummer();
+
+	Konto->setVerfüger(Kunde);
+	Konto->setoptVerfüger1(Kunde2);
+	Konto->setoptVerfüger2(Kunde3);
+	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
+
+	return Konto;
+};
+SPARKONTO* NeuesSparkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4) {
+
+	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL) || (Kunde4 == NULL)) {
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
+		return NULL;
+	}
+	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer") || (Kunde4->getClassId() != "customer")) {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
+	SPARKONTO *Konto = new SPARKONTO();
+	int SparKontonummer = Konto->getKontonummer();
+
+	Konto->setVerfüger(Kunde);
+	Konto->setoptVerfüger1(Kunde2);
+	Konto->setoptVerfüger2(Kunde3);
+	Konto->setoptVerfüger3(Kunde4);
+	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
+
+	return Konto;
+};
+KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde) {
+
+	if (Kunde == NULL) {
+		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
+		return NULL;
+	}
 
 	if (Kunde->getClassId() != "customer") {
 		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
 		return NULL;
 	}
 
-	if (Kunde == NULL) {
-		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
+	KREDITKONTO *Konto = new KREDITKONTO();
+	int KreditKontonummer = Konto->getKontonummer();
+	Konto->setVerfüger(Kunde);
+	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
+
+return Konto;
+};
+KREDITKONTO* NeuesKreditkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2) {
+
+	if ((Kunde == NULL) || (Kunde2 == NULL)) {
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
 		return NULL;
 	}
-	if (verfügeranzahl >4) {
-		LOGGING("Es können nur maximal 4 Verfüger einem Konto hinzugefügt werden.", "ERROR");
+	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer")) {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
 		return NULL;
 	}
 
 	KREDITKONTO *Konto = new KREDITKONTO();
-	int KreditKontonummer = Konto->getKontonummer();
-	if (verfügeranzahl == 1) {
-		Konto->setVerfüger(Kunde);
-		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-	if (verfügeranzahl == 2) {
-		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		Konto->setoptVerfüger1(optKunde1);
-		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-	if (verfügeranzahl == 3) {
-		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		Konto->setoptVerfüger1(optKunde1);
-		Konto->setoptVerfüger2(optKunde2);
-		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-	if (verfügeranzahl == 4) {
-		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		CUSTOMER* optKunde3 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
-		Konto->setoptVerfüger1(optKunde1);
-		Konto->setoptVerfüger2(optKunde2);
-		Konto->setoptVerfüger3(optKunde3);
-		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-		return Konto;
-	}
-};
+	int SparKontonummer = Konto->getKontonummer();
 
+	Konto->setVerfüger(Kunde);
+	Konto->setoptVerfüger1(Kunde2);
+	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
+
+	return Konto;
+};
+KREDITKONTO* NeuesKreditkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3) {
+
+	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL)) {
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
+		return NULL;
+	}
+	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer")) {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
+	KREDITKONTO *Konto = new KREDITKONTO();
+	int SparKontonummer = Konto->getKontonummer();
+
+	Konto->setVerfüger(Kunde);
+	Konto->setoptVerfüger1(Kunde2);
+	Konto->setoptVerfüger2(Kunde3);
+	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
+
+	return Konto;
+};
+KREDITKONTO* NeuesKreditkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4) {
+
+	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL) || (Kunde4 == NULL)) {
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
+		return NULL;
+	}
+	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer") || (Kunde4->getClassId() != "customer")) {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
+	KREDITKONTO *Konto = new KREDITKONTO();
+	int SparKontonummer = Konto->getKontonummer();
+
+	Konto->setVerfüger(Kunde);
+	Konto->setoptVerfüger1(Kunde2);
+	Konto->setoptVerfüger2(Kunde3);
+	Konto->setoptVerfüger3(Kunde4);
+	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
+
+	return Konto;
+};
 //Die Funktion Sparkontoentfernen entfernt das übergebene SparKonto mit der Funktion delete
 void Sparkontoentfernen(SPARKONTO* Konto) {
 	
