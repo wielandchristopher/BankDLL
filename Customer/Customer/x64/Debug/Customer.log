@@ -1,16 +1,16 @@
 ﻿  Customer.cpp
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(53): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(53): note: Siehe Deklaration von "CUSTOMER"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(109): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(109): note: Siehe Deklaration von "SPARKONTO"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(146): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(160): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(160): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(197): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(372): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(414): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(405): warning C4715: "NeuesSparkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(447): warning C4715: "NeuesKreditkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(54): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(54): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(116): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(116): note: Siehe Deklaration von "SPARKONTO"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(153): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(173): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(173): note: Siehe Deklaration von "KREDITKONTO"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(210): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(433): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(484): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(517): warning C4715: "NeuesKreditkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(466): warning C4715: "NeuesSparkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
      Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.exp" werden erstellt.
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.dll
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.pdb (Full PDB)

@@ -1,145 +1,44 @@
-10 10 2016 19:32:03 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:32:03 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:32:03 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:32:03 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:32:03 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:32:03 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:32:03 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:32:03 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:32:03 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:32:14 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:32:14 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:32:14 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:32:14 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:32:14 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:32:14 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:32:14 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:32:14 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:32:14 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:32:27 - ERROR: 
-Der übergebene Parameter ist kein Customer.
-10 10 2016 19:33:31 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:33:31 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:33:31 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:33:31 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:33:31 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:33:31 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:33:31 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:33:31 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:33:31 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:33:49 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:33:49 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:33:49 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:33:49 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:33:49 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:33:49 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:33:49 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:33:49 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:33:49 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:38:07 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:38:07 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:38:07 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:38:07 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:38:07 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:38:07 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:38:07 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:38:07 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:38:07 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:56:20 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:56:20 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:56:20 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:56:20 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:56:20 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:56:20 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:56:20 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:56:20 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:56:20 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:56:20 - ERROR: 
-Der übergebene Parameter ist kein Customer.
-10 10 2016 19:56:45 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:56:45 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:56:45 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:56:45 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:56:45 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:56:45 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:56:45 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:56:45 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:56:45 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:57:12 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:57:12 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:57:12 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:57:12 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:57:12 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:57:12 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:57:12 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:57:12 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:57:12 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:57:12 - ERROR: 
-Der übergebene Parameter ist kein Customer.
-10 10 2016 19:57:36 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:57:36 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:57:36 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:57:36 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:57:36 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:57:36 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:57:36 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:57:36 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:57:36 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:57:36 - OK: 
-Der Kunde wurde erfolgreich entfernt.
-10 10 2016 19:57:36 - OK: Das Konto wurde erfolgreich entfernt.
-10 10 2016 19:57:36 - OK: Das Konto wurde erfolgreich entfernt.
-10 10 2016 19:57:50 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:57:50 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:57:50 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:57:50 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:57:50 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:57:50 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:57:50 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:57:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:57:50 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:58:06 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:58:06 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:58:06 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:58:06 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:58:06 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:58:06 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:58:06 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:58:06 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:58:06 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:58:51 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:58:51 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:58:51 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:58:51 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:58:51 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:58:51 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:58:51 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:58:51 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:58:51 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 19:59:10 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 19:59:10 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 19:59:10 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 19:59:10 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 19:59:10 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 19:59:10 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 19:59:10 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 19:59:10 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 19:59:10 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 20:00:33 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 20:00:33 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 20:00:33 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 20:00:33 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 20:00:33 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 20:00:33 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 20:00:33 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 20:00:33 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 20:00:33 - OK: Das SparKonto wurde erfolgreich erstellt.
-10 10 2016 20:06:09 - OK: Der Kunde wurde erfolgreich angelegt.
-10 10 2016 20:06:09 - OK: Der Vorname wurde erfolgreich geändert
-10 10 2016 20:06:09 - ERROR: Es existiert kein Kunde, dessen Nachname geändert werden könnte
-10 10 2016 20:06:09 - OK: Die Adresse wurde erfolgreich geändert
-10 10 2016 20:06:09 - ERROR: Es existiert kein Kunde, dessen PLZ geändert werden könnte
-10 10 2016 20:06:09 - OK: Der Wohnort wurde erfolgreich geändert
-10 10 2016 20:06:09 - ERROR: Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte
-10 10 2016 20:06:09 - OK: Das KreditKonto wurde erfolgreich erstellt.
-10 10 2016 20:06:09 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:24:00 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:24:25 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:27:54 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:28:29 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:28:29 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:29:08 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:29:08 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:30:07 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:30:07 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:52:00 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:52:00 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:52:05 - ERROR: Der übergebene Parameter ist kein Customer.
+10 10 2016 22:52:25 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:52:25 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:52:27 - ERROR: Der übergebene Parameter ist kein Customer.
+10 10 2016 22:54:03 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 22:54:03 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 22:54:05 - ERROR: Der übergebene Parameter ist kein Customer.
+10 10 2016 23:05:20 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:05:20 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:05:20 - OK: Der Kunde wurde erfolgreich entfernt.
+10 10 2016 23:17:14 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:17:14 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:18:18 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:18:18 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:29:00 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:29:00 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:29:34 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:29:34 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:30:48 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:30:48 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:32:20 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:32:20 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:33:48 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:33:48 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:34:05 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:34:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:34:07 - ERROR: Es wurde kein KUnde übergeben.
+10 10 2016 23:35:39 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:35:39 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:35:39 - ERROR: Es wurde kein Kunde übergeben.
+10 10 2016 23:38:27 - OK: Der Kunde wurde erfolgreich angelegt.
+10 10 2016 23:38:27 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 10 2016 23:38:27 - OK: Der Kunde wurde erfolgreich entfernt.

@@ -1,4 +1,4 @@
 ﻿  Main.c
-c:\users\wiela\documents\github\banksst01\componentmain\componentmain\main.c(22): warning C4133: "Funktion": Inkompatible Typen - von "KREDITKONTO *" zu "CUSTOMER *"
+c:\users\wiela\documents\github\banksst01\componentmain\componentmain\main.c(10): warning C4101: "Giro": Unreferenzierte lokale Variable
   ComponentMain.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\ComponentMain.exe
   ComponentMain.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\ComponentMain.pdb (Full PDB)

@@ -6,6 +6,7 @@
 #include <string>
 #include <iostream>
 #include <time.h>
+#include <typeinfo>
 
 using namespace std;
 FILE* logfile;
@@ -96,8 +97,14 @@ public:
 	void CUSTOMER::setTelefon(string _Telefon) {
 		this->Telefon = _Telefon;
 	}
+	//Typidentifizierer
+	string getClassId() {
+		
+		return customer;
+	}
 
 private:
+	string customer = "customer";
 	string Vorname;
 	string Nachname;
 	string Geburtsdatum;
@@ -145,11 +152,17 @@ public:
 	void SPARKONTO::setKontonummer(double _Kontonummer) {
 		this->Kontonummer = _Kontonummer;
 	}
-	
+	//Typidentifizierer
+	string getClassId() {
+		
+		return sparkonto;
+	}
+
 	//Konstruktor zur Erstellung des Kontos mit Kontonummer 
 	SPARKONTO();
 
 private:
+	string sparkonto = "sparkonto";
 	int Kontonummer;
 	double Kontostand = 0;
 	CUSTOMER* Kontoverfüger;
@@ -196,11 +209,17 @@ public:
 	void KREDITKONTO::setKontonummer(double _Kontonummer) {
 		this->Kontonummer = _Kontonummer;
 	}
+	//Typidentifizierer
+	string getClassId() {
+		
+		return kreditkonto;
+	}
 
 	//Konstruktor zur Erstellung des Kontos mit Kontonummer 
 	KREDITKONTO();
 
 private:
+	string kreditkonto = "kreditkonto";
 	int Kontonummer;
 	double Kontostand = 0;
 	CUSTOMER* Kontoverfüger;
@@ -243,6 +262,11 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 
 CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, dessen Vorname geändert werden könnte", "ERROR");
 		return NULL;
@@ -260,6 +284,11 @@ CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 }
 CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
 	
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, dessen Nachname geändert werden könnte", "ERROR");
 		return NULL;
@@ -276,6 +305,11 @@ CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
 	return Kunde;
 }
 CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
+
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
 
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, dessen Adresse geändert werden könnte", "ERROR");
@@ -294,6 +328,11 @@ CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
 }
 CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
 
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, dessen PLZ geändert werden könnte", "ERROR");
 		return NULL;
@@ -310,6 +349,11 @@ CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
 	return Kunde;
 }
 CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
+
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
 
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, dessen Wohnort geändert werden könnte", "ERROR");
@@ -328,6 +372,11 @@ CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
 }
 CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
 
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
 	if (Kunde == NULL) {
 		LOGGING("Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte", "ERROR");
 		return NULL;
@@ -345,26 +394,38 @@ CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
 }
 
 //Die Funktion Kundeentfernen entfernt mithilfe von delete den übergebenen Kunden
-void Kundeentfernen(CUSTOMER* Kunde) {
-	//BAD
-	if (typeid(Kunde) != typeid(CUSTOMER*)) {
+void Kundeentfernen(CUSTOMER *Kunde) {
 
-		LOGGING("\nDer übergebene Parameter ist kein Customer.", "ERROR");
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
 		return;
 	}
-	
-	if (Kunde != NULL) {
-		delete Kunde;
+
+	if (Kunde == NULL) {		
+		LOGGING("Der übergebene Kunde existiert nicht oder ist NULL.", "OK");
+		return;
 	}
-	LOGGING("\nDer Kunde wurde erfolgreich entfernt.", "OK");
+	else {
+		delete Kunde;
+		LOGGING("Der Kunde wurde erfolgreich entfernt.", "OK");
+	}
 }
 
 //Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu. der 2. parameter lässt zu, 
 //dass mehrere Kunden ein Konto besitzen können. Es können maximal 4 Kunden über ein Konto verfügen. Übergeben wird hier 1-4. 
 SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
 	if (Kunde == NULL) {
-		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
+		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
+		return NULL;
+	}
+	if (verfügeranzahl >4) {
+		LOGGING("Es können nur maximal 4 Verfüger einem Konto hinzugefügt werden.", "ERROR");
 		return NULL;
 	}
 
@@ -405,8 +466,17 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 };
 KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return NULL;
+	}
+
 	if (Kunde == NULL) {
 		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
+		return NULL;
+	}
+	if (verfügeranzahl >4) {
+		LOGGING("Es können nur maximal 4 Verfüger einem Konto hinzugefügt werden.", "ERROR");
 		return NULL;
 	}
 
@@ -449,6 +519,11 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 //Die Funktion Sparkontoentfernen entfernt das übergebene SparKonto mit der Funktion delete
 void Sparkontoentfernen(SPARKONTO* Konto) {
 	
+	if (Konto->getClassId() != "sparkonto") {
+		LOGGING("Es wurde kein SparKonto übergeben.", "ERROR");
+		return;
+	}
+
 	if (Konto == NULL) {
 		LOGGING("Das übergebene Konto existiert nicht.", "ERROR");
 		return;
@@ -459,6 +534,11 @@ void Sparkontoentfernen(SPARKONTO* Konto) {
 //Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
 void Kreditkontoentfernen(KREDITKONTO* Konto) {
 	
+	if (Konto->getClassId() != "kreditkonto") {
+		LOGGING("Es wurde kein KreditKonto übergeben.", "ERROR");
+		return;
+	}
+
 	if (Konto == NULL) {
 		LOGGING("Das übergebene Konto existiert nicht", "ERROR");
 		return;
