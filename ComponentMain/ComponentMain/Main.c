@@ -8,8 +8,8 @@ int main(){
 	KreditKonto* Giro;
 	
 	Kunde = NeuerKunde();
-	Sparen = NeuesSparkonto(Kunde);
-	Giro = NeuesKreditkonto(Kunde);
+	Sparen = NeuesSparkonto(Kunde,1);
+	Giro = NeuesKreditkonto(Kunde,1);
 	Sparkontoentfernen(Sparen);
 	Kreditkontoentfernen(Giro);
 	Kundeentfernen(Kunde);

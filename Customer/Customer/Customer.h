@@ -18,8 +18,8 @@ extern "C" {
 	CUSTOMER_API CUSTOMER* NeuerKunde();
 	CUSTOMER_API CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde);
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
-	CUSTOMER_API SparKonto* NeuesSparkonto(CUSTOMER* Kunde);
-	CUSTOMER_API KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde);
+	CUSTOMER_API SparKonto* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl);
+	CUSTOMER_API KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl);
 	CUSTOMER_API void Sparkontoentfernen(SparKonto* Konto);
 	CUSTOMER_API void Kreditkontoentfernen(KreditKonto* Konto);
 

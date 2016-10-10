@@ -86,6 +86,24 @@ public:
 	void SparKonto::setVerfüger(CUSTOMER* _Kontoverfüger) {
 		this->Kontoverfüger = _Kontoverfüger;
 	}
+	CUSTOMER SparKonto::getoptVerfüger1() {
+		return *optKontoverfüger1;
+	}
+	void SparKonto::setoptVerfüger1(CUSTOMER* _optKontoverfüger) {
+		this->optKontoverfüger1 = _optKontoverfüger;
+	}
+	CUSTOMER SparKonto::getoptVerfüger2() {
+		return *optKontoverfüger2;
+	}
+	void SparKonto::setoptVerfüger2(CUSTOMER* _optKontoverfüger) {
+		this->optKontoverfüger2 = _optKontoverfüger;
+	}
+	CUSTOMER SparKonto::getoptVerfüger3() {
+		return *optKontoverfüger3;
+	}
+	void SparKonto::setoptVerfüger3(CUSTOMER* _optKontoverfüger) {
+		this->optKontoverfüger3 = _optKontoverfüger;
+	}
 
 	double SparKonto::getKontostand() {
 		return Kontostand;
@@ -99,12 +117,16 @@ public:
 	void SparKonto::setKontonummer(double _Kontonummer) {
 		this->Kontonummer = _Kontonummer;
 	}
+	
 	SparKonto();
 
 private:
 	int Kontonummer;
 	double Kontostand = 0;
 	CUSTOMER* Kontoverfüger;
+	CUSTOMER* optKontoverfüger1;
+	CUSTOMER* optKontoverfüger2;
+	CUSTOMER* optKontoverfüger3;
 };
 class KreditKonto{
 public:
@@ -114,12 +136,32 @@ public:
 	void KreditKonto::setVerfüger(CUSTOMER* _Kontoverfüger) {
 		this->Kontoverfüger = _Kontoverfüger;
 	}
+	CUSTOMER KreditKonto::getoptVerfüger1() {
+		return *optKontoverfüger1;
+	}
+	void KreditKonto::setoptVerfüger1(CUSTOMER* _optKontoverfüger) {
+		this->optKontoverfüger1 = _optKontoverfüger;
+	}
+	CUSTOMER KreditKonto::getoptVerfüger2() {
+		return *optKontoverfüger2;
+	}
+	void KreditKonto::setoptVerfüger2(CUSTOMER* _optKontoverfüger) {
+		this->optKontoverfüger2 = _optKontoverfüger;
+	}
+	CUSTOMER KreditKonto::getoptVerfüger3() {
+		return *optKontoverfüger3;
+	}
+	void KreditKonto::setoptVerfüger3(CUSTOMER* _optKontoverfüger) {
+		this->optKontoverfüger3 = _optKontoverfüger;
+	}
+	
 	double KreditKonto::getKontostand() {
 		return Kontostand;
 	}
 	void KreditKonto::setKontostand(double _Kontostand) {
 		this->Kontostand = _Kontostand;
 	}
+	
 	double KreditKonto::getKontonummer() {
 		return Kontonummer;
 	}
@@ -133,6 +175,9 @@ private:
 	int Kontonummer;
 	double Kontostand = 0;
 	CUSTOMER* Kontoverfüger;
+	CUSTOMER* optKontoverfüger1;
+	CUSTOMER* optKontoverfüger2;
+	CUSTOMER* optKontoverfüger3;
 };
 
 CUSTOMER* NeuerKunde() {
@@ -267,24 +312,89 @@ void Kundeentfernen(CUSTOMER* Kunde) {
 	cout << "\nDer Kunde wurde erfolgreich entfernt." << endl;
 }
 
-SparKonto* NeuesSparkonto(CUSTOMER* Kunde) {
+SparKonto* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
 	SparKonto *Konto = new SparKonto();
 	int SparKontonummer = Konto->getKontonummer();
-	Konto->setVerfüger(Kunde);
-	cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
-	cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
-	return Konto;
+	if (verfügeranzahl == 1) {
+		Konto->setVerfüger(Kunde);
+		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		return Konto;
+	}
+	if (verfügeranzahl == 2) {
+		Konto->setVerfüger(Kunde);
+		CUSTOMER* optKunde1 = NeuerKunde();
+		Konto->setoptVerfüger1(optKunde1);
+		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		return Konto;
+	}
+	if (verfügeranzahl == 3) {
+		Konto->setVerfüger(Kunde);
+		CUSTOMER* optKunde1 = NeuerKunde();
+		CUSTOMER* optKunde2 = NeuerKunde();
+		Konto->setoptVerfüger1(optKunde1);
+		Konto->setoptVerfüger2(optKunde2);
+		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		return Konto;
+	}
+	if (verfügeranzahl == 4) {
+		Konto->setVerfüger(Kunde);
+		CUSTOMER* optKunde1 = NeuerKunde();
+		CUSTOMER* optKunde2 = NeuerKunde();
+		CUSTOMER* optKunde3 = NeuerKunde();
+		Konto->setoptVerfüger1(optKunde1);
+		Konto->setoptVerfüger2(optKunde2);
+		Konto->setoptVerfüger3(optKunde3);
+		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		return Konto;
+	}
 };
-KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde) {
+KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
 	KreditKonto *Konto = new KreditKonto();
 	int KreditKontonummer = Konto->getKontonummer();
-	Konto->setVerfüger(Kunde);
-	cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
-	cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
-	return Konto;
+	if (verfügeranzahl == 1) {
+		Konto->setVerfüger(Kunde);
+		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		return Konto;
+	}
+	if (verfügeranzahl == 2) {
+		Konto->setVerfüger(Kunde);
+		CUSTOMER* optKunde1 = NeuerKunde();
+		Konto->setoptVerfüger1(optKunde1);
+		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		return Konto;
+	}
+	if (verfügeranzahl == 3) {
+		Konto->setVerfüger(Kunde);
+		CUSTOMER* optKunde1 = NeuerKunde();
+		CUSTOMER* optKunde2 = NeuerKunde();
+		Konto->setoptVerfüger1(optKunde1);
+		Konto->setoptVerfüger2(optKunde2);
+		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		return Konto;
+	}
+	if (verfügeranzahl == 4) {
+		Konto->setVerfüger(Kunde);
+		CUSTOMER* optKunde1 = NeuerKunde();
+		CUSTOMER* optKunde2 = NeuerKunde();
+		CUSTOMER* optKunde3 = NeuerKunde();
+		Konto->setoptVerfüger1(optKunde1);
+		Konto->setoptVerfüger2(optKunde2);
+		Konto->setoptVerfüger3(optKunde3);
+		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
+		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		return Konto;
+	}
 };
+
 void Sparkontoentfernen(SparKonto* Konto) {
 	if (Konto != NULL) {
 		delete Konto;

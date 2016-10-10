@@ -3,11 +3,13 @@ c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(12): wa
   c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(12): note: Siehe Deklaration von "CUSTOMER"
 c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(81): warning C4099: "SparKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
   c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(81): note: Siehe Deklaration von "SparKonto"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(100): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(109): warning C4099: "KreditKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(109): note: Siehe Deklaration von "KreditKonto"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(127): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(273): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(282): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(118): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(131): warning C4099: "KreditKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(131): note: Siehe Deklaration von "KreditKonto"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(169): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(318): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(359): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(355): warning C4715: "NeuesSparkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(396): warning C4715: "NeuesKreditkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.dll
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.pdb (Full PDB)
