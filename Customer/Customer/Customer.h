@@ -15,7 +15,7 @@ extern "C" {
 	typedef struct SPARKONTO SPARKONTO;
 	typedef struct KREDITKONTO KREDITKONTO;
 	
-	CUSTOMER_API CUSTOMER* NeuerKunde();
+	CUSTOMER_API CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _adresse, char* _Postleitzahl, char* _Wohnort, char* _Telefon);
 	CUSTOMER_API CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde);
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
 	CUSTOMER_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl);

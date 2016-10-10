@@ -3,18 +3,12 @@
 
 #include "stdafx.h"
 #include "Customer.h"
-#include <stdio.h>
-#include <stdlib.h>
 #include <string>
 #include <iostream>
-#include <sstream>
 #include <time.h>
-
-#define __STDC_WANT_LIB_EXT1__ 1
 
 using namespace std;
 FILE* logfile;
-
 
 string time_to_string(){
 	
@@ -29,8 +23,6 @@ string time_to_string(){
 	err = asctime_s(timebuf, 26, &newtime);
 	strftime(timebuf, sizeof(timebuf), "%d %m %Y %H:%M:%S", &newtime);
 	string str(timebuf);
-	cout << timebuf << endl;
-	cout << str << endl;
 	return str;
 }
 void LOGGING(string Errortext, string LEVEL) {
@@ -85,16 +77,10 @@ public:
 		this->Wohnort = _Wohnort;
 	}
 	string CUSTOMER::getadresse() {
-		return adresse;
+		return Adresse;
 	}
-	void CUSTOMER::setadresse(string _adresse) {
-		this->adresse = _adresse;
-	}
-	string CUSTOMER::gethausnummer() {
-		return hausnummer;
-	}
-	void CUSTOMER::sethausnummer(string _hausnummer) {
-		this->hausnummer = _hausnummer;
+	void CUSTOMER::setadresse(string _Adresse) {
+		this->Adresse = _Adresse;
 	}
 	string CUSTOMER::getPostleitzahl() {
 		return Postleitzahl;
@@ -113,8 +99,7 @@ private:
 	string Vorname;
 	string Nachname;
 	string Geburtsdatum;
-	string adresse;
-	string hausnummer;
+	string Adresse;
 	string Postleitzahl;
 	string Wohnort;
 	string Telefon;
@@ -223,45 +208,32 @@ private:
 };
 
 //NeuerKunde legt einen neuen Kunden an 
-CUSTOMER* NeuerKunde() {
+//Es werden 7 Parameter in der Reihenfolge angegeben: Vorname, Nachname, Geburtsdatum, Adresse, Postleitzahl, Wohnort, Telefon
+CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _Adresse, char* _Postleitzahl, char* _Wohnort, char* _Telefon) {
 
-	string Vorname;
-	string Nachname;
-	string Geburtsdatum;
-	string adresse;
-	string hausnummer;
-	string Wohnort;
-	string Postleitzahl;
-	string Telefon;
+	if ((_Vorname || _Nachname || _Geburtsdatum || _Adresse || _Postleitzahl || _Wohnort || _Telefon) == NULL) {
+		LOGGING("Einer der Parameter bei der erstellung eines neuen Kunden ist NULL","ERROR");
+		return NULL;
+	}
+
+	string Vorname(_Vorname);
+	string Nachname(_Nachname);
+	string Geburtsdatum(_Geburtsdatum);
+	string Adresse(_Adresse);
+	string Postleitzahl(_Postleitzahl);
+	string Wohnort(_Wohnort);
+	string Telefon(_Telefon);
 	CUSTOMER *Kunde = new CUSTOMER();
 
-	cout << "Geben Sie den Vorname des Kunden ein:\n" << endl;
-	cin >> Vorname;
 	Kunde->setVorname(Vorname);
-	cout << "\nGeben Sie den Nachnamen des Kunden ein:\n" << endl;
-	cin >> Nachname;
 	Kunde->setNachname(Nachname);
-	cout << "\nGeben Sie das Geburtsdatum des Kunden ein:\n" << endl;
-	cin >> Geburtsdatum;
 	Kunde->setGeburtsdatum(Geburtsdatum);
-	cout << "\nGeben Sie die Adresse des Kunden ein:\n" << endl;
-	cin >> adresse;
-	Kunde->setadresse(adresse);
-	cout << "\nGeben Sie die Hausnummer zur Adresse ein:\n" << endl;
-	cin >> hausnummer;
-	Kunde->sethausnummer(hausnummer);
-	cout << "\nGeben Sie den Wohnort des Kunden ein:\n" << endl;
-	cin >> Wohnort;
+	Kunde->setadresse(Adresse);
 	Kunde->setWohnort(Wohnort);
-	cout << "\nGeben Sie die Postleitzahl des Kunden ein:\n" << endl;
-	cin >> Postleitzahl;
 	Kunde->setPostleitzahl(Postleitzahl);
-	cout << "\nGeben Sie die Telefonnummer des Kunden ein:\n" << endl;
-	cin >> Telefon;
 	Kunde->setTelefon(Telefon);
 
-	cout << "\n\n\nEs wurden folgende Eingaben gemacht:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-	cout << "Der Kunde wurde erfolgreich angelegt!\n" << endl;
+	LOGGING("Der Kunde wurde erfolgreich angelegt.", "OK");
 
 	return Kunde;
 }
@@ -283,14 +255,14 @@ CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde) {
 	string Telefon;
 
 start:
-	cout << "KUNDENDATEN AENDERN:\nBitte waehlen Sie eine Option aus:\n 1 - Vorname aendern\n 2 - Nachname aendern\n 3 - Adresse aendern\n 4 - Hausnummer aendern\n 5 - Postleitzahl aendern\n 6 - Wohnort aendern\n 7 - Telefonnummer aendern\n" << endl;
+	cout << "KUNDENDATEN AENDERN:\nBitte waehlen Sie eine Option aus:\n 1 - Vorname aendern\n 2 - Nachname aendern\n 3 - Adresse aendern\n 4 - Postleitzahl aendern\n 5 - Wohnort aendern\n 6 - Telefonnummer aendern\n" << endl;
 	cin >> optionenauswahl;
 
 	if (optionenauswahl == "1") {
 		cout << "\nBitte geben Sie einen neuen Vornamen ein:" << endl;
 		cin >> Vorname;
 		Kunde->setVorname(Vorname);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
+		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
 		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
 		return Kunde;
 		goto start;
@@ -299,7 +271,7 @@ start:
 		cout << "\nBitte geben Sie einen neuen Nachnamen ein:" << endl;
 		cin >> Nachname;
 		Kunde->setNachname(Nachname);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
+		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
 		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
 		return Kunde;
 		goto start;
@@ -308,43 +280,34 @@ start:
 		cout << "\nBitte geben Sie einen neue Adresse ein:" << endl;
 		cin >> adresse;
 		Kunde->setadresse(adresse);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
+		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
 		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
 		return Kunde;
 		goto start;
 	}
 	else if (optionenauswahl == "4") {
-		cout << "\nBitte geben Sie einen neue Hausnummer ein:" << endl;
-		cin >> hausnummer;
-		Kunde->sethausnummer(hausnummer);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
+		cout << "\nBitte geben Sie einen neue Postleitzahl ein:" << endl;
+		cin >> Postleitzahl;
+		Kunde->setPostleitzahl(Postleitzahl);
+		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
 		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
 		return Kunde;
 		goto start;
 	}
 	else if (optionenauswahl == "5") {
-		cout << "\nBitte geben Sie einen neue Postleitzahl ein:" << endl;
-		cin >> Postleitzahl;
-		Kunde->setPostleitzahl(Postleitzahl);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
+		cout << "\nBitte geben Sie einen neuen Wohnort ein:" << endl;
+		cin >> Wohnort;
+		Kunde->setWohnort(Wohnort);
+		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
 		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
 		return Kunde;
 		goto start;
 	}
 	else if (optionenauswahl == "6") {
-		cout << "\nBitte geben Sie einen neuen Wohnort ein:" << endl;
-		cin >> Wohnort;
-		Kunde->setWohnort(Wohnort);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else if (optionenauswahl == "7") {
 		cout << "\nBitte geben Sie einee neue Telefonnummer ein:" << endl;
 		cin >> Telefon;
 		Kunde->setTelefon(Telefon);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << " " << Kunde->gethausnummer() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
+		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
 		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
 		return Kunde;
 		goto start;
@@ -380,15 +343,15 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	}
 	if (verfügeranzahl == 2) {
 		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde();
+		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 3) {
 		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde();
-		CUSTOMER* optKunde2 = NeuerKunde();
+		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
+		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
@@ -396,9 +359,9 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	}
 	if (verfügeranzahl == 4) {
 		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde();
-		CUSTOMER* optKunde2 = NeuerKunde();
-		CUSTOMER* optKunde3 = NeuerKunde();
+		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
+		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
+		CUSTOMER* optKunde3 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		Konto->setoptVerfüger3(optKunde3);
@@ -422,15 +385,15 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	}
 	if (verfügeranzahl == 2) {
 		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde();
+		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 3) {
 		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde();
-		CUSTOMER* optKunde2 = NeuerKunde();
+		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
+		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
@@ -438,9 +401,9 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	}
 	if (verfügeranzahl == 4) {
 		Konto->setVerfüger(Kunde);
-		CUSTOMER* optKunde1 = NeuerKunde();
-		CUSTOMER* optKunde2 = NeuerKunde();
-		CUSTOMER* optKunde3 = NeuerKunde();
+		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
+		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
+		CUSTOMER* optKunde3 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		Konto->setoptVerfüger3(optKunde3);

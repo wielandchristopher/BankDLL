@@ -8,7 +8,7 @@ int main(){
 	SPARKONTO* Sparen;
 	KREDITKONTO* Giro;
 	
-	Kundendatenänderung(Kunde);
+	Kunde = NeuerKunde("Vorname", "Nachname", "Geburtsdatum", "Adresse test", "Postleitzahl", "Wohnort", "Telefonnummer");
 
 	//Führt die Funktionen der anderen .dll aus
 }
