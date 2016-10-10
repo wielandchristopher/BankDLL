@@ -8,59 +8,68 @@
 #include <iostream>
 
 using namespace std;
+FILE* logfile;
+
+void LOGGING(char* Errortext) {
+
+	fopen_s(&logfile,"Customer_log.txt", "a");
+	if (logfile == NULL)
+	{
+		printf("Unable to create file.");
+	}
+
+	fprintf(logfile, "Folgender Fehler hat das Programm beendet: ");
+	fprintf(logfile, Errortext);
+	fprintf(logfile, "\n");
+
+}
 
 class CUSTOMER {
 public:
 
+	//Getter und Setter der Kundendaten
 	string CUSTOMER::getVorname() {
 		return Vorname;
 	}
 	void CUSTOMER::setVorname(string _Vorname) {
 		this->Vorname = _Vorname;
 	}
-
 	string CUSTOMER::getNachname() {
 		return Nachname;
 	}
 	void CUSTOMER::setNachname(string _Nachname) {
 		this->Nachname = _Nachname;
 	}
-
 	string CUSTOMER::getGeburtsdatum() {
 		return Geburtsdatum;
 	}
 	void CUSTOMER::setGeburtsdatum(string _Geburtsdatum) {
 		this->Geburtsdatum = _Geburtsdatum;
 	}
-
 	string CUSTOMER::getWohnort() {
 		return Wohnort;
 	}
 	void CUSTOMER::setWohnort(string _Wohnort) {
 		this->Wohnort = _Wohnort;
 	}
-
 	string CUSTOMER::getadresse() {
 		return adresse;
 	}
 	void CUSTOMER::setadresse(string _adresse) {
 		this->adresse = _adresse;
 	}
-
 	string CUSTOMER::gethausnummer() {
 		return hausnummer;
 	}
 	void CUSTOMER::sethausnummer(string _hausnummer) {
 		this->hausnummer = _hausnummer;
 	}
-
 	string CUSTOMER::getPostleitzahl() {
 		return Postleitzahl;
 	}
 	void CUSTOMER::setPostleitzahl(string _Postleitzahl) {
 		this->Postleitzahl = _Postleitzahl;
 	}
-
 	string CUSTOMER::getTelefon() {
 		return Telefon;
 	}
@@ -80,6 +89,7 @@ private:
 };
 class SPARKONTO {
 public:
+	//Getter und Setter der Daten
 	CUSTOMER SPARKONTO::getVerfüger() {
 		return *Kontoverfüger;
 	}
@@ -104,7 +114,6 @@ public:
 	void SPARKONTO::setoptVerfüger3(CUSTOMER* _optKontoverfüger) {
 		this->optKontoverfüger3 = _optKontoverfüger;
 	}
-
 	double SPARKONTO::getKontostand() {
 		return Kontostand;
 	}
@@ -118,6 +127,7 @@ public:
 		this->Kontonummer = _Kontonummer;
 	}
 	
+	//Konstruktor zur Erstellung des Kontos mit Kontonummer 
 	SPARKONTO();
 
 private:
@@ -130,6 +140,7 @@ private:
 };
 class KREDITKONTO{
 public:
+	//Getter und Setter der Daten
 	CUSTOMER KREDITKONTO::getVerfüger() {
 		return *Kontoverfüger;
 	}
@@ -154,14 +165,12 @@ public:
 	void KREDITKONTO::setoptVerfüger3(CUSTOMER* _optKontoverfüger) {
 		this->optKontoverfüger3 = _optKontoverfüger;
 	}
-	
 	double KREDITKONTO::getKontostand() {
 		return Kontostand;
 	}
 	void KREDITKONTO::setKontostand(double _Kontostand) {
 		this->Kontostand = _Kontostand;
-	}
-	
+	}	
 	double KREDITKONTO::getKontonummer() {
 		return Kontonummer;
 	}
@@ -169,6 +178,7 @@ public:
 		this->Kontonummer = _Kontonummer;
 	}
 
+	//Konstruktor zur Erstellung des Kontos mit Kontonummer 
 	KREDITKONTO();
 
 private:
@@ -180,6 +190,7 @@ private:
 	CUSTOMER* optKontoverfüger3;
 };
 
+//NeuerKunde legt einen neuen Kunden an 
 CUSTOMER* NeuerKunde() {
 
 	string Vorname;
@@ -222,7 +233,13 @@ CUSTOMER* NeuerKunde() {
 
 	return Kunde;
 }
+//Mit der Funktion Kundendatenänderung können fast alle Daten (Geburtsdatum wird sich nie ändern) eines bestehenden Kunden geändert werden.
 CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde) {
+
+	if (Kunde == NULL) {		
+		LOGGING("\nEs existiert kein Kunde, dessen Daten geändert werden koennte");
+		return NULL;
+	}
 
 	string optionenauswahl;
 	string Vorname;
@@ -305,6 +322,7 @@ start:
 		goto start;
 	}
 }
+//Die Funktion Kundeentfernen entfernt mithilfe von delete den übergebenen Kunden
 void Kundeentfernen(CUSTOMER* Kunde) {
 	if (Kunde != NULL) {
 		delete Kunde;
@@ -312,7 +330,14 @@ void Kundeentfernen(CUSTOMER* Kunde) {
 	cout << "\nDer Kunde wurde erfolgreich entfernt." << endl;
 }
 
+//Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu. der 2. parameter lässt zu, 
+//dass mehrere Kunden ein Konto besitzen können. Es können maximal 4 Kunden über ein Konto verfügen. Übergeben wird hier 1-4. 
 SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
+
+	if (Kunde == NULL) {
+		cout << "\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann" << endl;
+		return NULL;
+	}
 
 	SPARKONTO *Konto = new SPARKONTO();
 	int SparKontonummer = Konto->getKontonummer();
@@ -355,6 +380,11 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 };
 KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
+	if (Kunde == NULL) {
+		cout << "\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann" << endl;
+		return NULL;
+	}
+
 	KREDITKONTO *Konto = new KREDITKONTO();
 	int KreditKontonummer = Konto->getKontonummer();
 	if (verfügeranzahl == 1) {
@@ -395,19 +425,27 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	}
 };
 
+//Die Funktion Sparkontoentfernen entfernt das übergebene SparKonto mit der Funktion delete
 void Sparkontoentfernen(SPARKONTO* Konto) {
-	if (Konto != NULL) {
-		delete Konto;
+	
+	if (Konto == NULL) {
+		cout << "\nDas übergebene Konto existiert nicht" << endl;
+		return;
 	}
+		delete Konto;
 	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
 }
+//Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
 void Kreditkontoentfernen(KREDITKONTO* Konto) {
-	if (Konto != NULL) {
-		delete Konto;
+	
+	if (Konto == NULL) {
+		cout << "\nDas übergebene Konto existiert nicht" << endl;
+		return;
 	}
+	delete Konto;
 	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
 }
-
+//generateKtnr erstellt eine Kontonummer und iteriert immer um 1 hoch
 int generateKtnnr() {
 
 	static int Kontonummernpool = 10000000;
@@ -415,6 +453,8 @@ int generateKtnnr() {
 	Kontonummernpool++;
 	return Kontonummernpool;
 }
+
+//In den Konstruktoren wird beim erstellen eines Kontos auch gleich die Kontonummer generiert
 KREDITKONTO::KREDITKONTO()
 {
 	setKontonummer(generateKtnnr());

@@ -1,18 +1,14 @@
 #include "Customer.h"
+#include <stdlib.h>
 
 int main(){
 
 	//Führt die Funktion aus der Customer.dll aus 
-	CUSTOMER* Kunde;
+	CUSTOMER* Kunde = NULL;
 	SPARKONTO* Sparen;
 	KREDITKONTO* Giro;
 	
-	Kunde = NeuerKunde();
-	Sparen = NeuesSparkonto(Kunde,1);
-	Giro = NeuesKreditkonto(Kunde,1);
-	Sparkontoentfernen(Sparen);
-	Kreditkontoentfernen(Giro);
-	Kundeentfernen(Kunde);
+	Kundendatenänderung(Kunde);
 
 	//Führt die Funktionen der anderen .dll aus
 }

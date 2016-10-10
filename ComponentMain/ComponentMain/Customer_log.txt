@@ -1,0 +1,2 @@
+Folgender Fehler hat das Programm beendet: 
+Es existiert kein Kunde, dessen Daten geändert werden koennte
