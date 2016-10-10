@@ -46,6 +46,8 @@ void LOGGING(string Errortext, string LEVEL) {
 	fprintf(logfile, Errortxt);
 	fprintf(logfile, "\n");
 
+	fclose(logfile);
+
 }
 
 class CUSTOMER {
@@ -241,12 +243,32 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 
 CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen Vorname geändert werden könnte", "ERROR");
+		return NULL;
+	}
+
+	if (_Vorname == "") {
+		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
+		return Kunde;
+	}
+
 	string Vorname(_Vorname);
 	Kunde->setVorname(Vorname);
 	LOGGING("Der Vorname wurde erfolgreich geändert","OK");
 	return Kunde;
 }
 CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
+	
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen Nachname geändert werden könnte", "ERROR");
+		return NULL;
+	}
+
+	if (_Nachname == "") {
+		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
+		return Kunde;
+	}
 
 	string Nachname(_Nachname);
 	Kunde->setNachname(Nachname);
@@ -255,12 +277,32 @@ CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
 }
 CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
 
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen Adresse geändert werden könnte", "ERROR");
+		return NULL;
+	}
+	
+	if (_Adresse == "") {
+		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
+		return Kunde;
+	}
+
 	string Adresse(_Adresse);
 	Kunde->setAdresse(Adresse);
 	LOGGING("Die Adresse wurde erfolgreich geändert", "OK");
 	return Kunde;
 }
 CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
+
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen PLZ geändert werden könnte", "ERROR");
+		return NULL;
+	}
+	
+	if (_Postleitzahl == "") {
+		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
+		return Kunde;
+	}
 
 	string Postleitzahl(_Postleitzahl);
 	Kunde->setPostleitzahl(Postleitzahl);
@@ -269,12 +311,32 @@ CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
 }
 CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
 
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen Wohnort geändert werden könnte", "ERROR");
+		return NULL;
+	}
+	
+	if (_Wohnort == "") {
+		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
+		return Kunde;
+	}
+
 	string Wohnort(_Wohnort);
 	Kunde->setWohnort(Wohnort);
 	LOGGING("Der Wohnort wurde erfolgreich geändert", "OK");
 	return Kunde;
 }
 CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
+
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte", "ERROR");
+		return NULL;
+	}
+	
+	if (_Telefon == "") {
+		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
+		return Kunde;
+	}
 
 	string Telefon(_Telefon);
 	Kunde->setTelefon(Telefon);
@@ -284,6 +346,13 @@ CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
 
 //Die Funktion Kundeentfernen entfernt mithilfe von delete den übergebenen Kunden
 void Kundeentfernen(CUSTOMER* Kunde) {
+	//BAD
+	if (typeid(Kunde) != typeid(CUSTOMER*)) {
+
+		LOGGING("\nDer übergebene Parameter ist kein Customer.", "ERROR");
+		return;
+	}
+	
 	if (Kunde != NULL) {
 		delete Kunde;
 	}
@@ -303,14 +372,14 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	int SparKontonummer = Konto->getKontonummer();
 	if (verfügeranzahl == 1) {
 		Konto->setVerfüger(Kunde);
-		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 2) {
 		Konto->setVerfüger(Kunde);
 		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
-		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 3) {
@@ -319,7 +388,7 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
-		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 4) {
@@ -330,7 +399,7 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		Konto->setoptVerfüger3(optKunde3);
-		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 };
@@ -345,14 +414,14 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	int KreditKontonummer = Konto->getKontonummer();
 	if (verfügeranzahl == 1) {
 		Konto->setVerfüger(Kunde);
-		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 2) {
 		Konto->setVerfüger(Kunde);
 		CUSTOMER* optKunde1 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
-		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 3) {
@@ -361,7 +430,7 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		CUSTOMER* optKunde2 = NeuerKunde("Test", "Test", "Test", "Test", "Test", "Test", "Test");
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
-		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 4) {
@@ -372,7 +441,7 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		Konto->setoptVerfüger3(optKunde3);
-		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
+		LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
 		return Konto;
 	}
 };
@@ -381,21 +450,21 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 void Sparkontoentfernen(SPARKONTO* Konto) {
 	
 	if (Konto == NULL) {
-		LOGGING("\nDas übergebene Konto existiert nicht.", "ERROR");
+		LOGGING("Das übergebene Konto existiert nicht.", "ERROR");
 		return;
 	}
 	delete Konto;
-	LOGGING("\nDas Konto wurde erfolgreich entfernt.", "OK");
+	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 }
 //Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
 void Kreditkontoentfernen(KREDITKONTO* Konto) {
 	
 	if (Konto == NULL) {
-		LOGGING("\nDas übergebene Konto existiert nicht", "ERROR");
+		LOGGING("Das übergebene Konto existiert nicht", "ERROR");
 		return;
 	}
 	delete Konto;
-	LOGGING("\nDas Konto wurde erfolgreich entfernt.", "OK");
+	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 }
 //generateKtnr erstellt eine Kontonummer und iteriert immer um 1 hoch
 int generateKtnnr() {
