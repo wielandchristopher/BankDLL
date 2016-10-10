@@ -16,7 +16,12 @@ extern "C" {
 	typedef struct KREDITKONTO KREDITKONTO;
 	
 	CUSTOMER_API CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _adresse, char* _Postleitzahl, char* _Wohnort, char* _Telefon);
-	CUSTOMER_API CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde);
+	CUSTOMER_API CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* Vorname);
+	CUSTOMER_API CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname);
+	CUSTOMER_API CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse);
+	CUSTOMER_API CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl);
+	CUSTOMER_API CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort);
+	CUSTOMER_API CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon);
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
 	CUSTOMER_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl);
 	CUSTOMER_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl);

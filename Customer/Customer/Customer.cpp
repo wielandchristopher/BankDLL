@@ -76,10 +76,10 @@ public:
 	void CUSTOMER::setWohnort(string _Wohnort) {
 		this->Wohnort = _Wohnort;
 	}
-	string CUSTOMER::getadresse() {
+	string CUSTOMER::getAdresse() {
 		return Adresse;
 	}
-	void CUSTOMER::setadresse(string _Adresse) {
+	void CUSTOMER::setAdresse(string _Adresse) {
 		this->Adresse = _Adresse;
 	}
 	string CUSTOMER::getPostleitzahl() {
@@ -228,7 +228,7 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	Kunde->setVorname(Vorname);
 	Kunde->setNachname(Nachname);
 	Kunde->setGeburtsdatum(Geburtsdatum);
-	Kunde->setadresse(Adresse);
+	Kunde->setAdresse(Adresse);
 	Kunde->setWohnort(Wohnort);
 	Kunde->setPostleitzahl(Postleitzahl);
 	Kunde->setTelefon(Telefon);
@@ -238,85 +238,50 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	return Kunde;
 }
 //Mit der Funktion Kundendatenänderung können fast alle Daten (Geburtsdatum wird sich nie ändern) eines bestehenden Kunden geändert werden.
-CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde) {
 
-	if (Kunde == NULL) {		
-		LOGGING("Es existiert kein Kunde, dessen Daten geändert werden koennte", "ERROR");
-		return NULL;
-	}
+CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 
-	string optionenauswahl;
-	string Vorname;
-	string Nachname;
-	string adresse;
-	string hausnummer;
-	string Wohnort;
-	string Postleitzahl;
-	string Telefon;
-
-start:
-	cout << "KUNDENDATEN AENDERN:\nBitte waehlen Sie eine Option aus:\n 1 - Vorname aendern\n 2 - Nachname aendern\n 3 - Adresse aendern\n 4 - Postleitzahl aendern\n 5 - Wohnort aendern\n 6 - Telefonnummer aendern\n" << endl;
-	cin >> optionenauswahl;
-
-	if (optionenauswahl == "1") {
-		cout << "\nBitte geben Sie einen neuen Vornamen ein:" << endl;
-		cin >> Vorname;
-		Kunde->setVorname(Vorname);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else if (optionenauswahl == "2") {
-		cout << "\nBitte geben Sie einen neuen Nachnamen ein:" << endl;
-		cin >> Nachname;
-		Kunde->setNachname(Nachname);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else if (optionenauswahl == "3") {
-		cout << "\nBitte geben Sie einen neue Adresse ein:" << endl;
-		cin >> adresse;
-		Kunde->setadresse(adresse);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else if (optionenauswahl == "4") {
-		cout << "\nBitte geben Sie einen neue Postleitzahl ein:" << endl;
-		cin >> Postleitzahl;
-		Kunde->setPostleitzahl(Postleitzahl);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else if (optionenauswahl == "5") {
-		cout << "\nBitte geben Sie einen neuen Wohnort ein:" << endl;
-		cin >> Wohnort;
-		Kunde->setWohnort(Wohnort);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else if (optionenauswahl == "6") {
-		cout << "\nBitte geben Sie einee neue Telefonnummer ein:" << endl;
-		cin >> Telefon;
-		Kunde->setTelefon(Telefon);
-		cout << "\nDie Kundendaten lauten nun wiefolgt:\n " << "\n\t" << Kunde->getVorname() << " " << Kunde->getNachname() << "\n\t" << Kunde->getGeburtsdatum() << "\n\t" << Kunde->getadresse() << "\n\t" << Kunde->getPostleitzahl() << " " << Kunde->getWohnort() << "\n\t" << Kunde->getTelefon() << endl;
-		cout << "\nDie aenderungen wurden erfolgreich eingetragen" << endl;
-		return Kunde;
-		goto start;
-	}
-	else {
-		cout << "\nBitte waehlen Sie nur eine verfuegbare Option!\n\n" << endl;
-		goto start;
-	}
+	string Vorname(_Vorname);
+	Kunde->setVorname(Vorname);
+	LOGGING("Der Vorname wurde erfolgreich geändert","OK");
+	return Kunde;
 }
+CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
+
+	string Nachname(_Nachname);
+	Kunde->setNachname(Nachname);
+	LOGGING("Der Nachname wurde erfolgreich geändert", "OK");
+	return Kunde;
+}
+CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
+
+	string Adresse(_Adresse);
+	Kunde->setAdresse(Adresse);
+	LOGGING("Die Adresse wurde erfolgreich geändert", "OK");
+	return Kunde;
+}
+CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
+
+	string Postleitzahl(_Postleitzahl);
+	Kunde->setPostleitzahl(Postleitzahl);
+	LOGGING("Die Postleitzahl wurde erfolgreich geändert", "OK");
+	return Kunde;
+}
+CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
+
+	string Wohnort(_Wohnort);
+	Kunde->setWohnort(Wohnort);
+	LOGGING("Der Wohnort wurde erfolgreich geändert", "OK");
+	return Kunde;
+}
+CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
+
+	string Telefon(_Telefon);
+	Kunde->setTelefon(Telefon);
+	LOGGING("Die Telefonnummer wurde erfolgreich geändert", "OK");
+	return Kunde;
+}
+
 //Die Funktion Kundeentfernen entfernt mithilfe von delete den übergebenen Kunden
 void Kundeentfernen(CUSTOMER* Kunde) {
 	if (Kunde != NULL) {
