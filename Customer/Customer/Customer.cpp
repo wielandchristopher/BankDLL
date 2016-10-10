@@ -15,6 +15,7 @@
 using namespace std;
 FILE* logfile;
 
+
 string time_to_string(){
 	
 	struct tm newtime;
@@ -32,12 +33,12 @@ string time_to_string(){
 	cout << str << endl;
 	return str;
 }
-void LOGGING(string Errortext) {
+void LOGGING(string Errortext, string LEVEL) {
 
 	const char *Errortxt = Errortext.c_str();
 	string stringtime = time_to_string();
 	const char *time = stringtime.c_str();
-	cout << time;
+	const char *lvl = LEVEL.c_str();
 
 	fopen_s(&logfile,"Customer_log.txt", "a");
 	if (logfile == NULL)
@@ -47,7 +48,9 @@ void LOGGING(string Errortext) {
 
 	//Hier soll noch die Zeit drinnen stehen 
 	fprintf(logfile, time);
-	fprintf(logfile, "\t");
+	fprintf(logfile, " - ");
+	fprintf(logfile, lvl);
+	fprintf(logfile, ": ");
 	fprintf(logfile, Errortxt);
 	fprintf(logfile, "\n");
 
@@ -266,7 +269,7 @@ CUSTOMER* NeuerKunde() {
 CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde) {
 
 	if (Kunde == NULL) {		
-		LOGGING("Es existiert kein Kunde, dessen Daten geändert werden koennte");
+		LOGGING("Es existiert kein Kunde, dessen Daten geändert werden koennte", "ERROR");
 		return NULL;
 	}
 
@@ -356,7 +359,7 @@ void Kundeentfernen(CUSTOMER* Kunde) {
 	if (Kunde != NULL) {
 		delete Kunde;
 	}
-	cout << "\nDer Kunde wurde erfolgreich entfernt." << endl;
+	LOGGING("\nDer Kunde wurde erfolgreich entfernt.", "OK");
 }
 
 //Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu. der 2. parameter lässt zu, 
@@ -364,7 +367,7 @@ void Kundeentfernen(CUSTOMER* Kunde) {
 SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
 	if (Kunde == NULL) {
-		cout << "\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann" << endl;
+		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
 		return NULL;
 	}
 
@@ -372,16 +375,14 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	int SparKontonummer = Konto->getKontonummer();
 	if (verfügeranzahl == 1) {
 		Konto->setVerfüger(Kunde);
-		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 2) {
 		Konto->setVerfüger(Kunde);
 		CUSTOMER* optKunde1 = NeuerKunde();
 		Konto->setoptVerfüger1(optKunde1);
-		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 3) {
@@ -390,8 +391,7 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		CUSTOMER* optKunde2 = NeuerKunde();
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
-		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 4) {
@@ -402,15 +402,14 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		Konto->setoptVerfüger3(optKunde3);
-		cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
+		LOGGING("\nDas SparKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 };
 KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 
 	if (Kunde == NULL) {
-		cout << "\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann" << endl;
+		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
 		return NULL;
 	}
 
@@ -418,16 +417,14 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 	int KreditKontonummer = Konto->getKontonummer();
 	if (verfügeranzahl == 1) {
 		Konto->setVerfüger(Kunde);
-		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 2) {
 		Konto->setVerfüger(Kunde);
 		CUSTOMER* optKunde1 = NeuerKunde();
 		Konto->setoptVerfüger1(optKunde1);
-		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 3) {
@@ -436,8 +433,7 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		CUSTOMER* optKunde2 = NeuerKunde();
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
-		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 	if (verfügeranzahl == 4) {
@@ -448,8 +444,7 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 		Konto->setoptVerfüger1(optKunde1);
 		Konto->setoptVerfüger2(optKunde2);
 		Konto->setoptVerfüger3(optKunde3);
-		cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
-		cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
+		LOGGING("\nDas KreditKonto wurde erfolgreich erstellt.\n", "OK");
 		return Konto;
 	}
 };
@@ -458,21 +453,21 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde, int verfügeranzahl) {
 void Sparkontoentfernen(SPARKONTO* Konto) {
 	
 	if (Konto == NULL) {
-		cout << "\nDas übergebene Konto existiert nicht" << endl;
+		LOGGING("\nDas übergebene Konto existiert nicht.", "ERROR");
 		return;
 	}
-		delete Konto;
-	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
+	delete Konto;
+	LOGGING("\nDas Konto wurde erfolgreich entfernt.", "OK");
 }
 //Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
 void Kreditkontoentfernen(KREDITKONTO* Konto) {
 	
 	if (Konto == NULL) {
-		cout << "\nDas übergebene Konto existiert nicht" << endl;
+		LOGGING("\nDas übergebene Konto existiert nicht", "ERROR");
 		return;
 	}
 	delete Konto;
-	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
+	LOGGING("\nDas Konto wurde erfolgreich entfernt.", "OK");
 }
 //generateKtnr erstellt eine Kontonummer und iteriert immer um 1 hoch
 int generateKtnnr() {
