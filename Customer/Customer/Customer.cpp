@@ -4,22 +4,51 @@
 #include "stdafx.h"
 #include "Customer.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string>
 #include <iostream>
+#include <sstream>
+#include <time.h>
+
+#define __STDC_WANT_LIB_EXT1__ 1
 
 using namespace std;
 FILE* logfile;
 
-void LOGGING(char* Errortext) {
+string time_to_string(){
+	
+	struct tm newtime;
+	__time64_t long_time;
+	char timebuf[26];
+	errno_t err;
+
+	// Get time as 64-bit integer.
+	_time64(&long_time);
+	err = _localtime64_s(&newtime, &long_time); 
+	err = asctime_s(timebuf, 26, &newtime);
+	strftime(timebuf, sizeof(timebuf), "%d %m %Y %H:%M:%S", &newtime);
+	string str(timebuf);
+	cout << timebuf << endl;
+	cout << str << endl;
+	return str;
+}
+void LOGGING(string Errortext) {
+
+	const char *Errortxt = Errortext.c_str();
+	string stringtime = time_to_string();
+	const char *time = stringtime.c_str();
+	cout << time;
 
 	fopen_s(&logfile,"Customer_log.txt", "a");
 	if (logfile == NULL)
 	{
-		printf("Unable to create file.");
+		printf("Das Logfile konnte nicht erstellt werden");
 	}
 
-	fprintf(logfile, "Folgender Fehler hat das Programm beendet: ");
-	fprintf(logfile, Errortext);
+	//Hier soll noch die Zeit drinnen stehen 
+	fprintf(logfile, time);
+	fprintf(logfile, "\t");
+	fprintf(logfile, Errortxt);
 	fprintf(logfile, "\n");
 
 }
@@ -237,7 +266,7 @@ CUSTOMER* NeuerKunde() {
 CUSTOMER* Kundendatenänderung(CUSTOMER *Kunde) {
 
 	if (Kunde == NULL) {		
-		LOGGING("\nEs existiert kein Kunde, dessen Daten geändert werden koennte");
+		LOGGING("Es existiert kein Kunde, dessen Daten geändert werden koennte");
 		return NULL;
 	}
 

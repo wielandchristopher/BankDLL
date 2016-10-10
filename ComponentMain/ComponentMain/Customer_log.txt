@@ -1,2 +1,4 @@
-Folgender Fehler hat das Programm beendet: 
+Mon Oct 10 17:18:28 2016
 Es existiert kein Kunde, dessen Daten geändert werden koennte
+10 10 2016 17:20:25Es existiert kein Kunde, dessen Daten geändert werden koennte
+10 10 2016 17:20:45	Es existiert kein Kunde, dessen Daten geändert werden koennte

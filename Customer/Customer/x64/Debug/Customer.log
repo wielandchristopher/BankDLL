@@ -1,16 +1,15 @@
 ﻿  Customer.cpp
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(27): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(27): note: Siehe Deklaration von "CUSTOMER"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(90): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(90): note: Siehe Deklaration von "SPARKONTO"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(127): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(141): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(141): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(178): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(344): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(390): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(427): warning C4715: "NeuesKreditkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(381): warning C4715: "NeuesSparkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
-     Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.exp" werden erstellt.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(57): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(57): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(120): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(120): note: Siehe Deklaration von "SPARKONTO"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(157): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(171): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(171): note: Siehe Deklaration von "KREDITKONTO"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(208): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(373): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(419): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(410): warning C4715: "NeuesSparkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(456): warning C4715: "NeuesKreditkonto": Nicht alle Steuerelementpfade geben einen Wert zurück.
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.dll
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.pdb (Full PDB)
