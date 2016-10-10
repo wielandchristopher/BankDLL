@@ -11,8 +11,6 @@ int main(){
 	Kundendatenänderung(Kunde);
 	Sparen = NeuesSparkonto(Kunde);
 	Giro = NeuesKreditkonto(Kunde);
-	Sparkontoverwaltung(Sparen);
-	Kreditkontoverwaltung(Giro);
 	Sparkontoentfernen(Sparen);
 	Kreditkontoentfernen(Giro);
 	Kundeentfernen(Kunde);

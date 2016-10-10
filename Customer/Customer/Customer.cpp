@@ -81,29 +81,44 @@ private:
 };
 class SparKonto {
 public:
-	CUSTOMER SparKonto::getInhaber() {
-		return *KontoInhaber;
+	CUSTOMER SparKonto::getVerfüger() {
+		return *Kontoverfüger;
 	}
-	void SparKonto::setInhaber(CUSTOMER* _KontoInhaber) {
-		this->KontoInhaber = _KontoInhaber;
+	void SparKonto::setVerfüger(CUSTOMER* _Kontoverfüger) {
+		this->Kontoverfüger = _Kontoverfüger;
 	}
 
+	double SparKonto::getKontostand() {
+		return Kontostand;
+	}
+	void SparKonto::setKontostand(double _Kontostand) {
+		this->Kontostand = _Kontostand;
+	}
 
 private:
-	CUSTOMER* KontoInhaber;
+	double Kontonummer;
+	double Kontostand = 0;
+	CUSTOMER* Kontoverfüger;
 };
 class KreditKonto{
 public:
-	CUSTOMER KreditKonto::getInhaber() {
-		return *KontoInhaber;
+	CUSTOMER KreditKonto::getVerfüger() {
+		return *Kontoverfüger;
 	}
-	void KreditKonto::setInhaber(CUSTOMER* _KontoInhaber) {
-		this->KontoInhaber = _KontoInhaber;
+	void KreditKonto::setVerfüger(CUSTOMER* _Kontoverfüger) {
+		this->Kontoverfüger = _Kontoverfüger;
 	}
-
+	double KreditKonto::getKontostand() {
+		return Kontostand;
+	}
+	void KreditKonto::setKontostand(double _Kontostand) {
+		this->Kontostand = _Kontostand;
+	}
 
 private:
-	CUSTOMER* KontoInhaber;
+	double Kontonummer;
+	double Kontostand = 0;
+	CUSTOMER* Kontoverfüger;
 };
 
 CUSTOMER* NeuerKunde() {
@@ -241,14 +256,14 @@ void Kundeentfernen(CUSTOMER* Kunde) {
 SparKonto* NeuesSparkonto(CUSTOMER* Kunde) {
 
 	SparKonto *Konto = new SparKonto();
-	Konto->setInhaber(Kunde);
+	Konto->setVerfüger(Kunde);
 	cout << "Das SparKonto wurde erfolgreich erstellt.\n" << endl;
 	return Konto;
 };
 KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde) {
 
 	KreditKonto *Konto = new KreditKonto();
-	Konto->setInhaber(Kunde);
+	Konto->setVerfüger(Kunde);
 	cout << "Das KreditKonto wurde erfolgreich erstellt.\n" << endl;
 	return Konto;
 };
@@ -264,18 +279,5 @@ void Kreditkontoentfernen(KreditKonto* Konto) {
 	}
 	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
 }
-
-
-//Noch in Arbeit
-SparKonto* Sparkontoverwaltung(SparKonto* Konto) {
-
-	return Konto;
-}
-//Noch in Arbeit
-KreditKonto* Kreditkontoverwaltung(KreditKonto* Konto) {
-
-	return Konto;
-}
-
 
 

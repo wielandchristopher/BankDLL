@@ -20,8 +20,6 @@ extern "C" {
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
 	CUSTOMER_API SparKonto* NeuesSparkonto(CUSTOMER* Kunde);
 	CUSTOMER_API KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde);
-	CUSTOMER_API SparKonto* Sparkontoverwaltung(SparKonto* Konto);
-	CUSTOMER_API KreditKonto* Kreditkontoverwaltung(KreditKonto* Konto);
 	CUSTOMER_API void Sparkontoentfernen(SparKonto* Konto);
 	CUSTOMER_API void Kreditkontoentfernen(KreditKonto* Konto);
 
