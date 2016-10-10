@@ -1,9 +1,13 @@
 ﻿  Customer.cpp
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(13): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(13): note: Siehe Deklaration von "CUSTOMER"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(82): warning C4099: "SparKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(82): note: Siehe Deklaration von "SparKonto"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(96): warning C4099: "KreditKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(96): note: Siehe Deklaration von "KreditKonto"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(12): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(12): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(81): warning C4099: "SparKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(81): note: Siehe Deklaration von "SparKonto"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(100): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(109): warning C4099: "KreditKonto": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(109): note: Siehe Deklaration von "KreditKonto"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(127): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(273): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(282): warning C4244: "Initialisierung": Konvertierung von "double" in "int", möglicher Datenverlust
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.dll
   Customer.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\Customer.pdb (Full PDB)

@@ -3,7 +3,6 @@
 
 #include "stdafx.h"
 #include "Customer.h"
-
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -94,9 +93,16 @@ public:
 	void SparKonto::setKontostand(double _Kontostand) {
 		this->Kontostand = _Kontostand;
 	}
+	double SparKonto::getKontonummer() {
+		return Kontonummer;
+	}
+	void SparKonto::setKontonummer(double _Kontonummer) {
+		this->Kontonummer = _Kontonummer;
+	}
+	SparKonto();
 
 private:
-	double Kontonummer;
+	int Kontonummer;
 	double Kontostand = 0;
 	CUSTOMER* Kontoverfüger;
 };
@@ -114,9 +120,17 @@ public:
 	void KreditKonto::setKontostand(double _Kontostand) {
 		this->Kontostand = _Kontostand;
 	}
+	double KreditKonto::getKontonummer() {
+		return Kontonummer;
+	}
+	void KreditKonto::setKontonummer(double _Kontonummer) {
+		this->Kontonummer = _Kontonummer;
+	}
+
+	KreditKonto();
 
 private:
-	double Kontonummer;
+	int Kontonummer;
 	double Kontostand = 0;
 	CUSTOMER* Kontoverfüger;
 };
@@ -256,15 +270,19 @@ void Kundeentfernen(CUSTOMER* Kunde) {
 SparKonto* NeuesSparkonto(CUSTOMER* Kunde) {
 
 	SparKonto *Konto = new SparKonto();
+	int SparKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
-	cout << "Das SparKonto wurde erfolgreich erstellt.\n" << endl;
+	cout << "\nDas SparKonto wurde erfolgreich erstellt.\n" << endl;
+	cout << "Die Kontonummer lautet: " << SparKontonummer << "\n" << endl;
 	return Konto;
 };
 KreditKonto* NeuesKreditkonto(CUSTOMER* Kunde) {
 
 	KreditKonto *Konto = new KreditKonto();
+	int KreditKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
-	cout << "Das KreditKonto wurde erfolgreich erstellt.\n" << endl;
+	cout << "\nDas KreditKonto wurde erfolgreich erstellt.\n" << endl;
+	cout << "Die Kontonummer lautet: " << KreditKontonummer << "\n" << endl;
 	return Konto;
 };
 void Sparkontoentfernen(SparKonto* Konto) {
@@ -280,4 +298,20 @@ void Kreditkontoentfernen(KreditKonto* Konto) {
 	cout << "\nDas Konto wurde erfolgreich entfernt." << endl;
 }
 
+int generateKtnnr() {
 
+	static int Kontonummernpool = 10000000;
+
+	Kontonummernpool++;
+	return Kontonummernpool;
+}
+KreditKonto::KreditKonto()
+{
+	setKontonummer(generateKtnnr());
+
+}
+SparKonto::SparKonto()
+{
+	setKontonummer(generateKtnnr());
+
+}
