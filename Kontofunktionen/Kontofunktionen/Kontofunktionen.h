@@ -15,8 +15,7 @@ extern "C" {
 
 	KONTOFNK_API void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag);
 	KONTOFNK_API void doAbheben(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag);
-	KONTOFNK_API UEBERWEISUNG* newUeberweisung(char* empfaengername, int kontonummer, char* verwendungszweck, double betrag);
-	KONTOFNK_API UEBERWEISUNG* newUeberweisung2(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck);
+	KONTOFNK_API UEBERWEISUNG* newUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck);
 
 #ifdef __cplusplus
 }

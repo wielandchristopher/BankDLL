@@ -50,46 +50,12 @@ void LOGGING(char* Errortext, char* LEVEL) {
 
 }
 
-class KONTOBEWEGUNG{
-public:
-	KONTOBEWEGUNG(bool abheben, char *verwendungszweck, double betrag, KREDITKONTO *zielkonto) {
-		this->verwendungszweck = verwendungszweck;
-		this->betrag = abhebenOderEinzahlen(abheben, betrag, zielkonto);
-	}
-	double abhebenOderEinzahlen(bool abheben, double betrag, KREDITKONTO *zielkonto) {
-		if (abheben == true)
-		{
-			// Abheben -> gleich abziehen 
-			// TODO: Betrag für Kontoauszug
-			double newKontostand = zielkonto->getKontostand() - betrag;
-			zielkonto->setKontostand(newKontostand);
-
-			return betrag;
-		}
-		else
-		{
-			// Einzahlen
-			// TODO wie oben
-			double newKontostand = zielkonto->getKontostand() + betrag;
-			zielkonto->setKontostand(newKontostand);
-
-			return betrag;
-		}
-	}
-
-	double getBetrag() {
-		return betrag;
-	}
-	char *getVerwendungszweck() {
-		return verwendungszweck;
-	}
+class KONTOAUSZUG {
+public: 
+	KONTOAUSZUG();
 
 private:
-	char *verwendungszweck;
-	double betrag;
 
-	// wenn abheben true = ABHEBEN, wenn false = EINZAHLEN
-	bool abheben;
 };
 class UEBERWEISUNG
 {
@@ -162,21 +128,7 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) 
 	LOGGING((char*)to_string(betrag).c_str(), "OK");
 }
 
-UEBERWEISUNG* newUeberweisung(char* empfaengername, int kontonummer, char* verwendungszweck, double betrag) {
-
-	UEBERWEISUNG* ueberweisung = new UEBERWEISUNG();
-
-	ueberweisung->setempfaengername(empfaengername);
-	ueberweisung->setkontonummer(kontonummer);
-	ueberweisung->setVerwendungszweck(verwendungszweck);
-	ueberweisung->setBetrag(betrag);
-
-	LOGGING("Die Überweisung wurde erfolgreich durchgeführt.", "OK");
-
-	return ueberweisung;
-}
-
-UEBERWEISUNG* newUeberweisung2(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) {
+UEBERWEISUNG* newUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) {
 
 
 	UEBERWEISUNG* ueberweisung = new UEBERWEISUNG();
@@ -188,4 +140,9 @@ UEBERWEISUNG* newUeberweisung2(KREDITKONTO* zielkonto, double betrag, char* verw
 
 	LOGGING("Die Überweisung wurde erfolgreich durchgeführt.", "OK");
 	return ueberweisung;
+}
+
+KONTOAUSZUG::KONTOAUSZUG()
+{
+
 }

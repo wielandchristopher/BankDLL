@@ -9,6 +9,6 @@ int main(){
 	KREDITKONTO* Giro = NeuesKreditkonto(Karl);
 
 	//Kontofunktionen.dll
-	UEBERWEISUNG* erstueberweisung = newUeberweisung2(Giro, 500, "Testbetragüberweisung");
+	UEBERWEISUNG* erstueberweisung = newUeberweisung(Giro, 500, "Testbetragüberweisung");
 
 }
