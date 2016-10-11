@@ -4,7 +4,6 @@
 #include <iostream>
 #include <time.h>
 #include <typeinfo>
-#include <exception>
 
 using namespace std;
 FILE* logfile;

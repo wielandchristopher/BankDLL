@@ -20,7 +20,7 @@ void Kontoauszug::showKontoauszug()
 	cout << "Kontoauszug " << endl;
 	cout << "Kontonummer: " << endl; // TODO
 }
-
+/*
 void Kontoauszug::prepareList()
 {
 	// 2 for -> in neue char liste speichern
@@ -43,12 +43,13 @@ void Kontoauszug::prepareList()
 				newChar[0] = (*itKo).getDatum();
 				newChar[1] = (*itKo).getVerwendungszweck();
 				newChar[2] = (*itKo).getBetrag(); */
-
+/*
 				// TODO checken ob getVerwendungszweck 0 ist
 				string str((*itKo).getVerwendungszweck());
 				string newString = (*itKo).getDatum() + ', ' + str + ', ' + (*itKo).getBetrag() + '; ';
 				
 			}
+			
 			else
 			{
 
@@ -56,7 +57,7 @@ void Kontoauszug::prepareList()
 		}
 	}
 }
-
+*/
 /*
 void Kontoauszug::setUeberweisungsListe(list<Ueberweisung> ueberweisungsListe)
 {

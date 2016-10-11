@@ -91,3 +91,30 @@
 11 10 2016 18:42:12 - OK: Das ist die Telefonnummer des übergebenen Kunden:
 11 10 2016 18:42:12 - OK: Telefonnummer
 11 10 2016 18:42:12 - OK: Der Kunde wurde erfolgreich entfernt.
+11 10 2016 21:19:17 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+11 10 2016 21:35:39 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+11 10 2016 21:36:01 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+11 10 2016 21:36:38 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+11 10 2016 21:36:38 - OK: Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:
+11 10 2016 21:36:38 - OK: Eingegebene Kontonummer:
+11 10 2016 21:36:38 - OK: -6277438562204192487878988888393020692503707483087375482269988814848.000000
+11 10 2016 21:36:38 - OK: Verwendungszweck:
+11 10 2016 21:36:38 - OK: verwendungszweck
+11 10 2016 21:36:38 - OK: Betrag:
+11 10 2016 21:36:38 - OK: 100.000000
+11 10 2016 21:37:50 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+11 10 2016 21:37:50 - OK: Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:
+11 10 2016 21:37:50 - OK: Momentaner Kontostand:
+11 10 2016 21:37:50 - OK: 100.000000
+11 10 2016 21:37:50 - OK: Verwendungszweck:
+11 10 2016 21:37:50 - OK: verwendungszweck
+11 10 2016 21:37:50 - OK: Betrag:
+11 10 2016 21:37:50 - OK: 100.000000
+11 10 2016 21:38:55 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+11 10 2016 21:38:55 - OK: Der Betrag wurde erfolgreich abgehoben. Unterhalb die getätigten eingaben:
+11 10 2016 21:38:55 - OK: Momentaner Kontostand:
+11 10 2016 21:38:55 - OK: -100.000000
+11 10 2016 21:38:55 - OK: Verwendungszweck:
+11 10 2016 21:38:55 - OK: verwendungszweck
+11 10 2016 21:38:55 - OK: Betrag:
+11 10 2016 21:38:55 - OK: 100.000000

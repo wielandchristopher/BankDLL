@@ -9,15 +9,19 @@ class Ueberweisung
 public:
 	Ueberweisung(char *verwendungszweck, double betrag, int kontonummer, char *empfaengername, Kontoverwaltung *kontoverwaltung);
 
+	Ueberweisung();
 	void showUeberweisung();
-	char *getDatum();
+	string getDatum() {
+
+		return datum;
+	}
 	char *getVerwendungszweck();
 	double getBetrag();
 
 private:
 	void setDatum();
 
-	char* datum;
+	string datum;
 	double betrag;
 	int kontonummer;
 	char* empfaengername;

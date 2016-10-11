@@ -14,7 +14,6 @@ extern "C" {
 	typedef struct CUSTOMER CUSTOMER;
 	typedef struct SPARKONTO SPARKONTO;
 	typedef struct KREDITKONTO KREDITKONTO;
-	typedef struct CHARAKTERS CHARAKTERS;
 	
 	CUSTOMER_API CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _adresse, char* _Wohnort, char* _Telefon);
 	CUSTOMER_API void Kundenvornamenänderung(CUSTOMER *Kunde, char* Vorname);

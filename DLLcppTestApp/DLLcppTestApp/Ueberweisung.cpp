@@ -2,6 +2,8 @@
 #include "Kontoverwaltung.h"
 #include "stdafx.h"
 #include <time.h>
+#include <string>
+#include <iostream>
 
 using namespace std;
 
@@ -17,11 +19,6 @@ Ueberweisung::Ueberweisung(char *verwendungszweck, double betrag, int kontonumme
 	//kontoverwaltung.setKontostand -= betrag;
 	double newKontostand = kontoverwaltung->getKontostand() - betrag;
 	kontoverwaltung->setKontostand(newKontostand);
-}
-
-char *Ueberweisung::getDatum()
-{
-	return datum;
 }
 
 char *Ueberweisung::getVerwendungszweck()
@@ -71,13 +68,35 @@ void Ueberweisung::setDatum()
 	// return timebuf;
 }
 
+string time_to_string() {
+
+	struct tm newtime;
+	__time64_t long_time;
+	char timebuf[26];
+	errno_t err;
+
+	// Get time as 64-bit integer.
+	_time64(&long_time);
+	err = _localtime64_s(&newtime, &long_time);
+	err = asctime_s(timebuf, 26, &newtime);
+	strftime(timebuf, sizeof(timebuf), "%d %m %Y %H:%M:%S", &newtime);
+	string str(timebuf);
+	return str;
+}
+
+
+Ueberweisung::Ueberweisung()
+{
+}
+
 void Ueberweisung::showUeberweisung()
 {
+	string test = time_to_string();
 	// Daweil nur mit cout -> vlt umschreiben
 	cout << "An Kontonummer: " << this->kontonummer << endl;
 	cout << "Verwendungszweck: " << this->verwendungszweck << endl;
 	cout << "Betrag: " << this->betrag << endl;
 	cout << "Empfaengername: " << this->empfaengername << endl;
-	//cout << "Datum: " << this->datum << endl;
-	cout << "Datum: " << this->datum << endl;
+	cout << "Datum: " << test << endl;	
+
 }
