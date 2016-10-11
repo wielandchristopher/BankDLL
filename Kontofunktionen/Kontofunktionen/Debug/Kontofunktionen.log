@@ -1,54 +1,20 @@
 ﻿  Kontofunktionen.cpp
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(53): warning C4099: "KONTOBEWEGUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(53): note: Siehe Deklaration von "KONTOBEWEGUNG"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(64): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(64): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(65): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(65): error C2227: Links von "->setKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(73): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(73): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(74): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(74): error C2227: Links von "->setKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(95): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(94): note: Siehe Deklaration von "UEBERWEISUNG"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(135): warning C4273: "doAbheben": Inkonsistente DLL-Bindung.
-  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(17): note: Siehe vorherige Definition von "doAbheben"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(137): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(137): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(138): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(138): error C2227: Links von "->setKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(143): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(143): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(143): error C2228: Links von ".c_str" müssen sich in einer Klasse/Struktur/Union befinden
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(149): warning C4273: "doEinzahlen": Inkonsistente DLL-Bindung.
-  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(16): note: Siehe vorherige Definition von "doEinzahlen"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(152): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(152): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(153): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(153): error C2227: Links von "->setKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(158): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(158): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(158): error C2228: Links von ".c_str" müssen sich in einer Klasse/Struktur/Union befinden
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(165): warning C4273: "newUeberweisung": Inkonsistente DLL-Bindung.
-  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(18): note: Siehe vorherige Definition von "newUeberweisung"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(179): warning C4273: "newUeberweisung2": Inkonsistente DLL-Bindung.
-  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(19): note: Siehe vorherige Definition von "newUeberweisung2"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(183): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(183): error C2227: Links von "->getVerfüger" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(184): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(184): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(185): error C2027: Verwendung des undefinierten Typs "KREDITKONTO"
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(106): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(185): error C2227: Links von "->getKontostand" muss sich ein Zeiger auf Klassen-/Struktur-/Union-/generischen Typ befinden.
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(41): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(41): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(96): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(96): note: Siehe Deklaration von "SPARKONTO"
+c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(153): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(153): note: Siehe Deklaration von "KREDITKONTO"
+c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(22): warning C4099: "KONTOAUSZUG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(22): note: Siehe Deklaration von "KONTOAUSZUG"
+c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(30): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(29): note: Siehe Deklaration von "UEBERWEISUNG"
+c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(54): warning C4273: "doAbheben": Inkonsistente DLL-Bindung.
+  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(16): note: Siehe vorherige Definition von "doAbheben"
+c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(67): warning C4273: "doEinzahlen": Inkonsistente DLL-Bindung.
+  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(15): note: Siehe vorherige Definition von "doEinzahlen"
+c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.cpp(82): warning C4273: "NeueUeberweisung": Inkonsistente DLL-Bindung.
+  c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(17): note: Siehe vorherige Definition von "NeueUeberweisung"
+     Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Kontofunktionen.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Kontofunktionen.exp" werden erstellt.
+  Kontofunktionen.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Kontofunktionen.dll
+  Kontofunktionen.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Kontofunktionen.pdb (Full PDB)

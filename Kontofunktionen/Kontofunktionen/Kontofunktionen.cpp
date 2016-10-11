@@ -8,6 +8,7 @@
 #include <typeinfo>
 
 using namespace std;
+
 FILE* logfile;
 
 string time_to_string() {
@@ -50,60 +51,11 @@ void LOGGING(char* Errortext, char* LEVEL) {
 
 }
 
-class KONTOAUSZUG {
-public: 
-	KONTOAUSZUG();
-
-private:
-
-};
-class UEBERWEISUNG
-{
-public:
-	char* getempfaengername() {
-		return empfaengername;
-	}
-	void setempfaengername(char* empfänger) {
-		empfaengername = empfänger;
-	}	
-	char* getVerwendungszweck() {
-		return verwendungszweck;
-	}
-	void setVerwendungszweck(char* verwendung) {
-		verwendungszweck = verwendung;
-	}
-	double getBetrag() {
-		return betrag;
-	}
-	void setBetrag(double betrg) {
-		betrag = betrg;
-	}
-	double getkontostand() {
-		return kontostand;
-	}
-	void setkontostand(double betrg) {
-		kontostand = betrg;
-	}
-	int getkontonummer() {
-		return kontonummer;
-	}
-	void setkontonummer(int kntnr) {
-		kontonummer = kntnr;
-	}
-private:
-	double betrag;
-	double kontostand;
-	int kontonummer;
-	char* empfaengername;
-	char* verwendungszweck;
-};
-
 void doAbheben(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) {
 	
 	double newKontostand = zielkonto->getKontostand() - betrag;
 	zielkonto->setKontostand(newKontostand);
 
-	char buffer[100];
 	LOGGING("Der Betrag wurde erfolgreich abgehoben. Unterhalb die getätigten eingaben:", "OK");
 	LOGGING("Momentaner Kontostand:", "OK");
 	LOGGING((char*)to_string(zielkonto->getKontostand()).c_str(), "OK");
@@ -118,7 +70,6 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) 
 	double newKontostand = zielkonto->getKontostand() + betrag;
 	zielkonto->setKontostand(newKontostand);
 
-	char buffer[100];
 	LOGGING("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "OK");
 	LOGGING("Momentaner Kontostand:", "OK");
 	LOGGING((char*)to_string(zielkonto->getKontostand()).c_str(), "OK");
@@ -128,12 +79,16 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) 
 	LOGGING((char*)to_string(betrag).c_str(), "OK");
 }
 
-UEBERWEISUNG* newUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) {
+UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) {
 
+	string Verfügervorname = zielkonto->getVerfüger().getVorname();
+	string Verfügernachname = zielkonto->getVerfüger().getNachname();
+	string Verfügername = Verfügervorname + Verfügernachname;
+	char* cVerfügername = (char*)Verfügername.c_str();
 
 	UEBERWEISUNG* ueberweisung = new UEBERWEISUNG();
-	ueberweisung->setempfaengername(zielkonto->getVerfüger());
-	ueberweisung->setkontonummer(zielkonto->getKontostand());
+	ueberweisung->setempfaengername(cVerfügername);
+	ueberweisung->setkontonummer(zielkonto->getKontonummer());
 	ueberweisung->setkontostand(zielkonto->getKontostand());
 	ueberweisung->setVerwendungszweck(verwendungszweck);
 	ueberweisung->setBetrag(betrag);
