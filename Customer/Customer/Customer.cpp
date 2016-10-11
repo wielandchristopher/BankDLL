@@ -83,12 +83,6 @@ public:
 	void CUSTOMER::setAdresse(char* _Adresse) {
 		this->Adresse = _Adresse;
 	}
-	char* CUSTOMER::getPostleitzahl() {
-		return Postleitzahl;
-	}
-	void CUSTOMER::setPostleitzahl(char* _Postleitzahl) {
-		this->Postleitzahl = _Postleitzahl;
-	}
 	char* CUSTOMER::getTelefon() {
 		return Telefon;
 	}
@@ -107,7 +101,6 @@ private:
 	char* Nachname;
 	char* Geburtsdatum;
 	char* Adresse;
-	char* Postleitzahl;
 	char* Wohnort;
 	char* Telefon;
 };
@@ -227,15 +220,14 @@ private:
 };
 
 //NeuerKunde legt einen neuen Kunden an 
-//Es werden 7 Parameter in der Reihenfolge angegeben: Vorname, Nachname, Geburtsdatum, Adresse, Postleitzahl, Wohnort, Telefon
-CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _Adresse, char* _Postleitzahl, char* _Wohnort, char* _Telefon) {
+//Es werden 6 Parameter in der Reihenfolge angegeben: Vorname, Nachname, Geburtsdatum, Adresse, Wohnort, Telefon
+CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _Adresse, char* _Wohnort, char* _Telefon) {
 
 
 	string Vorname(_Vorname);
 	string Nachname(_Nachname);
 	string Geburtsdatum(_Geburtsdatum);
 	string Adresse(_Adresse);
-	string Postleitzahl(_Postleitzahl);
 	string Wohnort(_Wohnort);
 	string Telefon(_Telefon);
 
@@ -246,7 +238,6 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	Kunde->setGeburtsdatum(_Geburtsdatum);
 	Kunde->setAdresse(_Adresse);
 	Kunde->setWohnort(_Wohnort);
-	Kunde->setPostleitzahl(_Postleitzahl);
 	Kunde->setTelefon(_Telefon);
 		
 	LOGGING("Der Kunde wurde erfolgreich angelegt.", "OK");
@@ -319,28 +310,6 @@ void Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
 	LOGGING("Die Adresse wurde erfolgreich geändert.", "OK");
 	return;
 }
-void Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
-
-	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen PLZ geändert werden könnte.", "ERROR");
-		return;
-	}
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return;
-	}
-
-	
-	if (_Postleitzahl == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
-		return;
-	}
-
-	string Postleitzahl(_Postleitzahl);
-	Kunde->setPostleitzahl(_Postleitzahl);
-	LOGGING("Die Postleitzahl wurde erfolgreich geändert.", "OK");
-	return;
-}
 void Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
 
 	if (Kunde == NULL) {
@@ -397,8 +366,6 @@ void Kundendatenabfrage(CUSTOMER * Kunde) {
 	LOGGING(Kunde->getGeburtsdatum(), "OK");
 	LOGGING("Das ist die Adresse des übergebenen Kunden:", "OK");
 	LOGGING(Kunde->getAdresse(), "OK");
-	LOGGING("Das ist die Postleitzahl des übergebenen Kunden:", "OK");
-	LOGGING(Kunde->getPostleitzahl(), "OK");
 	LOGGING("Das ist der Wohnort des übergebenen Kunden:", "OK");
 	LOGGING(Kunde->getWohnort(), "OK");
 	LOGGING("Das ist die Telefonnummer des übergebenen Kunden:", "OK");
