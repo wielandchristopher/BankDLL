@@ -14,14 +14,16 @@ extern "C" {
 	typedef struct CUSTOMER CUSTOMER;
 	typedef struct SPARKONTO SPARKONTO;
 	typedef struct KREDITKONTO KREDITKONTO;
+	typedef struct CHARAKTERS CHARAKTERS;
 	
 	CUSTOMER_API CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _adresse, char* _Postleitzahl, char* _Wohnort, char* _Telefon);
-	CUSTOMER_API CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* Vorname);
-	CUSTOMER_API CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname);
-	CUSTOMER_API CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse);
-	CUSTOMER_API CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl);
-	CUSTOMER_API CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort);
-	CUSTOMER_API CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon);
+	CUSTOMER_API void Kundenvornamenänderung(CUSTOMER *Kunde, char* Vorname);
+	CUSTOMER_API void Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname);
+	CUSTOMER_API void Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse);
+	CUSTOMER_API void Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl);
+	CUSTOMER_API void Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort);
+	CUSTOMER_API void Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon);
+	CUSTOMER_API void Kundendatenabfrage(CUSTOMER * Kunde);
 	CUSTOMER_API void Kundeentfernen(CUSTOMER* Kunde);
 	CUSTOMER_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde);
 	CUSTOMER_API SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2);
@@ -37,3 +39,4 @@ extern "C" {
 #ifdef __cplusplus
 }
 #endif
+

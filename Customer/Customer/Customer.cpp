@@ -1,12 +1,10 @@
-// Customer.cpp : Defines the exported functions for the DLL application.
-// Compile by using: cl /EHsc /DCUSTOMER_EXPORTS /LD Customer.cpp
-
 #include "stdafx.h"
 #include "Customer.h"
 #include <string>
 #include <iostream>
 #include <time.h>
 #include <typeinfo>
+#include <exception>
 
 using namespace std;
 FILE* logfile;
@@ -26,12 +24,12 @@ string time_to_string(){
 	string str(timebuf);
 	return str;
 }
-void LOGGING(string Errortext, string LEVEL) {
+void LOGGING(char* Errortext, char* LEVEL) {
 
-	const char *Errortxt = Errortext.c_str();
+	char *Errortxt = Errortext;
 	string stringtime = time_to_string();
 	const char *time = stringtime.c_str();
-	const char *lvl = LEVEL.c_str();
+	char *lvl = LEVEL;
 
 	fopen_s(&logfile,"Customer_log.txt", "a");
 	if (logfile == NULL)
@@ -55,46 +53,46 @@ class CUSTOMER {
 public:
 
 	//Getter und Setter der Kundendaten
-	string CUSTOMER::getVorname() {
+	char* CUSTOMER::getVorname() {
 		return Vorname;
 	}
-	void CUSTOMER::setVorname(string _Vorname) {
+	void CUSTOMER::setVorname(char* _Vorname) {
 		this->Vorname = _Vorname;
 	}
-	string CUSTOMER::getNachname() {
+	char* CUSTOMER::getNachname() {
 		return Nachname;
 	}
-	void CUSTOMER::setNachname(string _Nachname) {
+	void CUSTOMER::setNachname(char* _Nachname) {
 		this->Nachname = _Nachname;
 	}
-	string CUSTOMER::getGeburtsdatum() {
+	char* CUSTOMER::getGeburtsdatum() {
 		return Geburtsdatum;
 	}
-	void CUSTOMER::setGeburtsdatum(string _Geburtsdatum) {
+	void CUSTOMER::setGeburtsdatum(char* _Geburtsdatum) {
 		this->Geburtsdatum = _Geburtsdatum;
 	}
-	string CUSTOMER::getWohnort() {
+	char* CUSTOMER::getWohnort() {
 		return Wohnort;
 	}
-	void CUSTOMER::setWohnort(string _Wohnort) {
+	void CUSTOMER::setWohnort(char* _Wohnort) {
 		this->Wohnort = _Wohnort;
 	}
-	string CUSTOMER::getAdresse() {
+	char* CUSTOMER::getAdresse() {
 		return Adresse;
 	}
-	void CUSTOMER::setAdresse(string _Adresse) {
+	void CUSTOMER::setAdresse(char* _Adresse) {
 		this->Adresse = _Adresse;
 	}
-	string CUSTOMER::getPostleitzahl() {
+	char* CUSTOMER::getPostleitzahl() {
 		return Postleitzahl;
 	}
-	void CUSTOMER::setPostleitzahl(string _Postleitzahl) {
+	void CUSTOMER::setPostleitzahl(char* _Postleitzahl) {
 		this->Postleitzahl = _Postleitzahl;
 	}
-	string CUSTOMER::getTelefon() {
+	char* CUSTOMER::getTelefon() {
 		return Telefon;
 	}
-	void CUSTOMER::setTelefon(string _Telefon) {
+	void CUSTOMER::setTelefon(char* _Telefon) {
 		this->Telefon = _Telefon;
 	}
 	//Typidentifizierer
@@ -105,13 +103,13 @@ public:
 
 private:
 	string customer = "customer";
-	string Vorname;
-	string Nachname;
-	string Geburtsdatum;
-	string Adresse;
-	string Postleitzahl;
-	string Wohnort;
-	string Telefon;
+	char* Vorname;
+	char* Nachname;
+	char* Geburtsdatum;
+	char* Adresse;
+	char* Postleitzahl;
+	char* Wohnort;
+	char* Telefon;
 };
 class SPARKONTO {
 public:
@@ -146,10 +144,10 @@ public:
 	void SPARKONTO::setKontostand(double _Kontostand) {
 		this->Kontostand = _Kontostand;
 	}
-	double SPARKONTO::getKontonummer() {
+	int SPARKONTO::getKontonummer() {
 		return Kontonummer;
 	}
-	void SPARKONTO::setKontonummer(double _Kontonummer) {
+	void SPARKONTO::setKontonummer(int _Kontonummer) {
 		this->Kontonummer = _Kontonummer;
 	}
 	//Typidentifizierer
@@ -203,10 +201,10 @@ public:
 	void KREDITKONTO::setKontostand(double _Kontostand) {
 		this->Kontostand = _Kontostand;
 	}	
-	double KREDITKONTO::getKontonummer() {
+	int KREDITKONTO::getKontonummer() {
 		return Kontonummer;
 	}
-	void KREDITKONTO::setKontonummer(double _Kontonummer) {
+	void KREDITKONTO::setKontonummer(int _Kontonummer) {
 		this->Kontonummer = _Kontonummer;
 	}
 	//Typidentifizierer
@@ -232,10 +230,6 @@ private:
 //Es werden 7 Parameter in der Reihenfolge angegeben: Vorname, Nachname, Geburtsdatum, Adresse, Postleitzahl, Wohnort, Telefon
 CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _Adresse, char* _Postleitzahl, char* _Wohnort, char* _Telefon) {
 
-	if ((_Vorname || _Nachname || _Geburtsdatum || _Adresse || _Postleitzahl || _Wohnort || _Telefon) == NULL) {
-		LOGGING("Einer der Parameter bei der erstellung eines neuen Kunden ist NULL","ERROR");
-		return NULL;
-	}
 
 	string Vorname(_Vorname);
 	string Nachname(_Nachname);
@@ -244,155 +238,172 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	string Postleitzahl(_Postleitzahl);
 	string Wohnort(_Wohnort);
 	string Telefon(_Telefon);
+
 	CUSTOMER *Kunde = new CUSTOMER();
 
-	Kunde->setVorname(Vorname);
-	Kunde->setNachname(Nachname);
-	Kunde->setGeburtsdatum(Geburtsdatum);
-	Kunde->setAdresse(Adresse);
-	Kunde->setWohnort(Wohnort);
-	Kunde->setPostleitzahl(Postleitzahl);
-	Kunde->setTelefon(Telefon);
-
+	Kunde->setVorname(_Vorname);
+	Kunde->setNachname(_Nachname);
+	Kunde->setGeburtsdatum(_Geburtsdatum);
+	Kunde->setAdresse(_Adresse);
+	Kunde->setWohnort(_Wohnort);
+	Kunde->setPostleitzahl(_Postleitzahl);
+	Kunde->setTelefon(_Telefon);
+		
 	LOGGING("Der Kunde wurde erfolgreich angelegt.", "OK");
 
 	return Kunde;
 }
 //Mit der Funktion Kundendatenänderung können fast alle Daten (Geburtsdatum wird sich nie ändern) eines bestehenden Kunden geändert werden.
 
-CUSTOMER* Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
-
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
+void Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 
 	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen Vorname geändert werden könnte", "ERROR");
-		return NULL;
+		LOGGING("Es existiert kein Kunde, dessen Vorname geändert werden könnte.", "ERROR");
+		return;
 	}
-
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return;
+	}
 	if (_Vorname == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
-		return Kunde;
+		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
+		return;
 	}
 
-	string Vorname(_Vorname);
-	Kunde->setVorname(Vorname);
-	LOGGING("Der Vorname wurde erfolgreich geändert","OK");
-	return Kunde;
+	Kunde->setVorname(_Vorname);
+	LOGGING("Der Vorname wurde erfolgreich geändert.","OK");
+	return;
 }
-CUSTOMER* Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
+void Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
+	
+	if (Kunde == NULL) {
+		LOGGING("Es existiert kein Kunde, dessen Nachname geändert werden könnte.", "ERROR");
+		return;
+	}
 	
 	if (Kunde->getClassId() != "customer") {
 		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
-	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen Nachname geändert werden könnte", "ERROR");
-		return NULL;
+		return;
 	}
 
 	if (_Nachname == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
-		return Kunde;
+		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
+		return;
 	}
 
 	string Nachname(_Nachname);
-	Kunde->setNachname(Nachname);
-	LOGGING("Der Nachname wurde erfolgreich geändert", "OK");
-	return Kunde;
+	Kunde->setNachname(_Nachname);
+	LOGGING("Der Nachname wurde erfolgreich geändert.", "OK");
+	return;
 }
-CUSTOMER* Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
-
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
+void Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
 
 	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen Adresse geändert werden könnte", "ERROR");
-		return NULL;
+		LOGGING("Es existiert kein Kunde, dessen Adresse geändert werden könnte.", "ERROR");
+		return;
 	}
 	
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return;
+	}
+
+	
 	if (_Adresse == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
-		return Kunde;
+		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
+		return;
 	}
 
 	string Adresse(_Adresse);
-	Kunde->setAdresse(Adresse);
-	LOGGING("Die Adresse wurde erfolgreich geändert", "OK");
-	return Kunde;
+	Kunde->setAdresse(_Adresse);
+	LOGGING("Die Adresse wurde erfolgreich geändert.", "OK");
+	return;
 }
-CUSTOMER* Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
-
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
+void Kundenplzänderung(CUSTOMER *Kunde, char* _Postleitzahl) {
 
 	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen PLZ geändert werden könnte", "ERROR");
-		return NULL;
+		LOGGING("Es existiert kein Kunde, dessen PLZ geändert werden könnte.", "ERROR");
+		return;
 	}
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return;
+	}
+
 	
 	if (_Postleitzahl == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
-		return Kunde;
+		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
+		return;
 	}
 
 	string Postleitzahl(_Postleitzahl);
-	Kunde->setPostleitzahl(Postleitzahl);
-	LOGGING("Die Postleitzahl wurde erfolgreich geändert", "OK");
-	return Kunde;
+	Kunde->setPostleitzahl(_Postleitzahl);
+	LOGGING("Die Postleitzahl wurde erfolgreich geändert.", "OK");
+	return;
 }
-CUSTOMER* Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
-
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
+void Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
 
 	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen Wohnort geändert werden könnte", "ERROR");
-		return NULL;
+		LOGGING("Es existiert kein Kunde, dessen Wohnort geändert werden könnte.", "ERROR");
+		return;
 	}
 	
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return;
+	}
+
+	
 	if (_Wohnort == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
-		return Kunde;
+		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
+		return;
 	}
 
 	string Wohnort(_Wohnort);
-	Kunde->setWohnort(Wohnort);
-	LOGGING("Der Wohnort wurde erfolgreich geändert", "OK");
-	return Kunde;
+	Kunde->setWohnort(_Wohnort);
+	LOGGING("Der Wohnort wurde erfolgreich geändert.", "OK");
+	return;
 }
-CUSTOMER* Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
-
-	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
+void Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
 
 	if (Kunde == NULL) {
-		LOGGING("Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte", "ERROR");
-		return NULL;
+		LOGGING("Es existiert kein Kunde, dessen Telefonnummer geändert werden könnte.", "ERROR");
+		return;
 	}
 	
+	if (Kunde->getClassId() != "customer") {
+		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		return;
+	}
+
+	
 	if (_Telefon == "") {
-		LOGGING("Es wurden keine Änderungen eingegeben", "ERROR");
-		return Kunde;
+		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
+		return;
 	}
 
 	string Telefon(_Telefon);
-	Kunde->setTelefon(Telefon);
-	LOGGING("Die Telefonnummer wurde erfolgreich geändert", "OK");
-	return Kunde;
+	Kunde->setTelefon(_Telefon);
+	LOGGING("Die Telefonnummer wurde erfolgreich geändert.", "OK");
+	return;
 }
+void Kundendatenabfrage(CUSTOMER * Kunde) {
 
+	LOGGING("Das ist der Vorname des übergebenen Kunden:","OK");
+	LOGGING(Kunde->getVorname(), "OK");
+	LOGGING("Das ist der Nachname des übergebenen Kunden:", "OK");
+	LOGGING(Kunde->getNachname(), "OK");
+	LOGGING("Das ist das Geburtsdatum des übergebenen Kunden:", "OK");
+	LOGGING(Kunde->getGeburtsdatum(), "OK");
+	LOGGING("Das ist die Adresse des übergebenen Kunden:", "OK");
+	LOGGING(Kunde->getAdresse(), "OK");
+	LOGGING("Das ist die Postleitzahl des übergebenen Kunden:", "OK");
+	LOGGING(Kunde->getPostleitzahl(), "OK");
+	LOGGING("Das ist der Wohnort des übergebenen Kunden:", "OK");
+	LOGGING(Kunde->getWohnort(), "OK");
+	LOGGING("Das ist die Telefonnummer des übergebenen Kunden:", "OK");
+	LOGGING(Kunde->getTelefon(), "OK");
+}
 //Die Funktion Kundeentfernen entfernt mithilfe von delete den übergebenen Kunden
 void Kundeentfernen(CUSTOMER *Kunde) {
 

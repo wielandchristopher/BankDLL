@@ -1,2 +1,7 @@
-﻿  ComponentMain.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\ComponentMain.exe
-  ComponentMain.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\ComponentMain.pdb (Full PDB)
+﻿  Main.c
+c:\users\wiela\documents\github\banksst01\componentmain\componentmain\main.c(14): warning C4047: "Funktion": Anzahl der Dereferenzierungen bei "char *" und "int" unterschiedlich
+c:\users\wiela\documents\github\banksst01\componentmain\componentmain\main.c(14): warning C4024: "Kundenvornamenänderung2": unterschiedliche Typen für formalen und übergebenen Parameter 2
+c:\users\wiela\documents\github\banksst01\componentmain\componentmain\main.c(10): warning C4101: "Giro": Unreferenzierte lokale Variable
+c:\users\wiela\documents\github\banksst01\componentmain\componentmain\main.c(9): warning C4101: "Sparen": Unreferenzierte lokale Variable
+Main.obj : error LNK2019: Verweis auf nicht aufgelöstes externes Symbol "__imp_Kundenvornamenänderung2" in Funktion "main".
+C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\x64\Debug\ComponentMain.exe : fatal error LNK1120: 1 nicht aufgelöste Externe
