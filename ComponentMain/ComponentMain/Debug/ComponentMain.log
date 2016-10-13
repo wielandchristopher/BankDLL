@@ -1,11 +1,4 @@
 ﻿  Main.c
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(41): error C2054: Nach "class" muss "(" folgen
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(41): error C2143: Syntaxfehler: Es fehlt ";" vor "{"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(96): error C2054: Nach "class" muss "(" folgen
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(96): error C2143: Syntaxfehler: Es fehlt ";" vor "{"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(153): error C2054: Nach "class" muss "(" folgen
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.h(153): error C2143: Syntaxfehler: Es fehlt ";" vor "{"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(22): error C2054: Nach "class" muss "(" folgen
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(22): error C2143: Syntaxfehler: Es fehlt ";" vor "{"
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(30): error C2054: Nach "class" muss "(" folgen
-c:\users\wiela\documents\github\banksst01\kontofunktionen\kontofunktionen\kontofunktionen.h(30): error C2143: Syntaxfehler: Es fehlt ";" vor "{"
+  LINK : C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe wurde nicht gefunden oder beim letzten inkrementellen Linkvorgang nicht erstellt; vollständiger Link wird durchgeführt.
+  ComponentMain.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe
+  ComponentMain.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.pdb (Full PDB)

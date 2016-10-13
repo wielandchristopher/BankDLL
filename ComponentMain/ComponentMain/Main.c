@@ -1,5 +1,4 @@
-#include "Customer.h"
-#include "Kontofunktionen.h"
+#include "Bank.h"
 #include <stdlib.h>
 #include <stdio.h>
 

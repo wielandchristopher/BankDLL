@@ -22,11 +22,8 @@
     <ClCompile Include="Main.c" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Customer\Customer\Customer.vcxproj">
-      <Project>{bbc41328-8b91-485e-b95b-191e884c261a}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Kontofunktionen\Kontofunktionen\Kontofunktionen.vcxproj">
-      <Project>{aeb88be2-f893-4b16-ba95-d902a7ea2a93}</Project>
+    <ProjectReference Include="..\..\Bank\Bank\Bank.vcxproj">
+      <Project>{131af718-1f72-4a24-ae4f-48af4437943c}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -100,7 +97,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\wiela\Documents\GitHub\BankSST01\Kontofunktionen\Kontofunktionen;C:\Users\wiela\Documents\GitHub\BankSST01\Customer\Customer;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\wiela\Documents\GitHub\BankSST01\Bank\Bank;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

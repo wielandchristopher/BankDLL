@@ -24,3 +24,19 @@
 12 10 2016 00:03:39 - OK: Der Kunde wurde erfolgreich angelegt.
 12 10 2016 00:03:39 - OK: Das KreditKonto wurde erfolgreich erstellt.
 12 10 2016 00:03:39 - OK: Die Überweisung wurde erfolgreich durchgeführt.
+13 10 2016 19:28:10 - OK: Der Kunde wurde erfolgreich angelegt.
+13 10 2016 19:28:10 - OK: Das ist der Vorname des übergebenen Kunden:
+13 10 2016 19:28:10 - OK: Vorname
+13 10 2016 19:28:10 - OK: Das ist der Nachname des übergebenen Kunden:
+13 10 2016 19:28:10 - OK: NAchname
+13 10 2016 19:28:10 - OK: Das ist das Geburtsdatum des übergebenen Kunden:
+13 10 2016 19:28:10 - OK: 11.10.2016
+13 10 2016 19:28:10 - OK: Das ist die Adresse des übergebenen Kunden:
+13 10 2016 19:28:10 - OK: Musterstraße 10
+13 10 2016 19:28:10 - OK: Das ist der Wohnort des übergebenen Kunden:
+13 10 2016 19:28:10 - OK: 5020 Salzburg
+13 10 2016 19:28:10 - OK: Das ist die Telefonnummer des übergebenen Kunden:
+13 10 2016 19:28:10 - OK: 06601234567
+13 10 2016 19:28:10 - OK: Das KreditKonto wurde erfolgreich erstellt.
+13 10 2016 19:28:10 - OK: Eine Überweisung wurde getaetigt.
+13 10 2016 19:28:10 - OK: Eine Einzahlung wurde getaetigt.
