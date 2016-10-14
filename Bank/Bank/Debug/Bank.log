@@ -1,3 +1,13 @@
-﻿     Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.exp" werden erstellt.
-  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
-  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
+﻿  Bank.cpp
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(18): warning C4099: 'CUSTOMER': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(18): note: see declaration of 'CUSTOMER'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(73): warning C4099: 'SPARKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(73): note: see declaration of 'SPARKONTO'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(139): warning C4099: 'KREDITKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(139): note: see declaration of 'KREDITKONTO'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(205): warning C4099: 'KONTOAUSZUG': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(205): note: see declaration of 'KONTOAUSZUG'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(214): warning C4099: 'UEBERWEISUNG': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(213): note: see declaration of 'UEBERWEISUNG'
+  Bank.vcxproj -> C:\Users\Kaschi\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
+  Bank.vcxproj -> C:\Users\Kaschi\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)

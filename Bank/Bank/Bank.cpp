@@ -136,7 +136,9 @@ private:
 	CUSTOMER* optKontoverfüger2;
 	CUSTOMER* optKontoverfüger3;
 };
-class KREDITKONTO {
+
+class KREDITKONTO
+{
 public:
 	KREDITKONTO::KREDITKONTO()
 	{
@@ -202,7 +204,9 @@ private:
 	CUSTOMER* optKontoverfüger2;
 	CUSTOMER* optKontoverfüger3;
 };
-class KONTOAUSZUG {
+
+class KONTOAUSZUG 
+{
 public:
 	KONTOAUSZUG::KONTOAUSZUG()
 	{
@@ -210,6 +214,7 @@ public:
 	}
 
 };
+
 class UEBERWEISUNG
 {
 public:
@@ -220,7 +225,6 @@ public:
 		this->kontonummer = 0;
 		this->kontostand = 0;
 		this->verwendungszweck = "";
-
 	}
 
 	char* UEBERWEISUNG::getempfaengername() {
@@ -301,29 +305,60 @@ void LOGGING(char* Errortext, char* LEVEL) {
 	fclose(logfile);
 
 }
-void BUCHUNGEN(char* Buchungstext, char* LEVEL) {
 
-	char *Buchung = Buchungstext;
+int fileExist(string name)
+{
+	const char* test = name.c_str();
+	struct stat buffer;
+	return (stat(test, &buffer) == 0);
+}
+
+void initializeBuchungen(int kontonummer, string textFileName)
+{
+	const char* fileName = textFileName.c_str();
+	fopen_s(&buchungsfile, fileName, "a");
+	if (buchungsfile == NULL)
+	{
+		printf("Die Abbuchungsdatei konnte nicht erstellt werden HIER");
+	}
+
+	fprintf(buchungsfile, "Kontoauszug \n \n");
+	fprintf(buchungsfile, "Kontonummer: %d \t BankSST \n", kontonummer);
+	fprintf(buchungsfile, "Datum \t \t \t Verwendungszweck \t \t \t \t \t Betrag \n \n");
+
+	fclose(buchungsfile);
+}
+
+void insertBuchungToFile(string textFileName, char* verwendungszweck, char* betrag)
+{
 	string stringtime = time_to_string();
 	const char *time = stringtime.c_str();
-	char *lvl = LEVEL;
 
-	fopen_s(&buchungsfile, "Buchungen.txt", "a");
+	const char* fileName = textFileName.c_str();
+	fopen_s(&buchungsfile, fileName, "a");
 	if (buchungsfile == NULL)
 	{
 		printf("Die Abbuchungsdatei konnte nicht erstellt werden");
 	}
-
-	//Hier soll noch die Zeit drinnen stehen 
-	fprintf(buchungsfile, time);
-	fprintf(buchungsfile, " - ");
-	fprintf(buchungsfile, lvl);
-	fprintf(buchungsfile, ": ");
-	fprintf(buchungsfile, Buchung);
-	fprintf(buchungsfile, "\n");
-
+	fprintf(buchungsfile, "%s \t %s \t \t \t \t \t %s \n", time, verwendungszweck, betrag); // Tabelle ?
 	fclose(buchungsfile);
+}
 
+// void BUCHUNGEN(char* Buchungstext, char* LEVEL) 
+void BUCHUNGEN(char* verwendungszweck, char* betrag, string kontonummer) 
+{
+	string textFileName = kontonummer.append("_Buchungen.txt");
+
+	if (!fileExist(textFileName))
+	{
+		initializeBuchungen(stoi(kontonummer), textFileName);
+
+		insertBuchungToFile(textFileName, verwendungszweck, betrag);
+	}
+	else
+	{
+		insertBuchungToFile(textFileName, verwendungszweck, betrag);
+	}
 }
 
 //NeuerKunde legt einen neuen Kunden an 
@@ -691,36 +726,56 @@ void Kreditkontoentfernen(KREDITKONTO* Konto) {
 	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 }
 //Funktion, um die Getätigte Buchung/Überweisung in ein Logfile zu schreiben "Buchungen.txt"
-void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int art) {
-
-	if (art == 1) {
-		BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "UEBERWEISUNG");
+void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int art)
+{
+	if (art == 1) 
+	{
+	/*	BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "UEBERWEISUNG");
 		BUCHUNGEN("Momentaner Kontostand:", "UEBERWEISUNG");
 		BUCHUNGEN((char*)to_string(zielkonto->getKontostand()).c_str(), "UEBERWEISUNG");
 		BUCHUNGEN("Verwendungszweck:", "UEBERWEISUNG");
 		BUCHUNGEN(verwendungszweck, "UEBERWEISUNG");
 		BUCHUNGEN("Betrag:", "UEBERWEISUNG");
 		BUCHUNGEN((char*)to_string(betrag).c_str(), "UEBERWEISUNG");
+		*/
+
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
 	}
-	else if (art == 2) {
-		BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "ABHEBUNG");
+	else if (art == 2) 
+	{
+		/*BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "ABHEBUNG");
 		BUCHUNGEN("Momentaner Kontostand:", "ABHEBUNG");
 		BUCHUNGEN((char*)to_string(zielkonto->getKontostand()).c_str(), "ABHEBUNG");
 		BUCHUNGEN("Betrag:", "ABHEBUNG");
-		BUCHUNGEN((char*)to_string(betrag).c_str(), "ABHEBUNG");
+		BUCHUNGEN((char*)to_string(betrag).c_str(), "ABHEBUNG");*/
+
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
 	}
-	else if (art == 3) {
-		BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "EINZAHLUNG");
+	else if (art == 3) 
+	{
+		/*BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "EINZAHLUNG");
 		BUCHUNGEN("Momentaner Kontostand:", "EINZAHLUNG");
 		BUCHUNGEN((char*)to_string(zielkonto->getKontostand()).c_str(), "EINZAHLUNG");
 		BUCHUNGEN("Verwendungszweck:", "EINZAHLUNG");
 		BUCHUNGEN(verwendungszweck, "EINZAHLUNG");
 		BUCHUNGEN("Betrag:", "EINZAHLUNG");
-		BUCHUNGEN((char*)to_string(betrag).c_str(), "EINZAHLUNG");
+		BUCHUNGEN((char*)to_string(betrag).c_str(), "EINZAHLUNG");*/
+
+		string betragString = to_string(betrag);
+		betragString.insert(0, "+");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
 	}
 }
+
 //Funktionen zum Überweisen, Einzahlen und Abheben
-void doAbheben(KREDITKONTO* zielkonto, double betrag) {
+void doAbheben(KREDITKONTO* zielkonto, double betrag) 
+{
 
 	double newKontostand = zielkonto->getKontostand() - betrag;
 	zielkonto->setKontostand(newKontostand);
@@ -729,7 +784,9 @@ void doAbheben(KREDITKONTO* zielkonto, double betrag) {
 	LOGGING("Eine Abhebung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 2);
 }
-void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) {
+
+void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag)
+{
 
 	double newKontostand = zielkonto->getKontostand() + betrag;
 	zielkonto->setKontostand(newKontostand);
@@ -737,8 +794,9 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) 
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 3);
 }
-UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) {
 
+UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) 
+{
 	string Verfügervorname = zielkonto->getVerfüger().getVorname();
 	string Verfügernachname = zielkonto->getVerfüger().getNachname();
 	string Verfügername = Verfügervorname + Verfügernachname;

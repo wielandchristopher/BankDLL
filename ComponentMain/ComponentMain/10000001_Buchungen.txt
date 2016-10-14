@@ -1,0 +1,15 @@
+Kontoauszug 
+ 
+Kontonummer: 10000001 	 BankSST 
+Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
+ 
+14 10 2016 10:49:32 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+14 10 2016 10:49:32 	 Testzweck 	 	 	 	 	 +150.000000 
+14 10 2016 10:49:41 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+14 10 2016 10:49:41 	 Testzweck 	 	 	 	 	 +150.000000 
+14 10 2016 11:41:46 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+14 10 2016 11:41:46 	 Testzweck 	 	 	 	 	 +150.000000 
+14 10 2016 11:47:55 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+14 10 2016 11:47:55 	 Testzweck 	 	 	 	 	 +150.000000 
+14 10 2016 11:48:34 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+14 10 2016 11:48:34 	 Testzweck 	 	 	 	 	 +150.000000 
