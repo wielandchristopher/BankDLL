@@ -324,7 +324,6 @@ cJSON* readJsonFile_cJson(char *filename)
 
 	return NULL;
 }
-
 /* Read a file and return the string */
 char* readJsonFile_char(char *filename)
 {
@@ -344,7 +343,6 @@ char* readJsonFile_char(char *filename)
 	fclose(f);
 	return data;
 }
-
 /* Write a json file with a filename and an cJSON element*/
 bool writeJsonFile(char *filename, cJSON * jobj) {
 	FILE *datei;
@@ -357,7 +355,6 @@ bool writeJsonFile(char *filename, cJSON * jobj) {
 	fprintf(datei, cJSON_Print(jobj));
 	fclose(datei);
 }
-
 /* Write a json file with a filename and a char* element*/
 bool writeJsonFile(char *filename, char* jobj) {
 
@@ -391,7 +388,6 @@ bool writeJsonFile(char *filename, char* jobj) {
 void printObject(cJSON* obj){
 	cout << cJSON_Print(obj) << endl;
 }
-
 /* Hilfsfunktion - Umwandlung cJSON to Customer */
 CUSTOMER* cJSONToCustomer(cJSON* customerItem) {
 
@@ -406,17 +402,14 @@ CUSTOMER* cJSONToCustomer(cJSON* customerItem) {
 
 	return newCUObj;
 }
-
 /* Hilfsfunktion - Umwandlung neuer Customer to JSON (generierte ID?@@) */
 cJSON* newCustomerTocJSON(CUSTOMER* cust, int newId) {
 	return createUserObject(newId, cust->getVorname(), cust->getNachname());
 }
-
 /* Hilfsfunktion - Umwandlung Customer to JSON */
 cJSON* customerTocJSON(CUSTOMER* cust) {
 	return createUserObject(cust->getID(), cust->getVorname(), cust->getNachname());
 }
-
 /* Hilfsfunktion - Vergleich der ID werte */
 bool checkItem(cJSON * item, int id) {
 
@@ -429,7 +422,6 @@ bool checkItem(cJSON * item, int id) {
 		return false;
 	}
 }
-
 /* Hilfsfunktion - Erstellen eines cJSON User Objects mit eingabe der Userdaten*/
 cJSON* createUserObject(int id, char* vorname, char* nachname) {
 
@@ -463,7 +455,6 @@ CUSTOMER* readUser(int id) {
 	}
 	return NULL;
 }
-
 /* Überschreibt user, false wenn user nicht vorhanden (sollte nicht möglich sein) */
 bool writeUser(CUSTOMER* cust) {
 
@@ -489,7 +480,6 @@ bool writeUser(CUSTOMER* cust) {
 	}
 	return false;
 }
-
 /* User mit CUSTOMER element hinzufügen und id wird zurückgegeben*/
 int addUser(CUSTOMER* cu) {
 	cJSON* fileObj = readJsonFile_cJson(USER_FILE);
@@ -507,7 +497,6 @@ int addUser(CUSTOMER* cu) {
 		return -1;
 	}
 }
-
 /* user mit id löschen - achtung noch aktive konten?*/
 bool removeUser(int id) {
 
@@ -533,7 +522,6 @@ bool removeUser(int id) {
 	}
 	return false;
 }
-
 /* ermitteln der User ID - soviel wie user in database? "-1" -> nein */
 int getUserID(char* vorname, char* nachname) {
 	//TODO
@@ -544,6 +532,7 @@ int getUserID(char* vorname, char* nachname) {
 /*   Funktionen zum Loggen der Daten   */
 /* ----------------------------------- */
 
+//Gibt die aktuelle Zeit in einem String aus
 string time_to_string() {
 
 	struct tm newtime;
@@ -559,6 +548,7 @@ string time_to_string() {
 	string str(timebuf);
 	return str;
 }
+// Loggt jeden Schritt mit.
 void LOGGING(char* Errortext, char* LEVEL) {
 
 	char *Errortxt = Errortext;
@@ -670,7 +660,6 @@ void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int a
 /* ------------------------- */
 
 //NeuerKunde legt einen neuen Kunden an 
-//Es werden 6 Parameter in der Reihenfolge angegeben: Vorname, Nachname, Geburtsdatum, Adresse, Wohnort, Telefon
 CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _Adresse, char* _Wohnort, char* _Telefon) {
 
 	string Vorname(_Vorname);
@@ -695,7 +684,6 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	return Kunde;
 }
 //Mit der Funktion Kundendatenänderung können fast alle Daten (Geburtsdatum wird sich nie ändern) eines bestehenden Kunden geändert werden.
-
 void Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 
 	if (Kunde == NULL) {
@@ -806,6 +794,7 @@ void Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
 	LOGGING("Die Telefonnummer wurde erfolgreich geändert.", "OK");
 	return;
 }
+//Hier können die Kundendaten erneut abgefragt werden
 void Kundendatenabfrage(CUSTOMER * Kunde) {
 
 	LOGGING("Das ist der Vorname des übergebenen Kunden:", "OK");
@@ -1050,7 +1039,6 @@ void doAbheben(KREDITKONTO* zielkonto, double betrag)
 	LOGGING("Eine Abhebung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 2);
 }
-
 void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag)
 {
 
@@ -1060,7 +1048,6 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag)
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 3);
 }
-
 UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) 
 {
 	string Verfügervorname = zielkonto->getVerfüger().getVorname();

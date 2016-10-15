@@ -9,7 +9,7 @@ c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(235): warning C4099
   c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(235): note: Siehe Deklaration von "KONTOAUSZUG"
 c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(243): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
   c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(243): note: Siehe Deklaration von "UEBERWEISUNG"
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(334): warning C4101: "json": Unreferenzierte lokale Variable
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(359): warning C4715: "writeJsonFile": Nicht alle Steuerelementpfade geben einen Wert zurück.
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(333): warning C4101: "json": Unreferenzierte lokale Variable
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(357): warning C4715: "writeJsonFile": Nicht alle Steuerelementpfade geben einen Wert zurück.
   Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
   Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
