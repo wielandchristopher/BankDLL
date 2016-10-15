@@ -43,12 +43,6 @@ extern "C" {
 	BANK_API void doAbheben(KREDITKONTO* zielkonto, double betrag);
 	BANK_API UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck);
 
-	BANK_API CUSTOMER*	readUser(int id);
-	BANK_API bool		writeUser(CUSTOMER* cust);
-	BANK_API int		addUser(CUSTOMER* cu);
-	BANK_API bool		removeUser(int id);
-
-
 #ifdef __cplusplus
 }
 #endif

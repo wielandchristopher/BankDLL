@@ -1,11 +1,22 @@
 #include "Bank.h"
 #include <string>
 #include <time.h>
+#include <iostream>
 #include "cJSON.h"
 
+#pragma warning( disable: 4996 )
+
 using namespace std;
+
+/* --------- */
+/* Variablen */
+/* --------- */
+
 FILE* buchungsfile;
 FILE* logfile;
+char* USER_FILE = "users.json";
+char* TRANSACTION_FILE = "transactions.json";
+cJSON* createUserObject(int id, char* vorname, char* nachname);
 
 //generateKtnr erstellt eine Kontonummer und iteriert immer um 1 hoch
 int generateKtnnr() {
@@ -15,6 +26,17 @@ int generateKtnnr() {
 	Kontonummernpool++;
 	return Kontonummernpool;
 }
+int generateUserid() {
+
+	static int Userid = 0;
+
+	Userid++;
+	return Userid;
+}
+
+/* ----------------- */
+/* Benötigte Klassen */
+/* ----------------- */
 
 class CUSTOMER {
 public:
@@ -76,7 +98,7 @@ private:
 	char* Adresse = "";
 	char* Wohnort = "";
 	char* Telefon = "";
-	int id = -1;
+	int id = generateUserid();
 };
 class SPARKONTO {
 public:
@@ -91,7 +113,7 @@ public:
 		this->optKontoverfüger3 = NULL;
 
 	}
-	
+
 	//Getter und Setter der Daten
 	CUSTOMER SPARKONTO::getVerfüger() {
 		return *Kontoverfüger;
@@ -144,9 +166,7 @@ private:
 	CUSTOMER* optKontoverfüger2;
 	CUSTOMER* optKontoverfüger3;
 };
-
-class KREDITKONTO
-{
+class KREDITKONTO {
 public:
 	KREDITKONTO::KREDITKONTO()
 	{
@@ -159,7 +179,7 @@ public:
 		this->optKontoverfüger3 = NULL;
 
 	}
-	
+
 	//Getter und Setter der Daten
 	CUSTOMER KREDITKONTO::getVerfüger() {
 		return *Kontoverfüger;
@@ -212,9 +232,7 @@ private:
 	CUSTOMER* optKontoverfüger2;
 	CUSTOMER* optKontoverfüger3;
 };
-
-class KONTOAUSZUG 
-{
+class KONTOAUSZUG {
 public:
 	KONTOAUSZUG::KONTOAUSZUG()
 	{
@@ -222,9 +240,7 @@ public:
 	}
 
 };
-
-class UEBERWEISUNG
-{
+class UEBERWEISUNG {
 public:
 	UEBERWEISUNG::UEBERWEISUNG()
 	{
@@ -274,6 +290,260 @@ private:
 	char* verwendungszweck;
 };
 
+/* --------------------------- */
+/* JSON -> File-I/O Funktionen */
+/* --------------------------- */
+
+/* Read a file and return the string */
+cJSON* readJsonFile_cJson(char *filename)
+{
+	FILE *f;
+	long len;
+	char *data;
+	cJSON *json;
+
+	f = fopen(filename, "rb");
+	fseek(f, 0, SEEK_END);
+	len = ftell(f);
+	fseek(f, 0, SEEK_SET);
+	data = (char*)malloc(len + 1);
+	fread(data, 1, len, f);
+	data[len] = '\0';
+
+
+	fclose(f);
+
+
+	json = cJSON_Parse(data);
+	if (!json) { printf("Error before: [%s]\n", cJSON_GetErrorPtr()); }
+	else
+	{
+		free(data);
+		return json;
+	}
+
+	return NULL;
+}
+
+/* Read a file and return the string */
+char* readJsonFile_char(char *filename)
+{
+	FILE *f;
+	long len;
+	char *data;
+	cJSON *json;
+
+	f = fopen(filename, "rb");
+	fseek(f, 0, SEEK_END);
+	len = ftell(f);
+	fseek(f, 0, SEEK_SET);
+	data = (char*)malloc(len + 1);
+	fread(data, 1, len, f);
+	data[len] = '\0';
+
+	fclose(f);
+	return data;
+}
+
+/* Write a json file with a filename and an cJSON element*/
+bool writeJsonFile(char *filename, cJSON * jobj) {
+	FILE *datei;
+	datei = fopen(filename, "w+");
+	if (datei == NULL)
+	{
+		printf("Fehler beim oeffnen der Datei.");
+		return 1;
+	}
+	fprintf(datei, cJSON_Print(jobj));
+	fclose(datei);
+}
+
+/* Write a json file with a filename and a char* element*/
+bool writeJsonFile(char *filename, char* jobj) {
+
+	cJSON * newjobj = cJSON_Parse(jobj);
+
+	if (!newjobj)
+	{
+		printf("Error before: [%s]\n", cJSON_GetErrorPtr());
+		return false;
+	}
+	else
+	{
+		FILE *datei;
+		datei = fopen(filename, "r+");
+		if (datei == NULL)
+		{
+			printf("Fehler beim oeffnen der Datei.");
+			return false;
+		}
+		fprintf(datei, cJSON_Print(newjobj));
+		fclose(datei);
+	}
+	return true;
+}
+
+/* ---------------------------- */
+/*        Hilfsfunktonen        */
+/* ---------------------------- */
+
+/* Hilfsfunktion - cJSON Object ausgeben*/
+void printObject(cJSON* obj){
+	cout << cJSON_Print(obj) << endl;
+}
+
+/* Hilfsfunktion - Umwandlung cJSON to Customer */
+CUSTOMER* cJSONToCustomer(cJSON* customerItem) {
+
+	cJSON * vorname = cJSON_GetObjectItem(customerItem, "vorname");
+	cJSON * nachname = cJSON_GetObjectItem(customerItem, "nachname");
+	cJSON * id = cJSON_GetObjectItem(customerItem, "id");
+
+	CUSTOMER* newCUObj = new CUSTOMER();
+	newCUObj->setVorname(vorname->valuestring);
+	newCUObj->setNachname(nachname->valuestring);
+	newCUObj->setID(id->valueint);
+
+	return newCUObj;
+}
+
+/* Hilfsfunktion - Umwandlung neuer Customer to JSON (generierte ID?@@) */
+cJSON* newCustomerTocJSON(CUSTOMER* cust, int newId) {
+	return createUserObject(newId, cust->getVorname(), cust->getNachname());
+}
+
+/* Hilfsfunktion - Umwandlung Customer to JSON */
+cJSON* customerTocJSON(CUSTOMER* cust) {
+	return createUserObject(cust->getID(), cust->getVorname(), cust->getNachname());
+}
+
+/* Hilfsfunktion - Vergleich der ID werte */
+bool checkItem(cJSON * item, int id) {
+
+	cJSON * iditem = cJSON_GetObjectItem(item, "id");
+
+	if (iditem->valueint == id) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
+/* Hilfsfunktion - Erstellen eines cJSON User Objects mit eingabe der Userdaten*/
+cJSON* createUserObject(int id, char* vorname, char* nachname) {
+
+	cJSON* userObject = cJSON_CreateObject();
+
+	cJSON_AddItemToObject(userObject, "vorname", cJSON_CreateString(vorname));
+	cJSON_AddItemToObject(userObject, "nachname", cJSON_CreateString(nachname));
+	cJSON_AddItemToObject(userObject, "id", cJSON_CreateNumber(id));
+
+	return userObject;
+}
+
+
+/* ------------------------------------------- */
+/*   Verarbeitungsfunktionen für DLL zugriff   */
+/* ------------------------------------------- */
+
+/* Liest vorhandenen user mit ID aus. NULL wenn nicht vorhanden */
+CUSTOMER* readUser(int id) {
+
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	for (int x = 0; x < size; x++) {
+		cJSON * item = cJSON_GetArrayItem(arr, x);
+
+		if (checkItem(item, id)) {
+			return cJSONToCustomer(item);
+		}
+	}
+	return NULL;
+}
+
+/* Überschreibt user, false wenn user nicht vorhanden (sollte nicht möglich sein) */
+bool writeUser(CUSTOMER* cust) {
+
+	int id = 5;
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	for (int x = 0; x < size; x++) {
+		cJSON * item = cJSON_GetArrayItem(arr, x);
+		if (checkItem(item, id)) {
+			cJSON_ReplaceItemInArray(arr, x, customerTocJSON(cust));
+			cJSON* saveObj = cJSON_CreateObject();
+			cJSON_AddItemToObject(saveObj, "users", arr);
+
+			if (writeJsonFile(USER_FILE, saveObj)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+	return false;
+}
+
+/* User mit CUSTOMER element hinzufügen und id wird zurückgegeben*/
+int addUser(CUSTOMER* cu) {
+	cJSON* fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON* arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	cJSON_AddItemToArray(arr, newCustomerTocJSON(cu, ++size));
+	cJSON* saveObj = cJSON_CreateObject();
+	cJSON_AddItemToObject(saveObj, "users", arr);
+
+	if (writeJsonFile(USER_FILE, saveObj)) {
+		return size;
+	}
+	else {
+		return -1;
+	}
+}
+
+/* user mit id löschen - achtung noch aktive konten?*/
+bool removeUser(int id) {
+
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	for (int x = 0; x < size; x++) {
+		cJSON * item = cJSON_GetArrayItem(arr, x);
+
+		if (checkItem(item, id)) {
+			cJSON_DeleteItemFromArray(arr, x);
+			cJSON* saveObj = cJSON_CreateObject();
+			cJSON_AddItemToObject(saveObj, "users", arr);
+
+			if (writeJsonFile(USER_FILE, saveObj)) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+	}
+	return false;
+}
+
+/* ermitteln der User ID - soviel wie user in database? "-1" -> nein */
+int getUserID(char* vorname, char* nachname) {
+	//TODO
+	return -1;
+}
+
+/* ----------------------------------- */
+/*   Funktionen zum Loggen der Daten   */
+/* ----------------------------------- */
+
 string time_to_string() {
 
 	struct tm newtime;
@@ -314,6 +584,7 @@ void LOGGING(char* Errortext, char* LEVEL) {
 
 }
 
+// Testen, ob das besagte File schon existiert
 int fileExist(string name)
 {
 	const char* test = name.c_str();
@@ -369,6 +640,35 @@ void BUCHUNGEN(char* verwendungszweck, char* betrag, string kontonummer)
 	}
 }
 
+//Funktion, um die Getätigte Buchung/Überweisung in ein Logfile zu schreiben "Buchungen.txt"
+void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int art)
+{
+	if (art == 1)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
+	}
+	else if (art == 2)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+	}
+	else if (art == 3)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "+");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
+	}
+}
+
+/* ------------------------- */
+/*   Funktionen der Kunden   */
+/* ------------------------- */
+
 //NeuerKunde legt einen neuen Kunden an 
 //Es werden 6 Parameter in der Reihenfolge angegeben: Vorname, Nachname, Geburtsdatum, Adresse, Wohnort, Telefon
 CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _Adresse, char* _Wohnort, char* _Telefon) {
@@ -389,6 +689,7 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	Kunde->setWohnort(_Wohnort);
 	Kunde->setTelefon(_Telefon);
 
+	addUser(Kunde);
 	LOGGING("Der Kunde wurde erfolgreich angelegt.", "OK");
 
 	return Kunde;
@@ -537,6 +838,10 @@ void Kundeentfernen(CUSTOMER *Kunde) {
 		LOGGING("Der Kunde wurde erfolgreich entfernt.", "OK");
 	}
 }
+
+/* ------------------------- */
+/*   Funktionen der Konten   */
+/* ------------------------- */
 
 //Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu. der 2. parameter lässt zu, 
 //dass mehrere Kunden ein Konto besitzen können. Es können maximal 4 Kunden über ein Konto verfügen. Übergeben wird hier 1-4. 
@@ -733,53 +1038,6 @@ void Kreditkontoentfernen(KREDITKONTO* Konto) {
 	delete Konto;
 	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 }
-//Funktion, um die Getätigte Buchung/Überweisung in ein Logfile zu schreiben "Buchungen.txt"
-void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int art)
-{
-	if (art == 1) 
-	{
-	/*	BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "UEBERWEISUNG");
-		BUCHUNGEN("Momentaner Kontostand:", "UEBERWEISUNG");
-		BUCHUNGEN((char*)to_string(zielkonto->getKontostand()).c_str(), "UEBERWEISUNG");
-		BUCHUNGEN("Verwendungszweck:", "UEBERWEISUNG");
-		BUCHUNGEN(verwendungszweck, "UEBERWEISUNG");
-		BUCHUNGEN("Betrag:", "UEBERWEISUNG");
-		BUCHUNGEN((char*)to_string(betrag).c_str(), "UEBERWEISUNG");
-		*/
-
-		string betragString = to_string(betrag);
-		betragString.insert(0, "-");
-		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
-
-	}
-	else if (art == 2) 
-	{
-		/*BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "ABHEBUNG");
-		BUCHUNGEN("Momentaner Kontostand:", "ABHEBUNG");
-		BUCHUNGEN((char*)to_string(zielkonto->getKontostand()).c_str(), "ABHEBUNG");
-		BUCHUNGEN("Betrag:", "ABHEBUNG");
-		BUCHUNGEN((char*)to_string(betrag).c_str(), "ABHEBUNG");*/
-
-		string betragString = to_string(betrag);
-		betragString.insert(0, "-");
-		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
-	}
-	else if (art == 3) 
-	{
-		/*BUCHUNGEN("Der Betrag wurde erfolgreich eingezahlt. Unterhalb die getätigten eingaben:", "EINZAHLUNG");
-		BUCHUNGEN("Momentaner Kontostand:", "EINZAHLUNG");
-		BUCHUNGEN((char*)to_string(zielkonto->getKontostand()).c_str(), "EINZAHLUNG");
-		BUCHUNGEN("Verwendungszweck:", "EINZAHLUNG");
-		BUCHUNGEN(verwendungszweck, "EINZAHLUNG");
-		BUCHUNGEN("Betrag:", "EINZAHLUNG");
-		BUCHUNGEN((char*)to_string(betrag).c_str(), "EINZAHLUNG");*/
-
-		string betragString = to_string(betrag);
-		betragString.insert(0, "+");
-		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
-
-	}
-}
 
 //Funktionen zum Überweisen, Einzahlen und Abheben
 void doAbheben(KREDITKONTO* zielkonto, double betrag) 
@@ -823,260 +1081,4 @@ UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verw
 	LOGGING("Eine Überweisung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 1);
 	return ueberweisung;
-}
-
-
-char* USER_FILE = "users.json";
-char* TRANSACTION_FILE = "transactions.json";
-char* LOG_FILE = "log.json";
-
-cJSON* createUserObject(int id, char* vorname, char* nachname);
-
-/* --------------------------- */
-/* JSON -> File-I/O Funktionen */
-/* --------------------------- */
-
-/* Read a file and return the string */
-cJSON* readJsonFile_cJson(char *filename)
-{
-	FILE *f;
-	long len;
-	char *data;
-	cJSON *json;
-
-	f = fopen(filename, "rb");
-	fseek(f, 0, SEEK_END);
-	len = ftell(f);
-	fseek(f, 0, SEEK_SET);
-	data = (char*)malloc(len + 1);
-	fread(data, 1, len, f);
-	data[len] = '\0';
-
-
-	fclose(f);
-
-
-	json = cJSON_Parse(data);
-	if (!json) { printf("Error before: [%s]\n", cJSON_GetErrorPtr()); }
-	else
-	{
-		free(data);
-		return json;
-	}
-
-	return NULL;
-}
-
-/* Read a file and return the string */
-char* readJsonFile_char(char *filename)
-{
-	FILE *f;
-	long len;
-	char *data;
-	cJSON *json;
-
-	f = fopen(filename, "rb");
-	fseek(f, 0, SEEK_END);
-	len = ftell(f);
-	fseek(f, 0, SEEK_SET);
-	data = (char*)malloc(len + 1);
-	fread(data, 1, len, f);
-	data[len] = '\0';
-
-	fclose(f);
-	return data;
-}
-
-/* Write a json file with a filename and an cJSON element*/
-bool writeJsonFile(char *filename, cJSON * jobj){
-	FILE *datei;
-	datei = fopen(filename, "w+");
-	if (datei == NULL)
-	{
-		printf("Fehler beim oeffnen der Datei.");
-		return 1;
-	}
-	fprintf(datei, cJSON_Print(jobj));
-	fclose(datei);
-}
-
-/* Write a json file with a filename and a char* element*/
-bool writeJsonFile(char *filename, char* jobj){
-
-	cJSON * newjobj = cJSON_Parse(jobj);
-
-	if (!newjobj)
-	{
-		printf("Error before: [%s]\n", cJSON_GetErrorPtr());
-		return false;
-	}
-	else
-	{
-		FILE *datei;
-		datei = fopen(filename, "r+");
-		if (datei == NULL)
-		{
-			printf("Fehler beim oeffnen der Datei.");
-			return false;
-		}
-		fprintf(datei, cJSON_Print(newjobj));
-		fclose(datei);
-	}
-	return true;
-}
-
-/* ---------------------------- */
-/*        Hilfsfunktonen        */
-/* ---------------------------- */
-
-/* Hilfsfunktion - cJSON Object ausgeben*/
-//void printObject(cJSON* obj){
-//	cout << cJSON_Print(obj) << endl;
-//}
-
-/* Hilfsfunktion - Umwandlung cJSON to Customer */
-CUSTOMER* cJSONToCustomer(cJSON* customerItem){
-
-	cJSON * vorname = cJSON_GetObjectItem(customerItem, "vorname");
-	cJSON * nachname = cJSON_GetObjectItem(customerItem, "nachname");
-	cJSON * id = cJSON_GetObjectItem(customerItem, "id");
-
-	CUSTOMER* newCUObj = new CUSTOMER();
-	newCUObj->setVorname(vorname->valuestring);
-	newCUObj->setNachname(nachname->valuestring);
-	newCUObj->setID(id->valueint);
-
-	return newCUObj;
-}
-
-/* Hilfsfunktion - Umwandlung neuer Customer to JSON (generierte ID?@@) */
-cJSON* newCustomerTocJSON(CUSTOMER* cust, int newId){
-	return createUserObject(newId, cust->getVorname(), cust->getNachname());
-}
-
-/* Hilfsfunktion - Umwandlung Customer to JSON */
-cJSON* customerTocJSON(CUSTOMER* cust){
-	return createUserObject(cust->getID(), cust->getVorname(), cust->getNachname());
-}
-
-/* Hilfsfunktion - Vergleich der ID werte */
-bool checkItem(cJSON * item, int id){
-
-	cJSON * iditem = cJSON_GetObjectItem(item, "id");
-
-	if (iditem->valueint == id){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
-
-/* Hilfsfunktion - Erstellen eines cJSON User Objects mit eingabe der Userdaten*/
-cJSON* createUserObject(int id, char* vorname, char* nachname){
-
-	cJSON* userObject = cJSON_CreateObject();
-
-	cJSON_AddItemToObject(userObject, "vorname", cJSON_CreateString(vorname));
-	cJSON_AddItemToObject(userObject, "nachname", cJSON_CreateString(nachname));
-	cJSON_AddItemToObject(userObject, "id", cJSON_CreateNumber(id));
-
-	return userObject;
-}
-
-/* ------------------------------------------- */
-/*   Verarbeitungsfunktionen für DLL zugriff   */
-/* ------------------------------------------- */
-
-/* Liest vorhandenen user mit ID aus. NULL wenn nicht vorhanden */
-CUSTOMER* readUser(int id){
-
-	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
-	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
-	int size = cJSON_GetArraySize(arr);
-
-	for (int x = 0; x < size; x++){
-		cJSON * item = cJSON_GetArrayItem(arr, x);
-
-		if (checkItem(item, id)){
-			return cJSONToCustomer(item);
-		}
-	}
-	return NULL;
-}
-
-/* Überschreibt user, false wenn user nicht vorhanden (sollte nicht möglich sein) */
-bool writeUser(CUSTOMER* cust){
-
-	int id = 5;
-	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
-	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
-	int size = cJSON_GetArraySize(arr);
-
-	for (int x = 0; x < size; x++){
-		cJSON * item = cJSON_GetArrayItem(arr, x);
-		if (checkItem(item, id)){
-			cJSON_ReplaceItemInArray(arr, x, customerTocJSON(cust));
-			cJSON* saveObj = cJSON_CreateObject();
-			cJSON_AddItemToObject(saveObj, "users", arr);
-
-			if (writeJsonFile(USER_FILE, saveObj)){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-	}
-	return false;
-}
-
-/* User mit CUSTOMER element hinzufügen und id wird zurückgegeben*/
-int addUser(CUSTOMER* cu){
-	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
-	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
-	int size = cJSON_GetArraySize(arr);
-
-	cJSON_AddItemToArray(arr, newCustomerTocJSON(cu, ++size));
-	cJSON* saveObj = cJSON_CreateObject();
-	cJSON_AddItemToObject(saveObj, "users", arr);
-
-	if (writeJsonFile(USER_FILE, saveObj)){
-		return size;
-	}
-	else{
-		return -1;
-	}
-}
-
-/* user mit id löschen - achtung noch aktive konten?*/
-bool removeUser(int id){
-
-	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
-	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
-	int size = cJSON_GetArraySize(arr);
-
-	for (int x = 0; x < size; x++){
-		cJSON * item = cJSON_GetArrayItem(arr, x);
-
-		if (checkItem(item, id)){
-			cJSON_DeleteItemFromArray(arr, x);
-			cJSON* saveObj = cJSON_CreateObject();
-			cJSON_AddItemToObject(saveObj, "users", arr);
-
-			if (writeJsonFile(USER_FILE, saveObj)){
-				return true;
-			}
-			else{
-				return false;
-			}
-		}
-	}
-	return false;
-}
-
-/* ermitteln der User ID - soviel wie user in database? "-1" -> nein */
-int getUserID(char* vorname, char* nachname){
-	//TODO
-	return -1;
 }

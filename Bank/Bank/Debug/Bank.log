@@ -1,1 +1,15 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.Cpp.Platform.targets(64,5): error MSB8020: The build tools for v140 (Platform Toolset = 'v140') cannot be found. To build using the v140 build tools, please install v140 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Upgrade Solution...".
+﻿  Bank.cpp
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(41): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(41): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(103): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(103): note: Siehe Deklaration von "SPARKONTO"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(169): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(169): note: Siehe Deklaration von "KREDITKONTO"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(235): warning C4099: "KONTOAUSZUG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(235): note: Siehe Deklaration von "KONTOAUSZUG"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(243): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(243): note: Siehe Deklaration von "UEBERWEISUNG"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(334): warning C4101: "json": Unreferenzierte lokale Variable
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(359): warning C4715: "writeJsonFile": Nicht alle Steuerelementpfade geben einen Wert zurück.
+  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
+  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)

@@ -1,8 +1,0 @@
-﻿  Customer.cpp
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(4): error C2859: C:\Users\wiela\Documents\GitHub\BankSST01\Customer\Customer\x64\Debug\vc140.idb ist nicht die idb-Datei, die beim Erstellen dieses vorkompilierten Headers verwendet wurde. Erstellen Sie den vorkompilierten Header neu.
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(54): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(54): note: Siehe Deklaration von "CUSTOMER"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(116): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(116): note: Siehe Deklaration von "SPARKONTO"
-c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(173): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\customer\customer\customer.cpp(173): note: Siehe Deklaration von "KREDITKONTO"
