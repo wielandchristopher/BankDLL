@@ -1,3 +1,16 @@
+/*
+Bei NeuesKonto muss ein Verweis zum Kunden hergestellt werden.
+Customer braucht eine Liste, in welcher alle evtl. Konten aufgelistet sind. 
+Liste wird über JSON geregelt, sobald WriteUser etc vom Martin funktioniert. 
+
+Wenn implementiert, kann man vor dem Löschen eines USers auf evtl noch geöffneten Konten prüfen. 
+
+Funktionen:
+
+removeKonten: Kann evtl nicht mit ID übergabe sondern mit Kontonummerübergabe gelöscht werden?
+readKonten: Ebenso evtl mit Kontonummern und nciht mit id? Würde vielen erleichtern.
+*/
+
 #include "Bank.h"
 #include <string>
 #include <time.h>
@@ -14,11 +27,12 @@ using namespace std;
 
 FILE* buchungsfile;
 FILE* logfile;
-char* USER_FILE = "users.json";
-char* TRANSACTION_FILE = "transactions.json";
+char* USER_FILE;
+char* ACCOUNT_FILE;
+char* TRANSACTION_FILE;
 cJSON* createUserObject(int id, char* vorname, char* nachname);
 
-//generateKtnr erstellt eine Kontonummer und iteriert immer um 1 hoch
+//generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 int generateKtnnr() {
 
 	static int Kontonummernpool = 10000000;
@@ -26,6 +40,7 @@ int generateKtnnr() {
 	Kontonummernpool++;
 	return Kontonummernpool;
 }
+//generateUserid erstellt eine neue UserID für jeden neuen User
 int generateUserid() {
 
 	static int Userid = 0;
@@ -330,7 +345,6 @@ char* readJsonFile_char(char *filename)
 	FILE *f;
 	long len;
 	char *data;
-	cJSON *json;
 
 	f = fopen(filename, "rb");
 	fseek(f, 0, SEEK_END);
@@ -433,11 +447,26 @@ cJSON* createUserObject(int id, char* vorname, char* nachname) {
 
 	return userObject;
 }
+//Hilftsfunktion - für die Buchungsfunktion
+void BUCHUNGEN(char* verwendungszweck, char* betrag, string kontonummer)
+{
+	string textFileName = kontonummer.append("_Buchungen.txt");
 
+	if (!fileExist(textFileName))
+	{
+		initializeBuchungen(stoi(kontonummer), textFileName);
 
-/* ------------------------------------------- */
-/*   Verarbeitungsfunktionen für DLL zugriff   */
-/* ------------------------------------------- */
+		insertBuchungToFile(textFileName, verwendungszweck, betrag);
+	}
+	else
+	{
+		insertBuchungToFile(textFileName, verwendungszweck, betrag);
+	}
+}
+
+/* ----------------------------------------------- */
+/*   Funktionen für persistente Datenspeicherung   */
+/* ----------------------------------------------- */
 
 /* Liest vorhandenen user mit ID aus. NULL wenn nicht vorhanden */
 CUSTOMER* readUser(int id) {
@@ -597,7 +626,6 @@ void initializeBuchungen(int kontonummer, string textFileName)
 
 	fclose(buchungsfile);
 }
-
 void insertBuchungToFile(string textFileName, char* verwendungszweck, char* betrag)
 {
 	string stringtime = time_to_string();
@@ -611,23 +639,6 @@ void insertBuchungToFile(string textFileName, char* verwendungszweck, char* betr
 	}
 	fprintf(buchungsfile, "%s \t %s \t \t \t \t \t %s \n", time, verwendungszweck, betrag); // Tabelle ?
 	fclose(buchungsfile);
-}
-
-// void BUCHUNGEN(char* Buchungstext, char* LEVEL) 
-void BUCHUNGEN(char* verwendungszweck, char* betrag, string kontonummer) 
-{
-	string textFileName = kontonummer.append("_Buchungen.txt");
-
-	if (!fileExist(textFileName))
-	{
-		initializeBuchungen(stoi(kontonummer), textFileName);
-
-		insertBuchungToFile(textFileName, verwendungszweck, betrag);
-	}
-	else
-	{
-		insertBuchungToFile(textFileName, verwendungszweck, betrag);
-	}
 }
 
 //Funktion, um die Getätigte Buchung/Überweisung in ein Logfile zu schreiben "Buchungen.txt"
@@ -698,8 +709,8 @@ void Kundenvornamenänderung(CUSTOMER *Kunde, char* _Vorname) {
 		LOGGING("Es wurden keine Änderungen eingegeben.", "ERROR");
 		return;
 	}
-
 	Kunde->setVorname(_Vorname);
+	writeUser(Kunde);
 	LOGGING("Der Vorname wurde erfolgreich geändert.", "OK");
 	return;
 }
@@ -722,6 +733,7 @@ void Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname) {
 
 	string Nachname(_Nachname);
 	Kunde->setNachname(_Nachname);
+	writeUser(Kunde);
 	LOGGING("Der Nachname wurde erfolgreich geändert.", "OK");
 	return;
 }
@@ -745,6 +757,7 @@ void Kundenadressänderung(CUSTOMER *Kunde, char* _Adresse) {
 
 	string Adresse(_Adresse);
 	Kunde->setAdresse(_Adresse);
+	writeUser(Kunde);
 	LOGGING("Die Adresse wurde erfolgreich geändert.", "OK");
 	return;
 }
@@ -768,6 +781,7 @@ void Kundenwohnortsänderung(CUSTOMER *Kunde, char* _Wohnort) {
 
 	string Wohnort(_Wohnort);
 	Kunde->setWohnort(_Wohnort);
+	writeUser(Kunde);
 	LOGGING("Der Wohnort wurde erfolgreich geändert.", "OK");
 	return;
 }
@@ -791,6 +805,7 @@ void Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon) {
 
 	string Telefon(_Telefon);
 	Kunde->setTelefon(_Telefon);
+	writeUser(Kunde);
 	LOGGING("Die Telefonnummer wurde erfolgreich geändert.", "OK");
 	return;
 }
@@ -823,6 +838,7 @@ void Kundeentfernen(CUSTOMER *Kunde) {
 		return;
 	}
 	else {
+		removeUser(Kunde->getID());
 		delete Kunde;
 		LOGGING("Der Kunde wurde erfolgreich entfernt.", "OK");
 	}
