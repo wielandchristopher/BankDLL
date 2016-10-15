@@ -1,6 +1,7 @@
 #include "Bank.h"
 #include <string>
 #include <time.h>
+#include "cJSON.h"
 
 using namespace std;
 FILE* buchungsfile;
@@ -55,6 +56,12 @@ public:
 	void CUSTOMER::setTelefon(char* _Telefon) {
 		this->Telefon = _Telefon;
 	};
+	int CUSTOMER::getID() {
+		return id;
+	};
+	void CUSTOMER::setID(int _id) {
+		this->id = _id;
+	};
 	//Typidentifizierer
 	char* getClassId() {
 
@@ -69,6 +76,7 @@ private:
 	char* Adresse = "";
 	char* Wohnort = "";
 	char* Telefon = "";
+	int id = -1;
 };
 class SPARKONTO {
 public:
@@ -815,4 +823,260 @@ UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verw
 	LOGGING("Eine Überweisung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 1);
 	return ueberweisung;
+}
+
+
+char* USER_FILE = "users.json";
+char* TRANSACTION_FILE = "transactions.json";
+char* LOG_FILE = "log.json";
+
+cJSON* createUserObject(int id, char* vorname, char* nachname);
+
+/* --------------------------- */
+/* JSON -> File-I/O Funktionen */
+/* --------------------------- */
+
+/* Read a file and return the string */
+cJSON* readJsonFile_cJson(char *filename)
+{
+	FILE *f;
+	long len;
+	char *data;
+	cJSON *json;
+
+	f = fopen(filename, "rb");
+	fseek(f, 0, SEEK_END);
+	len = ftell(f);
+	fseek(f, 0, SEEK_SET);
+	data = (char*)malloc(len + 1);
+	fread(data, 1, len, f);
+	data[len] = '\0';
+
+
+	fclose(f);
+
+
+	json = cJSON_Parse(data);
+	if (!json) { printf("Error before: [%s]\n", cJSON_GetErrorPtr()); }
+	else
+	{
+		free(data);
+		return json;
+	}
+
+	return NULL;
+}
+
+/* Read a file and return the string */
+char* readJsonFile_char(char *filename)
+{
+	FILE *f;
+	long len;
+	char *data;
+	cJSON *json;
+
+	f = fopen(filename, "rb");
+	fseek(f, 0, SEEK_END);
+	len = ftell(f);
+	fseek(f, 0, SEEK_SET);
+	data = (char*)malloc(len + 1);
+	fread(data, 1, len, f);
+	data[len] = '\0';
+
+	fclose(f);
+	return data;
+}
+
+/* Write a json file with a filename and an cJSON element*/
+bool writeJsonFile(char *filename, cJSON * jobj){
+	FILE *datei;
+	datei = fopen(filename, "w+");
+	if (datei == NULL)
+	{
+		printf("Fehler beim oeffnen der Datei.");
+		return 1;
+	}
+	fprintf(datei, cJSON_Print(jobj));
+	fclose(datei);
+}
+
+/* Write a json file with a filename and a char* element*/
+bool writeJsonFile(char *filename, char* jobj){
+
+	cJSON * newjobj = cJSON_Parse(jobj);
+
+	if (!newjobj)
+	{
+		printf("Error before: [%s]\n", cJSON_GetErrorPtr());
+		return false;
+	}
+	else
+	{
+		FILE *datei;
+		datei = fopen(filename, "r+");
+		if (datei == NULL)
+		{
+			printf("Fehler beim oeffnen der Datei.");
+			return false;
+		}
+		fprintf(datei, cJSON_Print(newjobj));
+		fclose(datei);
+	}
+	return true;
+}
+
+/* ---------------------------- */
+/*        Hilfsfunktonen        */
+/* ---------------------------- */
+
+/* Hilfsfunktion - cJSON Object ausgeben*/
+//void printObject(cJSON* obj){
+//	cout << cJSON_Print(obj) << endl;
+//}
+
+/* Hilfsfunktion - Umwandlung cJSON to Customer */
+CUSTOMER* cJSONToCustomer(cJSON* customerItem){
+
+	cJSON * vorname = cJSON_GetObjectItem(customerItem, "vorname");
+	cJSON * nachname = cJSON_GetObjectItem(customerItem, "nachname");
+	cJSON * id = cJSON_GetObjectItem(customerItem, "id");
+
+	CUSTOMER* newCUObj = new CUSTOMER();
+	newCUObj->setVorname(vorname->valuestring);
+	newCUObj->setNachname(nachname->valuestring);
+	newCUObj->setID(id->valueint);
+
+	return newCUObj;
+}
+
+/* Hilfsfunktion - Umwandlung neuer Customer to JSON (generierte ID?@@) */
+cJSON* newCustomerTocJSON(CUSTOMER* cust, int newId){
+	return createUserObject(newId, cust->getVorname(), cust->getNachname());
+}
+
+/* Hilfsfunktion - Umwandlung Customer to JSON */
+cJSON* customerTocJSON(CUSTOMER* cust){
+	return createUserObject(cust->getID(), cust->getVorname(), cust->getNachname());
+}
+
+/* Hilfsfunktion - Vergleich der ID werte */
+bool checkItem(cJSON * item, int id){
+
+	cJSON * iditem = cJSON_GetObjectItem(item, "id");
+
+	if (iditem->valueint == id){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+/* Hilfsfunktion - Erstellen eines cJSON User Objects mit eingabe der Userdaten*/
+cJSON* createUserObject(int id, char* vorname, char* nachname){
+
+	cJSON* userObject = cJSON_CreateObject();
+
+	cJSON_AddItemToObject(userObject, "vorname", cJSON_CreateString(vorname));
+	cJSON_AddItemToObject(userObject, "nachname", cJSON_CreateString(nachname));
+	cJSON_AddItemToObject(userObject, "id", cJSON_CreateNumber(id));
+
+	return userObject;
+}
+
+/* ------------------------------------------- */
+/*   Verarbeitungsfunktionen für DLL zugriff   */
+/* ------------------------------------------- */
+
+/* Liest vorhandenen user mit ID aus. NULL wenn nicht vorhanden */
+CUSTOMER* readUser(int id){
+
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	for (int x = 0; x < size; x++){
+		cJSON * item = cJSON_GetArrayItem(arr, x);
+
+		if (checkItem(item, id)){
+			return cJSONToCustomer(item);
+		}
+	}
+	return NULL;
+}
+
+/* Überschreibt user, false wenn user nicht vorhanden (sollte nicht möglich sein) */
+bool writeUser(CUSTOMER* cust){
+
+	int id = 5;
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	for (int x = 0; x < size; x++){
+		cJSON * item = cJSON_GetArrayItem(arr, x);
+		if (checkItem(item, id)){
+			cJSON_ReplaceItemInArray(arr, x, customerTocJSON(cust));
+			cJSON* saveObj = cJSON_CreateObject();
+			cJSON_AddItemToObject(saveObj, "users", arr);
+
+			if (writeJsonFile(USER_FILE, saveObj)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	}
+	return false;
+}
+
+/* User mit CUSTOMER element hinzufügen und id wird zurückgegeben*/
+int addUser(CUSTOMER* cu){
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	cJSON_AddItemToArray(arr, newCustomerTocJSON(cu, ++size));
+	cJSON* saveObj = cJSON_CreateObject();
+	cJSON_AddItemToObject(saveObj, "users", arr);
+
+	if (writeJsonFile(USER_FILE, saveObj)){
+		return size;
+	}
+	else{
+		return -1;
+	}
+}
+
+/* user mit id löschen - achtung noch aktive konten?*/
+bool removeUser(int id){
+
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+	cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+	int size = cJSON_GetArraySize(arr);
+
+	for (int x = 0; x < size; x++){
+		cJSON * item = cJSON_GetArrayItem(arr, x);
+
+		if (checkItem(item, id)){
+			cJSON_DeleteItemFromArray(arr, x);
+			cJSON* saveObj = cJSON_CreateObject();
+			cJSON_AddItemToObject(saveObj, "users", arr);
+
+			if (writeJsonFile(USER_FILE, saveObj)){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	}
+	return false;
+}
+
+/* ermitteln der User ID - soviel wie user in database? "-1" -> nein */
+int getUserID(char* vorname, char* nachname){
+	//TODO
+	return -1;
 }
