@@ -1,0 +1,11 @@
+{
+	"users":	[{
+			"vorname":	"Vorname",
+			"nachname":	"Nachname",
+			"id":	1,
+			"geb":	"11.10.2016",
+			"addr":	"Musterstraﬂe 10",
+			"ort":	"5020 Salzburg",
+			"tel":	"06601234567"
+		}]
+}
