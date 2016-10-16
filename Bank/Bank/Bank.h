@@ -20,6 +20,7 @@ extern "C" {
 	typedef struct KREDITKONTO KREDITKONTO;
 	typedef struct KONTOAUSZUG KONTOAUSZUG;
 	typedef struct UEBERWEISUNG UEBERWEISUNG;
+	typedef struct WAEHRUNGSMODUL WAEHRUNGSMODUL;
 
 	BANK_API CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _adresse, char* _Wohnort, char* _Telefon);
 	BANK_API void Kundenvornamenänderung(CUSTOMER *Kunde, char* Vorname);
@@ -41,7 +42,10 @@ extern "C" {
 	BANK_API void Kreditkontoentfernen(KREDITKONTO* Konto);
 	BANK_API void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag);
 	BANK_API void doAbheben(KREDITKONTO* zielkonto, double betrag);
-	BANK_API UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck);
+	BANK_API UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, double betrag, char* verwendungszweck);
+	BANK_API void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung);
+	BANK_API void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul);
+	BANK_API WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto);
 
 #ifdef __cplusplus
 }

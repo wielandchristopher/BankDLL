@@ -28,6 +28,8 @@ using namespace std;
 
 FILE* buchungsfile;
 FILE* logfile;
+FILE* umrechnungsFile;
+FILE* kursverwaltungsFile;
 char* USER_FILE = "users.json";
 char* KONTO_FILE = "konten.json";
 
@@ -258,7 +260,8 @@ public:
 	}
 
 };
-class UEBERWEISUNG {
+class UEBERWEISUNG 
+{
 public:
 	UEBERWEISUNG::UEBERWEISUNG()
 	{
@@ -306,6 +309,54 @@ private:
 	int kontonummer;
 	char* empfaengername;
 	char* verwendungszweck;
+};
+
+class WAEHRUNGSMODUL
+{
+public:
+	// Daweil nur als Waehrung USD, CHF, GBP, JPY
+	WAEHRUNGSMODUL::WAEHRUNGSMODUL()
+	{
+		this->waehrung = "";
+		this->kontostand = 0;
+		this->kontonummer = 0;
+	}
+
+	double WAEHRUNGSMODUL::getkontostand()
+	{
+		return kontostand;
+	}
+
+	void WAEHRUNGSMODUL::setkontostand(double betrag)
+	{
+		kontostand = betrag;
+	}
+
+	void WAEHRUNGSMODUL::setKontonummer(int kontonr)
+	{
+		kontonummer = kontonr;
+	}
+
+	int WAEHRUNGSMODUL::getKontonummer()
+	{
+		return kontonummer;
+	}
+
+	// WAEHRUNG UNNÖTIG
+	char* WAEHRUNGSMODUL::getWaehrung()
+	{
+		return waehrung;
+	}
+
+	void WAEHRUNGSMODUL::setWaehrung(char* _waehrung)
+	{
+		waehrung = _waehrung;
+	}
+
+private:
+	char* waehrung;
+	double kontostand;
+	int kontonummer;
 };
 
 /* --------------------------- */
@@ -886,6 +937,7 @@ int fileExist(string name)
 	return (stat(test, &buffer) == 0);
 }
 
+// Initialisierung: Header für das Buchungs File wird erstellt
 void initializeBuchungen(int kontonummer, string textFileName)
 {
 	const char* fileName = textFileName.c_str();
@@ -912,7 +964,7 @@ void insertBuchungToFile(string textFileName, char* verwendungszweck, char* betr
 	{
 		printf("Die Abbuchungsdatei konnte nicht erstellt werden");
 	}
-	fprintf(buchungsfile, "%s \t %s \t \t \t \t \t %s \n", time, verwendungszweck, betrag); // Tabelle ?
+	fprintf(buchungsfile, "%s \t %s \t \t \t \t \t %s \n", time, verwendungszweck, betrag);
 	fclose(buchungsfile);
 }
 
@@ -1357,24 +1409,143 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag)
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 3);
 }
-UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) 
+UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, double betrag, char* verwendungszweck)
 {
 	string Verfügervorname = zielkonto->getVerfüger().getVorname();
 	string Verfügernachname = zielkonto->getVerfüger().getNachname();
 	string Verfügername = Verfügervorname + Verfügernachname;
 	char* cVerfügername = (char*)Verfügername.c_str();
 
-	double newKontostand = zielkonto->getKontostand() + betrag;
-	zielkonto->setKontostand(newKontostand);
+	//double newKontostand = zielkonto->getKontostand() + betrag;
+	//zielkonto->setKontostand(newKontostand);
+
+	// Mit doEinzahlen - scheint am anderen Konto im Kontoauszug auf
+	doEinzahlen(zielkonto, verwendungszweck, betrag);
 
 	UEBERWEISUNG* ueberweisung = new UEBERWEISUNG();
 	ueberweisung->setempfaengername(cVerfügername);
 	ueberweisung->setkontonummer(zielkonto->getKontonummer());
-	ueberweisung->setkontostand(newKontostand);
+	// ueberweisung->setkontostand(newKontostand);	
 	ueberweisung->setVerwendungszweck(verwendungszweck);
 	ueberweisung->setBetrag(betrag);
 
+	// Betrag vom Quellkonto abbuchen
+	double quellKontostand = quellkonto->getKontostand();
+	quellkonto->setKontostand(quellKontostand - betrag);
+
 	LOGGING("Eine Überweisung wurde getaetigt.", "OK");
-	Buchen(zielkonto, verwendungszweck, betrag, 1);
+	Buchen(quellkonto, verwendungszweck, betrag, 1);
 	return ueberweisung;
+}
+
+void createUmrechnungsFile(string textFileName, char* waehrung, double kontostand, double waehrungsKontostand)
+{
+	const char* fileName = textFileName.c_str();
+	fopen_s(&umrechnungsFile, fileName, "a");
+	if (umrechnungsFile == NULL)
+	{
+		printf("Die Abbuchungsdatei konnte nicht erstellt werden HIER");
+	}
+
+	fprintf(umrechnungsFile, "Umrechnung von Euro zu %s \n \n", waehrung);
+	fprintf(umrechnungsFile, "Kontostand in Euro: \t %f \n", kontostand);
+	fprintf(umrechnungsFile, "Kontostand in %s: \t %f", waehrung, waehrungsKontostand);
+	fclose(umrechnungsFile);
+}
+
+void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
+{
+	double kontostand = waehrungsmodul->getkontostand();
+	int kontonummer = waehrungsmodul->getKontonummer();
+	string kontonummerString = to_string(kontonummer);
+	string textFileName = kontonummerString.append("_Umrechnung.txt");
+
+	if (fileExist(textFileName))
+	{
+		// Delete File
+		remove(textFileName.c_str());
+	}
+
+	if (waehrung = "USD")
+	{
+		// 1€ = 1.0971 USD
+		double waehrungsKontostand = kontostand * 1.0971;
+		createUmrechnungsFile(textFileName, "USD", kontostand, waehrungsKontostand);
+	}
+	else if (waehrung = "CHF")
+	{
+		// 1€ = 1.0866 CHF
+		double waehrungsKontostand = kontostand * 1.0866;
+		createUmrechnungsFile(textFileName, "CHF", kontostand, waehrungsKontostand);
+	}
+	else if (waehrung = "GBP")
+	{
+		// 1€ = 0.9003 GBP
+		double waehrungsKontostand = kontostand * 0.9003;
+		createUmrechnungsFile(textFileName, "GBP", kontostand, waehrungsKontostand);
+	}
+	else if (waehrung = "JPY")
+	{
+		// 1€ = 114.315 JPY
+		double waehrungsKontostand = kontostand * 114.315;
+		createUmrechnungsFile(textFileName, "JPY", kontostand, waehrungsKontostand);
+	}
+	else
+	{
+		LOGGING("Waehrungsmodul: Falscher Input.", "ERROR");
+	}
+}
+
+void createKursverwaltungsFile(string textFileName)
+{
+	const char* fileName = textFileName.c_str();
+	fopen_s(&kursverwaltungsFile, fileName, "a");
+	if (kursverwaltungsFile == NULL)
+	{
+		printf("Die Abbuchungsdatei konnte nicht erstellt werden HIER");
+	}
+
+	fprintf(kursverwaltungsFile, "Kursverwaltung \n \n");
+	fprintf(kursverwaltungsFile, "1 € \t = \t 1.0971 USD \n1 € \t = \t 1.0866 CHF \n1 € \t = \t 0.9003 GBP \n1 € \t = \t 114.315 JPY \n");
+	fclose(kursverwaltungsFile);
+}
+
+void kursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
+{
+	int kontonummer = waehrungsmodul->getKontonummer();
+	string kontonummerString = to_string(kontonummer);
+	string textFileName = kontonummerString.append("_Kursverwaltung.txt");
+
+	if (fileExist(textFileName))
+	{
+		// Delete File
+		remove(textFileName.c_str());
+	}
+
+	createKursverwaltungsFile(textFileName);
+}
+
+// Funktionen für die C-Schnittstelle
+// USD, CHF, GBP, JPY
+void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung)
+{
+	umrechnung(waehrungsmmodul, waehrung);
+}
+
+void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
+{
+	kursverwaltung(waehrungsmodul);
+}
+
+WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto)
+{
+	double kontostand = konto->getKontostand();
+	int kontonummer = konto->getKontonummer();
+
+	WAEHRUNGSMODUL* waehrungsmodul = new WAEHRUNGSMODUL();
+	waehrungsmodul->setkontostand(kontostand);
+	waehrungsmodul->setKontonummer(kontonummer);
+	
+	LOGGING("Ein Waehrungsmodul wurde getaetigt.", "OK");
+	return waehrungsmodul;
 }

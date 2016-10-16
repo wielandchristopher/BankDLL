@@ -3,19 +3,6 @@ Kontoauszug
 Kontonummer: 10000001 	 BankSST 
 Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
  
-16 10 2016 19:23:26 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:23:26 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:25:03 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:25:03 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:25:22 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:25:22 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:25:36 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:25:36 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:27:25 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:27:25 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:27:43 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:27:43 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:35:54 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:35:54 	  	 	 	 	 	 -200.000000 
-16 10 2016 19:41:15 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-16 10 2016 19:41:15 	  	 	 	 	 	 -200.000000 
+16 10 2016 21:51:08 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
+16 10 2016 21:51:08 	  	 	 	 	 	 -200.000000 
+16 10 2016 21:51:08 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

@@ -1,14 +1,16 @@
 ﻿  Bank.cpp
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(58): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(58): note: Siehe Deklaration von "CUSTOMER"
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(120): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(120): note: Siehe Deklaration von "SPARKONTO"
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(186): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(186): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(252): warning C4099: "KONTOAUSZUG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(252): note: Siehe Deklaration von "KONTOAUSZUG"
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(260): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(260): note: Siehe Deklaration von "UEBERWEISUNG"
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(353): warning C4101: "json": Unreferenzierte lokale Variable
-  Bank.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
-  Bank.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(61): warning C4099: 'CUSTOMER': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(61): note: see declaration of 'CUSTOMER'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(123): warning C4099: 'SPARKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(123): note: see declaration of 'SPARKONTO'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(189): warning C4099: 'KREDITKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(189): note: see declaration of 'KREDITKONTO'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(255): warning C4099: 'KONTOAUSZUG': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(255): note: see declaration of 'KONTOAUSZUG'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(264): warning C4099: 'UEBERWEISUNG': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(263): note: see declaration of 'UEBERWEISUNG'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(315): warning C4099: 'WAEHRUNGSMODUL': type name first seen using 'struct' now seen using 'class'
+  c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(314): note: see declaration of 'WAEHRUNGSMODUL'
+c:\users\kaschi\documents\github\banksst01\bank\bank\bank.cpp(405): warning C4101: 'json': unreferenced local variable
+  Bank.vcxproj -> C:\Users\Kaschi\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
+  Bank.vcxproj -> C:\Users\Kaschi\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
