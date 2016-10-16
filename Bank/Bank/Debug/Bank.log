@@ -9,6 +9,6 @@ c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-
   c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(252): note: Siehe Deklaration von "KONTOAUSZUG"
 c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(260): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
   c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(260): note: Siehe Deklaration von "UEBERWEISUNG"
-c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(354): warning C4101: "json": Unreferenzierte lokale Variable
+c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\bank\bank\bank.cpp(353): warning C4101: "json": Unreferenzierte lokale Variable
   Bank.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
   Bank.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)

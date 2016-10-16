@@ -1,3 +1,42 @@
 15 10 2016 18:35:57 - OK: Der Kunde wurde erfolgreich angelegt.
 16 10 2016 17:42:34 - OK: Der Kunde wurde erfolgreich angelegt.
 16 10 2016 17:44:40 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:16:31 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:23:26 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:23:26 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:23:26 - OK: Das KreditKonto wurde erfolgreich erstellt.
+16 10 2016 19:23:26 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:23:26 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:25:03 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:25:03 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:25:03 - OK: Das KreditKonto wurde erfolgreich erstellt.
+16 10 2016 19:25:03 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:25:03 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:25:22 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:25:22 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:25:22 - OK: Das KreditKonto wurde erfolgreich erstellt.
+16 10 2016 19:25:22 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:25:22 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:25:36 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:25:36 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:25:36 - OK: Das KreditKonto wurde erfolgreich erstellt.
+16 10 2016 19:25:36 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:25:36 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:27:25 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:27:25 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:27:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
+16 10 2016 19:27:25 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:27:25 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:27:43 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:27:43 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:27:43 - OK: Das KreditKonto wurde erfolgreich erstellt.
+16 10 2016 19:27:43 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:27:43 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:35:54 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:35:54 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:35:54 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:35:54 - OK: Eine Abhebung wurde getaetigt.
+16 10 2016 19:41:15 - OK: Der Kunde wurde erfolgreich angelegt.
+16 10 2016 19:41:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+16 10 2016 19:41:15 - OK: Eine Einzahlung wurde getaetigt.
+16 10 2016 19:41:15 - OK: Eine Abhebung wurde getaetigt.

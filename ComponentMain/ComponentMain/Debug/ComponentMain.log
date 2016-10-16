@@ -1,2 +1,5 @@
-﻿  ComponentMain.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe
+﻿  Main.c
+c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\componentmain\componentmain\main.c(13): warning C4133: "Funktion": Inkompatible Typen - von "SPARKONTO *" zu "KREDITKONTO *"
+c:\users\wiela\onedrive\fh salzburg\master\1. semester\_vt - spezielle software-technologien\übung\banksst01\componentmain\componentmain\main.c(14): warning C4133: "Funktion": Inkompatible Typen - von "SPARKONTO *" zu "KREDITKONTO *"
+  ComponentMain.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe
   ComponentMain.vcxproj -> C:\Users\wiela\OneDrive\FH Salzburg\Master\1. Semester\_VT - Spezielle Software-Technologien\Übung\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.pdb (Full PDB)

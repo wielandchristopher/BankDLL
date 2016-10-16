@@ -4,6 +4,12 @@ Customer braucht eine Liste, in welcher alle evtl. Konten aufgelistet sind.
 Liste wird über JSON geregelt, sobald WriteUser etc vom Martin funktioniert. 
 
 Wenn implementiert, kann man vor dem Löschen eines USers auf evtl noch geöffneten Konten prüfen. 
+
+Funktionen: 
+
+KreditKonto kann bisher noch nicht persistent erstellt werden - nur SparKonto
+Funktion Überweisung überweist nur an ein ziel, hebt aber nicht von einem QuellKonto ab.
+users.json und konten.json wird nicht bearbeitet. es bleibt beim aller ersten eintrag. 
 */
 
 #include "Bank.h"
@@ -306,7 +312,6 @@ private:
 /* JSON -> File-I/O Funktionen */
 /* --------------------------- */
 
-
 /* Read a file and return the string */
 cJSON* readJsonFile_cJson(char *filename)
 {
@@ -403,7 +408,6 @@ bool writeJsonFile(char *filename, char* jobj) {
 /*      JSON - Obj Mapping      */
 /* ---------------------------- */
 
-
 /* Hilfsfunktion - Umwandlung cJSON to Customer */
 CUSTOMER* cJSONToCustomer(cJSON* customerItem) {
 
@@ -473,7 +477,6 @@ SPARKONTO* cJSONToSparkonto(cJSON* skItem) {
 /* ---------------------------- */
 /*        Hilfsfunktonen        */
 /* ---------------------------- */
-
 
 /* Hilfsfunktion - cJSON Object ausgeben*/
 void printObject(cJSON* obj) {
@@ -684,12 +687,12 @@ bool userExist(int id) {
 	return false;
 }
 
-/*  ---------------  */
-/*       KONTO       */
-/*  ---------------  */
+/*  -------------------  */
+/*       SPARKONTO       */
+/*  -------------------  */
 
-/* Sparkonto einlesen */
-SPARKONTO* readKonto(int ktnr) {
+// Sparkonto einlesen 
+SPARKONTO* readSparKonto(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KONTO_FILE);
 
 	if (fileObj == NULL) {
@@ -711,8 +714,8 @@ SPARKONTO* readKonto(int ktnr) {
 	return NULL; // wenn file leer dann kann er nichts lesen -> somit NULL
 }
 
-/* Sparkonto eintragen*/
-bool writeKonto(SPARKONTO* kt) {
+// Sparkonto eintragen
+bool writeSparKonto(SPARKONTO* kt) {
 
 	if (kontoExist(kt->getKontonummer())) {
 		cJSON * fileObj = readJsonFile_cJson(KONTO_FILE);
@@ -744,8 +747,8 @@ bool writeKonto(SPARKONTO* kt) {
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
 
-/* Sparkonto hinzufügen wenn noch nicht vorhanden*/
-bool addKonto(SPARKONTO* kt) {
+// Sparkonto hinzufügen wenn noch nicht vorhanden
+bool addSparKonto(SPARKONTO* kt) {
 	if (!kontoExist(kt->getKontonummer())) {
 		cJSON * fileObj = readJsonFile_cJson(KONTO_FILE);
 
@@ -774,8 +777,8 @@ bool addKonto(SPARKONTO* kt) {
 	return false;
 }
 
-/* Sparkonto mit kontonr löschen*/
-bool removeKonto(int ktnr) {
+// Sparkonto mit kontonr löschen
+bool removeSparKonto(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KONTO_FILE);
 
 	if (fileObj != NULL) {
@@ -803,7 +806,15 @@ bool removeKonto(int ktnr) {
 	return false;
 }
 
-/* True wenn konto vorhanden */
+/*  ---------------------  */
+/*       KREDITKONTO       */
+/*  ---------------------  */
+
+/* Noch in Bearbeitung */
+
+
+
+//Prüft die Existenz eines angegebenen Kontos, bei existenz = true
 bool kontoExist(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KONTO_FILE);
 
@@ -1145,7 +1156,7 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde) {
 	int SparKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
 	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-
+	addSparKonto(Konto);
 	return Konto;
 };
 SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2) {
@@ -1166,7 +1177,7 @@ SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2) {
 	Konto->setVerfüger(Kunde);
 	Konto->setoptVerfüger1(Kunde2);
 	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-
+	addSparKonto(Konto);
 	return Konto;
 };
 SPARKONTO* NeuesSparkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3) {
@@ -1187,7 +1198,7 @@ SPARKONTO* NeuesSparkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3) 
 	Konto->setoptVerfüger1(Kunde2);
 	Konto->setoptVerfüger2(Kunde3);
 	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-
+	addSparKonto(Konto);
 	return Konto;
 };
 SPARKONTO* NeuesSparkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4) {
@@ -1209,7 +1220,7 @@ SPARKONTO* NeuesSparkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, 
 	Konto->setoptVerfüger2(Kunde3);
 	Konto->setoptVerfüger3(Kunde4);
 	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-
+	addSparKonto(Konto);
 	return Konto;
 };
 KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde) {
@@ -1306,6 +1317,7 @@ void Sparkontoentfernen(SPARKONTO* Konto) {
 		LOGGING("Das übergebene Konto existiert nicht.", "ERROR");
 		return;
 	}
+	removeSparKonto(Konto->getKontonummer());
 	delete Konto;
 	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 }
