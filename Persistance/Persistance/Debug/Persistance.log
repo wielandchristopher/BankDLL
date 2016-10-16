@@ -1,0 +1,3 @@
+﻿  main.cpp
+c:\users\wiesorium\documents\visual studio 2013\projects\persistance\persistance\main.cpp(66): warning C4101: 'json': Unreferenzierte lokale Variable
+  Persistance.vcxproj -> c:\users\wiesorium\documents\visual studio 2013\Projects\Persistance\Debug\Persistance.exe
