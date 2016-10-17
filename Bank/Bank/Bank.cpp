@@ -1459,6 +1459,7 @@ void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
 	int kontonummer = waehrungsmodul->getKontonummer();
 	string kontonummerString = to_string(kontonummer);
 	string textFileName = kontonummerString.append("_Umrechnung.txt");
+	string waehrungsstring(waehrung);
 
 	if (fileExist(textFileName))
 	{
@@ -1466,25 +1467,25 @@ void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
 		remove(textFileName.c_str());
 	}
 
-	if (waehrung = "USD")
+	if (waehrungsstring == "USD")
 	{
 		// 1€ = 1.0971 USD
 		double waehrungsKontostand = kontostand * 1.0971;
 		createUmrechnungsFile(textFileName, "USD", kontostand, waehrungsKontostand);
 	}
-	else if (waehrung = "CHF")
+	else if (waehrungsstring == "CHF")
 	{
 		// 1€ = 1.0866 CHF
 		double waehrungsKontostand = kontostand * 1.0866;
 		createUmrechnungsFile(textFileName, "CHF", kontostand, waehrungsKontostand);
 	}
-	else if (waehrung = "GBP")
+	else if (waehrungsstring == "GBP")
 	{
 		// 1€ = 0.9003 GBP
 		double waehrungsKontostand = kontostand * 0.9003;
 		createUmrechnungsFile(textFileName, "GBP", kontostand, waehrungsKontostand);
 	}
-	else if (waehrung = "JPY")
+	else if (waehrungsstring == "JPY")
 	{
 		// 1€ = 114.315 JPY
 		double waehrungsKontostand = kontostand * 114.315;
