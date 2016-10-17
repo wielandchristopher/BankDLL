@@ -1,0 +1,15 @@
+{
+	"sparkonten":	[{
+			"Kontonummer":	10000001,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000004,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000007,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}]
+}

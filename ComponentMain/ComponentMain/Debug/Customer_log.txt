@@ -1,0 +1,10 @@
+17 10 2016 22:19:07 - OK: Der Kunde wurde erfolgreich angelegt.
+17 10 2016 22:19:07 - OK: Das SparKonto wurde erfolgreich erstellt.
+17 10 2016 22:19:07 - OK: Das KreditKonto wurde erfolgreich erstellt.
+17 10 2016 22:19:07 - OK: Der Kunde wurde erfolgreich angelegt.
+17 10 2016 22:19:07 - OK: Das KreditKonto wurde erfolgreich erstellt.
+17 10 2016 22:19:07 - OK: Eine Einzahlung wurde getaetigt.
+17 10 2016 22:19:07 - OK: Eine Abhebung wurde getaetigt.
+17 10 2016 22:19:07 - OK: Eine Einzahlung wurde getaetigt.
+17 10 2016 22:19:07 - OK: Eine Überweisung wurde getaetigt.
+17 10 2016 22:19:07 - OK: Ein Waehrungsmodul wurde getaetigt.

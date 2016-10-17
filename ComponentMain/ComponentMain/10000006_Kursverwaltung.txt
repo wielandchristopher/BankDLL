@@ -1,0 +1,6 @@
+Kursverwaltung 
+ 
+1 € 	 = 	 1.0971 USD 
+1 € 	 = 	 1.0866 CHF 
+1 € 	 = 	 0.9003 GBP 
+1 € 	 = 	 114.315 JPY 

@@ -1,6 +1,2 @@
-﻿  Main.c
-c:\users\kaschi\documents\github\banksst01\componentmain\componentmain\main.c(20): warning C4133: 'function': incompatible types - from 'SPARKONTO *' to 'KREDITKONTO *'
-c:\users\kaschi\documents\github\banksst01\componentmain\componentmain\main.c(21): warning C4133: 'function': incompatible types - from 'SPARKONTO *' to 'KREDITKONTO *'
-c:\users\kaschi\documents\github\banksst01\componentmain\componentmain\main.c(23): warning C4133: 'function': incompatible types - from 'SPARKONTO *' to 'KREDITKONTO *'
-  ComponentMain.vcxproj -> C:\Users\Kaschi\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe
-  ComponentMain.vcxproj -> C:\Users\Kaschi\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.pdb (Full PDB)
+﻿  ComponentMain.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe
+  ComponentMain.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.pdb (Full PDB)

@@ -1,7 +1,3 @@
 {
-	"konten":	[{
-			"Kontonummer":	10000001,
-			"Kontostand":	0,
-			"VerfügerID":	1
-		}]
+	"kontoct":	10000009
 }

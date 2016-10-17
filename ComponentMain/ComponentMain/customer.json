@@ -1,0 +1,42 @@
+{
+	"users":	[{
+			"vorname":	"Vorname",
+			"nachname":	"Hias",
+			"id":	1,
+			"geb":	"11.10.2016",
+			"addr":	"Musterstraﬂe 10",
+			"ort":	"5020 Salzburg",
+			"tel":	"06601234567",
+			"konto1":	10000008,
+			"konto2":	0,
+			"konto3":	0,
+			"konto4":	0,
+			"konto5":	0
+		}, {
+			"vorname":	"Karl",
+			"nachname":	"Lama",
+			"id":	2,
+			"geb":	"11.10.1994",
+			"addr":	"Musterstraﬂe 12",
+			"ort":	"5020 Salzburg",
+			"tel":	"06601234477",
+			"konto1":	10000009,
+			"konto2":	0,
+			"konto3":	0,
+			"konto4":	0,
+			"konto5":	0
+		}, {
+			"vorname":	"Karl",
+			"nachname":	"Lama",
+			"id":	3,
+			"geb":	"11.10.1994",
+			"addr":	"Musterstraﬂe 12",
+			"ort":	"5020 Salzburg",
+			"tel":	"06601234477",
+			"konto1":	0,
+			"konto2":	0,
+			"konto3":	0,
+			"konto4":	0,
+			"konto5":	0
+		}]
+}

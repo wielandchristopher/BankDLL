@@ -1,0 +1,8 @@
+Kontoauszug 
+ 
+Kontonummer: 10000004 	 BankSST 
+Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
+ 
+18 10 2016 01:09:55 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
+18 10 2016 01:09:55 	  	 	 	 	 	 -200.000000 
+18 10 2016 01:09:55 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

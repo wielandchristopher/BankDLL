@@ -1,0 +1,31 @@
+{
+	"kreditkonten":	[{
+			"Kontonummer":	10000002,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000003,
+			"Kontostand":	0,
+			"VerfügerID":	2
+		}, {
+			"Kontonummer":	10000001,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000005,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000006,
+			"Kontostand":	0,
+			"VerfügerID":	2
+		}, {
+			"Kontonummer":	10000008,
+			"Kontostand":	0,
+			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000009,
+			"Kontostand":	0,
+			"VerfügerID":	2
+		}]
+}

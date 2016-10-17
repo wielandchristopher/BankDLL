@@ -4,3 +4,24 @@ Kontonummer: 10000003 	 BankSST
 Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
  
 16 10 2016 21:51:08 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:20:53 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:21:10 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:30:50 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:31:39 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:33:32 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:34:53 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:35:18 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 22:35:42 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 23:16:50 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 23:17:37 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+17 10 2016 23:23:36 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:24:32 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:29:21 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:30:00 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:32:25 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:32:47 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:36:03 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:41:55 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:45:25 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 00:50:45 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 01:09:46 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 

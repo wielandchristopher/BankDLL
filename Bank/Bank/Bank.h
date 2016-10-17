@@ -46,7 +46,7 @@ extern "C" {
 	BANK_API void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung);
 	BANK_API void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul);
 	BANK_API WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto);
-
+	
 #ifdef __cplusplus
 }
 #endif
