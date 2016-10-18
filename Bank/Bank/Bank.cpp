@@ -44,6 +44,9 @@ bool kreditkontoExist(int ktnr);
 bool sparkontoExist(int ktnr);
 void writeCount(int);
 int readCount();
+int readUserCount();
+void writeUserCount(int);
+
 
 //generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 int generateKtnnr() {
@@ -60,10 +63,18 @@ int generateKtnnr() {
 //generateUserid erstellt eine neue UserID für jeden neuen User
 int generateUserid() {
 
+
+	int actNr = readUserCount();
+	actNr++;
+
+	writeUserCount(actNr);
+	return actNr;
+
+/*
 	static int Userid = 0;
 
 	Userid++;
-	return Userid;
+	return Userid;*/
 }
 
 /* ----------------- */
@@ -360,7 +371,6 @@ private:
 	char* empfaengername;
 	char* verwendungszweck;
 };
-
 class WAEHRUNGSMODUL
 {
 public:
@@ -505,6 +515,18 @@ bool writeJsonFile(char *filename, char* jobj) {
 	return true;
 }
 
+bool createUserCountFile() {
+	cJSON* saveObj = cJSON_CreateObject();
+	cJSON_AddItemToObject(saveObj, "userct", cJSON_CreateNumber(10000000));
+
+	if (writeJsonFile("User.json", saveObj)) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 bool createCreditNumberCountFile() {
 	cJSON* saveObj = cJSON_CreateObject();
 	cJSON_AddItemToObject(saveObj, "kontoct", cJSON_CreateNumber(10000000));
@@ -536,6 +558,28 @@ void writeCount(int ct) {
 	cJSON* newitem = cJSON_CreateNumber(ct);
 	cJSON_ReplaceItemInObject(jsn, "kontoct", newitem);
 	writeJsonFile("Konten.json", jsn);
+}
+
+int readUserCount() {
+
+
+	cJSON* jsn = readJsonFile_cJson("User.json");
+	if (jsn == NULL) {
+		createUserCountFile();
+		jsn = readJsonFile_cJson("User.json");
+	}
+
+	return cJSON_GetObjectItem(jsn, "userct")->valueint;
+}
+void writeUserCount(int ct) {
+	cJSON* jsn = readJsonFile_cJson("User.json");
+	if (jsn == NULL) {
+		createUserCountFile();
+		jsn = readJsonFile_cJson("User.json");
+	}
+	cJSON* newitem = cJSON_CreateNumber(ct);
+	cJSON_ReplaceItemInObject(jsn, "userct", newitem);
+	writeJsonFile("User.json", jsn);
 }
 /* ---------------------------- */
 /*      JSON - Obj Mapping      */
@@ -803,7 +847,7 @@ CUSTOMER* readUser(int id) {
 	}
 	else
 	{
-		cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+		cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT); 
 		int size = cJSON_GetArraySize(arr);
 
 		for (int x = 0; x < size; x++) {

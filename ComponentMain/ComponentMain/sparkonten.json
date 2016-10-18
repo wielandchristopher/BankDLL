@@ -11,5 +11,21 @@
 			"Kontonummer":	10000007,
 			"Kontostand":	0,
 			"VerfügerID":	1
+		}, {
+			"Kontonummer":	10000010,
+			"Kontostand":	0,
+			"VerfügerID":	10000001
+		}, {
+			"Kontonummer":	10000013,
+			"Kontostand":	0,
+			"VerfügerID":	10000001
+		}, {
+			"Kontonummer":	10000016,
+			"Kontostand":	0,
+			"VerfügerID":	10000001
+		}, {
+			"Kontonummer":	10000019,
+			"Kontostand":	0,
+			"VerfügerID":	10000004
 		}]
 }

@@ -1,0 +1,8 @@
+Kontoauszug 
+ 
+Kontonummer: 10000019 	 BankSST 
+Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
+ 
+18 10 2016 13:27:38 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
+18 10 2016 13:27:38 	  	 	 	 	 	 -200.000000 
+18 10 2016 13:27:38 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

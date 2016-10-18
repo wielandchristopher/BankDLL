@@ -1,16 +1,16 @@
 ﻿  Bank.cpp
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(73): warning C4099: 'CUSTOMER': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(73): note: see declaration of 'CUSTOMER'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(173): warning C4099: 'SPARKONTO': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(173): note: see declaration of 'SPARKONTO'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(239): warning C4099: 'KREDITKONTO': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(239): note: see declaration of 'KREDITKONTO'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(305): warning C4099: 'KONTOAUSZUG': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(305): note: see declaration of 'KONTOAUSZUG'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(314): warning C4099: 'UEBERWEISUNG': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(313): note: see declaration of 'UEBERWEISUNG'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(365): warning C4099: 'WAEHRUNGSMODUL': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(364): note: see declaration of 'WAEHRUNGSMODUL'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(455): warning C4101: 'json': unreferenced local variable
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(84): warning C4099: 'CUSTOMER': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(84): note: see declaration of 'CUSTOMER'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(184): warning C4099: 'SPARKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(184): note: see declaration of 'SPARKONTO'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(250): warning C4099: 'KREDITKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(250): note: see declaration of 'KREDITKONTO'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(316): warning C4099: 'KONTOAUSZUG': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(316): note: see declaration of 'KONTOAUSZUG'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(325): warning C4099: 'UEBERWEISUNG': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(324): note: see declaration of 'UEBERWEISUNG'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(375): warning C4099: 'WAEHRUNGSMODUL': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(374): note: see declaration of 'WAEHRUNGSMODUL'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(465): warning C4101: 'json': unreferenced local variable
   Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
   Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
