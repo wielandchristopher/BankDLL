@@ -31,22 +31,21 @@ extern "C" {
 	BANK_API void Kundendatenabfrage(CUSTOMER * Kunde);
 	BANK_API void Kundeentfernen(CUSTOMER* Kunde);
 	BANK_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde);
-	BANK_API SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2);
-	BANK_API SPARKONTO* NeuesSparkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3);
-	BANK_API SPARKONTO* NeuesSparkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4);
 	BANK_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde);
-	BANK_API KREDITKONTO* NeuesKreditkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2);
-	BANK_API KREDITKONTO* NeuesKreditkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3);
-	BANK_API KREDITKONTO* NeuesKreditkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4);
-	BANK_API void Sparkontoentfernen(SPARKONTO* Konto);
-	BANK_API void Kreditkontoentfernen(KREDITKONTO* Konto);
+	BANK_API void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger);
+	BANK_API void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger);
 	BANK_API void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag);
+	BANK_API void doSparen(SPARKONTO* zielkonto, char* verwendungszweck, double betrag);
 	BANK_API void doAbheben(KREDITKONTO* zielkonto, double betrag);
 	BANK_API UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, double betrag, char* verwendungszweck);
 	BANK_API void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung);
 	BANK_API void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul);
 	BANK_API WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto);
 	
+	BANK_API SPARKONTO* readSparKonto(int ktnr);
+	BANK_API KREDITKONTO* readKreditKonto(int ktnr);
+	BANK_API CUSTOMER* readUser(int id);
+
 #ifdef __cplusplus
 }
 #endif

@@ -3,4 +3,4 @@ Kontoauszug
 Kontonummer: 10000006 	 BankSST 
 Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
  
-18 10 2016 01:09:55 	 Testbetragüberweisung 	 	 	 	 	 -500.000000 
+18 10 2016 19:03:23 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

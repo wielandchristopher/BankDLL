@@ -1609,11 +1609,17 @@ cJSON *cJSON_GetArrayItem(const cJSON *array, int item)
 cJSON *cJSON_GetObjectItem(const cJSON *object, const char *string)
 {
     cJSON *c = object ? object->child : 0;
-    while (c && cJSON_strcasecmp(c->string, string))
+   
+	while (c && cJSON_strcasecmp(c->string, string))
     {
         c = c->next;
     }
-    return c;
+	if (c == NULL) {
+		return NULL;
+	}
+	else {
+		return c;
+	}
 }
 
 int cJSON_HasObjectItem(const cJSON *object,const char *string)

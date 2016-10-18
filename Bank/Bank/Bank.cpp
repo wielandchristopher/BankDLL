@@ -1,17 +1,3 @@
-/*
-Bei NeuesKonto muss ein Verweis zum Kunden hergestellt werden.
-Customer braucht eine Liste, in welcher alle evtl. Konten aufgelistet sind. 
-Liste wird über JSON geregelt, sobald WriteUser etc vom Martin funktioniert. 
-
-Wenn implementiert, kann man vor dem Löschen eines USers auf evtl noch geöffneten Konten prüfen. 
-
-Funktionen: 
-
-KreditKonto kann bisher noch nicht persistent erstellt werden - nur SparKonto
-Funktion Überweisung überweist nur an ein ziel, hebt aber nicht von einem QuellKonto ab.
-users.json und konten.json wird nicht bearbeitet. es bleibt beim aller ersten eintrag. 
-*/
-
 #include "Bank.h"
 #include <string>
 #include <time.h>
@@ -37,7 +23,10 @@ char* SPARKONTO_FILE = "sparkonten.json";
 char* SPARKONTO_ROOT = "sparkonten";
 char* KREDITKONTO_ROOT = "kreditkonten";
 char* USER_ROOT = "users";
+char* Kontocounterfilename = "Kontencounter.json";
+char* Usercounterfilename = "Usercounter.json";
 
+//initialisierungen
 CUSTOMER* readUser(int id);
 bool userExist(int id);
 bool kreditkontoExist(int ktnr);
@@ -47,34 +36,23 @@ int readCount();
 int readUserCount();
 void writeUserCount(int);
 
-
 //generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 int generateKtnnr() {
 
-	//static int Kontonummernpool = 10000000;
 	int actNr = readCount();
 	actNr++;
 	writeCount(actNr);
 
 	return actNr;
-	//Kontonummernpool++;
-	//return Kontonummernpool;
 }
 //generateUserid erstellt eine neue UserID für jeden neuen User
 int generateUserid() {
-
 
 	int actNr = readUserCount();
 	actNr++;
 
 	writeUserCount(actNr);
 	return actNr;
-
-/*
-	static int Userid = 0;
-
-	Userid++;
-	return Userid;*/
 }
 
 /* ----------------- */
@@ -159,10 +137,8 @@ public:
 		return this->ktnr5;
 	}
 
-
 	//Typidentifizierer
 	char* getClassId() {
-
 		return customer;
 	};
 
@@ -189,10 +165,6 @@ public:
 		setKontonummer(generateKtnnr());
 		this->Kontostand = 0;
 		this->Kontoverfüger = NULL;
-		this->optKontoverfüger1 = NULL;
-		this->optKontoverfüger2 = NULL;
-		this->optKontoverfüger3 = NULL;
-
 	}
 
 	//Getter und Setter der Daten
@@ -202,24 +174,7 @@ public:
 	void SPARKONTO::setVerfüger(CUSTOMER* _Kontoverfüger) {
 		this->Kontoverfüger = _Kontoverfüger;
 	}
-	CUSTOMER SPARKONTO::getoptVerfüger1() {
-		return *optKontoverfüger1;
-	}
-	void SPARKONTO::setoptVerfüger1(CUSTOMER* _optKontoverfüger) {
-		this->optKontoverfüger1 = _optKontoverfüger;
-	}
-	CUSTOMER SPARKONTO::getoptVerfüger2() {
-		return *optKontoverfüger2;
-	}
-	void SPARKONTO::setoptVerfüger2(CUSTOMER* _optKontoverfüger) {
-		this->optKontoverfüger2 = _optKontoverfüger;
-	}
-	CUSTOMER SPARKONTO::getoptVerfüger3() {
-		return *optKontoverfüger3;
-	}
-	void SPARKONTO::setoptVerfüger3(CUSTOMER* _optKontoverfüger) {
-		this->optKontoverfüger3 = _optKontoverfüger;
-	}
+
 	double SPARKONTO::getKontostand() {
 		return Kontostand;
 	}
@@ -243,9 +198,6 @@ private:
 	int Kontonummer;
 	double Kontostand;
 	CUSTOMER* Kontoverfüger;
-	CUSTOMER* optKontoverfüger1;
-	CUSTOMER* optKontoverfüger2;
-	CUSTOMER* optKontoverfüger3;
 };
 class KREDITKONTO {
 public:
@@ -255,10 +207,6 @@ public:
 		setKontonummer(generateKtnnr());
 		this->Kontostand = 0;
 		this->Kontoverfüger = NULL;
-		this->optKontoverfüger1 = NULL;
-		this->optKontoverfüger2 = NULL;
-		this->optKontoverfüger3 = NULL;
-
 	}
 
 	//Getter und Setter der Daten
@@ -267,24 +215,6 @@ public:
 	}
 	void KREDITKONTO::setVerfüger(CUSTOMER* _Kontoverfüger) {
 		this->Kontoverfüger = _Kontoverfüger;
-	}
-	CUSTOMER KREDITKONTO::getoptVerfüger1() {
-		return *optKontoverfüger1;
-	}
-	void KREDITKONTO::setoptVerfüger1(CUSTOMER* _optKontoverfüger) {
-		this->optKontoverfüger1 = _optKontoverfüger;
-	}
-	CUSTOMER KREDITKONTO::getoptVerfüger2() {
-		return *optKontoverfüger2;
-	}
-	void KREDITKONTO::setoptVerfüger2(CUSTOMER* _optKontoverfüger) {
-		this->optKontoverfüger2 = _optKontoverfüger;
-	}
-	CUSTOMER KREDITKONTO::getoptVerfüger3() {
-		return *optKontoverfüger3;
-	}
-	void KREDITKONTO::setoptVerfüger3(CUSTOMER* _optKontoverfüger) {
-		this->optKontoverfüger3 = _optKontoverfüger;
 	}
 	double KREDITKONTO::getKontostand() {
 		return Kontostand;
@@ -309,17 +239,6 @@ private:
 	int Kontonummer;
 	double Kontostand;
 	CUSTOMER* Kontoverfüger;
-	CUSTOMER* optKontoverfüger1;
-	CUSTOMER* optKontoverfüger2;
-	CUSTOMER* optKontoverfüger3;
-};
-class KONTOAUSZUG {
-public:
-	KONTOAUSZUG::KONTOAUSZUG()
-	{
-
-	}
-
 };
 class UEBERWEISUNG 
 {
@@ -419,6 +338,153 @@ private:
 	int kontonummer;
 };
 
+/* ----------------------------------- */
+/*   Funktionen zum Loggen der Daten   */
+/* ----------------------------------- */
+
+//Gibt die aktuelle Zeit in einem String aus
+string time_to_string() {
+
+	struct tm newtime;
+	__time64_t long_time;
+	char timebuf[26];
+	errno_t err;
+
+	// Get time as 64-bit integer.
+	_time64(&long_time);
+	err = _localtime64_s(&newtime, &long_time);
+	err = asctime_s(timebuf, 26, &newtime);
+	strftime(timebuf, sizeof(timebuf), "%d %m %Y %H:%M:%S", &newtime);
+	string str(timebuf);
+	return str;
+}
+// Loggt jeden Schritt mit.
+void LOGGING(char* Errortext, char* LEVEL) {
+
+	char *Errortxt = Errortext;
+	string stringtime = time_to_string();
+	const char *time = stringtime.c_str();
+	char *lvl = LEVEL;
+
+	fopen_s(&logfile, "Customer_log.txt", "a");
+	if (logfile == NULL)
+	{
+		printf("Das Logfile konnte nicht erstellt werden");
+	}
+
+	//Hier soll noch die Zeit drinnen stehen 
+	fprintf(logfile, time);
+	fprintf(logfile, " - ");
+	fprintf(logfile, lvl);
+	fprintf(logfile, ": ");
+	fprintf(logfile, Errortxt);
+	fprintf(logfile, "\n");
+
+	fclose(logfile);
+
+}
+// Testen, ob das besagte File schon existiert
+int fileExist(string name)
+{
+	const char* test = name.c_str();
+	struct stat buffer;
+	return (stat(test, &buffer) == 0);
+}
+
+// Initialisierung: Header für das Buchungs File wird erstellt
+void initializeBuchungen(int kontonummer, string textFileName)
+{
+	const char* fileName = textFileName.c_str();
+	fopen_s(&buchungsfile, fileName, "a");
+	if (buchungsfile == NULL)
+	{
+		LOGGING("Die Abbuchungsdatei konnte nicht erstellt werden", "ERROR");
+	}
+
+	fprintf(buchungsfile, "Kontoauszug \n \n");
+	fprintf(buchungsfile, "Kontonummer: %d \t BankSST \n", kontonummer);
+	fprintf(buchungsfile, "Datum \t \t \t Verwendungszweck \t \t \t \t \t Betrag \n \n");
+
+	fclose(buchungsfile);
+}
+void insertBuchungToFile(string textFileName, char* verwendungszweck, char* betrag)
+{
+	string stringtime = time_to_string();
+	const char *time = stringtime.c_str();
+
+	const char* fileName = textFileName.c_str();
+	fopen_s(&buchungsfile, fileName, "a");
+	if (buchungsfile == NULL)
+	{
+		LOGGING("Die Abbuchungsdatei konnte nicht erstellt werden", "ERROR");
+	}
+	fprintf(buchungsfile, "%s \t %s \t \t \t \t \t %s \n", time, verwendungszweck, betrag);
+	fclose(buchungsfile);
+}
+//Hilftsfunktion - für die Buchungsfunktion
+void BUCHUNGEN(char* verwendungszweck, char* betrag, string kontonummer)
+{
+	string textFileName = kontonummer.append("_Buchungen.txt");
+
+	if (!fileExist(textFileName))
+	{
+		initializeBuchungen(stoi(kontonummer), textFileName);
+
+		insertBuchungToFile(textFileName, verwendungszweck, betrag);
+	}
+	else
+	{
+		insertBuchungToFile(textFileName, verwendungszweck, betrag);
+	}
+}
+//Funktion, um die Getätigte Buchung/Überweisung in ein Logfile zu schreiben "Buchungen.txt"
+void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int art)
+{
+	if (art == 1)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
+	}
+	else if (art == 2)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+	}
+	else if (art == 3)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "+");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
+	}
+}
+void Sparnachweis(SPARKONTO* zielkonto, char* verwendungszweck, double betrag, int art)
+{
+	if (art == 1)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
+	}
+	else if (art == 2)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "-");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+	}
+	else if (art == 3)
+	{
+		string betragString = to_string(betrag);
+		betragString.insert(0, "+");
+		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+
+	}
+}
+
 /* --------------------------- */
 /* JSON -> File-I/O Funktionen */
 /* --------------------------- */
@@ -444,7 +510,7 @@ cJSON* readJsonFile_cJson(char *filename)
 		fclose(f);
 		json = cJSON_Parse(data);
 
-		if (!json) { printf("Error before: [%s]\n", cJSON_GetErrorPtr()); }
+		if (!json) { LOGGING("Fehler beim oeffnen der JSON Datei.", "ERROR"); }
 		else
 		{
 			free(data);
@@ -455,7 +521,6 @@ cJSON* readJsonFile_cJson(char *filename)
 
 	return NULL;
 }
-
 /* Read a file and return the string - NOT USED (IMO) */
 char* readJsonFile_char(char *filename)
 {
@@ -482,14 +547,13 @@ bool writeJsonFile(char *filename, cJSON * jobj) {
 	datei = fopen(filename, "w");
 	if (datei == NULL)
 	{
-		printf("Fehler beim oeffnen der Datei.");
+		LOGGING("Fehler beim oeffnen der JSON Datei.", "ERROR");
 		return 1;
 	}
 	fprintf(datei, cJSON_Print(jobj));
 	fclose(datei);
 	return true;
 }
-
 /* Write a json file with a filename and a char* element - NOT USED (IMO)*/
 bool writeJsonFile(char *filename, char* jobj) {
 
@@ -497,7 +561,7 @@ bool writeJsonFile(char *filename, char* jobj) {
 
 	if (!newjobj)
 	{
-		printf("Error before: [%s]\n", cJSON_GetErrorPtr());
+		LOGGING("Fehler beim oeffnen der JSON Datei.", "ERROR");
 		return false;
 	}
 	else
@@ -506,7 +570,7 @@ bool writeJsonFile(char *filename, char* jobj) {
 		datei = fopen(filename, "r+");
 		if (datei == NULL)
 		{
-			printf("Fehler beim oeffnen der Datei.");
+			LOGGING("Fehler beim oeffnen der JSON Datei.","ERROR");
 			return false;
 		}
 		fprintf(datei, cJSON_Print(newjobj));
@@ -514,24 +578,44 @@ bool writeJsonFile(char *filename, char* jobj) {
 	}
 	return true;
 }
-
+//Erstellt eine Datei zum zählen der bereits angelegten Kunden
 bool createUserCountFile() {
 	cJSON* saveObj = cJSON_CreateObject();
-	cJSON_AddItemToObject(saveObj, "userct", cJSON_CreateNumber(10000000));
+	cJSON_AddItemToObject(saveObj, "userct", cJSON_CreateNumber(0));
 
-	if (writeJsonFile("User.json", saveObj)) {
+	if (writeJsonFile(Usercounterfilename, saveObj)) {
 		return true;
 	}
 	else {
 		return false;
 	}
 }
+int readUserCount() {
 
+	cJSON* jsn = readJsonFile_cJson(Usercounterfilename);
+	if (jsn == NULL) {
+		createUserCountFile();
+		jsn = readJsonFile_cJson(Usercounterfilename);
+	}
+
+	return cJSON_GetObjectItem(jsn, "userct")->valueint;
+}
+void writeUserCount(int ct) {
+	cJSON* jsn = readJsonFile_cJson(Usercounterfilename);
+	if (jsn == NULL) {
+		createUserCountFile();
+		jsn = readJsonFile_cJson(Usercounterfilename);
+	}
+	cJSON* newitem = cJSON_CreateNumber(ct);
+	cJSON_ReplaceItemInObject(jsn, "userct", newitem);
+	writeJsonFile(Usercounterfilename, jsn);
+}
+//Erstellt eine Datei zum zählen der bereits angelegten Konten
 bool createCreditNumberCountFile() {
 	cJSON* saveObj = cJSON_CreateObject();
 	cJSON_AddItemToObject(saveObj, "kontoct", cJSON_CreateNumber(10000000));
 
-	if (writeJsonFile("konten.json", saveObj)) {
+	if (writeJsonFile(Kontocounterfilename, saveObj)) {
 		return true;
 	}
 	else {
@@ -541,46 +625,25 @@ bool createCreditNumberCountFile() {
 int readCount() {
 
 
-	cJSON* jsn = readJsonFile_cJson("Konten.json");
+	cJSON* jsn = readJsonFile_cJson(Kontocounterfilename);
 	if (jsn == NULL) {
 		createCreditNumberCountFile();
-		jsn = readJsonFile_cJson("Konten.json");
+		jsn = readJsonFile_cJson(Kontocounterfilename);
 	}
 
 	return cJSON_GetObjectItem(jsn, "kontoct")->valueint;
 }
 void writeCount(int ct) {
-	cJSON* jsn = readJsonFile_cJson("Konten.json");
+	cJSON* jsn = readJsonFile_cJson(Kontocounterfilename);
 	if (jsn == NULL) {
 		createCreditNumberCountFile();
-		jsn = readJsonFile_cJson("Konten.json");
+		jsn = readJsonFile_cJson(Kontocounterfilename);
 	}
 	cJSON* newitem = cJSON_CreateNumber(ct);
 	cJSON_ReplaceItemInObject(jsn, "kontoct", newitem);
-	writeJsonFile("Konten.json", jsn);
+	writeJsonFile(Kontocounterfilename, jsn);
 }
 
-int readUserCount() {
-
-
-	cJSON* jsn = readJsonFile_cJson("User.json");
-	if (jsn == NULL) {
-		createUserCountFile();
-		jsn = readJsonFile_cJson("User.json");
-	}
-
-	return cJSON_GetObjectItem(jsn, "userct")->valueint;
-}
-void writeUserCount(int ct) {
-	cJSON* jsn = readJsonFile_cJson("User.json");
-	if (jsn == NULL) {
-		createUserCountFile();
-		jsn = readJsonFile_cJson("User.json");
-	}
-	cJSON* newitem = cJSON_CreateNumber(ct);
-	cJSON_ReplaceItemInObject(jsn, "userct", newitem);
-	writeJsonFile("User.json", jsn);
-}
 /* ---------------------------- */
 /*      JSON - Obj Mapping      */
 /* ---------------------------- */
@@ -610,7 +673,6 @@ CUSTOMER* cJSONToCustomer(cJSON* customerItem) {
 	}
 	return NULL;
 }
-
 /* Hilfsfunktion - Umwandlung Customer to JSON */
 cJSON* customerTocJSON(CUSTOMER* cust) {
 
@@ -634,7 +696,6 @@ cJSON* customerTocJSON(CUSTOMER* cust) {
 	return NULL;
 
 }
-
 /* Hilfsfunktion - Umwandlung SPARKONTO to JSON */
 cJSON* sparkontoTocJSON(SPARKONTO* sk) {
 
@@ -644,40 +705,11 @@ cJSON* sparkontoTocJSON(SPARKONTO* sk) {
 		cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
 		cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
 		cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getVerfüger().getID()));
-		//CUSTOMER c = sk->getoptVerfüger1();
-		/*int id;
-		
-		if (c.getID() == NULL) {
-			cout << c.getID() << endl;
-		}*/
-		
-
-		//if (sk->getoptVerfüger1().getID() == NULL) {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger1ID", cJSON_CreateNumber(0));
-		//}
-		//else {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger1ID", cJSON_CreateNumber(sk->getoptVerfüger1().getID()));
-		//}
-	
-		//if (sk->getoptVerfüger2().getID() == NULL) {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger2ID", cJSON_CreateNumber(0));
-		//}
-		//else {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger2ID", cJSON_CreateNumber(sk->getoptVerfüger2().getID()));
-		//}
-		//if (sk->getoptVerfüger3().getID() == NULL) {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger3ID", cJSON_CreateNumber(0));
-		//}
-		//else {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger3ID", cJSON_CreateNumber(sk->getoptVerfüger3().getID()));
-		//}
-		
 
 		return kontoObject;
 	}
 	return NULL;
 }
-
 /* Hilfsfunktion - Umwandlung cJSON to SPARKONTO */
 SPARKONTO* cJSONToSparkonto(cJSON* skItem) {
 
@@ -686,16 +718,12 @@ SPARKONTO* cJSONToSparkonto(cJSON* skItem) {
 		newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
 		newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
 		newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
-		newktObj->setoptVerfüger1(readUser(cJSON_GetObjectItem(skItem, "optVerfüger1ID")->valueint));
-		newktObj->setoptVerfüger2(readUser(cJSON_GetObjectItem(skItem, "optVerfüger2ID")->valueint));
-		newktObj->setoptVerfüger3(readUser(cJSON_GetObjectItem(skItem, "optVerfüger3ID")->valueint));
-
+		
 		return newktObj;
 	}
 
 	return NULL;
 }
-
 /* Hilfsfunktion - Umwandlung Kreditkonto to JSON */
 cJSON* kreditkontoTocJSON(KREDITKONTO* sk) {
 
@@ -705,34 +733,11 @@ cJSON* kreditkontoTocJSON(KREDITKONTO* sk) {
 		cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
 		cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
 		cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getVerfüger().getID()));
-		//cout << "failss" << endl;
-		//if ((sk->getoptVerfüger1().getID()) == NULL) {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger1ID", cJSON_CreateNumber(0));
-		//	cout << "fail" << endl;
-		//}
-		//else {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger1ID", cJSON_CreateNumber(sk->getoptVerfüger1().getID()));
-		//	cout << "fail" << endl;
-		//}
-
-		//if ((sk->getoptVerfüger2().getID()) == NULL) {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger2ID", cJSON_CreateNumber(0));
-		//}
-		//else {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger2ID", cJSON_CreateNumber(sk->getoptVerfüger2().getID()));
-		//}
-		//if ((sk->getoptVerfüger3().getID()) == NULL) {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger3ID", cJSON_CreateNumber(0));
-		//}
-		//else {
-		//	cJSON_AddItemToObject(kontoObject, "optVerfüger3ID", cJSON_CreateNumber(sk->getoptVerfüger3().getID()));
-		//}
-		//cout << "fail" << endl;
+		
 		return kontoObject;
 	}
 	return NULL;
 }
-
 /* Hilfsfunktion - Umwandlung cJSON to kreditkonto */
 KREDITKONTO* cJSONToKreditkonto(cJSON* skItem) {
 
@@ -741,9 +746,6 @@ KREDITKONTO* cJSONToKreditkonto(cJSON* skItem) {
 		newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
 		newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
 		newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
-		newktObj->setoptVerfüger1(readUser(cJSON_GetObjectItem(skItem, "optVerfüger1ID")->valueint));
-		newktObj->setoptVerfüger2(readUser(cJSON_GetObjectItem(skItem, "optVerfüger2ID")->valueint));
-		newktObj->setoptVerfüger3(readUser(cJSON_GetObjectItem(skItem, "optVerfüger3ID")->valueint));
 
 		return newktObj;
 	}
@@ -754,16 +756,6 @@ KREDITKONTO* cJSONToKreditkonto(cJSON* skItem) {
 /* ---------------------------- */
 /*        Hilfsfunktonen        */
 /* ---------------------------- */
-
-/* Hilfsfunktion - cJSON Object ausgeben*/
-void printObject(cJSON* obj) {
-	if (obj != NULL) {
-		cout << cJSON_Print(obj) << endl;
-	}
-	else {
-		cout << "Auszugebenes cJSON objekt : NULL" << endl;
-	}
-}
 
 /* Hilfsfunktion - Vergleich der ID werte */
 bool checkItem(cJSON * item, int id) {
@@ -777,7 +769,6 @@ bool checkItem(cJSON * item, int id) {
 		return false;
 	}
 }
-
 /* Hilfsfunktion - Vergleich der ID werte von konten */
 bool checkKtItem(cJSON * item, int id) {
 
@@ -790,11 +781,10 @@ bool checkKtItem(cJSON * item, int id) {
 		return false;
 	}
 }
-
 /* Hilfsfunktion - wenn Userfile nicht existiert */
 bool createUserFile() {
 	cJSON* saveObj = cJSON_CreateObject();
-	cJSON_AddItemToObject(saveObj, "users", cJSON_CreateArray());
+	cJSON_AddItemToObject(saveObj, USER_ROOT, cJSON_CreateArray());
 
 	if (writeJsonFile(USER_FILE, saveObj)) {
 		return true;
@@ -803,7 +793,6 @@ bool createUserFile() {
 		return false;
 	}
 }
-
 /* Hilfsfunktion - wenn sparKontofile nicht existiert */
 bool createSparKontoFile() {
 	cJSON* saveObj = cJSON_CreateObject();
@@ -861,7 +850,6 @@ CUSTOMER* readUser(int id) {
 	}
 	return NULL; // return NULL wenn file leer
 }
-
 /* Überschreibt user, false wenn user nicht vorhanden (sollte nicht möglich sein) */
 bool writeUser(CUSTOMER* cust) {
 
@@ -869,7 +857,7 @@ bool writeUser(CUSTOMER* cust) {
 		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
 		if (fileObj != NULL) {
-			cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+			cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
 			int size = cJSON_GetArraySize(arr);
 
 			for (int x = 0; x < size; x++) {
@@ -877,7 +865,7 @@ bool writeUser(CUSTOMER* cust) {
 				if (checkItem(item, cust->getID())) {
 					cJSON_ReplaceItemInArray(arr, x, customerTocJSON(cust));
 					cJSON* saveObj = cJSON_CreateObject();
-					cJSON_AddItemToObject(saveObj, "users", arr);
+					cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
 
 					if (writeJsonFile(USER_FILE, saveObj)) {
 						return true;
@@ -894,7 +882,6 @@ bool writeUser(CUSTOMER* cust) {
 	}
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
-
 /* User hinzufügen wenn noch nicht vorhanden */
 bool addUser(CUSTOMER* cu) {
 
@@ -909,14 +896,14 @@ bool addUser(CUSTOMER* cu) {
 		}
 
 		if (fileObj != NULL) {
-			cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+			cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
 			int size = cJSON_GetArraySize(arr);
 
 			cJSON_AddItemToArray(arr, customerTocJSON(cu));
 			cJSON* saveObj = cJSON_CreateObject();
-			cJSON_AddItemToObject(saveObj, "users", arr);
+			cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
 
-			printObject(saveObj);
+			//printObject(saveObj);
 			if (writeJsonFile(USER_FILE, saveObj)) {
 				return true;
 			}
@@ -930,14 +917,13 @@ bool addUser(CUSTOMER* cu) {
 	}
 	return false;
 }
-
 /* user mit id löschen - achtung noch aktive konten?*/
 bool removeUser(int id) {
 
 	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
 	if (fileObj != NULL) {
-		cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+		cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
 
 		int size = cJSON_GetArraySize(arr);
 
@@ -947,7 +933,7 @@ bool removeUser(int id) {
 			if (checkItem(item, id)) {
 				cJSON_DeleteItemFromArray(arr, x);
 				cJSON* saveObj = cJSON_CreateObject();
-				cJSON_AddItemToObject(saveObj, "users", arr);
+				cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
 
 				if (writeJsonFile(USER_FILE, saveObj)) {
 					return true;
@@ -960,13 +946,12 @@ bool removeUser(int id) {
 	}
 	return false; // wenn file null dann false weil nicht removable
 }
-
 /* True wenn User vorhanden */
 bool userExist(int id) {
 	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
 	if (fileObj != NULL) {
-		cJSON * arr = cJSON_GetObjectItem(fileObj, "users");
+		cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
 		int size = cJSON_GetArraySize(arr);
 
 		for (int x = 0; x < size; x++) {
@@ -1001,11 +986,10 @@ SPARKONTO* readSparKonto(int ktnr) {
 				return cJSONToSparkonto(item);
 			}
 		}
-		cout << "konto nicht gefunden" << endl;
+		LOGGING("Sparkonto nicht gefunden", "ERROR");
 	}
 	return NULL; // wenn file leer dann kann er nichts lesen -> somit NULL
 }
-
 // Sparkonto eintragen
 bool writeSparKonto(SPARKONTO* kt) {
 
@@ -1038,7 +1022,6 @@ bool writeSparKonto(SPARKONTO* kt) {
 	}
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
-
 // Sparkonto hinzufügen wenn noch nicht vorhanden
 bool addSparKonto(SPARKONTO* kt) {
 	if (!sparkontoExist(kt->getKontonummer())) {
@@ -1053,7 +1036,7 @@ bool addSparKonto(SPARKONTO* kt) {
 			cJSON_AddItemToArray(arr, sparkontoTocJSON(kt));
 			cJSON* saveObj = cJSON_CreateObject();
 			cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
-			printObject(saveObj);
+			//printObject(saveObj);
 			if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
 				return true;
 			}
@@ -1064,7 +1047,6 @@ bool addSparKonto(SPARKONTO* kt) {
 	}
 	return false;
 }
-
 // Sparkonto mit kontonr löschen
 bool removeSparKonto(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
@@ -1093,12 +1075,30 @@ bool removeSparKonto(int ktnr) {
 	}
 	return false;
 }
+//Prüft, ob das angegebene SparKonto existiert
+bool sparkontoExist(int ktnr) {
+	cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+
+	if (fileObj != NULL) {
+		cJSON * arr = cJSON_GetObjectItem(fileObj, SPARKONTO_ROOT);
+		int size = cJSON_GetArraySize(arr);
+
+		for (int x = 0; x < size; x++) {
+			cJSON * item = cJSON_GetArrayItem(arr, x);
+			if (checkKtItem(item, ktnr)) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
 
 /*  ---------------------  */
 /*       KREDITKONTO       */
 /*  ---------------------  */
-// Sparkonto einlesen 
-SPARKONTO* readKreditKonto(int ktnr) {
+
+// Kreditkonto einlesen 
+KREDITKONTO* readKreditKonto(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
 	if (fileObj == NULL) {
@@ -1112,15 +1112,14 @@ SPARKONTO* readKreditKonto(int ktnr) {
 			cJSON * item = cJSON_GetArrayItem(arr, x);
 
 			if (checkKtItem(item, ktnr)) {
-				return cJSONToSparkonto(item);
+				return cJSONToKreditkonto(item);
 			}
 		}
-		cout << "konto nicht gefunden" << endl;
+		LOGGING("Kreditkonto nicht gefunden", "ERROR");
 	}
 	return NULL; // wenn file leer dann kann er nichts lesen -> somit NULL
 }
-
-// Sparkonto eintragen
+// Kreditkonto eintragen
 bool writeKreditKonto(KREDITKONTO* kt) {
 
 	if (kreditkontoExist(kt->getKontonummer())) {
@@ -1152,8 +1151,7 @@ bool writeKreditKonto(KREDITKONTO* kt) {
 	}
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
-
-// Sparkonto hinzufügen wenn noch nicht vorhanden
+// Kreditkonto hinzufügen wenn noch nicht vorhanden
 bool addKreditKonto(KREDITKONTO* kt) {
 	if (!kreditkontoExist(kt->getKontonummer())) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
@@ -1170,7 +1168,7 @@ bool addKreditKonto(KREDITKONTO* kt) {
 			cJSON* saveObj = cJSON_CreateObject();
 			cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
 
-			printObject(saveObj);
+			//printObject(saveObj);
 			if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
 				return true;
 			}
@@ -1181,8 +1179,7 @@ bool addKreditKonto(KREDITKONTO* kt) {
 	}
 	return false;
 }
-
-// Sparkonto mit kontonr löschen
+// Kreditkonto mit kontonr löschen
 bool removeKreditKonto(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
@@ -1210,7 +1207,7 @@ bool removeKreditKonto(int ktnr) {
 	}
 	return false;
 }
-
+//Prüft die Existenz eines angegebenen Kontos, bei existenz = true
 bool kreditkontoExist(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
@@ -1226,151 +1223,6 @@ bool kreditkontoExist(int ktnr) {
 		}
 	}
 	return false;
-}
-
-//Prüft die Existenz eines angegebenen Kontos, bei existenz = true
-bool sparkontoExist(int ktnr) {
-	cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
-
-	if (fileObj != NULL) {
-		cJSON * arr = cJSON_GetObjectItem(fileObj, "sparkonten");
-		int size = cJSON_GetArraySize(arr);
-
-		for (int x = 0; x < size; x++) {
-			cJSON * item = cJSON_GetArrayItem(arr, x);
-			if (checkKtItem(item, ktnr)) {
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-/* ----------------------------------- */
-/*   Funktionen zum Loggen der Daten   */
-/* ----------------------------------- */
-
-//Gibt die aktuelle Zeit in einem String aus
-string time_to_string() {
-
-	struct tm newtime;
-	__time64_t long_time;
-	char timebuf[26];
-	errno_t err;
-
-	// Get time as 64-bit integer.
-	_time64(&long_time);
-	err = _localtime64_s(&newtime, &long_time);
-	err = asctime_s(timebuf, 26, &newtime);
-	strftime(timebuf, sizeof(timebuf), "%d %m %Y %H:%M:%S", &newtime);
-	string str(timebuf);
-	return str;
-}
-// Loggt jeden Schritt mit.
-void LOGGING(char* Errortext, char* LEVEL) {
-
-	char *Errortxt = Errortext;
-	string stringtime = time_to_string();
-	const char *time = stringtime.c_str();
-	char *lvl = LEVEL;
-
-	fopen_s(&logfile, "Customer_log.txt", "a");
-	if (logfile == NULL)
-	{
-		printf("Das Logfile konnte nicht erstellt werden");
-	}
-
-	//Hier soll noch die Zeit drinnen stehen 
-	fprintf(logfile, time);
-	fprintf(logfile, " - ");
-	fprintf(logfile, lvl);
-	fprintf(logfile, ": ");
-	fprintf(logfile, Errortxt);
-	fprintf(logfile, "\n");
-
-	fclose(logfile);
-
-}
-
-// Testen, ob das besagte File schon existiert
-int fileExist(string name)
-{
-	const char* test = name.c_str();
-	struct stat buffer;
-	return (stat(test, &buffer) == 0);
-}
-
-// Initialisierung: Header für das Buchungs File wird erstellt
-void initializeBuchungen(int kontonummer, string textFileName)
-{
-	const char* fileName = textFileName.c_str();
-	fopen_s(&buchungsfile, fileName, "a");
-	if (buchungsfile == NULL)
-	{
-		printf("Die Abbuchungsdatei konnte nicht erstellt werden HIER");
-	}
-
-	fprintf(buchungsfile, "Kontoauszug \n \n");
-	fprintf(buchungsfile, "Kontonummer: %d \t BankSST \n", kontonummer);
-	fprintf(buchungsfile, "Datum \t \t \t Verwendungszweck \t \t \t \t \t Betrag \n \n");
-
-	fclose(buchungsfile);
-}
-void insertBuchungToFile(string textFileName, char* verwendungszweck, char* betrag)
-{
-	string stringtime = time_to_string();
-	const char *time = stringtime.c_str();
-
-	const char* fileName = textFileName.c_str();
-	fopen_s(&buchungsfile, fileName, "a");
-	if (buchungsfile == NULL)
-	{
-		printf("Die Abbuchungsdatei konnte nicht erstellt werden");
-	}
-	fprintf(buchungsfile, "%s \t %s \t \t \t \t \t %s \n", time, verwendungszweck, betrag);
-	fclose(buchungsfile);
-}
-
-//Hilftsfunktion - für die Buchungsfunktion
-void BUCHUNGEN(char* verwendungszweck, char* betrag, string kontonummer)
-{
-	string textFileName = kontonummer.append("_Buchungen.txt");
-
-	if (!fileExist(textFileName))
-	{
-		initializeBuchungen(stoi(kontonummer), textFileName);
-
-		insertBuchungToFile(textFileName, verwendungszweck, betrag);
-	}
-	else
-	{
-		insertBuchungToFile(textFileName, verwendungszweck, betrag);
-	}
-}
-
-//Funktion, um die Getätigte Buchung/Überweisung in ein Logfile zu schreiben "Buchungen.txt"
-void Buchen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag, int art)
-{
-	if (art == 1)
-	{
-		string betragString = to_string(betrag);
-		betragString.insert(0, "-");
-		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
-
-	}
-	else if (art == 2)
-	{
-		string betragString = to_string(betrag);
-		betragString.insert(0, "-");
-		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
-	}
-	else if (art == 3)
-	{
-		string betragString = to_string(betrag);
-		betragString.insert(0, "+");
-		BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
-
-	}
 }
 
 /* ------------------------- */
@@ -1402,9 +1254,12 @@ CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char*
 	Kunde->setKtnr5(0);
 
 	/* gibt false zurück wenn user nicht geadded werden konnte*/
-	addUser(Kunde);
-	LOGGING("Der Kunde wurde erfolgreich angelegt.", "OK");
-
+	if (addUser(Kunde) == true) {
+		LOGGING("Der Kunde wurde erfolgreich angelegt.", "OK");
+	}
+	else {
+		LOGGING("Bei der Erstellung des Kunden ist ein Fehler aufgetreten.", "ERROR");
+	}
 	return Kunde;
 }
 //Mit der Funktion Kundendatenänderung können fast alle Daten (Geburtsdatum wird sich nie ändern) eines bestehenden Kunden geändert werden.
@@ -1542,7 +1397,7 @@ void Kundendatenabfrage(CUSTOMER * Kunde) {
 void Kundeentfernen(CUSTOMER *Kunde) {
 
 	if (Kunde->getClassId() != "customer") {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
+		LOGGING("Es wurde das falsche Objekt übergeben.", "ERROR");
 		return;
 	}
 
@@ -1576,173 +1431,80 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde) {
 	SPARKONTO *Konto = new SPARKONTO();
 	int SparKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
-	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-	addSparKonto(Konto);
+	
+	if (Kunde->getKtnr1() == 0) {
+		Kunde->setKtnr1(Konto->getKontonummer());
+	}
+	else if(Kunde->getKtnr2() == 0){
+		Kunde->setKtnr2(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr3() == 0) {
+		Kunde->setKtnr3(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr4() == 0) {
+		Kunde->setKtnr4(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr5() == 0) {
+		Kunde->setKtnr5(Konto->getKontonummer());
+	}
+	else{
+		LOGGING("Ein Kunde kann nur maximal 5 Konten besitzen.","ERROR");
+	}
+	writeUser(Kunde);
+
+	if (addSparKonto(Konto) == true) {
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
+	}
+	else {
+		LOGGING("Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.", "ERROR");
+	}
 	return Konto;
 };
-SPARKONTO* NeuesSparkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2) {
-
-	if ((Kunde == NULL) || (Kunde2 == NULL)) {
-		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
-		return NULL;
-	}
-
-	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer")) {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
-	SPARKONTO *Konto = new SPARKONTO();
-	int SparKontonummer = Konto->getKontonummer();
-
-	Konto->setVerfüger(Kunde);
-	Konto->setoptVerfüger1(Kunde2);
-	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-	addSparKonto(Konto);
-	return Konto;
-};
-SPARKONTO* NeuesSparkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3) {
-
-	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL)) {
-		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
-		return NULL;
-	}
-	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer")) {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
-	SPARKONTO *Konto = new SPARKONTO();
-	int SparKontonummer = Konto->getKontonummer();
-
-	Konto->setVerfüger(Kunde);
-	Konto->setoptVerfüger1(Kunde2);
-	Konto->setoptVerfüger2(Kunde3);
-	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-	addSparKonto(Konto);
-	return Konto;
-};
-SPARKONTO* NeuesSparkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4) {
-
-	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL) || (Kunde4 == NULL)) {
-		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
-		return NULL;
-	}
-	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer") || (Kunde4->getClassId() != "customer")) {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
-	SPARKONTO *Konto = new SPARKONTO();
-	int SparKontonummer = Konto->getKontonummer();
-
-	Konto->setVerfüger(Kunde);
-	Konto->setoptVerfüger1(Kunde2);
-	Konto->setoptVerfüger2(Kunde3);
-	Konto->setoptVerfüger3(Kunde4);
-	LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
-	addSparKonto(Konto);
-	return Konto;
-};
-
-
 KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde) {
 
 	if (Kunde == NULL) {
 		LOGGING("\nEs existiert kein Kunde, welcher auf das Konto zugewiesen werden kann", "ERROR");
 		return NULL;
 	}
-
 	if (Kunde->getClassId() != "customer") {
 		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
 		return NULL;
 	}
 
-
-
 	KREDITKONTO *Konto = new KREDITKONTO();
 	int KreditKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
 
-	// TODO für andere methoden
-	//CUSTOMER* cust = readUser(Kunde->getID());
 	if (Kunde->getKtnr1() == 0) {
-		Kunde->setKtnr1(Konto->getKontonummer()); // ACHTUNG vorher überprüfen ob KTNR vorher 0 sonst wird etwas bestehendes überschrieben
+		Kunde->setKtnr1(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr2() == 0) {
+		Kunde->setKtnr2(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr3() == 0) {
+		Kunde->setKtnr3(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr4() == 0) {
+		Kunde->setKtnr4(Konto->getKontonummer());
+	}
+	else if (Kunde->getKtnr5() == 0) {
+		Kunde->setKtnr5(Konto->getKontonummer());
 	}
 	else {
-		Kunde->setKtnr2(Konto->getKontonummer());
+		LOGGING("Ein Kunde kann nur maximal 5 Konten besitzen.", "ERROR");
 	}
 	writeUser(Kunde);
 
-	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-	addKreditKonto(Konto);
-	return Konto;
-};
-KREDITKONTO* NeuesKreditkonto2(CUSTOMER* Kunde, CUSTOMER* Kunde2) {
-
-	if ((Kunde == NULL) || (Kunde2 == NULL)) {
-		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
-		return NULL;
+	if (addKreditKonto(Konto) == true) {
+		LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
 	}
-	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer")) {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
+	else {
+		LOGGING("Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.", "ERROR");
 	}
-
-	KREDITKONTO *Konto = new KREDITKONTO();
-	int SparKontonummer = Konto->getKontonummer();
-
-	Konto->setVerfüger(Kunde);
-	Konto->setoptVerfüger1(Kunde2);
-	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-	addKreditKonto(Konto);
-	return Konto;
-};
-KREDITKONTO* NeuesKreditkonto3(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3) {
-
-	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL)) {
-		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
-		return NULL;
-	}
-	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer")) {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
-	KREDITKONTO *Konto = new KREDITKONTO();
-	int SparKontonummer = Konto->getKontonummer();
-
-	Konto->setVerfüger(Kunde);
-	Konto->setoptVerfüger1(Kunde2);
-	Konto->setoptVerfüger2(Kunde3);
-	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-	addKreditKonto(Konto);
-	return Konto;
-};
-KREDITKONTO* NeuesKreditkonto4(CUSTOMER* Kunde, CUSTOMER* Kunde2, CUSTOMER* Kunde3, CUSTOMER* Kunde4) {
-
-	if ((Kunde == NULL) || (Kunde2 == NULL) || (Kunde3 == NULL) || (Kunde4 == NULL)) {
-		LOGGING("Es existiert kein Kunde, welcher auf das Konto zugewiesen werden kann.", "ERROR");
-		return NULL;
-	}
-	if ((Kunde->getClassId() != "customer") || (Kunde2->getClassId() != "customer") || (Kunde3->getClassId() != "customer") || (Kunde4->getClassId() != "customer")) {
-		LOGGING("Es wurde kein Kunde übergeben.", "ERROR");
-		return NULL;
-	}
-
-	KREDITKONTO *Konto = new KREDITKONTO();
-	int SparKontonummer = Konto->getKontonummer();
-
-	Konto->setVerfüger(Kunde);
-	Konto->setoptVerfüger1(Kunde2);
-	Konto->setoptVerfüger2(Kunde3);
-	Konto->setoptVerfüger3(Kunde4);
-	LOGGING("Das KreditKonto wurde erfolgreich erstellt.", "OK");
-	addKreditKonto(Konto);
 	return Konto;
 };
 //Die Funktion Sparkontoentfernen entfernt das übergebene SparKonto mit der Funktion delete
-void Sparkontoentfernen(SPARKONTO* Konto) {
+void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger) {
 
 	if (Konto->getClassId() != "sparkonto") {
 		LOGGING("Es wurde kein SparKonto übergeben.", "ERROR");
@@ -1753,12 +1515,32 @@ void Sparkontoentfernen(SPARKONTO* Konto) {
 		LOGGING("Das übergebene Konto existiert nicht.", "ERROR");
 		return;
 	}
-	removeSparKonto(Konto->getKontonummer());
-	delete Konto;
-	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
+
+	if (removeSparKonto(Konto->getKontonummer()) == true) {
+		delete Konto;
+		if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
+	}
+	else {
+		LOGGING("Bei der Löschung des Kontos ist ein Fehler aufgetreten", "ERROR");
+	}
 }
 //Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
-void Kreditkontoentfernen(KREDITKONTO* Konto) {
+void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger) {
 
 	if (Konto->getClassId() != "kreditkonto") {
 		LOGGING("Es wurde kein KreditKonto übergeben.", "ERROR");
@@ -1769,14 +1551,37 @@ void Kreditkontoentfernen(KREDITKONTO* Konto) {
 		LOGGING("Das übergebene Konto existiert nicht", "ERROR");
 		return;
 	}
-	removeKreditKonto(Konto->getKontonummer());
-	delete Konto;
-	LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
+
+	if (removeKreditKonto(Konto->getKontonummer()) == true) {
+		delete Konto;
+		if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
+			Verfüger->setKtnr1(0);
+		}
+		LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
+	}
+	else {
+		LOGGING("Bei der Löschung des Kontos ist ein Fehler aufgetreten", "ERROR");
+	}
 }
 
+/* ------------------ */
+/*  Kontofunktionen   */
+/* ------------------ */
+
 //Funktionen zum Überweisen, Einzahlen und Abheben
-void doAbheben(KREDITKONTO* zielkonto, double betrag) 
-{
+void doAbheben(KREDITKONTO* zielkonto, double betrag) {
 
 	double newKontostand = zielkonto->getKontostand() - betrag;
 	zielkonto->setKontostand(newKontostand);
@@ -1785,8 +1590,7 @@ void doAbheben(KREDITKONTO* zielkonto, double betrag)
 	LOGGING("Eine Abhebung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 2);
 }
-void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag)
-{
+void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) {
 
 	double newKontostand = zielkonto->getKontostand() + betrag;
 	zielkonto->setKontostand(newKontostand);
@@ -1794,15 +1598,19 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag)
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 3);
 }
-UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, double betrag, char* verwendungszweck)
-{
+void doSparen(SPARKONTO* zielkonto, char* verwendungszweck, double betrag) {
+	double newKontostand = zielkonto->getKontostand() + betrag;
+	zielkonto->setKontostand(newKontostand);
+
+	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
+	Sparnachweis(zielkonto, verwendungszweck, betrag, 3);
+}
+UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, double betrag, char* verwendungszweck) {
+	
 	string Verfügervorname = zielkonto->getVerfüger().getVorname();
 	string Verfügernachname = zielkonto->getVerfüger().getNachname();
 	string Verfügername = Verfügervorname + Verfügernachname;
 	char* cVerfügername = (char*)Verfügername.c_str();
-
-	//double newKontostand = zielkonto->getKontostand() + betrag;
-	//zielkonto->setKontostand(newKontostand);
 
 	// Mit doEinzahlen - scheint am anderen Konto im Kontoauszug auf
 	doEinzahlen(zielkonto, verwendungszweck, betrag);
@@ -1823,13 +1631,17 @@ UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, 
 	return ueberweisung;
 }
 
+/* ---------------- */
+/*  Währungsmodul   */
+/* ---------------- */
+
 void createUmrechnungsFile(string textFileName, char* waehrung, double kontostand, double waehrungsKontostand)
 {
 	const char* fileName = textFileName.c_str();
 	fopen_s(&umrechnungsFile, fileName, "a");
 	if (umrechnungsFile == NULL)
 	{
-		printf("Die Abbuchungsdatei konnte nicht erstellt werden HIER");
+		LOGGING("Die Abbuchungsdatei konnte nicht erstellt werden HIER","ERROR");
 	}
 
 	fprintf(umrechnungsFile, "Umrechnung von Euro zu %s \n \n", waehrung);
@@ -1837,7 +1649,6 @@ void createUmrechnungsFile(string textFileName, char* waehrung, double kontostan
 	fprintf(umrechnungsFile, "Kontostand in %s: \t %f", waehrung, waehrungsKontostand);
 	fclose(umrechnungsFile);
 }
-
 void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
 {
 	double kontostand = waehrungsmodul->getkontostand();
@@ -1881,21 +1692,19 @@ void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
 		LOGGING("Waehrungsmodul: Falscher Input.", "ERROR");
 	}
 }
-
 void createKursverwaltungsFile(string textFileName)
 {
 	const char* fileName = textFileName.c_str();
 	fopen_s(&kursverwaltungsFile, fileName, "a");
 	if (kursverwaltungsFile == NULL)
 	{
-		printf("Die Abbuchungsdatei konnte nicht erstellt werden HIER");
+		LOGGING("Die Abbuchungsdatei konnte nicht erstellt werden HIER", "ERROR");
 	}
 
 	fprintf(kursverwaltungsFile, "Kursverwaltung \n \n");
 	fprintf(kursverwaltungsFile, "1 € \t = \t 1.0971 USD \n1 € \t = \t 1.0866 CHF \n1 € \t = \t 0.9003 GBP \n1 € \t = \t 114.315 JPY \n");
 	fclose(kursverwaltungsFile);
 }
-
 void kursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
 {
 	int kontonummer = waehrungsmodul->getKontonummer();
@@ -1910,19 +1719,16 @@ void kursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
 
 	createKursverwaltungsFile(textFileName);
 }
-
 // Funktionen für die C-Schnittstelle
 // USD, CHF, GBP, JPY
 void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung)
 {
 	umrechnung(waehrungsmmodul, waehrung);
 }
-
 void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
 {
 	kursverwaltung(waehrungsmodul);
 }
-
 WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto)
 {
 	double kontostand = konto->getKontostand();

@@ -3,6 +3,6 @@ Kontoauszug
 Kontonummer: 10000019 	 BankSST 
 Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
  
-18 10 2016 13:27:38 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-18 10 2016 13:27:38 	  	 	 	 	 	 -200.000000 
-18 10 2016 13:27:38 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 
+18 10 2016 20:20:20 	 Meister des Einzahlens 	 	 	 	 	 +5100.000000 
+18 10 2016 20:20:20 	  	 	 	 	 	 -100.000000 
+18 10 2016 20:20:20 	 Ich bin auch ein ueberweisungsgenie 	 	 	 	 	 -1000.000000 

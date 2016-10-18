@@ -1,0 +1,7 @@
+Kontoauszug 
+ 
+Kontonummer: 10000017 	 BankSST 
+Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
+ 
+18 10 2016 20:20:08 	 Meister des Einzahlens 	 	 	 	 	 +5100.000000 
+18 10 2016 20:20:08 	  	 	 	 	 	 -100.000000 

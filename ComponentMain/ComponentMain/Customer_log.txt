@@ -1,485 +1,62 @@
-15 10 2016 18:35:57 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 17:42:34 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 17:44:40 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:16:31 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:23:26 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:23:26 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:23:26 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 19:23:26 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:23:26 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:25:03 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:25:03 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:25:03 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 19:25:03 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:25:03 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:25:22 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:25:22 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:25:22 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 19:25:22 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:25:22 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:25:36 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:25:36 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:25:36 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 19:25:36 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:25:36 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:27:25 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:27:25 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:27:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 19:27:25 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:27:25 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:27:43 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:27:43 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:27:43 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 19:27:43 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:27:43 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:35:54 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:35:54 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:35:54 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:35:54 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 19:41:15 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 19:41:15 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 19:41:15 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 19:41:15 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 21:29:48 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:29:48 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 21:29:48 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:29:48 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 21:45:25 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:45:25 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 21:45:25 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:45:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:45:25 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:45:25 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 21:45:25 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:45:25 - OK: Eine Überweisung wurde getaetigt.
-16 10 2016 21:45:25 - OK: Ein Waehrungsmodul wurde getaetigt.
-16 10 2016 21:48:52 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:48:52 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 21:48:52 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:48:52 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:48:52 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:48:52 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:48:52 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 21:48:52 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:48:52 - OK: Eine Überweisung wurde getaetigt.
-16 10 2016 21:48:52 - OK: Ein Waehrungsmodul wurde getaetigt.
-16 10 2016 21:50:19 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:50:19 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 21:50:19 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:50:19 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:50:19 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:50:19 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:50:19 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 21:50:19 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:50:19 - OK: Eine Überweisung wurde getaetigt.
-16 10 2016 21:50:19 - OK: Ein Waehrungsmodul wurde getaetigt.
-16 10 2016 21:51:08 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:51:08 - OK: Das SparKonto wurde erfolgreich erstellt.
-16 10 2016 21:51:08 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:51:08 - OK: Der Kunde wurde erfolgreich angelegt.
-16 10 2016 21:51:08 - OK: Das KreditKonto wurde erfolgreich erstellt.
-16 10 2016 21:51:08 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:51:08 - OK: Eine Abhebung wurde getaetigt.
-16 10 2016 21:51:08 - OK: Eine Einzahlung wurde getaetigt.
-16 10 2016 21:51:08 - OK: Eine Überweisung wurde getaetigt.
-16 10 2016 21:51:08 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:20:53 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:20:53 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:20:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:20:53 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:20:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:20:53 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:20:53 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:20:53 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:20:53 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:20:53 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:21:10 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:21:10 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:21:10 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:21:10 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:21:10 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:21:10 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:21:10 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:21:10 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:21:10 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:21:10 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:30:50 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:30:50 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:30:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:30:50 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:30:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:30:50 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:30:50 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:30:50 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:30:50 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:30:50 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:31:39 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:31:39 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:31:39 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:31:39 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:31:39 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:31:39 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:31:39 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:31:39 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:31:39 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:31:39 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:33:32 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:33:32 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:33:32 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:33:32 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:33:32 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:33:32 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:33:32 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:33:32 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:33:32 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:33:32 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:34:53 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:34:53 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:34:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:34:53 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:34:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:34:53 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:34:53 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:34:53 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:34:53 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:34:53 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:35:18 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:35:18 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:35:18 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:35:18 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:35:18 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:35:18 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:35:18 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:35:18 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:35:18 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:35:18 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:35:18 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 22:35:42 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:35:42 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 22:35:42 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:35:42 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:35:42 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 22:35:42 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 22:35:42 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:35:42 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 22:35:42 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 22:35:42 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 22:35:42 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 23:16:50 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:16:50 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:16:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:16:50 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:16:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:16:50 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:16:50 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 23:16:50 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 23:16:50 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 23:16:50 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 23:16:50 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 23:17:37 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:17:37 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:17:37 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:17:37 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:17:37 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:17:37 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:17:37 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 23:17:37 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 23:17:37 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 23:17:37 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 23:17:37 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 23:23:36 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:23:36 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:23:36 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:23:36 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:23:36 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:23:36 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:23:36 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 23:23:36 - OK: Eine Abhebung wurde getaetigt.
-17 10 2016 23:23:36 - OK: Eine Einzahlung wurde getaetigt.
-17 10 2016 23:23:36 - OK: Eine Überweisung wurde getaetigt.
-17 10 2016 23:23:36 - OK: Ein Waehrungsmodul wurde getaetigt.
-17 10 2016 23:23:51 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:23:51 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:25:32 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:25:32 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:29:18 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:29:18 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:32:12 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:32:12 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:34:32 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:34:32 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:35:01 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:35:01 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:35:16 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:35:16 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:36:16 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:36:16 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:36:31 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:36:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:37:53 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:37:56 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:39:39 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:44:21 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:44:21 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:45:25 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:45:25 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:45:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-17 10 2016 23:46:57 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:46:57 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:49:03 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:49:03 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:53:42 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:53:42 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:54:08 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:54:08 - OK: Das SparKonto wurde erfolgreich erstellt.
-17 10 2016 23:58:21 - OK: Der Kunde wurde erfolgreich angelegt.
-17 10 2016 23:58:21 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:00:37 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:00:37 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:01:21 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:01:21 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:03:23 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:03:23 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:03:23 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:09:31 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:09:31 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:09:31 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:14:45 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:14:45 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:14:45 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:15:01 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:15:01 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:15:01 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:17:53 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:17:53 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:17:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:18:21 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:18:21 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:18:21 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:22:22 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:22:22 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:22:22 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:23:43 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:23:43 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:23:43 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:24:32 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:24:32 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:24:32 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:24:32 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:24:32 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:24:32 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:24:32 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:24:32 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:24:32 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:24:32 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:24:32 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:29:21 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:29:21 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:29:21 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:29:21 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:29:21 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:29:21 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:29:21 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:29:21 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:29:21 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:29:21 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:29:21 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:30:00 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:30:00 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:30:00 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:30:00 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:30:00 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:30:00 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:30:00 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:30:00 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:30:00 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:30:00 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:30:00 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:32:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:32:25 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:32:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:32:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:32:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:32:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:32:25 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:32:25 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:32:25 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:32:25 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:32:25 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:32:47 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:32:47 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:32:47 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:32:47 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:32:47 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:32:47 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:32:47 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:32:47 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:32:47 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:32:47 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:32:47 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:36:03 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:36:03 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:36:03 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:36:03 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:36:03 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:36:03 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:36:03 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:36:03 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:36:03 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:36:03 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:36:03 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:36:26 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:36:26 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:40:48 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:40:48 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:41:21 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:41:21 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:41:55 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:41:55 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:41:55 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:41:55 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:41:55 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:41:55 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:41:55 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:41:55 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:41:55 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:41:55 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:41:55 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:45:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:45:25 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:45:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:45:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:45:25 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:45:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:45:25 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:45:25 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:45:25 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:45:25 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:45:25 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 00:45:48 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:45:48 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:49:06 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:49:06 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:50:25 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:50:25 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:50:45 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:50:45 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 00:50:45 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:50:45 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:50:45 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 00:50:45 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 00:50:45 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:50:45 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 00:50:45 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 00:50:45 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 00:50:45 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 01:07:38 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:38 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:38 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:38 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:38 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:38 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:38 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:07:38 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 01:07:38 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:07:38 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 01:07:38 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 01:07:48 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:48 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:48 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:48 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:48 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:48 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:48 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:07:48 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 01:07:48 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:07:48 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 01:07:48 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 01:07:59 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:59 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:59 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:59 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:59 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:07:59 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:07:59 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:07:59 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 01:07:59 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:07:59 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 01:07:59 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 01:09:46 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:09:46 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 01:09:46 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:09:46 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:09:46 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:09:46 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:09:46 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:09:46 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 01:09:46 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:09:46 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 01:09:46 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 01:09:55 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:09:55 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 01:09:55 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:09:55 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:09:55 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:09:55 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:09:55 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:09:55 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 01:09:55 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:09:55 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 01:09:55 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 01:10:05 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:10:05 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 01:10:05 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:10:05 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:10:05 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 01:10:05 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 01:10:05 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:10:05 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 01:10:05 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 01:10:05 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 01:10:05 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 12:58:53 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 12:58:53 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 12:58:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 12:58:53 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 12:58:53 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 12:58:53 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 12:58:53 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 12:58:53 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 12:58:53 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 12:58:53 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 12:58:53 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 12:59:50 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 12:59:50 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 12:59:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 12:59:50 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 12:59:50 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 12:59:50 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 12:59:50 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 12:59:50 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 12:59:50 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 12:59:50 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 12:59:50 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 13:00:30 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 13:00:30 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 13:00:30 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 13:00:30 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 13:00:30 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 13:00:30 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 13:00:30 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 13:00:30 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 13:00:30 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 13:00:30 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 13:00:30 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 13:27:38 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 13:27:38 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 13:27:38 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 13:27:38 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 13:27:38 - OK: Das KreditKonto wurde erfolgreich erstellt.
-18 10 2016 13:27:38 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 13:27:38 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 13:27:38 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 13:27:38 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 13:27:38 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 13:27:38 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 18:47:40 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 18:47:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 18:47:40 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 18:47:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 18:47:40 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 18:47:40 - OK: Eine Abhebung wurde getaetigt.
+18 10 2016 18:47:40 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 18:47:40 - OK: Eine Überweisung wurde getaetigt.
+18 10 2016 18:47:40 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 18:49:40 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 18:49:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 18:49:40 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 18:49:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 18:49:40 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 18:49:40 - OK: Eine Abhebung wurde getaetigt.
+18 10 2016 18:49:40 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 18:49:40 - OK: Eine Überweisung wurde getaetigt.
+18 10 2016 18:49:40 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 19:03:23 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 19:03:23 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:03:23 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 19:03:23 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:03:23 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 19:03:23 - OK: Eine Abhebung wurde getaetigt.
+18 10 2016 19:03:23 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 19:03:23 - OK: Eine Überweisung wurde getaetigt.
+18 10 2016 19:03:23 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 19:05:40 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:05:40 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 19:05:40 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 19:05:40 - OK: Eine Abhebung wurde getaetigt.
+18 10 2016 19:05:40 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 19:05:40 - OK: Eine Überweisung wurde getaetigt.
+18 10 2016 19:05:40 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 20:20:08 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 20:20:08 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 20:20:08 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 20:20:08 - OK: Eine Abhebung wurde getaetigt.
+18 10 2016 20:20:08 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 20:20:08 - OK: Das Konto wurde erfolgreich entfernt.
+18 10 2016 20:20:20 - OK: Der Kunde wurde erfolgreich angelegt.
+18 10 2016 20:20:20 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 10 2016 20:20:20 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 20:20:20 - OK: Eine Abhebung wurde getaetigt.
+18 10 2016 20:20:20 - OK: Eine Einzahlung wurde getaetigt.
+18 10 2016 20:20:20 - OK: Eine Überweisung wurde getaetigt.
+18 10 2016 20:20:20 - OK: Ein Waehrungsmodul wurde getaetigt.
+18 10 2016 20:20:20 - OK: Das Konto wurde erfolgreich entfernt.
+18 10 2016 20:20:20 - OK: Das Konto wurde erfolgreich entfernt.
+18 10 2016 20:28:06 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:28:48 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:30:44 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:31:41 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:33:33 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:34:32 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:35:25 - ERROR: Sparkonto nicht gefunden
+18 10 2016 20:51:52 - ERROR: Sparkonto nicht gefunden

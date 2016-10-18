@@ -1,8 +1,0 @@
-Kontoauszug 
- 
-Kontonummer: 10000013 	 BankSST 
-Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
- 
-18 10 2016 12:59:50 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-18 10 2016 12:59:50 	  	 	 	 	 	 -200.000000 
-18 10 2016 12:59:50 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

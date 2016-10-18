@@ -1,16 +1,15 @@
 ﻿  Bank.cpp
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(84): warning C4099: 'CUSTOMER': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(84): note: see declaration of 'CUSTOMER'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(184): warning C4099: 'SPARKONTO': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(184): note: see declaration of 'SPARKONTO'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(250): warning C4099: 'KREDITKONTO': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(250): note: see declaration of 'KREDITKONTO'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(316): warning C4099: 'KONTOAUSZUG': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(316): note: see declaration of 'KONTOAUSZUG'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(325): warning C4099: 'UEBERWEISUNG': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(324): note: see declaration of 'UEBERWEISUNG'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(375): warning C4099: 'WAEHRUNGSMODUL': type name first seen using 'struct' now seen using 'class'
-  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(374): note: see declaration of 'WAEHRUNGSMODUL'
-c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(465): warning C4101: 'json': unreferenced local variable
-  Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
-  Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(62): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(62): note: Siehe Deklaration von "CUSTOMER"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(160): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(160): note: Siehe Deklaration von "SPARKONTO"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(202): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(202): note: Siehe Deklaration von "KREDITKONTO"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(244): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(243): note: Siehe Deklaration von "UEBERWEISUNG"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(294): warning C4099: "WAEHRUNGSMODUL": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(293): note: Siehe Deklaration von "WAEHRUNGSMODUL"
+c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(530): warning C4101: "json": Unreferenzierte lokale Variable
+     Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.exp" werden erstellt.
+  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
+  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)

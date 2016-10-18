@@ -4,28 +4,24 @@
 			"Kontostand":	0,
 			"VerfügerID":	1
 		}, {
-			"Kontonummer":	10000004,
+			"Kontonummer":	10000003,
 			"Kontostand":	0,
-			"VerfügerID":	1
+			"VerfügerID":	3
+		}, {
+			"Kontonummer":	10000005,
+			"Kontostand":	0,
+			"VerfügerID":	5
 		}, {
 			"Kontonummer":	10000007,
 			"Kontostand":	0,
-			"VerfügerID":	1
+			"VerfügerID":	7
+		}, {
+			"Kontonummer":	10000008,
+			"Kontostand":	0,
+			"VerfügerID":	7
 		}, {
 			"Kontonummer":	10000010,
 			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000013,
-			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000016,
-			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000019,
-			"Kontostand":	0,
-			"VerfügerID":	10000004
+			"VerfügerID":	7
 		}]
 }

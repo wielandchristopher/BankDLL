@@ -1,8 +1,0 @@
-Kontoauszug 
- 
-Kontonummer: 10000010 	 BankSST 
-Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
- 
-18 10 2016 12:58:53 	 erste Einzahlung aufs Konto 	 	 	 	 	 +1000.000000 
-18 10 2016 12:58:53 	  	 	 	 	 	 -200.000000 
-18 10 2016 12:58:53 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

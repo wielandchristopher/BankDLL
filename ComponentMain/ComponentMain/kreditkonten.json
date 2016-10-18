@@ -2,62 +2,18 @@
 	"kreditkonten":	[{
 			"Kontonummer":	10000002,
 			"Kontostand":	0,
-			"VerfügerID":	1
-		}, {
-			"Kontonummer":	10000003,
-			"Kontostand":	0,
 			"VerfügerID":	2
 		}, {
-			"Kontonummer":	10000001,
+			"Kontonummer":	10000004,
 			"Kontostand":	0,
-			"VerfügerID":	1
-		}, {
-			"Kontonummer":	10000005,
-			"Kontostand":	0,
-			"VerfügerID":	1
+			"VerfügerID":	4
 		}, {
 			"Kontonummer":	10000006,
 			"Kontostand":	0,
-			"VerfügerID":	2
-		}, {
-			"Kontonummer":	10000008,
-			"Kontostand":	0,
-			"VerfügerID":	1
-		}, {
-			"Kontonummer":	10000009,
-			"Kontostand":	0,
-			"VerfügerID":	2
+			"VerfügerID":	6
 		}, {
 			"Kontonummer":	10000011,
 			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000012,
-			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000014,
-			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000015,
-			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000017,
-			"Kontostand":	0,
-			"VerfügerID":	10000001
-		}, {
-			"Kontonummer":	10000018,
-			"Kontostand":	0,
-			"VerfügerID":	10000002
-		}, {
-			"Kontonummer":	10000020,
-			"Kontostand":	0,
-			"VerfügerID":	10000004
-		}, {
-			"Kontonummer":	10000021,
-			"Kontostand":	0,
-			"VerfügerID":	10000005
+			"VerfügerID":	8
 		}]
 }
