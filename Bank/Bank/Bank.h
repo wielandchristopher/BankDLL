@@ -41,16 +41,13 @@ extern "C" {
 	BANK_API void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung);
 	BANK_API void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul);
 	BANK_API WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto);
-	
 	BANK_API int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust);
 	BANK_API int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust);
-
+	
 	BANK_API int searchUser(char* vorname, char* nachname, char* geb);
 	BANK_API SPARKONTO* readSparKonto(int ktnr);
 	BANK_API KREDITKONTO* readKreditKonto(int ktnr);
 	BANK_API CUSTOMER* readUser(int id);
-
-
 
 #ifdef __cplusplus
 }

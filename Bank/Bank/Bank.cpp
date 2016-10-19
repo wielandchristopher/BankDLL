@@ -60,8 +60,6 @@ int generateUserid() {
 }
 
 
-
-
 /* ----------------- */
 /* Benötigte Klassen */
 /* ----------------- */
@@ -69,7 +67,7 @@ int generateUserid() {
 class CUSTOMER {
 public:
 
-	//Getter und Setter der Kundendaten
+	//Getter / Setter
 	char* CUSTOMER::getVorname() {
 		return Vorname;
 	};
@@ -112,7 +110,6 @@ public:
 	void CUSTOMER::setID(int _id) {
 		this->id = _id;
 	};
-	
 	void CUSTOMER::setKtnr1(int nr) {
 		this->ktnr1 = nr;
 	}
@@ -166,6 +163,30 @@ private:
 };
 class SPARKONTO {
 public:
+	//Fügt dem Konto einen neuen/zusätzlichen Verfüger hinzu
+	bool SPARKONTO::addKontoverfüger(int id) {
+		if (ktvf1 == 0) {
+			this->ktvf1 = id;
+		}
+		else if (ktvf2 == 0) {
+			this->ktvf2 = id;
+		}
+		else if (ktvf3 == 0) {
+			this->ktvf3 = id;
+		}
+		else if (ktvf4 == 0) {
+			this->ktvf4 = id;
+		}
+		else if (ktvf5 == 0) {
+			this->ktvf5 = id;
+		}
+		else {
+			LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
+			return false;
+		}
+		return true;
+	}
+	
 	SPARKONTO::SPARKONTO()
 	{
 		this->sparkonto = "sparkonto";
@@ -178,7 +199,7 @@ public:
 		this->ktvf4 = 0;
 		this->ktvf5 = 0;
 	}
-
+	//Getter / Setter
 	void SPARKONTO::setKontoverfüger(int ct, int id) {
 		switch (ct) {
 		case 1:
@@ -200,7 +221,6 @@ public:
 			break;
 		}
 	}
-
 	int SPARKONTO::getKontoverfüger(int ct) {
 		switch (ct) {
 		case 1:
@@ -217,35 +237,9 @@ public:
 			break;
 		}
 	}
-	
-	bool SPARKONTO::addKontoverfüger(int id) {
-		if (ktvf1 == 0) {
-			this->ktvf1 = id;			
-		}
-		else if (ktvf2 == 0) {
-			this->ktvf2 = id;
-		}
-		else if (ktvf3 == 0) {
-			this->ktvf3 = id;
-		}
-		else if (ktvf4 == 0) {
-			this->ktvf4 = id;
-		}
-		else if (ktvf5 == 0) {
-			this->ktvf5 = id;
-		}
-		else {
-			LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
-			return false;
-		}
-		return true;
-	}
-
 	void SPARKONTO::setVerfüger(CUSTOMER* _Kontoverfüger) {
 		this->Kontoverfüger = _Kontoverfüger;
 	}
-
-
 	double SPARKONTO::getKontostand() {
 		return Kontostand;
 	}
@@ -285,46 +279,7 @@ public:
 		this->ktvf4 = 0;
 		this->ktvf5 = 0;
 	}
-
-	void KREDITKONTO::setKontoverfüger(int ct, int id) {
-		switch (ct) {
-		case 1:
-			this->ktvf1 = id;
-			break;
-		case 2:
-			this->ktvf2 = id;
-			break;
-		case 3:
-			this->ktvf3 = id;
-			break;
-		case 4:
-			this->ktvf4 = id;
-			break;
-		case 5:
-			this->ktvf5 = id;
-			break;
-		default:
-			break;
-		}
-	}
-
-	int KREDITKONTO::getKontoverfüger(int ct) {
-		switch (ct) {
-		case 1:
-			return this->ktvf1;
-		case 2:
-			return this->ktvf2;
-		case 3:
-			return this->ktvf3;
-		case 4:
-			return this->ktvf4;
-		case 5:
-			return this->ktvf5;
-		default:
-			break;
-		}
-	}
-
+	//Fügt einen neuen Verfüger zum Konto hinzu
 	bool KREDITKONTO::addKontoverfüger(int id) {
 		if (ktvf1 == 0) {
 			this->ktvf1 = id;
@@ -366,6 +321,43 @@ public:
 	}
 	void KREDITKONTO::setKontonummer(int _Kontonummer) {
 		this->Kontonummer = _Kontonummer;
+	}
+	void KREDITKONTO::setKontoverfüger(int ct, int id) {
+		switch (ct) {
+		case 1:
+			this->ktvf1 = id;
+			break;
+		case 2:
+			this->ktvf2 = id;
+			break;
+		case 3:
+			this->ktvf3 = id;
+			break;
+		case 4:
+			this->ktvf4 = id;
+			break;
+		case 5:
+			this->ktvf5 = id;
+			break;
+		default:
+			break;
+		}
+	}
+	int KREDITKONTO::getKontoverfüger(int ct) {
+		switch (ct) {
+		case 1:
+			return this->ktvf1;
+		case 2:
+			return this->ktvf2;
+		case 3:
+			return this->ktvf3;
+		case 4:
+			return this->ktvf4;
+		case 5:
+			return this->ktvf5;
+		default:
+			break;
+		}
 	}
 	//Typidentifizierer
 	char* getClassId() {
@@ -477,26 +469,6 @@ private:
 	double kontostand;
 	int kontonummer;
 };
-
-
-
-int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust) {
-
-	int userid = cust->getID();
-	if (sk->addKontoverfüger(userid)) {
-		writeSparKonto(sk);
-		return 1;
-	}
-	return 0;
-}
-int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust) {
-	int userid = cust->getID();
-	if (kk->addKontoverfüger(userid)) {
-		writeKreditKonto(kk);
-		return 1;
-	}
-	return 0;
-}
 
 /* ----------------------------------- */
 /*   Funktionen zum Loggen der Daten   */
@@ -1156,7 +1128,6 @@ bool checkUserItem(cJSON* item, char* vorname, char* nachname, char* geb) {
 
 	return false;
 }
-
 int searchUser(char* vorname, char* nachname, char* geb) {
 
 	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
@@ -1310,6 +1281,16 @@ bool sparkontoExist(int ktnr) {
 	}
 	return false;
 }
+//Fügt dem Sparkonto einen neuen Verfüger hinzu
+int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust) {
+
+	int userid = cust->getID();
+	if (sk->addKontoverfüger(userid)) {
+		writeSparKonto(sk);
+		return 1;
+	}
+	return 0;
+}
 
 /*  ---------------------  */
 /*       KREDITKONTO       */
@@ -1441,6 +1422,15 @@ bool kreditkontoExist(int ktnr) {
 		}
 	}
 	return false;
+}
+//Fügt dem KreditKonto einen neuen Verfüger hinzu
+int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust) {
+	int userid = cust->getID();
+	if (kk->addKontoverfüger(userid)) {
+		writeKreditKonto(kk);
+		return 1;
+	}
+	return 0;
 }
 
 /* ------------------------- */
@@ -1634,8 +1624,7 @@ void Kundeentfernen(CUSTOMER *Kunde) {
 /*   Funktionen der Konten   */
 /* ------------------------- */
 
-//Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu. der 2. parameter lässt zu, 
-//dass mehrere Kunden ein Konto besitzen können. Es können maximal 4 Kunden über ein Konto verfügen. Übergeben wird hier 1-4. 
+//Die Funktionen für ein neues Konto erstellt ein neues Kredit-/Sparkonto und weißt das dem übergebenen Kunden zu.
 SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde) {
 
 	if (Kunde == NULL) {
