@@ -35,6 +35,10 @@ void writeCount(int);
 int readCount();
 int readUserCount();
 void writeUserCount(int);
+void LOGGING(char* Errortext, char* LEVEL);
+
+bool writeSparKonto(SPARKONTO*);
+bool writeKreditKonto(KREDITKONTO*);
 
 //generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 int generateKtnnr() {
@@ -54,6 +58,9 @@ int generateUserid() {
 	writeUserCount(actNr);
 	return actNr;
 }
+
+
+
 
 /* ----------------- */
 /* Benötigte Klassen */
@@ -165,15 +172,79 @@ public:
 		setKontonummer(generateKtnnr());
 		this->Kontostand = 0;
 		this->Kontoverfüger = NULL;
+		this->ktvf1 = 0;
+		this->ktvf2 = 0;
+		this->ktvf3 = 0;
+		this->ktvf4 = 0;
+		this->ktvf5 = 0;
 	}
 
-	//Getter und Setter der Daten
-	CUSTOMER SPARKONTO::getVerfüger() {
-		return *Kontoverfüger;
+	void SPARKONTO::setKontoverfüger(int ct, int id) {
+		switch (ct) {
+		case 1:
+			this->ktvf1 = id;
+			break;
+		case 2:
+			this->ktvf2 = id;
+			break;
+		case 3:
+			this->ktvf3 = id;
+			break;
+		case 4:
+			this->ktvf4 = id;
+			break;
+		case 5:
+			this->ktvf5 = id;
+			break;
+		default:
+			break;
+		}
 	}
+
+	int SPARKONTO::getKontoverfüger(int ct) {
+		switch (ct) {
+		case 1:
+			return this->ktvf1;
+		case 2:
+			return this->ktvf2;
+		case 3:
+			return this->ktvf3;
+		case 4:
+			return this->ktvf4;
+		case 5:
+			return this->ktvf5;
+		default:
+			break;
+		}
+	}
+	
+	bool SPARKONTO::addKontoverfüger(int id) {
+		if (ktvf1 == 0) {
+			this->ktvf1 = id;			
+		}
+		else if (ktvf2 == 0) {
+			this->ktvf2 = id;
+		}
+		else if (ktvf3 == 0) {
+			this->ktvf3 = id;
+		}
+		else if (ktvf4 == 0) {
+			this->ktvf4 = id;
+		}
+		else if (ktvf5 == 0) {
+			this->ktvf5 = id;
+		}
+		else {
+			LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
+			return false;
+		}
+		return true;
+	}
+
 	void SPARKONTO::setVerfüger(CUSTOMER* _Kontoverfüger) {
 		this->Kontoverfüger = _Kontoverfüger;
 	}
+
 
 	double SPARKONTO::getKontostand() {
 		return Kontostand;
@@ -198,6 +269,7 @@ private:
 	int Kontonummer;
 	double Kontostand;
 	CUSTOMER* Kontoverfüger;
+	int ktvf1, ktvf2, ktvf3, ktvf4, ktvf5;
 };
 class KREDITKONTO {
 public:
@@ -207,6 +279,73 @@ public:
 		setKontonummer(generateKtnnr());
 		this->Kontostand = 0;
 		this->Kontoverfüger = NULL;
+		this->ktvf1 = 0;
+		this->ktvf2 = 0;
+		this->ktvf3 = 0;
+		this->ktvf4 = 0;
+		this->ktvf5 = 0;
+	}
+
+	void KREDITKONTO::setKontoverfüger(int ct, int id) {
+		switch (ct) {
+		case 1:
+			this->ktvf1 = id;
+			break;
+		case 2:
+			this->ktvf2 = id;
+			break;
+		case 3:
+			this->ktvf3 = id;
+			break;
+		case 4:
+			this->ktvf4 = id;
+			break;
+		case 5:
+			this->ktvf5 = id;
+			break;
+		default:
+			break;
+		}
+	}
+
+	int KREDITKONTO::getKontoverfüger(int ct) {
+		switch (ct) {
+		case 1:
+			return this->ktvf1;
+		case 2:
+			return this->ktvf2;
+		case 3:
+			return this->ktvf3;
+		case 4:
+			return this->ktvf4;
+		case 5:
+			return this->ktvf5;
+		default:
+			break;
+		}
+	}
+
+	bool KREDITKONTO::addKontoverfüger(int id) {
+		if (ktvf1 == 0) {
+			this->ktvf1 = id;
+		}
+		else if (ktvf2 == 0) {
+			this->ktvf2 = id;
+		}
+		else if (ktvf3 == 0) {
+			this->ktvf3 = id;
+		}
+		else if (ktvf4 == 0) {
+			this->ktvf4 = id;
+		}
+		else if (ktvf5 == 0) {
+			this->ktvf5 = id;
+		}
+		else {
+			LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
+			return false;
+		}
+		return true;
 	}
 
 	//Getter und Setter der Daten
@@ -239,6 +378,7 @@ private:
 	int Kontonummer;
 	double Kontostand;
 	CUSTOMER* Kontoverfüger;
+	int ktvf1, ktvf2, ktvf3, ktvf4, ktvf5;
 };
 class UEBERWEISUNG 
 {
@@ -337,6 +477,26 @@ private:
 	double kontostand;
 	int kontonummer;
 };
+
+
+
+int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust) {
+
+	int userid = cust->getID();
+	if (sk->addKontoverfüger(userid)) {
+		writeSparKonto(sk);
+		return 1;
+	}
+	return 0;
+}
+int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust) {
+	int userid = cust->getID();
+	if (kk->addKontoverfüger(userid)) {
+		writeKreditKonto(kk);
+		return 1;
+	}
+	return 0;
+}
 
 /* ----------------------------------- */
 /*   Funktionen zum Loggen der Daten   */
@@ -527,7 +687,6 @@ char* readJsonFile_char(char *filename)
 	FILE *f;
 	long len;
 	char *data;
-	cJSON *json;
 
 	f = fopen(filename, "rb");
 	fseek(f, 0, SEEK_END);
@@ -704,7 +863,13 @@ cJSON* sparkontoTocJSON(SPARKONTO* sk) {
 
 		cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
 		cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
-		cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getVerfüger().getID()));
+
+
+		cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getKontoverfüger(1)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID2", cJSON_CreateNumber(sk->getKontoverfüger(2)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID3", cJSON_CreateNumber(sk->getKontoverfüger(3)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID4", cJSON_CreateNumber(sk->getKontoverfüger(4)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID5", cJSON_CreateNumber(sk->getKontoverfüger(5)));
 
 		return kontoObject;
 	}
@@ -717,7 +882,12 @@ SPARKONTO* cJSONToSparkonto(cJSON* skItem) {
 		SPARKONTO* newktObj = new SPARKONTO();
 		newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
 		newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
-		newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
+		//newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
+		newktObj->setKontoverfüger(1, cJSON_GetObjectItem(skItem, "VerfügerID")->valueint);
+		newktObj->setKontoverfüger(2, cJSON_GetObjectItem(skItem, "VerfügerID2")->valueint);
+		newktObj->setKontoverfüger(3, cJSON_GetObjectItem(skItem, "VerfügerID3")->valueint);
+		newktObj->setKontoverfüger(4, cJSON_GetObjectItem(skItem, "VerfügerID4")->valueint);
+		newktObj->setKontoverfüger(5, cJSON_GetObjectItem(skItem, "VerfügerID5")->valueint);
 		
 		return newktObj;
 	}
@@ -732,8 +902,12 @@ cJSON* kreditkontoTocJSON(KREDITKONTO* sk) {
 
 		cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
 		cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
-		cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getVerfüger().getID()));
-		
+		cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getKontoverfüger(1)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID2", cJSON_CreateNumber(sk->getKontoverfüger(2)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID3", cJSON_CreateNumber(sk->getKontoverfüger(3)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID4", cJSON_CreateNumber(sk->getKontoverfüger(4)));
+		cJSON_AddItemToObject(kontoObject, "VerfügerID5", cJSON_CreateNumber(sk->getKontoverfüger(5)));
+
 		return kontoObject;
 	}
 	return NULL;
@@ -745,7 +919,12 @@ KREDITKONTO* cJSONToKreditkonto(cJSON* skItem) {
 		KREDITKONTO* newktObj = new KREDITKONTO();
 		newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
 		newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
-		newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
+		//newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
+		newktObj->setKontoverfüger(1, cJSON_GetObjectItem(skItem, "VerfügerID")->valueint);
+		newktObj->setKontoverfüger(2, cJSON_GetObjectItem(skItem, "VerfügerID2")->valueint);
+		newktObj->setKontoverfüger(3, cJSON_GetObjectItem(skItem, "VerfügerID3")->valueint);
+		newktObj->setKontoverfüger(4, cJSON_GetObjectItem(skItem, "VerfügerID4")->valueint);
+		newktObj->setKontoverfüger(5, cJSON_GetObjectItem(skItem, "VerfügerID5")->valueint);
 
 		return newktObj;
 	}
@@ -964,12 +1143,51 @@ bool userExist(int id) {
 	return false;
 }
 
+bool checkUserItem(cJSON* item, char* vorname, char* nachname, char* geb) {
+
+	char* vornameItem = cJSON_GetObjectItem(item, "vorname")->valuestring;
+	char* nachnameItem = cJSON_GetObjectItem(item, "nachname")->valuestring;
+	char* gebItem = cJSON_GetObjectItem(item, "geb")->valuestring;
+
+
+	if (!strcmp(vorname, vornameItem) && !strcmp(nachname, nachnameItem) && !strcmp(geb, gebItem)) {
+		return true;
+	}
+
+	return false;
+}
+
+int searchUser(char* vorname, char* nachname, char* geb) {
+
+	cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+
+	if (fileObj == NULL) {
+		createUserFile();
+	}
+	else
+	{
+		cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
+		int size = cJSON_GetArraySize(arr);
+
+		for (int x = 0; x < size; x++) {
+			cJSON * item = cJSON_GetArrayItem(arr, x);
+
+			if (checkUserItem(item, vorname, nachname, geb)) {
+				return cJSON_GetObjectItem(item, "id")->valueint;			
+			}
+		}
+		LOGGING("user nicht gefunden", "ERROR");
+	}
+	return -1; // return -1 wenn user nicht vorhanden
+
+}
 /*  -------------------  */
 /*       SPARKONTO       */
 /*  -------------------  */
 
 // Sparkonto einlesen 
 SPARKONTO* readSparKonto(int ktnr) {
+
 	cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
 	if (fileObj == NULL) {
@@ -1431,6 +1649,8 @@ SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde) {
 	SPARKONTO *Konto = new SPARKONTO();
 	int SparKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
+
+	Konto->addKontoverfüger(Kunde->getID());
 	
 	if (Kunde->getKtnr1() == 0) {
 		Kunde->setKtnr1(Konto->getKontonummer());
@@ -1474,6 +1694,8 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde) {
 	KREDITKONTO *Konto = new KREDITKONTO();
 	int KreditKontonummer = Konto->getKontonummer();
 	Konto->setVerfüger(Kunde);
+
+	Konto->addKontoverfüger(Kunde->getID());
 
 	if (Kunde->getKtnr1() == 0) {
 		Kunde->setKtnr1(Konto->getKontonummer());

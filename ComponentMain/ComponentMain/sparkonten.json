@@ -2,10 +2,18 @@
 	"sparkonten":	[{
 			"Kontonummer":	10000001,
 			"Kontostand":	0,
-			"VerfügerID":	2
+			"VerfügerID":	6,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0
 		}, {
 			"Kontonummer":	10000002,
 			"Kontostand":	0,
-			"VerfügerID":	3
+			"VerfügerID":	11,
+			"VerfügerID2":	12,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0
 		}]
 }

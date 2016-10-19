@@ -1,14 +1,3 @@
-﻿  Bank.cpp
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(62): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(62): note: Siehe Deklaration von "CUSTOMER"
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(160): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(160): note: Siehe Deklaration von "SPARKONTO"
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(202): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(202): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(244): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(243): note: Siehe Deklaration von "UEBERWEISUNG"
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(294): warning C4099: "WAEHRUNGSMODUL": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(293): note: Siehe Deklaration von "WAEHRUNGSMODUL"
-c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(530): warning C4101: "json": Unreferenzierte lokale Variable
-  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
-  Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
+﻿     Creating library C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.lib and object C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.exp
+  Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
+  Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
