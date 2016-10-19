@@ -15,5 +15,29 @@
 			"VerfügerID3":	0,
 			"VerfügerID4":	0,
 			"VerfügerID5":	0
+		}, {
+			"Kontonummer":	10000003,
+			"Kontostand":	0,
+			"VerfügerID":	16,
+			"VerfügerID2":	17,
+			"VerfügerID3":	18,
+			"VerfügerID4":	19,
+			"VerfügerID5":	20
+		}, {
+			"Kontonummer":	10000004,
+			"Kontostand":	0,
+			"VerfügerID":	21,
+			"VerfügerID2":	22,
+			"VerfügerID3":	23,
+			"VerfügerID4":	24,
+			"VerfügerID5":	25
+		}, {
+			"Kontonummer":	10000005,
+			"Kontostand":	0,
+			"VerfügerID":	26,
+			"VerfügerID2":	27,
+			"VerfügerID3":	28,
+			"VerfügerID4":	29,
+			"VerfügerID5":	30
 		}]
 }
