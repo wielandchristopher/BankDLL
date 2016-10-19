@@ -1,8 +1,0 @@
-Kontoauszug 
- 
-Kontonummer: 10000019 	 BankSST 
-Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
- 
-18 10 2016 20:20:20 	 Meister des Einzahlens 	 	 	 	 	 +5100.000000 
-18 10 2016 20:20:20 	  	 	 	 	 	 -100.000000 
-18 10 2016 20:20:20 	 Ich bin auch ein ueberweisungsgenie 	 	 	 	 	 -1000.000000 

@@ -4,10 +4,12 @@
 
 int main(){
 
-	CUSTOMER* hias = readUser(7);
-	SPARKONTO* sparmeister = readSparKonto(10000009);
+	//CUSTOMER* hias = NeuerKunde("test","test", "10.10.10","adrr","wohnort","telefon");
 
-	doSparen(sparmeister, "Sparen", 100);
-	//Laut Debugger ist das "wiederhergeholte Konto" NULL  == BLÖD
-	Sparkontoentfernen(sparmeister, hias);
+	//Kundeentfernen(hias);
+
+	//CUSTOMER* test = readUser(4);
+
+	//Kundeentfernen(test);
+
 }

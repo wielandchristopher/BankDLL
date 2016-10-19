@@ -1,6 +1,0 @@
-Kontoauszug 
- 
-Kontonummer: 10000011 	 BankSST 
-Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
- 
-18 10 2016 19:05:40 	 Testbetragüberweisung 	 	 	 	 	 +500.000000 

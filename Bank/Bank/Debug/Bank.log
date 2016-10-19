@@ -10,6 +10,5 @@ c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(244): warning C4099
 c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(294): warning C4099: "WAEHRUNGSMODUL": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
   c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(293): note: Siehe Deklaration von "WAEHRUNGSMODUL"
 c:\users\wiela\documents\github\banksst01\bank\bank\bank.cpp(530): warning C4101: "json": Unreferenzierte lokale Variable
-     Bibliothek "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.lib" und Objekt "C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.exp" werden erstellt.
   Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
   Bank.vcxproj -> C:\Users\wiela\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)

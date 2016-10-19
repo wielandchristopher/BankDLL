@@ -1,6 +1,0 @@
-Kontoauszug 
- 
-Kontonummer: 10000009 	 BankSST 
-Datum 	 	 	 Verwendungszweck 	 	 	 	 	 Betrag 
- 
-18 10 2016 20:20:20 	 Ich bin auch ein ueberweisungsgenie 	 	 	 	 	 +1000.000000 

@@ -386,9 +386,9 @@ void LOGGING(char* Errortext, char* LEVEL) {
 // Testen, ob das besagte File schon existiert
 int fileExist(string name)
 {
-	const char* test = name.c_str();
+	const char* file = name.c_str();
 	struct stat buffer;
-	return (stat(test, &buffer) == 0);
+	return (stat(file, &buffer) == 0);
 }
 
 // Initialisierung: Header für das Buchungs File wird erstellt
@@ -846,7 +846,7 @@ CUSTOMER* readUser(int id) {
 				return cJSONToCustomer(item);
 			}
 		}
-		cout << "user nicht gefunden" << endl;
+		LOGGING("user nicht gefunden", "ERROR");
 	}
 	return NULL; // return NULL wenn file leer
 }
@@ -878,7 +878,7 @@ bool writeUser(CUSTOMER* cust) {
 		}
 	}
 	else {
-		cout << "user existiert nicht. deshalb nicht überschreibbar" << endl;
+		LOGGING("user existiert nicht. deshalb nicht überschreibbar", "ERROR");
 	}
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
@@ -913,7 +913,7 @@ bool addUser(CUSTOMER* cu) {
 		}
 	}
 	else {
-		cout << "user exist" << endl;
+		LOGGING("user exist", "OK");
 	}
 	return false;
 }
@@ -1018,7 +1018,7 @@ bool writeSparKonto(SPARKONTO* kt) {
 		}
 	}
 	else {
-		cout << "konto existiert nicht" << endl; //@@ schreiben in log files!!
+		LOGGING("konto existiert nicht", "ERROR"); //@@ schreiben in log files!!
 	}
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
@@ -1147,7 +1147,7 @@ bool writeKreditKonto(KREDITKONTO* kt) {
 		}
 	}
 	else {
-		cout << "konto existiert nicht" << endl; //@@ schreiben in log files!!
+		LOGGING("konto existiert nicht", "ERROR"); //@@ schreiben in log files!!
 	}
 	return false; // wenn file = NULL dann kann er nichts schreiben somit false
 }
@@ -1396,15 +1396,15 @@ void Kundendatenabfrage(CUSTOMER * Kunde) {
 //Die Funktion Kundeentfernen entfernt mithilfe von delete den übergebenen Kunden
 void Kundeentfernen(CUSTOMER *Kunde) {
 
+	if (Kunde == NULL) {
+		LOGGING("Der übergebene Kunde existiert nicht oder ist NULL.", "OK");
+		return;
+	}
 	if (Kunde->getClassId() != "customer") {
 		LOGGING("Es wurde das falsche Objekt übergeben.", "ERROR");
 		return;
 	}
 
-	if (Kunde == NULL) {
-		LOGGING("Der übergebene Kunde existiert nicht oder ist NULL.", "OK");
-		return;
-	}
 	else {
 		removeUser(Kunde->getID());
 		delete Kunde;
@@ -1516,23 +1516,30 @@ void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger) {
 		return;
 	}
 
+	if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+
 	if (removeSparKonto(Konto->getKontonummer()) == true) {
 		delete Konto;
-		if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
+		
 		LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 	}
 	else {
@@ -1552,23 +1559,29 @@ void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger) {
 		return;
 	}
 
+	if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+	else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
+		Verfüger->setKtnr1(0);
+		writeUser(Verfüger);
+	}
+
 	if (removeKreditKonto(Konto->getKontonummer()) == true) {
 		delete Konto;
-		if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
-		else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
-			Verfüger->setKtnr1(0);
-		}
 		LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 	}
 	else {
@@ -1583,25 +1596,42 @@ void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger) {
 //Funktionen zum Überweisen, Einzahlen und Abheben
 void doAbheben(KREDITKONTO* zielkonto, double betrag) {
 
+	if (zielkonto == NULL) {
+		LOGGING("das übergebene Konto existiert nicht.", "ERROR");
+		return;
+	}
+
 	double newKontostand = zielkonto->getKontostand() - betrag;
 	zielkonto->setKontostand(newKontostand);
 	char* verwendungszweck = "";
-
+	writeKreditKonto(zielkonto);
 	LOGGING("Eine Abhebung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 2);
 }
 void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) {
 
+	if (zielkonto == NULL) {
+		LOGGING("das übergebene Konto existiert nicht.", "ERROR");
+		return;
+	}
+
+
 	double newKontostand = zielkonto->getKontostand() + betrag;
 	zielkonto->setKontostand(newKontostand);
-
+	writeKreditKonto(zielkonto);
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 3);
 }
 void doSparen(SPARKONTO* zielkonto, char* verwendungszweck, double betrag) {
+	
+	if (zielkonto == NULL) {
+		LOGGING("das übergebene Konto existiert nicht.", "ERROR");
+		return;
+	}
+	
 	double newKontostand = zielkonto->getKontostand() + betrag;
 	zielkonto->setKontostand(newKontostand);
-
+	writeSparKonto(zielkonto);
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Sparnachweis(zielkonto, verwendungszweck, betrag, 3);
 }
@@ -1623,11 +1653,8 @@ UEBERWEISUNG* NeueUeberweisung(KREDITKONTO* quellkonto, KREDITKONTO* zielkonto, 
 	ueberweisung->setBetrag(betrag);
 
 	// Betrag vom Quellkonto abbuchen
-	double quellKontostand = quellkonto->getKontostand();
-	quellkonto->setKontostand(quellKontostand - betrag);
-
+	doAbheben(quellkonto, betrag);
 	LOGGING("Eine Überweisung wurde getaetigt.", "OK");
-	Buchen(quellkonto, verwendungszweck, betrag, 1);
 	return ueberweisung;
 }
 

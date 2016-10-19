@@ -1,4 +1,0 @@
-Umrechnung von Euro zu USD 
- 
-Kontostand in Euro: 	 4000.000000 
-Kontostand in USD: 	 4388.400000

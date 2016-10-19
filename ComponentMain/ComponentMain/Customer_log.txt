@@ -1,62 +1,7 @@
-18 10 2016 18:47:40 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 18:47:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 18:47:40 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 18:47:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 18:47:40 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 18:47:40 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 18:47:40 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 18:47:40 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 18:47:40 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 18:49:40 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 18:49:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 18:49:40 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 18:49:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 18:49:40 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 18:49:40 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 18:49:40 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 18:49:40 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 18:49:40 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 19:03:23 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 19:03:23 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:03:23 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 19:03:23 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:03:23 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 19:03:23 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 19:03:23 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 19:03:23 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 19:03:23 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 19:05:40 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:05:40 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 19:05:40 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 19:05:40 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 19:05:40 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 19:05:40 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 19:05:40 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 19:05:40 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 20:20:08 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 20:20:08 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 20:20:08 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 20:20:08 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 20:20:08 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 20:20:08 - OK: Das Konto wurde erfolgreich entfernt.
-18 10 2016 20:20:20 - OK: Der Kunde wurde erfolgreich angelegt.
-18 10 2016 20:20:20 - OK: Das SparKonto wurde erfolgreich erstellt.
-18 10 2016 20:20:20 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 20:20:20 - OK: Eine Abhebung wurde getaetigt.
-18 10 2016 20:20:20 - OK: Eine Einzahlung wurde getaetigt.
-18 10 2016 20:20:20 - OK: Eine Überweisung wurde getaetigt.
-18 10 2016 20:20:20 - OK: Ein Waehrungsmodul wurde getaetigt.
-18 10 2016 20:20:20 - OK: Das Konto wurde erfolgreich entfernt.
-18 10 2016 20:20:20 - OK: Das Konto wurde erfolgreich entfernt.
-18 10 2016 20:28:06 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:28:48 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:30:44 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:31:41 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:33:33 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:34:32 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:35:25 - ERROR: Sparkonto nicht gefunden
-18 10 2016 20:51:52 - ERROR: Sparkonto nicht gefunden
+19 10 2016 12:19:18 - OK: Der Kunde wurde erfolgreich angelegt.
+19 10 2016 12:19:18 - OK: Der Kunde wurde erfolgreich entfernt.
+19 10 2016 12:19:18 - OK: Der übergebene Kunde existiert nicht oder ist NULL.
+19 10 2016 12:22:05 - OK: Der Kunde wurde erfolgreich angelegt.
+19 10 2016 12:22:05 - OK: Der Kunde wurde erfolgreich entfernt.
+19 10 2016 12:22:05 - ERROR: user nicht gefunden
+19 10 2016 12:22:05 - OK: Der übergebene Kunde existiert nicht oder ist NULL.
