@@ -39,6 +39,7 @@ void LOGGING(char* Errortext, char* LEVEL);
 
 bool writeSparKonto(SPARKONTO*);
 bool writeKreditKonto(KREDITKONTO*);
+bool deleteKontoUserEntrys(cJSON *item, int ktnr);
 
 //generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 int generateKtnnr() {
@@ -1249,6 +1250,7 @@ bool removeSparKonto(int ktnr) {
 			cJSON * item = cJSON_GetArrayItem(arr, x);
 
 			if (checkKtItem(item, ktnr)) {
+				deleteKontoUserEntrys(item, ktnr);
 				cJSON_DeleteItemFromArray(arr, x);
 				cJSON* saveObj = cJSON_CreateObject();
 				cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
@@ -1282,11 +1284,40 @@ bool sparkontoExist(int ktnr) {
 	return false;
 }
 //Fügt dem Sparkonto einen neuen Verfüger hinzu
+
+
+bool addCustomerKontoEntry(int ktnr, int userid) {
+	
+	if (userid != 0) {
+		CUSTOMER* cust = readUser(userid);
+
+		if (cust->getKtnr1() == 0) {
+			cust->setKtnr1(ktnr);
+		}
+		else if (cust->getKtnr2() == 0) {
+			cust->setKtnr2(ktnr);
+		}
+		else if (cust->getKtnr3() == 0) {
+			cust->setKtnr3(ktnr);
+		}
+		else if (cust->getKtnr4() == 0) {
+			cust->setKtnr4(ktnr);
+		}
+		else if (cust->getKtnr5() == 0) {
+			cust->setKtnr5(ktnr);
+		}
+		writeUser(cust);
+		return true;
+	}
+	return false;
+}
+
 int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust) {
 
 	int userid = cust->getID();
 	if (sk->addKontoverfüger(userid)) {
 		writeSparKonto(sk);
+		addCustomerKontoEntry(sk->getKontonummer(), cust->getID());
 		return 1;
 	}
 	return 0;
@@ -1378,6 +1409,47 @@ bool addKreditKonto(KREDITKONTO* kt) {
 	}
 	return false;
 }
+
+bool removeKontofromUser(int userid,int ktnr) {
+	if (userid != 0) {
+
+		CUSTOMER* cust = readUser(userid);
+
+		if (cust->getKtnr1() == ktnr) {
+			cust->setKtnr1(0);
+			writeUser(cust);
+		}
+		else if (cust->getKtnr2() == ktnr) {
+			cust->setKtnr2(0);
+			writeUser(cust);
+		}
+		else if (cust->getKtnr3() == ktnr) {
+			cust->setKtnr3(0);
+			writeUser(cust);
+		}
+		else if (cust->getKtnr4() == ktnr) {
+			cust->setKtnr4(0);
+			writeUser(cust);
+		}
+		else if (cust->getKtnr5() == ktnr) {
+			cust->setKtnr5(0);
+			writeUser(cust);
+		}
+
+	}
+	return false;
+}
+
+bool deleteKontoUserEntrys(cJSON *item, int ktnr) {
+	
+	removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID")->valueint, ktnr);
+	removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID2")->valueint, ktnr);
+	removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID3")->valueint, ktnr);
+	removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID4")->valueint, ktnr);
+	removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID5")->valueint, ktnr);
+	return true;
+}
+
 // Kreditkonto mit kontonr löschen
 bool removeKreditKonto(int ktnr) {
 	cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
@@ -1391,6 +1463,7 @@ bool removeKreditKonto(int ktnr) {
 			cJSON * item = cJSON_GetArrayItem(arr, x);
 
 			if (checkKtItem(item, ktnr)) {
+				deleteKontoUserEntrys(item,ktnr);
 				cJSON_DeleteItemFromArray(arr, x);
 				cJSON* saveObj = cJSON_CreateObject();
 				cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
@@ -1428,6 +1501,7 @@ int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust) {
 	int userid = cust->getID();
 	if (kk->addKontoverfüger(userid)) {
 		writeKreditKonto(kk);
+		addCustomerKontoEntry(kk->getKontonummer(), cust->getID());
 		return 1;
 	}
 	return 0;
@@ -1715,7 +1789,7 @@ KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde) {
 	return Konto;
 };
 //Die Funktion Sparkontoentfernen entfernt das übergebene SparKonto mit der Funktion delete
-void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger) {
+void Sparkontoentfernen(SPARKONTO* Konto) {
 
 	if (Konto->getClassId() != "sparkonto") {
 		LOGGING("Es wurde kein SparKonto übergeben.", "ERROR");
@@ -1727,26 +1801,28 @@ void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger) {
 		return;
 	}
 
-	if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
+	// wird im Persistance komponente erledigt
+
+	//if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr1(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr2(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr3(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr4(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr5(0);
+	//	writeUser(Verfüger);
+	//}
 
 	if (removeSparKonto(Konto->getKontonummer()) == true) {
 		delete Konto;
@@ -1758,7 +1834,7 @@ void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger) {
 	}
 }
 //Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
-void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger) {
+void Kreditkontoentfernen(KREDITKONTO* Konto) {
 
 	if (Konto->getClassId() != "kreditkonto") {
 		LOGGING("Es wurde kein KreditKonto übergeben.", "ERROR");
@@ -1770,26 +1846,28 @@ void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger) {
 		return;
 	}
 
-	if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
-	else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
-		Verfüger->setKtnr1(0);
-		writeUser(Verfüger);
-	}
+	// wird im persistance teil erledigt
+
+	//if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr1(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr1(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr1(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr1(0);
+	//	writeUser(Verfüger);
+	//}
+	//else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
+	//	Verfüger->setKtnr1(0);
+	//	writeUser(Verfüger);
+	//}
 
 	if (removeKreditKonto(Konto->getKontonummer()) == true) {
 		delete Konto;
@@ -1800,6 +1878,69 @@ void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger) {
 	}
 }
 
+int removeSparKontoverfüger(int userid, SPARKONTO* kk) {
+	if (kk != NULL) {
+		if (kk->getKontoverfüger(1) == userid) {
+			kk->setKontoverfüger(1, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeSparKonto(kk);
+		}
+		else if (kk->getKontoverfüger(2) == userid) {
+			kk->setKontoverfüger(2, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeSparKonto(kk);
+		}
+		else if (kk->getKontoverfüger(3) == userid) {
+			kk->setKontoverfüger(3, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeSparKonto(kk);
+		}
+		else if (kk->getKontoverfüger(4) == userid) {
+			kk->setKontoverfüger(4, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeSparKonto(kk);
+		}
+		else if (kk->getKontoverfüger(5) == userid) {
+			kk->setKontoverfüger(5, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeSparKonto(kk);
+		}
+		return 1;
+	}
+	return 0;
+}
+int removeKreditKontoverfüger(int userid, KREDITKONTO* kk) {
+
+	if (kk != NULL) {
+		if (kk->getKontoverfüger(1) == userid) {
+			kk->setKontoverfüger(1, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeKreditKonto(kk);
+		}
+		else if (kk->getKontoverfüger(2) == userid) {
+			kk->setKontoverfüger(2, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeKreditKonto(kk);
+		}
+		else if (kk->getKontoverfüger(3) == userid) {
+			kk->setKontoverfüger(3, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeKreditKonto(kk);
+		}
+		else if (kk->getKontoverfüger(4) == userid) {
+			kk->setKontoverfüger(4, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeKreditKonto(kk);
+		}
+		else if (kk->getKontoverfüger(5) == userid) {
+			kk->setKontoverfüger(5, 0);
+			removeKontofromUser(userid, kk->getKontonummer());
+			writeKreditKonto(kk);
+		}
+		return 1;
+	}
+	return 0;
+}
 /* ------------------ */
 /*  Kontofunktionen   */
 /* ------------------ */

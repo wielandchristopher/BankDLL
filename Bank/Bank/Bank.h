@@ -30,10 +30,13 @@ extern "C" {
 	BANK_API void Kundentelefonänderung(CUSTOMER *Kunde, char* _Telefon);
 	BANK_API void Kundendatenabfrage(CUSTOMER * Kunde);
 	BANK_API void Kundeentfernen(CUSTOMER* Kunde);
+	
 	BANK_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde);
 	BANK_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde);
-	BANK_API void Sparkontoentfernen(SPARKONTO* Konto, CUSTOMER* Verfüger);
-	BANK_API void Kreditkontoentfernen(KREDITKONTO* Konto, CUSTOMER* Verfüger);
+	BANK_API int removeKreditKontoverfüger(int userid, KREDITKONTO* kk);
+	BANK_API int removeSparKontoverfüger(int userid, SPARKONTO* kk);
+	BANK_API void Sparkontoentfernen(SPARKONTO* Konto);
+	BANK_API void Kreditkontoentfernen(KREDITKONTO* Konto);
 	BANK_API void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag);
 	BANK_API void doSparen(SPARKONTO* zielkonto, char* verwendungszweck, double betrag);
 	BANK_API void doAbheben(KREDITKONTO* zielkonto, double betrag);
