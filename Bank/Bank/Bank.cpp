@@ -2131,22 +2131,28 @@ int getSparKontonummer(SPARKONTO* konto)
 	return konto->getKontonummer();
 }
 
-char* getAccountType(int kontonummer)
+//Kreditkonto = 1, Sparkonto = 0
+int getAccountType(int kontonummer)
 {
-	char* type = "";
+	int type;
 
 	// Testen ob es ein Kreditkonto ist
 	KREDITKONTO* ckonto = readKreditKonto(kontonummer);
+	SPARKONTO* sKonto = readSparKonto(kontonummer);
 
-	if (ckonto == NULL)
+	if (ckonto != NULL)
 	{
-		type = "Sparkonto";
+		//Kreditkonto
+		type = 1;
 	}
-	else
+	else if (sKonto != NULL)
 	{
-		type = "Kreditkonto";
+		//Sparkonto
+		type = 0;
 	}
-
+	else {
+		type = -1;
+	}
 	return type;
 }
 
