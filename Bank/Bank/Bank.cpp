@@ -2120,3 +2120,62 @@ WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto)
 	LOGGING("Ein Waehrungsmodul wurde getaetigt.", "OK");
 	return waehrungsmodul;
 }
+
+int getKreditKontonummer(KREDITKONTO* konto)
+{
+	return konto->getKontonummer();
+}
+
+int getSparKontonummer(SPARKONTO* konto)
+{
+	return konto->getKontonummer();
+}
+
+char* getAccountType(int kontonummer)
+{
+	char* type = "";
+
+	// Testen ob es ein Kreditkonto ist
+	KREDITKONTO* ckonto = readKreditKonto(kontonummer);
+
+	if (ckonto == NULL)
+	{
+		type = "Sparkonto";
+	}
+	else
+	{
+		type = "Kreditkonto";
+	}
+
+	return type;
+}
+
+// liefert 0 bei ungültigen Parameter zurück
+int getKontonummer(CUSTOMER* kunde, int whichKonto)
+{
+	if (whichKonto == 1)
+	{
+		return kunde->getKtnr1();
+	}
+	else if (whichKonto == 2)
+	{
+		return kunde->getKtnr2();
+	}
+	else if (whichKonto == 3)
+	{
+		return kunde->getKtnr3();
+	}
+	else if (whichKonto == 4)
+	{
+		return kunde->getKtnr4();
+	}
+	else if (whichKonto == 5)
+	{
+		return kunde->getKtnr5();
+	}
+	else
+	{
+		LOGGING("Ungültiger Parameter - Konto existiert nicht", "ERROR");
+		return 0;
+	}
+}
