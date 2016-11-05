@@ -2157,7 +2157,7 @@ int getAccountType(int kontonummer)
 }
 
 
-int getSparkontostand(SPARKONTO* konto) {
+double getSparkontostand(SPARKONTO* konto) {
 
 	return konto->getKontostand();
 }
@@ -2167,7 +2167,7 @@ int getSparkontoverfüger(SPARKONTO* konto, int whichcust) {
 	return konto->getKontoverfüger(whichcust);
 }
 
-int getKreditkontostand(KREDITKONTO* konto) {
+double getKreditkontostand(KREDITKONTO* konto) {
 
 	return konto->getKontostand();
 }
