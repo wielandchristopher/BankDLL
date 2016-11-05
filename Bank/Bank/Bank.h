@@ -56,6 +56,10 @@ extern "C" {
 	BANK_API int getSparKontonummer(SPARKONTO* konto);
 	BANK_API int getKontonummer(CUSTOMER* kunde, int whichKonto);
 	BANK_API int getAccountType(int kontonummer);
+	BANK_API int getSparkontostand(SPARKONTO* konto);
+	BANK_API int getSparkontoverfüger(SPARKONTO* konto, int whichcust);
+	BANK_API int getKreditkontostand(KREDITKONTO* konto);
+	BANK_API int getKreditkontoverfüger(KREDITKONTO* konto, int whichcust);
 
 #ifdef __cplusplus
 }

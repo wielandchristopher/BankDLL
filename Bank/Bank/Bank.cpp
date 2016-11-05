@@ -2156,6 +2156,27 @@ int getAccountType(int kontonummer)
 	return type;
 }
 
+
+int getSparkontostand(SPARKONTO* konto) {
+
+	return konto->getKontostand();
+}
+
+int getSparkontoverfüger(SPARKONTO* konto, int whichcust) {
+
+	return konto->getKontoverfüger(whichcust);
+}
+
+int getKreditkontostand(KREDITKONTO* konto) {
+
+	return konto->getKontostand();
+}
+
+int getKreditkontoverfüger(KREDITKONTO* konto, int whichcust) {
+
+	return konto->getKontoverfüger(whichcust);
+}
+
 // liefert 0 bei ungültigen Parameter zurück
 int getKontonummer(CUSTOMER* kunde, int whichKonto)
 {
