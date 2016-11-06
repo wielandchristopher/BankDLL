@@ -55,5 +55,21 @@
 			"VerfügerID3":	45,
 			"VerfügerID4":	46,
 			"VerfügerID5":	47
+		}, {
+			"Kontonummer":	10000008,
+			"Kontostand":	0,
+			"VerfügerID":	52,
+			"VerfügerID2":	53,
+			"VerfügerID3":	54,
+			"VerfügerID4":	55,
+			"VerfügerID5":	56
+		}, {
+			"Kontonummer":	10000009,
+			"Kontostand":	0,
+			"VerfügerID":	61,
+			"VerfügerID2":	62,
+			"VerfügerID3":	63,
+			"VerfügerID4":	64,
+			"VerfügerID5":	65
 		}]
 }

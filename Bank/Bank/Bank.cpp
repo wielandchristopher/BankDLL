@@ -2043,6 +2043,19 @@ void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag) 
 	LOGGING("Eine Einzahlung wurde getaetigt.", "OK");
 	Buchen(zielkonto, verwendungszweck, betrag, 3);
 }
+void doSparbuchabheben(SPARKONTO* zielkonto, double betrag) {
+	if (zielkonto == NULL) {
+		LOGGING("das übergebene Konto existiert nicht.", "ERROR");
+		return;
+	}
+
+	double newKontostand = zielkonto->getKontostand() - betrag;
+	zielkonto->setKontostand(newKontostand);
+	char* verwendungszweck = "";
+	writeSparKonto(zielkonto);
+	LOGGING("Eine Abhebung wurde getaetigt.", "OK");
+	Sparnachweis(zielkonto, verwendungszweck, betrag, 2);
+}
 void doSparen(SPARKONTO* zielkonto, char* verwendungszweck, double betrag) {
 	
 	if (zielkonto == NULL) {
