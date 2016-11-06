@@ -2,74 +2,90 @@
 	"sparkonten":	[{
 			"Kontonummer":	10000001,
 			"Kontostand":	0,
-			"VerfügerID":	6,
+			"VerfügerID":	1,
 			"VerfügerID2":	0,
 			"VerfügerID3":	0,
 			"VerfügerID4":	0,
-			"VerfügerID5":	0
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	1
+				}]
 		}, {
 			"Kontonummer":	10000002,
 			"Kontostand":	0,
-			"VerfügerID":	11,
-			"VerfügerID2":	12,
+			"VerfügerID":	2,
+			"VerfügerID2":	0,
 			"VerfügerID3":	0,
 			"VerfügerID4":	0,
-			"VerfügerID5":	0
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	2
+				}]
 		}, {
 			"Kontonummer":	10000003,
 			"Kontostand":	0,
-			"VerfügerID":	16,
-			"VerfügerID2":	17,
-			"VerfügerID3":	18,
-			"VerfügerID4":	19,
-			"VerfügerID5":	20
+			"VerfügerID":	3,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	3
+				}]
 		}, {
 			"Kontonummer":	10000004,
 			"Kontostand":	0,
-			"VerfügerID":	21,
-			"VerfügerID2":	22,
-			"VerfügerID3":	23,
-			"VerfügerID4":	24,
-			"VerfügerID5":	25
+			"VerfügerID":	4,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	4
+				}]
 		}, {
 			"Kontonummer":	10000005,
 			"Kontostand":	0,
-			"VerfügerID":	26,
-			"VerfügerID2":	27,
-			"VerfügerID3":	28,
-			"VerfügerID4":	29,
-			"VerfügerID5":	30
+			"VerfügerID":	5,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	5
+				}]
 		}, {
-			"Kontonummer":	10000006,
+			"Kontonummer":	10000018,
 			"Kontostand":	0,
-			"VerfügerID":	31,
-			"VerfügerID2":	32,
-			"VerfügerID3":	33,
-			"VerfügerID4":	34,
-			"VerfügerID5":	35
+			"VerfügerID":	18,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	18
+				}]
 		}, {
-			"Kontonummer":	10000007,
+			"Kontonummer":	10000019,
 			"Kontostand":	0,
-			"VerfügerID":	43,
-			"VerfügerID2":	44,
-			"VerfügerID3":	45,
-			"VerfügerID4":	46,
-			"VerfügerID5":	47
+			"VerfügerID":	19,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	19
+				}]
 		}, {
-			"Kontonummer":	10000008,
+			"Kontonummer":	10000020,
 			"Kontostand":	0,
-			"VerfügerID":	52,
-			"VerfügerID2":	53,
-			"VerfügerID3":	54,
-			"VerfügerID4":	55,
-			"VerfügerID5":	56
-		}, {
-			"Kontonummer":	10000009,
-			"Kontostand":	0,
-			"VerfügerID":	61,
-			"VerfügerID2":	62,
-			"VerfügerID3":	63,
-			"VerfügerID4":	64,
-			"VerfügerID5":	65
+			"VerfügerID":	20,
+			"VerfügerID2":	0,
+			"VerfügerID3":	0,
+			"VerfügerID4":	0,
+			"VerfügerID5":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	20
+				}]
 		}]
 }

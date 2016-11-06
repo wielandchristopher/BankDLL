@@ -1,16 +1,26 @@
-﻿  Bank.cpp
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(68): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(68): note: Siehe Deklaration von "CUSTOMER"
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(165): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(165): note: Siehe Deklaration von "SPARKONTO"
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(293): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(293): note: Siehe Deklaration von "KREDITKONTO"
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(424): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(423): note: Siehe Deklaration von "UEBERWEISUNG"
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(474): warning C4099: "WAEHRUNGSMODUL": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
-  c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(473): note: Siehe Deklaration von "WAEHRUNGSMODUL"
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(264): warning C4715: "SPARKONTO::getKontoverfüger": Nicht alle Steuerelementpfade geben einen Wert zurück.
-c:\users\christopher.wieland\documents\github\bankdll\bank\bank\bank.cpp(409): warning C4715: "KREDITKONTO::getKontoverfüger": Nicht alle Steuerelementpfade geben einen Wert zurück.
-     Bibliothek "C:\Users\christopher.wieland\Documents\GitHub\BankDLL\ComponentMain\ComponentMain\Debug\Bank.lib" und Objekt "C:\Users\christopher.wieland\Documents\GitHub\BankDLL\ComponentMain\ComponentMain\Debug\Bank.exp" werden erstellt.
-  Bank.vcxproj -> C:\Users\christopher.wieland\Documents\GitHub\BankDLL\ComponentMain\ComponentMain\Debug\Bank.dll
-  Bank.vcxproj -> C:\Users\christopher.wieland\Documents\GitHub\BankDLL\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)
+﻿Der Buildvorgang wurde am 07.11.2016 00:52:59 gestartet.
+     1>Projekt "C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Bank.vcxproj" auf Knoten "2", Build Ziel(e).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D BANK_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Bank.cpp
+         Bank.cpp
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(68): warning C4099: "CUSTOMER": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+         c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(68): note: Siehe Deklaration von "CUSTOMER"
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(165): warning C4099: "SPARKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+         c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(165): note: Siehe Deklaration von "SPARKONTO"
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(293): warning C4099: "KREDITKONTO": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+         c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(293): note: Siehe Deklaration von "KREDITKONTO"
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(424): warning C4099: "UEBERWEISUNG": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+         c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(423): note: Siehe Deklaration von "UEBERWEISUNG"
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(474): warning C4099: "WAEHRUNGSMODUL": Geben Sie den zuerst unter Verwendung von "struct" und jetzt unter Verwendung von "class" gesehenen Namen ein
+         c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(473): note: Siehe Deklaration von "WAEHRUNGSMODUL"
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(264): warning C4715: "SPARKONTO::getKontoverfüger": Nicht alle Steuerelementpfade geben einen Wert zurück.
+     1>c:\users\wiesorium\documents\github\banksst01\bank\bank\bank.cpp(409): warning C4715: "KREDITKONTO::getKontoverfüger": Nicht alle Steuerelementpfade geben einen Wert zurück.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\Bank.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\Bank.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\Bank.lib" /MACHINE:X86 /DLL Debug\Bank.obj
+         Debug\cJSON.obj
+         Bank.vcxproj -> C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\Bank.dll
+     1>Die Erstellung von Projekt "C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Bank.vcxproj" ist abgeschlossen (Build Ziel(e)).
+
+Der Buildvorgang wurde erfolgreich ausgeführt.
+
+Verstrichene Zeit 00:00:00.60
