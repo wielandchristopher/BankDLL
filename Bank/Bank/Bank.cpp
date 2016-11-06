@@ -200,6 +200,30 @@ public:
 		this->ktvf4 = 0;
 		this->ktvf5 = 0;
 	}
+
+	bool SPARKONTO::delKontoverfüger(int id) {
+		if (ktvf1 == id) {
+			this->ktvf1 = 0;
+		}
+		else if (ktvf2 == id) {
+			this->ktvf2 = 0;
+		}
+		else if (ktvf3 == id) {
+			this->ktvf3 = 0;
+		}
+		else if (ktvf4 == id) {
+			this->ktvf4 = 0;
+		}
+		else if (ktvf5 == id) {
+			this->ktvf5 = 0;
+		}
+		else {
+			LOGGING("Verfüger konnte nicht gefunden werden.", "ERROR");
+			return false;
+		}
+		return true;
+	}
+
 	//Getter / Setter
 	void SPARKONTO::setKontoverfüger(int ct, int id) {
 		switch (ct) {
@@ -299,6 +323,29 @@ public:
 		}
 		else {
 			LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
+			return false;
+		}
+		return true;
+	}
+
+	bool KREDITKONTO::delKontoverfüger(int id) {
+		if (ktvf1 == id) {
+			this->ktvf1 = 0;
+		}
+		else if (ktvf2 == id) {
+			this->ktvf2 = 0;
+		}
+		else if (ktvf3 == id) {
+			this->ktvf3 = 0;
+		}
+		else if (ktvf4 == id) {
+			this->ktvf4 = 0;
+		}
+		else if (ktvf5 == id) {
+			this->ktvf5 = 0;
+		}
+		else {
+			LOGGING("Verfüger konnte nicht gefunden werden.", "ERROR");
 			return false;
 		}
 		return true;
@@ -1506,6 +1553,28 @@ int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust) {
 	}
 	return 0;
 }
+int deleteKreditkontoVerfüger(KREDITKONTO* kk, CUSTOMER* cust) {
+	
+	int userid = cust->getID();
+	if (kk->delKontoverfüger(userid)) {
+		writeKreditKonto(kk);		
+		return 1;
+	}
+	return 0;
+
+}
+
+int deleteSparkontoVerfüger(SPARKONTO* sk, CUSTOMER* cust) {
+
+	int userid = cust->getID();
+	if (sk->delKontoverfüger(userid)) {
+		writeSparKonto(sk);
+		return 1;
+	}
+	return 0;
+
+}
+
 
 /* ------------------------- */
 /*   Funktionen der Kunden   */

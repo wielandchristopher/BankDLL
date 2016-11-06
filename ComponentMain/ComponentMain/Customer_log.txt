@@ -135,3 +135,9 @@
 05 11 2016 18:53:37 - OK: Der Kunde wurde erfolgreich angelegt.
 05 11 2016 18:53:37 - OK: Der Kunde wurde erfolgreich angelegt.
 05 11 2016 18:53:37 - OK: Das SparKonto wurde erfolgreich erstellt.
+06 11 2016 12:42:12 - OK: Der Kunde wurde erfolgreich angelegt.
+06 11 2016 12:42:12 - OK: Der Kunde wurde erfolgreich angelegt.
+06 11 2016 12:42:12 - OK: Der Kunde wurde erfolgreich angelegt.
+06 11 2016 12:42:12 - OK: Der Kunde wurde erfolgreich angelegt.
+06 11 2016 12:42:12 - OK: Der Kunde wurde erfolgreich angelegt.
+06 11 2016 12:42:12 - OK: Das SparKonto wurde erfolgreich erstellt.

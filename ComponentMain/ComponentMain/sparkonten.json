@@ -47,5 +47,13 @@
 			"VerfügerID3":	33,
 			"VerfügerID4":	34,
 			"VerfügerID5":	35
+		}, {
+			"Kontonummer":	10000007,
+			"Kontostand":	0,
+			"VerfügerID":	43,
+			"VerfügerID2":	44,
+			"VerfügerID3":	45,
+			"VerfügerID4":	46,
+			"VerfügerID5":	47
 		}]
 }

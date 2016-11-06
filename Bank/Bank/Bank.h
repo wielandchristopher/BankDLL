@@ -60,6 +60,8 @@ extern "C" {
 	BANK_API int getSparkontoverfüger(SPARKONTO* konto, int whichcust);
 	BANK_API double getKreditkontostand(KREDITKONTO* konto);
 	BANK_API int getKreditkontoverfüger(KREDITKONTO* konto, int whichcust);
+	BANK_API int deleteKreditkontoVerfüger(KREDITKONTO* kk, CUSTOMER* cust);
+	BANK_API int deleteSparkontoVerfüger(SPARKONTO* sk, CUSTOMER* cust);
 
 #ifdef __cplusplus
 }
