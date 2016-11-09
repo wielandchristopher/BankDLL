@@ -22,6 +22,8 @@ extern "C" {
 	typedef struct UEBERWEISUNG UEBERWEISUNG;
 	typedef struct WAEHRUNGSMODUL WAEHRUNGSMODUL;
 
+	BANK_API int getBIC();
+
 	BANK_API CUSTOMER* NeuerKunde(char* _Vorname, char* _Nachname, char* _Geburtsdatum, char* _adresse, char* _Wohnort, char* _Telefon);
 	BANK_API void Kundenvornamenänderung(CUSTOMER *Kunde, char* Vorname);
 	BANK_API void Kundennachnamenänderung(CUSTOMER *Kunde, char* _Nachname);
@@ -64,8 +66,6 @@ extern "C" {
 	BANK_API int deleteSparkontoVerfüger(SPARKONTO* sk, CUSTOMER* cust);
 	BANK_API void doSparbuchabheben(SPARKONTO* zielkonto, double betrag);
 	BANK_API double waehrungsumrechnung(int _currency, double _value);
-	BANK_API void setIBAN(long _iban);
-	BANK_API long getIBAN();
 
 #ifdef __cplusplus
 }

@@ -31,6 +31,8 @@
 	double USD_EURO = 0.90326;
 	double GBP_EURO = 1.12162;
 
+	int BIC = 80;
+
 	//initialisierungen
 	CUSTOMER* readUser(int id);
 	bool userExist(int id);
@@ -78,6 +80,11 @@
 		return atol(ibanString.c_str());
 	}
 
+	// returns BIC
+	int getBIC()
+	{
+		return BIC;
+	}
 
 	/* ----------------- */
 	/* Benötigte Klassen */
