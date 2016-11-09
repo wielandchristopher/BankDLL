@@ -26,11 +26,16 @@
 	char* Kontocounterfilename = "Kontencounter.json";
 	char* Usercounterfilename = "Usercounter.json";
 
+	double EURO_USD = 1.1071;
+	double EURO_GBP = 0.89156;
+	double USD_EURO = 0.90326;
+	double GBP_EURO = 1.12162;
+
 	//initialisierungen
 	CUSTOMER* readUser(int id);
 	bool userExist(int id);
-	bool kreditkontoExist(int ktnr);
-	bool sparkontoExist(int ktnr);
+	bool kreditkontoExist(long ktnr);
+	bool sparkontoExist(long ktnr);
 	void writeCount(int);
 	int readCount();
 	int readUserCount();
@@ -39,7 +44,7 @@
 
 	bool writeSparKonto(SPARKONTO*);
 	bool writeKreditKonto(KREDITKONTO*);
-	bool deleteKontoUserEntrys(cJSON *item, int ktnr);
+	bool deleteKontoUserEntrys(cJSON *item, long ktnr);
 
 	//generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 	int generateKtnnr() {
@@ -58,6 +63,19 @@
 
 		writeUserCount(actNr);
 		return actNr;
+	}
+
+	// Generiert zu jedem Konto eine IBAN
+	long generateIBAN(long _kontonummer)	  
+	{
+		long dr = (1 + (_kontonummer - 1) % 9);
+		long pz = 7 - dr % 7;
+
+		string pruefZiffer = to_string(pz);
+		string kontonummerString = to_string(_kontonummer);
+		string ibanString = pruefZiffer + kontonummerString;
+
+		return atol(ibanString.c_str());
 	}
 
 
@@ -111,34 +129,34 @@
 		void CUSTOMER::setID(int _id) {
 			this->id = _id;
 		};
-		void CUSTOMER::setKtnr1(int nr) {
+		void CUSTOMER::setKtnr1(long nr) {
 			this->ktnr1 = nr;
 		}
-		void CUSTOMER::setKtnr2(int nr) {
+		void CUSTOMER::setKtnr2(long nr) {
 			this->ktnr2 = nr;
 		}
-		void CUSTOMER::setKtnr3(int nr) {
+		void CUSTOMER::setKtnr3(long nr) {
 			this->ktnr3 = nr;
 		}
-		void CUSTOMER::setKtnr4(int nr) {
+		void CUSTOMER::setKtnr4(long nr) {
 			this->ktnr4 = nr;
 		}
-		void CUSTOMER::setKtnr5(int nr) {
+		void CUSTOMER::setKtnr5(long nr) {
 			this->ktnr5 = nr;
 		}
-		int CUSTOMER::getKtnr1() {
+		long CUSTOMER::getKtnr1() {
 			return this->ktnr1;
 		}
-		int CUSTOMER::getKtnr2() {
+		long CUSTOMER::getKtnr2() {
 			return this->ktnr2;
 		}
-		int CUSTOMER::getKtnr3() {
+		long CUSTOMER::getKtnr3() {
 			return this->ktnr3;
 		}
-		int CUSTOMER::getKtnr4() {
+		long CUSTOMER::getKtnr4() {
 			return this->ktnr4;
 		}
-		int CUSTOMER::getKtnr5() {
+		long CUSTOMER::getKtnr5() {
 			return this->ktnr5;
 		}
 
@@ -156,11 +174,11 @@
 		char* Wohnort = "";
 		char* Telefon = "";
 		int id = generateUserid();
-		int ktnr1 = 0;
-		int ktnr2 = 0;
-		int ktnr3 = 0;
-		int ktnr4 = 0;
-		int ktnr5 = 0;
+		long ktnr1 = 0;
+		long ktnr2 = 0;
+		long ktnr3 = 0;
+		long ktnr4 = 0;
+		long ktnr5 = 0;
 	};
 	class SPARKONTO {
 	public:
@@ -191,8 +209,9 @@
 		SPARKONTO::SPARKONTO()
 		{
 			this->sparkonto = "sparkonto";
-			setKontonummer(generateKtnnr());
+			setKontonummer(generateIBAN(generateKtnnr()));
 			this->Kontostand = 0;
+			this->waehrung = 0;
 			this->Kontoverfüger = NULL;
 			this->ktvf1 = 0;
 			this->ktvf2 = 0;
@@ -274,8 +293,16 @@
 		int SPARKONTO::getKontonummer() {
 			return Kontonummer;
 		}
-		void SPARKONTO::setKontonummer(int _Kontonummer) {
+		void SPARKONTO::setKontonummer(long _Kontonummer) {
 			this->Kontonummer = _Kontonummer;
+		}
+		int SPARKONTO::getWaehrung()
+		{
+			return waehrung;
+		}
+		void SPARKONTO::setWaehrung(int _waehrung)
+		{
+			this->waehrung = _waehrung;
 		}
 		//Typidentifizierer
 		char* SPARKONTO::getClassId() {
@@ -285,8 +312,9 @@
 
 	private:
 		char* sparkonto;
-		int Kontonummer;
+		long Kontonummer;
 		double Kontostand;
+		int waehrung;
 		CUSTOMER* Kontoverfüger;
 		int ktvf1, ktvf2, ktvf3, ktvf4, ktvf5;
 	};
@@ -295,7 +323,8 @@
 		KREDITKONTO::KREDITKONTO()
 		{
 			this->kreditkonto = "kreditkonto";
-			setKontonummer(generateKtnnr());
+			setKontonummer(generateIBAN(generateKtnnr()));
+			this->waehrung = 0;
 			this->Kontostand = 0;
 			this->Kontoverfüger = NULL;
 			this->ktvf1 = 0;
@@ -364,11 +393,19 @@
 		void KREDITKONTO::setKontostand(double _Kontostand) {
 			this->Kontostand = _Kontostand;
 		}
-		int KREDITKONTO::getKontonummer() {
+		long KREDITKONTO::getKontonummer() {
 			return Kontonummer;
 		}
-		void KREDITKONTO::setKontonummer(int _Kontonummer) {
+		void KREDITKONTO::setKontonummer(long _Kontonummer) {
 			this->Kontonummer = _Kontonummer;
+		}
+		int KREDITKONTO::getWaehrung()
+		{
+			return waehrung;
+		}
+		void KREDITKONTO::setWaehrung(int _waehrung)
+		{
+			this->waehrung = _waehrung;
 		}
 		void KREDITKONTO::setKontoverfüger(int ct, int id) {
 			switch (ct) {
@@ -407,6 +444,7 @@
 				break;
 			}
 		}
+
 		//Typidentifizierer
 		char* getClassId() {
 
@@ -415,7 +453,8 @@
 
 	private:
 		char* kreditkonto;
-		int Kontonummer;
+		int waehrung;
+		long Kontonummer;
 		double Kontostand;
 		CUSTOMER* Kontoverfüger;
 		int ktvf1, ktvf2, ktvf3, ktvf4, ktvf5;
@@ -456,17 +495,17 @@
 		void UEBERWEISUNG::setkontostand(double betrg) {
 			kontostand = betrg;
 		}
-		int UEBERWEISUNG::getkontonummer() {
+		long UEBERWEISUNG::getkontonummer() {
 			return kontonummer;
 		}
-		void UEBERWEISUNG::setkontonummer(int kntnr) {
+		void UEBERWEISUNG::setkontonummer(long kntnr) {
 			kontonummer = kntnr;
 		}
 
 	private:
 		double betrag;
 		double kontostand;
-		int kontonummer;
+		long kontonummer;
 		char* empfaengername;
 		char* verwendungszweck;
 	};
@@ -491,12 +530,12 @@
 			kontostand = betrag;
 		}
 
-		void WAEHRUNGSMODUL::setKontonummer(int kontonr)
+		void WAEHRUNGSMODUL::setKontonummer(long kontonr)
 		{
 			kontonummer = kontonr;
 		}
 
-		int WAEHRUNGSMODUL::getKontonummer()
+		long WAEHRUNGSMODUL::getKontonummer()
 		{
 			return kontonummer;
 		}
@@ -515,7 +554,7 @@
 	private:
 		char* waehrung;
 		double kontostand;
-		int kontonummer;
+		long kontonummer;
 	};
 
 	/* ----------------------------------- */
@@ -572,7 +611,7 @@
 	}
 
 	// Initialisierung: Header für das Buchungs File wird erstellt
-	void initializeBuchungen(int kontonummer, string textFileName)
+	void initializeBuchungen(long kontonummer, string textFileName)
 	{
 		const char* fileName = textFileName.c_str();
 		fopen_s(&buchungsfile, fileName, "a");
@@ -795,7 +834,7 @@
 	//Erstellt eine Datei zum zählen der bereits angelegten Konten
 	bool createCreditNumberCountFile() {
 		cJSON* saveObj = cJSON_CreateObject();
-		cJSON_AddItemToObject(saveObj, "kontoct", cJSON_CreateNumber(10000000));
+		cJSON_AddItemToObject(saveObj, "kontoct", cJSON_CreateNumber(1000000000));
 
 		if (writeJsonFile(Kontocounterfilename, saveObj)) {
 			return true;
@@ -1134,7 +1173,7 @@
 		}
 	}
 	/* Hilfsfunktion - Vergleich der ID werte von konten */
-	bool checkKtItem(cJSON * item, int id) {
+	bool checkKtItem(cJSON * item, long id) {
 
 		cJSON * iditem = cJSON_GetObjectItem(item, "Kontonummer");
 
@@ -1191,7 +1230,7 @@
 	/* --------------------------- */
 
 	
-	bool checkKonto(cJSON* item, int ktnr){
+	bool checkKonto(cJSON* item, long ktnr){
 
 		cJSON * iditem = cJSON_GetObjectItem(item, "Kontonummer");
 
@@ -1205,7 +1244,7 @@
 
 	/* Kreditkonten */
 
-	bool kkverfügerExists(int ktnr, int userid){
+	bool kkverfügerExists(long ktnr, int userid){
 
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
@@ -1242,7 +1281,7 @@
 		return false;
 	}
 
-	bool addKreditkontoVerfüger(int userid, int ktnr){
+	bool addKreditkontoVerfüger(int userid, long ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
@@ -1292,7 +1331,7 @@
 	return false; // wenn file null dann false weil nicht addable
 	}
 
-	bool removeKreditKontoVerfüger(int userid, int ktnr){
+	bool removeKreditKontoVerfüger(int userid, long ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
@@ -1344,7 +1383,7 @@
 
 	/* Sparkonten */
 
-	bool skverfügerExists(int ktnr, int userid) {
+	bool skverfügerExists(long ktnr, int userid) {
 
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
@@ -1381,7 +1420,7 @@
 		return false;
 	}
 
-	bool addSparkontoVerfüger(int userid, int ktnr) {
+	bool addSparkontoVerfüger(int userid, long ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
@@ -1431,7 +1470,7 @@
 		return false; // wenn file null dann false weil nicht addable
 	}
 
-	bool removeSparKontoVerfüger(int userid, int ktnr) {
+	bool removeSparKontoVerfüger(int userid, long ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
@@ -1485,7 +1524,7 @@
 	/*   UserKonten - Funktionen   */
 	/* --------------------------- */
 
-	bool UserKontoExists(int userid, int ktnr){
+	bool UserKontoExists(int userid, long ktnr){
 		// konten einlesen von user
 		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
@@ -1518,7 +1557,7 @@
 		return false;
 	}
 
-	bool addKontotoUser(int userid, int ktnr){
+	bool addKontotoUser(int userid, long ktnr){
 
 		//user auslesen
 		//kontenliste auslesen
@@ -1570,7 +1609,7 @@
 		return false;
 	}
 
-	bool rmvKontofromUser(int userid, int ktnr){
+	bool rmvKontofromUser(int userid, long ktnr){
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Konten
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
 
@@ -1818,7 +1857,7 @@
 	/*  -------------------  */
 
 	// Sparkonto einlesen 
-	SPARKONTO* readSparKonto(int ktnr) {
+	SPARKONTO* readSparKonto(long ktnr) {
 
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
@@ -1898,7 +1937,7 @@
 		return false;
 	}
 	// Sparkonto mit kontonr löschen
-	bool removeSparKonto(int ktnr) {
+	bool removeSparKonto(long ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -1927,7 +1966,7 @@
 		return false;
 	}
 	//Prüft, ob das angegebene SparKonto existiert
-	bool sparkontoExist(int ktnr) {
+	bool sparkontoExist(long ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -1946,7 +1985,7 @@
 	//Fügt dem Sparkonto einen neuen Verfüger hinzu
 
 
-	bool addCustomerKontoEntry(int ktnr, int userid) {
+	bool addCustomerKontoEntry(long ktnr, int userid) {
 	
 		if (userid != 0) {
 			CUSTOMER* cust = readUser(userid);
@@ -1988,7 +2027,7 @@
 	/*  ---------------------  */
 
 	// Kreditkonto einlesen 
-	KREDITKONTO* readKreditKonto(int ktnr) {
+	KREDITKONTO* readKreditKonto(long ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
 		if (fileObj == NULL) {
@@ -2072,7 +2111,7 @@
 		return false;
 	}
 
-	bool removeKontofromUser(int userid,int ktnr) {
+	bool removeKontofromUser(int userid, long ktnr) {
 		if (userid != 0) {
 
 			CUSTOMER* cust = readUser(userid);
@@ -2102,7 +2141,7 @@
 		return false;
 	}
 
-	bool deleteKontoUserEntrys(cJSON *item, int ktnr) {
+	bool deleteKontoUserEntrys(cJSON *item, long ktnr) {
 	
 		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID")->valueint, ktnr);
 		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID2")->valueint, ktnr);
@@ -2142,7 +2181,7 @@
 		return false;
 	}
 	//Prüft die Existenz eines angegebenen Kontos, bei existenz = true
-	bool kreditkontoExist(int ktnr) {
+	bool kreditkontoExist(long ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -2189,7 +2228,6 @@
 		return 0;
 
 	}
-
 
 	/* ------------------------- */
 	/*   Funktionen der Kunden   */
@@ -2394,7 +2432,7 @@
 			return NULL;
 		}
 		SPARKONTO *Konto = new SPARKONTO();
-		int SparKontonummer = Konto->getKontonummer();
+		long SparKontonummer = Konto->getKontonummer();
 		Konto->setVerfüger(Kunde);
 
 		Konto->addKontoverfüger(Kunde->getID());
@@ -2439,7 +2477,7 @@
 		}
 
 		KREDITKONTO *Konto = new KREDITKONTO();
-		int KreditKontonummer = Konto->getKontonummer();
+		long KreditKontonummer = Konto->getKontonummer();
 		Konto->setVerfüger(Kunde);
 
 		Konto->addKontoverfüger(Kunde->getID());
@@ -2485,29 +2523,6 @@
 			return;
 		}
 
-		// wird im Persistance komponente erledigt
-
-		//if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr1(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr2(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr3(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr4(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr5(0);
-		//	writeUser(Verfüger);
-		//}
-
 		if (removeSparKonto(Konto->getKontonummer()) == true) {
 			delete Konto;
 		
@@ -2529,29 +2544,6 @@
 			LOGGING("Das übergebene Konto existiert nicht", "ERROR");
 			return;
 		}
-
-		// wird im persistance teil erledigt
-
-		//if (Verfüger->getKtnr1() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr1(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr2() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr1(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr3() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr1(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr4() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr1(0);
-		//	writeUser(Verfüger);
-		//}
-		//else if (Verfüger->getKtnr5() == Konto->getKontonummer()) {
-		//	Verfüger->setKtnr1(0);
-		//	writeUser(Verfüger);
-		//}
 
 		if (removeKreditKonto(Konto->getKontonummer()) == true) {
 			delete Konto;
@@ -2728,7 +2720,7 @@
 	void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
 	{
 		double kontostand = waehrungsmodul->getkontostand();
-		int kontonummer = waehrungsmodul->getKontonummer();
+		long kontonummer = waehrungsmodul->getKontonummer();
 		string kontonummerString = to_string(kontonummer);
 		string textFileName = kontonummerString.append("_Umrechnung.txt");
 		string waehrungsstring(waehrung);
@@ -2783,7 +2775,7 @@
 	}
 	void kursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
 	{
-		int kontonummer = waehrungsmodul->getKontonummer();
+		long kontonummer = waehrungsmodul->getKontonummer();
 		string kontonummerString = to_string(kontonummer);
 		string textFileName = kontonummerString.append("_Kursverwaltung.txt");
 
@@ -2808,7 +2800,7 @@
 	WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto)
 	{
 		double kontostand = konto->getKontostand();
-		int kontonummer = konto->getKontonummer();
+		long kontonummer = konto->getKontonummer();
 
 		WAEHRUNGSMODUL* waehrungsmodul = new WAEHRUNGSMODUL();
 		waehrungsmodul->setkontostand(kontostand);
@@ -2818,18 +2810,18 @@
 		return waehrungsmodul;
 	}
 
-	int getKreditKontonummer(KREDITKONTO* konto)
+	long getKreditKontonummer(KREDITKONTO* konto)
 	{
 		return konto->getKontonummer();
 	}
 
-	int getSparKontonummer(SPARKONTO* konto)
+	long getSparKontonummer(SPARKONTO* konto)
 	{
 		return konto->getKontonummer();
 	}
 
 	//Kreditkonto = 1, Sparkonto = 0
-	int getAccountType(int kontonummer)
+	int getAccountType(long kontonummer)
 	{
 		int type;
 
@@ -2875,7 +2867,7 @@
 	}
 
 	// liefert 0 bei ungültigen Parameter zurück
-	int getKontonummer(CUSTOMER* kunde, int whichKonto)
+	long getKontonummer(CUSTOMER* kunde, int whichKonto)
 	{
 		if (whichKonto == 1)
 		{
@@ -2901,5 +2893,30 @@
 		{
 			LOGGING("Ungültiger Parameter - Konto existiert nicht", "ERROR");
 			return 0;
+		}
+	}
+
+	// Rechnet auf Euro um
+	double waehrungsumrechnung(int _currency, double _value)
+	{
+		if (_currency == 0)
+		{
+			// Euro
+			return _value;
+		}
+		else if (_currency == 1)
+		{
+			// USD
+			return _value * USD_EURO;
+		}
+		else if (_currency == 2)
+		{
+			// GBP
+			return _value * GBP_EURO;
+		}
+		else
+		{
+			LOGGING("Error in Waehrungsumrechnungs-Funktion!", "ERROR");
+			return -1;
 		}
 	}

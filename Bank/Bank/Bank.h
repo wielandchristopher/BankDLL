@@ -48,14 +48,14 @@ extern "C" {
 	BANK_API int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust);
 	
 	BANK_API int searchUser(char* vorname, char* nachname, char* geb);
-	BANK_API SPARKONTO* readSparKonto(int ktnr);
-	BANK_API KREDITKONTO* readKreditKonto(int ktnr);
+	BANK_API SPARKONTO* readSparKonto(long ktnr);
+	BANK_API KREDITKONTO* readKreditKonto(long ktnr);
 	BANK_API CUSTOMER* readUser(int id);
 
-	BANK_API int getKreditKontonummer(KREDITKONTO* konto);
-	BANK_API int getSparKontonummer(SPARKONTO* konto);
-	BANK_API int getKontonummer(CUSTOMER* kunde, int whichKonto);
-	BANK_API int getAccountType(int kontonummer);
+	BANK_API long getKreditKontonummer(KREDITKONTO* konto);
+	BANK_API long getSparKontonummer(SPARKONTO* konto);
+	BANK_API long getKontonummer(CUSTOMER* kunde, int whichKonto);
+	BANK_API int getAccountType(long kontonummer);
 	BANK_API double getSparkontostand(SPARKONTO* konto);
 	BANK_API int getSparkontoverfüger(SPARKONTO* konto, int whichcust);
 	BANK_API double getKreditkontostand(KREDITKONTO* konto);
@@ -63,7 +63,9 @@ extern "C" {
 	BANK_API int deleteKreditkontoVerfüger(KREDITKONTO* kk, CUSTOMER* cust);
 	BANK_API int deleteSparkontoVerfüger(SPARKONTO* sk, CUSTOMER* cust);
 	BANK_API void doSparbuchabheben(SPARKONTO* zielkonto, double betrag);
-
+	BANK_API double waehrungsumrechnung(int _currency, double _value);
+	BANK_API void setIBAN(long _iban);
+	BANK_API long getIBAN();
 
 #ifdef __cplusplus
 }
