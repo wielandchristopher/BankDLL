@@ -35,8 +35,6 @@ extern "C" {
 	
 	BANK_API SPARKONTO* NeuesSparkonto(CUSTOMER* Kunde);
 	BANK_API KREDITKONTO* NeuesKreditkonto(CUSTOMER* Kunde);
-	BANK_API int removeKreditKontoverfüger(int userid, KREDITKONTO* kk);
-	BANK_API int removeSparKontoverfüger(int userid, SPARKONTO* kk);
 	BANK_API void Sparkontoentfernen(SPARKONTO* Konto);
 	BANK_API void Kreditkontoentfernen(KREDITKONTO* Konto);
 	BANK_API void doEinzahlen(KREDITKONTO* zielkonto, char* verwendungszweck, double betrag);
@@ -46,8 +44,6 @@ extern "C" {
 	BANK_API void doUmrechnung(WAEHRUNGSMODUL* waehrungsmmodul, char* waehrung);
 	BANK_API void doKursverwaltung(WAEHRUNGSMODUL* waehrungsmodul);
 	BANK_API WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto);
-	BANK_API int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust);
-	BANK_API int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust);
 	
 	BANK_API int searchUser(char* vorname, char* nachname, char* geb);
 	BANK_API SPARKONTO* readSparKonto(long ktnr);
@@ -59,13 +55,20 @@ extern "C" {
 	BANK_API long getKontonummer(CUSTOMER* kunde, int whichKonto);
 	BANK_API int getAccountType(long kontonummer);
 	BANK_API double getSparkontostand(SPARKONTO* konto);
-	BANK_API int getSparkontoverfüger(SPARKONTO* konto, int whichcust);
 	BANK_API double getKreditkontostand(KREDITKONTO* konto);
-	BANK_API int getKreditkontoverfüger(KREDITKONTO* konto, int whichcust);
-	BANK_API int deleteKreditkontoVerfüger(KREDITKONTO* kk, CUSTOMER* cust);
-	BANK_API int deleteSparkontoVerfüger(SPARKONTO* sk, CUSTOMER* cust);
 	BANK_API void doSparbuchabheben(SPARKONTO* zielkonto, double betrag);
 	BANK_API double waehrungsumrechnung(int _currency, double _value);
+
+	BANK_API int UserKontoExists(int userid, long ktnr);
+	BANK_API int removeSparKontoVerfüger(int userid, long ktnr);
+	BANK_API char* getUserKonten(int id);
+	BANK_API int rmvKontofromUser(int userid, long ktnr);
+	BANK_API int addKontotoUser(int userid, long ktnr);
+	BANK_API int addSparkontoVerfüger(int userid, long ktnr);
+	BANK_API int skverfügerExists(long ktnr, int userid);
+	BANK_API int removeKreditKontoVerfüger(int userid, long ktnr);
+	BANK_API int addKreditkontoVerfüger(int userid, long ktnr);
+	BANK_API int kkverfügerExists(long ktnr, int userid);
 
 #ifdef __cplusplus
 }

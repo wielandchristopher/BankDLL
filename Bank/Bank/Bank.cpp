@@ -46,7 +46,6 @@
 
 	bool writeSparKonto(SPARKONTO*);
 	bool writeKreditKonto(KREDITKONTO*);
-	bool deleteKontoUserEntrys(cJSON *item, long ktnr);
 
 	//generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 	int generateKtnnr() {
@@ -136,36 +135,7 @@
 		void CUSTOMER::setID(int _id) {
 			this->id = _id;
 		};
-		void CUSTOMER::setKtnr1(long nr) {
-			this->ktnr1 = nr;
-		}
-		void CUSTOMER::setKtnr2(long nr) {
-			this->ktnr2 = nr;
-		}
-		void CUSTOMER::setKtnr3(long nr) {
-			this->ktnr3 = nr;
-		}
-		void CUSTOMER::setKtnr4(long nr) {
-			this->ktnr4 = nr;
-		}
-		void CUSTOMER::setKtnr5(long nr) {
-			this->ktnr5 = nr;
-		}
-		long CUSTOMER::getKtnr1() {
-			return this->ktnr1;
-		}
-		long CUSTOMER::getKtnr2() {
-			return this->ktnr2;
-		}
-		long CUSTOMER::getKtnr3() {
-			return this->ktnr3;
-		}
-		long CUSTOMER::getKtnr4() {
-			return this->ktnr4;
-		}
-		long CUSTOMER::getKtnr5() {
-			return this->ktnr5;
-		}
+
 
 		//Typidentifizierer
 		char* getClassId() {
@@ -181,38 +151,11 @@
 		char* Wohnort = "";
 		char* Telefon = "";
 		int id = generateUserid();
-		long ktnr1 = 0;
-		long ktnr2 = 0;
-		long ktnr3 = 0;
-		long ktnr4 = 0;
-		long ktnr5 = 0;
 	};
 	class SPARKONTO {
 	public:
 		//Fügt dem Konto einen neuen/zusätzlichen Verfüger hinzu
-		bool SPARKONTO::addKontoverfüger(int id) {
-			if (ktvf1 == 0) {
-				this->ktvf1 = id;
-			}
-			else if (ktvf2 == 0) {
-				this->ktvf2 = id;
-			}
-			else if (ktvf3 == 0) {
-				this->ktvf3 = id;
-			}
-			else if (ktvf4 == 0) {
-				this->ktvf4 = id;
-			}
-			else if (ktvf5 == 0) {
-				this->ktvf5 = id;
-			}
-			else {
-				LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
-				return false;
-			}
-			return true;
-		}
-	
+
 		SPARKONTO::SPARKONTO()
 		{
 			this->sparkonto = "sparkonto";
@@ -220,74 +163,10 @@
 			this->Kontostand = 0;
 			this->waehrung = 0;
 			this->Kontoverfüger = NULL;
-			this->ktvf1 = 0;
-			this->ktvf2 = 0;
-			this->ktvf3 = 0;
-			this->ktvf4 = 0;
-			this->ktvf5 = 0;
-		}
-
-		bool SPARKONTO::delKontoverfüger(int id) {
-			if (ktvf1 == id) {
-				this->ktvf1 = 0;
-			}
-			else if (ktvf2 == id) {
-				this->ktvf2 = 0;
-			}
-			else if (ktvf3 == id) {
-				this->ktvf3 = 0;
-			}
-			else if (ktvf4 == id) {
-				this->ktvf4 = 0;
-			}
-			else if (ktvf5 == id) {
-				this->ktvf5 = 0;
-			}
-			else {
-				LOGGING("Verfüger konnte nicht gefunden werden.", "ERROR");
-				return false;
-			}
-			return true;
 		}
 
 		//Getter / Setter
-		void SPARKONTO::setKontoverfüger(int ct, int id) {
-			switch (ct) {
-			case 1:
-				this->ktvf1 = id;
-				break;
-			case 2:
-				this->ktvf2 = id;
-				break;
-			case 3:
-				this->ktvf3 = id;
-				break;
-			case 4:
-				this->ktvf4 = id;
-				break;
-			case 5:
-				this->ktvf5 = id;
-				break;
-			default:
-				break;
-			}
-		}
-		int SPARKONTO::getKontoverfüger(int ct) {
-			switch (ct) {
-			case 1:
-				return this->ktvf1;
-			case 2:
-				return this->ktvf2;
-			case 3:
-				return this->ktvf3;
-			case 4:
-				return this->ktvf4;
-			case 5:
-				return this->ktvf5;
-			default:
-				break;
-			}
-		}
+
 		void SPARKONTO::setVerfüger(CUSTOMER* _Kontoverfüger) {
 			this->Kontoverfüger = _Kontoverfüger;
 		}
@@ -323,7 +202,6 @@
 		double Kontostand;
 		int waehrung;
 		CUSTOMER* Kontoverfüger;
-		int ktvf1, ktvf2, ktvf3, ktvf4, ktvf5;
 	};
 	class KREDITKONTO {
 	public:
@@ -334,59 +212,9 @@
 			this->waehrung = 0;
 			this->Kontostand = 0;
 			this->Kontoverfüger = NULL;
-			this->ktvf1 = 0;
-			this->ktvf2 = 0;
-			this->ktvf3 = 0;
-			this->ktvf4 = 0;
-			this->ktvf5 = 0;
-		}
-		//Fügt einen neuen Verfüger zum Konto hinzu
-		bool KREDITKONTO::addKontoverfüger(int id) {
-			if (ktvf1 == 0) {
-				this->ktvf1 = id;
-			}
-			else if (ktvf2 == 0) {
-				this->ktvf2 = id;
-			}
-			else if (ktvf3 == 0) {
-				this->ktvf3 = id;
-			}
-			else if (ktvf4 == 0) {
-				this->ktvf4 = id;
-			}
-			else if (ktvf5 == 0) {
-				this->ktvf5 = id;
-			}
-			else {
-				LOGGING("Verfüger konnte nicht hinzugefügt werden da max 5 möglich.", "ERROR");
-				return false;
-			}
-			return true;
 		}
 
-		bool KREDITKONTO::delKontoverfüger(int id) {
-			if (ktvf1 == id) {
-				this->ktvf1 = 0;
-			}
-			else if (ktvf2 == id) {
-				this->ktvf2 = 0;
-			}
-			else if (ktvf3 == id) {
-				this->ktvf3 = 0;
-			}
-			else if (ktvf4 == id) {
-				this->ktvf4 = 0;
-			}
-			else if (ktvf5 == id) {
-				this->ktvf5 = 0;
-			}
-			else {
-				LOGGING("Verfüger konnte nicht gefunden werden.", "ERROR");
-				return false;
-			}
-			return true;
-		}
-
+		
 		//Getter und Setter der Daten
 		CUSTOMER KREDITKONTO::getVerfüger() {
 			return *Kontoverfüger;
@@ -414,43 +242,6 @@
 		{
 			this->waehrung = _waehrung;
 		}
-		void KREDITKONTO::setKontoverfüger(int ct, int id) {
-			switch (ct) {
-			case 1:
-				this->ktvf1 = id;
-				break;
-			case 2:
-				this->ktvf2 = id;
-				break;
-			case 3:
-				this->ktvf3 = id;
-				break;
-			case 4:
-				this->ktvf4 = id;
-				break;
-			case 5:
-				this->ktvf5 = id;
-				break;
-			default:
-				break;
-			}
-		}
-		int KREDITKONTO::getKontoverfüger(int ct) {
-			switch (ct) {
-			case 1:
-				return this->ktvf1;
-			case 2:
-				return this->ktvf2;
-			case 3:
-				return this->ktvf3;
-			case 4:
-				return this->ktvf4;
-			case 5:
-				return this->ktvf5;
-			default:
-				break;
-			}
-		}
 
 		//Typidentifizierer
 		char* getClassId() {
@@ -464,7 +255,6 @@
 		long Kontonummer;
 		double Kontostand;
 		CUSTOMER* Kontoverfüger;
-		int ktvf1, ktvf2, ktvf3, ktvf4, ktvf5;
 	};
 	class UEBERWEISUNG 
 	{
@@ -904,14 +694,6 @@
 			newCUObj->setWohnort(cJSON_GetObjectItem(customerItem, "ort")->valuestring);
 			newCUObj->setTelefon(cJSON_GetObjectItem(customerItem, "tel")->valuestring);
 
-			/* konten */
-			newCUObj->setKtnr1(cJSON_GetObjectItem(customerItem, "konto1")->valueint);
-			newCUObj->setKtnr2(cJSON_GetObjectItem(customerItem, "konto2")->valueint);
-			newCUObj->setKtnr3(cJSON_GetObjectItem(customerItem, "konto3")->valueint);
-			newCUObj->setKtnr4(cJSON_GetObjectItem(customerItem, "konto4")->valueint);
-			newCUObj->setKtnr5(cJSON_GetObjectItem(customerItem, "konto5")->valueint);
-
-
 			return newCUObj;
 		}
 		return NULL;
@@ -930,88 +712,7 @@
 			cJSON_AddItemToObject(userObject, "addr", cJSON_CreateString(cust->getAdresse()));
 			cJSON_AddItemToObject(userObject, "ort", cJSON_CreateString(cust->getWohnort()));
 			cJSON_AddItemToObject(userObject, "tel", cJSON_CreateString(cust->getTelefon()));
-			cJSON_AddItemToObject(userObject, "konto1", cJSON_CreateNumber(cust->getKtnr1()));
-			cJSON_AddItemToObject(userObject, "konto2", cJSON_CreateNumber(cust->getKtnr2()));
-			cJSON_AddItemToObject(userObject, "konto3", cJSON_CreateNumber(cust->getKtnr3()));
-			cJSON_AddItemToObject(userObject, "konto4", cJSON_CreateNumber(cust->getKtnr4()));
-			cJSON_AddItemToObject(userObject, "konto5", cJSON_CreateNumber(cust->getKtnr5()));
-
-			//cJSON* kontenarr = cJSON_CreateArray();
-			
-			if (item != NULL) {
-				cJSON * kontenarr = cJSON_GetObjectItem(item, "Konten");
-				
-				if (cust->getKtnr1() != 0) {
-					if (entryInJSONArr(kontenarr, cust->getKtnr1(), "Kontonr") == false) {
-						cJSON* newArrItem = cJSON_CreateObject();
-						cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr1()));
-						cJSON_AddItemToArray(kontenarr, newArrItem);
-					}
-
-				}
-				if (cust->getKtnr2() != 0) {
-					if (entryInJSONArr(kontenarr, cust->getKtnr2(), "Kontonr") == false) {
-						cJSON* newArrItem = cJSON_CreateObject();
-						cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr2()));
-						cJSON_AddItemToArray(kontenarr, newArrItem);
-					}
-				}
-				if (cust->getKtnr3() != 0) {
-					if (entryInJSONArr(kontenarr, cust->getKtnr3(), "Kontonr") == false) {
-						cJSON* newArrItem = cJSON_CreateObject();
-						cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr3()));
-						cJSON_AddItemToArray(kontenarr, newArrItem);
-					}
-				}
-				if (cust->getKtnr4() != 0) {
-					if (entryInJSONArr(kontenarr, cust->getKtnr4(), "Kontonr") == false) {
-						cJSON* newArrItem = cJSON_CreateObject();
-						cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr4()));
-						cJSON_AddItemToArray(kontenarr, newArrItem);
-					}
-				}
-				if (cust->getKtnr5() != 0) {
-					if (entryInJSONArr(kontenarr, cust->getKtnr5(), "Kontonr") == false) {
-						cJSON* newArrItem = cJSON_CreateObject();
-						cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr5()));
-						cJSON_AddItemToArray(kontenarr, newArrItem);
-					}
-				}
-
-				cJSON_AddItemToObject(userObject, "Konten", kontenarr);
-			}
-			else {
-				cJSON* kontenarr = cJSON_CreateArray();
-
-				if (cust->getKtnr1() != 0) {
-					cJSON* newArrItem = cJSON_CreateObject();
-					cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr1()));
-					cJSON_AddItemToArray(kontenarr, newArrItem);
-				}
-				if (cust->getKtnr2() != 0) {
-					cJSON* newArrItem = cJSON_CreateObject();
-					cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr2()));
-					cJSON_AddItemToArray(kontenarr, newArrItem);
-				}
-				if (cust->getKtnr3() != 0) {
-					cJSON* newArrItem = cJSON_CreateObject();
-					cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr3()));
-					cJSON_AddItemToArray(kontenarr, newArrItem);
-				}
-				if (cust->getKtnr4() != 0) {
-					cJSON* newArrItem = cJSON_CreateObject();
-					cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr4()));
-					cJSON_AddItemToArray(kontenarr, newArrItem);
-				}
-				if (cust->getKtnr5() != 0) {
-					cJSON* newArrItem = cJSON_CreateObject();
-					cJSON_AddItemToObject(newArrItem, "Kontonr", cJSON_CreateNumber(cust->getKtnr5()));
-					cJSON_AddItemToArray(kontenarr, newArrItem);
-				}
-
-				cJSON_AddItemToObject(userObject, "Konten", kontenarr);
-			}			
-
+			cJSON_AddItemToObject(userObject, "Konten", cJSON_CreateArray());
 			return userObject;
 		}
 		return NULL;
@@ -1025,47 +726,8 @@
 
 			cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
 			cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
-
-
-			cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getKontoverfüger(1)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID2", cJSON_CreateNumber(sk->getKontoverfüger(2)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID3", cJSON_CreateNumber(sk->getKontoverfüger(3)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID4", cJSON_CreateNumber(sk->getKontoverfüger(4)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID5", cJSON_CreateNumber(sk->getKontoverfüger(5)));
-
-			if (item != NULL) {
-				cJSON * arr = cJSON_GetObjectItem(item, "Verfueger");
-
-
-				for (int x = 1; x < 6; x++) {
-					if (sk->getKontoverfüger(x) != 0) {
-
-						if (entryInJSONArr(arr, sk->getKontoverfüger(x), "VerfuegerId") == false) {
-							cJSON* newArrItem = cJSON_CreateObject();
-							cJSON_AddItemToObject(newArrItem, "VerfuegerId", cJSON_CreateNumber(sk->getKontoverfüger(x)));
-							cJSON_AddItemToArray(arr, newArrItem);
-						}
-					}
-				}
-
-				cJSON_AddItemToObject(kontoObject, "Verfueger", arr);
-			}
-			else {
-				cJSON* arr = cJSON_CreateArray();
-
-				for (int x = 1; x < 6; x++) {
-					if (sk->getKontoverfüger(x) != 0) {
-
-						if (entryInJSONArr(arr, sk->getKontoverfüger(x), "VerfuegerId") == false) {
-							cJSON* newArrItem = cJSON_CreateObject();
-							cJSON_AddItemToObject(newArrItem, "VerfuegerId", cJSON_CreateNumber(sk->getKontoverfüger(x)));
-							cJSON_AddItemToArray(arr, newArrItem);
-						}
-					}
-				}
-
-				cJSON_AddItemToObject(kontoObject, "Verfueger", arr);
-			}
+			cJSON_AddItemToObject(kontoObject, "Waehrung", cJSON_CreateNumber(sk->getWaehrung()));
+			cJSON_AddItemToObject(kontoObject, "Verfueger", cJSON_CreateArray());
 
 			return kontoObject;
 		}
@@ -1078,12 +740,7 @@
 			SPARKONTO* newktObj = new SPARKONTO();
 			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
 			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
-			//newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
-			newktObj->setKontoverfüger(1, cJSON_GetObjectItem(skItem, "VerfügerID")->valueint);
-			newktObj->setKontoverfüger(2, cJSON_GetObjectItem(skItem, "VerfügerID2")->valueint);
-			newktObj->setKontoverfüger(3, cJSON_GetObjectItem(skItem, "VerfügerID3")->valueint);
-			newktObj->setKontoverfüger(4, cJSON_GetObjectItem(skItem, "VerfügerID4")->valueint);
-			newktObj->setKontoverfüger(5, cJSON_GetObjectItem(skItem, "VerfügerID5")->valueint);
+			newktObj->setWaehrung(cJSON_GetObjectItem(skItem, "Waehrung")->valueint);
 		
 			return newktObj;
 		}
@@ -1098,46 +755,8 @@
 
 			cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
 			cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID", cJSON_CreateNumber(sk->getKontoverfüger(1)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID2", cJSON_CreateNumber(sk->getKontoverfüger(2)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID3", cJSON_CreateNumber(sk->getKontoverfüger(3)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID4", cJSON_CreateNumber(sk->getKontoverfüger(4)));
-			cJSON_AddItemToObject(kontoObject, "VerfügerID5", cJSON_CreateNumber(sk->getKontoverfüger(5)));
-
-
-			if (item != NULL) {
-				cJSON * arr = cJSON_GetObjectItem(item, "Verfueger");
-
-				for (int x = 1; x < 6; x++) {
-					if (sk->getKontoverfüger(x) != 0) {
-
-						if (entryInJSONArr(arr, sk->getKontoverfüger(x), "VerfuegerId") == false) {
-							cJSON* newArrItem = cJSON_CreateObject();
-							cJSON_AddItemToObject(newArrItem, "VerfuegerId", cJSON_CreateNumber(sk->getKontoverfüger(x)));
-							cJSON_AddItemToArray(arr, newArrItem);
-						}
-					}
-				}
-
-				cJSON_AddItemToObject(kontoObject, "Verfueger", arr);
-			}
-			else {
-				cJSON* arr = cJSON_CreateArray();
-
-				for (int x = 1; x < 6; x++) {
-					if (sk->getKontoverfüger(x) != 0) {
-
-						if (entryInJSONArr(arr, sk->getKontoverfüger(x), "VerfuegerId") == false) {
-							cJSON* newArrItem = cJSON_CreateObject();
-							cJSON_AddItemToObject(newArrItem, "VerfuegerId", cJSON_CreateNumber(sk->getKontoverfüger(x)));
-							cJSON_AddItemToArray(arr, newArrItem);
-						}
-					}
-				}
-
-				cJSON_AddItemToObject(kontoObject, "Verfueger", arr);
-			}
-
+			cJSON_AddItemToObject(kontoObject, "Waehrung", cJSON_CreateNumber(sk->getWaehrung()));
+			cJSON_AddItemToObject(kontoObject, "Verfueger", cJSON_CreateArray());
 
 			return kontoObject;
 		}
@@ -1150,12 +769,7 @@
 			KREDITKONTO* newktObj = new KREDITKONTO();
 			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
 			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
-			//newktObj->setVerfüger(readUser(cJSON_GetObjectItem(skItem, "VerfügerID")->valueint));
-			newktObj->setKontoverfüger(1, cJSON_GetObjectItem(skItem, "VerfügerID")->valueint);
-			newktObj->setKontoverfüger(2, cJSON_GetObjectItem(skItem, "VerfügerID2")->valueint);
-			newktObj->setKontoverfüger(3, cJSON_GetObjectItem(skItem, "VerfügerID3")->valueint);
-			newktObj->setKontoverfüger(4, cJSON_GetObjectItem(skItem, "VerfügerID4")->valueint);
-			newktObj->setKontoverfüger(5, cJSON_GetObjectItem(skItem, "VerfügerID5")->valueint);
+			newktObj->setWaehrung(cJSON_GetObjectItem(skItem, "Waehrung")->valueint);
 
 			return newktObj;
 		}
@@ -1251,7 +865,7 @@
 
 	/* Kreditkonten */
 
-	bool kkverfügerExists(long ktnr, int userid){
+	int kkverfügerExists(long ktnr, int userid){
 
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
@@ -1279,16 +893,16 @@
 
 						// schauen ob im arritem y die verfügerid übereinstimmt -> wenn ja -> löschen
 						if (cJSON_GetObjectItem(verfitem, "VerfuegerId")->valueint == userid){
-							return true;
+							return 0;
 						}
 					}
 				}
 			}
 		}
-		return false;
+		return -1;
 	}
 
-	bool addKreditkontoVerfüger(int userid, long ktnr){
+	int addKreditkontoVerfüger(int userid, long ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
@@ -1318,27 +932,36 @@
 
 					cJSON_ReplaceItemInObject(item, "Verfueger", newVerfüger);
 					// jetzt ist das item fertig und muss wieder ins array der konten geschreiben werden
-					cJSON_ReplaceItemInArray(arr, x, item);
-
+					
+					cJSON* newarr = cJSON_CreateArray();
 					//save obj vorbereiten
 					cJSON* saveObj = cJSON_CreateObject();
-					// aktualisiertes arr einfügen in root
-					cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
-
-					if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
-						return true;
+					
+					if (size == 1) {
+						cJSON_AddItemToArray(newarr, item);
+						cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, newarr);
+						cout << cJSON_Print(saveObj);
 					}
 					else {
-						return false;
+						cJSON_ReplaceItemInArray(arr, x, item);
+						cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
+						cout << cJSON_Print(saveObj);
+					}
+					
+					if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
+						return 0;
+					}
+					else {
+						return -1;
 					}
 				}
 			}
 		}
 	
-	return false; // wenn file null dann false weil nicht addable
+	return -1; // wenn file null dann false weil nicht addable
 	}
 
-	bool removeKreditKontoVerfüger(int userid, long ktnr){
+	int removeKreditKontoVerfüger(int userid, long ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
@@ -1376,21 +999,21 @@
 					cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
 
 					if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
-						return true;
+						return 0;
 					}
 					else {
-						return false;
+						return -1;
 					}
 
 				}
 			}
 		}
-		return false; // wenn file null dann false weil nicht removable
+		return -1; // wenn file null dann false weil nicht removable
 	}
 
 	/* Sparkonten */
 
-	bool skverfügerExists(long ktnr, int userid) {
+	int skverfügerExists(long ktnr, int userid) {
 
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
@@ -1416,18 +1039,18 @@
 					for (int y = 0; y < verfsize; y++) {
 						cJSON* verfitem = cJSON_GetArrayItem(verfArr, y);
 
-						// schauen ob im arritem y die verfügerid übereinstimmt -> wenn ja -> löschen
+						// schauen ob im arritem y die verfügerid übereinstimmt
 						if (cJSON_GetObjectItem(verfitem, "VerfuegerId")->valueint == userid) {
-							return true;
+							return 0;
 						}
 					}
 				}
 			}
 		}
-		return false;
+		return -1;
 	}
 
-	bool addSparkontoVerfüger(int userid, long ktnr) {
+	int addSparkontoVerfüger(int userid, long ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
@@ -1439,45 +1062,72 @@
 			cJSON * arr = cJSON_GetObjectItem(fileObj, SPARKONTO_ROOT);
 
 			int size = cJSON_GetArraySize(arr);
-
+		
 			// über das array drübergehen
 			for (int x = 0; x < size; x++) {
 				cJSON * item = cJSON_GetArrayItem(arr, x); // ein obj von einem Konto
-
+			
 				if (checkKonto(item, ktnr)) { // ist es das konto?
-
+					
 					cJSON * newVerfüger = cJSON_GetObjectItem(item, "Verfueger"); // jetzt habe ich das arr
 
-
+			
 					cJSON * newObj = cJSON_CreateObject(); // neues Arrayobjekt vorbereiten
 					cJSON_AddItemToObject(newObj, "VerfuegerId", cJSON_CreateNumber(userid)); // id hinzufügen
-
+					cout << cJSON_Print(item);
 																							  // in das array das neue item hinzufügen
 					cJSON_AddItemToArray(newVerfüger, newObj);
+					cout << cJSON_Print(newVerfüger);
 
-					cJSON_ReplaceItemInObject(item, "Verfueger", newVerfüger);
-					// jetzt ist das item fertig und muss wieder ins array der konten geschreiben werden
-					cJSON_ReplaceItemInArray(arr, x, item);
-
-					//save obj vorbereiten
-					cJSON* saveObj = cJSON_CreateObject();
-					// aktualisiertes arr einfügen in root
-					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
-
-					if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
-						return true;
+					if (size == 1) {
+						
+						cJSON_DeleteItemFromObject(item, "Verfueger");
+						
+						cout << cJSON_Print(item);
+						cJSON_AddItemToObject(item, "Verfueger", newVerfüger);
+						cout << cJSON_Print(item);
 					}
 					else {
-						return false;
+						cJSON_ReplaceItemInObject(item, "Verfueger", newVerfüger);
+					}
+					
+					// jetzt ist das item fertig und muss wieder ins array der konten geschreiben werden
+					
+					cout << cJSON_Print(item);
+
+					cJSON* newarr = cJSON_CreateArray();
+					//save obj vorbereiten
+					cJSON* saveObj = cJSON_CreateObject();
+
+
+
+					if (size == 1) {
+						cJSON_AddItemToArray(newarr, item);						
+						cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, newarr);
+					}
+					else {
+						cJSON_ReplaceItemInArray(arr, x, item);
+						cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
+					}
+					
+					
+
+					// aktualisiertes arr einfügen in root
+					
+					if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
+						return 0;
+					}
+					else {
+						return -1;
 					}
 				}
 			}
 		}
 
-		return false; // wenn file null dann false weil nicht addable
+		return -1; // wenn file null dann false weil nicht addable
 	}
 
-	bool removeSparKontoVerfüger(int userid, long ktnr) {
+	int removeSparKontoVerfüger(int userid, long ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
@@ -1515,23 +1165,24 @@
 					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
 
 					if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
-						return true;
+						return 0;
 					}
 					else {
-						return false;
+						return -1;
 					}
 
 				}
 			}
 		}
-		return false; // wenn file null dann false weil nicht removable
+		return -1; // wenn file null dann false weil nicht removable
 	}
 
+	
 	/* --------------------------- */
 	/*   UserKonten - Funktionen   */
 	/* --------------------------- */
 
-	bool UserKontoExists(int userid, long ktnr){
+	int UserKontoExists(int userid, long ktnr){
 		// konten einlesen von user
 		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
@@ -1555,16 +1206,16 @@
 
 						// schauen ob im arritem y die verfügerid übereinstimmt -> wenn ja -> löschen
 						if (cJSON_GetObjectItem(verfitem, "Kontonr")->valueint == ktnr){
-							return true;
+							return 0;
 						}
 					}
 				}
 			}
 		}
-		return false;
+		return -1;
 	}
 
-	bool addKontotoUser(int userid, long ktnr){
+	int addKontotoUser(int userid, long ktnr){
 
 		//user auslesen
 		//kontenliste auslesen
@@ -1605,18 +1256,18 @@
 					cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
 
 					if (writeJsonFile(USER_FILE, saveObj)) {
-						return true;
+						return 0;
 					}
 					else {
-						return false;
+						return -1;
 					}
 				}
 			}
 		}
-		return false;
+		return -1;
 	}
 
-	bool rmvKontofromUser(int userid, long ktnr){
+	int rmvKontofromUser(int userid, long ktnr){
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Konten
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
 
@@ -1653,19 +1304,39 @@
 					cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
 
 					if (writeJsonFile(USER_FILE, saveObj)) {
-						return true;
+						return 0;
 					}
 					else {
-						return false;
+						return -1;
 					}
 
 				}
 			}
 		}
-		return false;
+		return -1;
 	}
 
+	char* getUserKonten(int id) {
 
+		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+
+		if (fileObj != NULL) {
+			cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
+
+			int size = cJSON_GetArraySize(arr);
+
+			// über das array drübergehen
+			for (int x = 0; x < size; x++) {
+				cJSON * item = cJSON_GetArrayItem(arr, x); // ein obj von einem Konto
+
+				if (checkItem(item, id)) {
+					cJSON * verfArr = cJSON_GetObjectItem(item, "Konten"); // verf arr
+					return cJSON_Print(verfArr);
+				}
+			}
+		}
+		return NULL;
+	}
 
 
 	/*  ----------------  */
@@ -1956,7 +1627,6 @@
 				cJSON * item = cJSON_GetArrayItem(arr, x);
 
 				if (checkKtItem(item, ktnr)) {
-					deleteKontoUserEntrys(item, ktnr);
 					cJSON_DeleteItemFromArray(arr, x);
 					cJSON* saveObj = cJSON_CreateObject();
 					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
@@ -1991,43 +1661,6 @@
 	}
 	//Fügt dem Sparkonto einen neuen Verfüger hinzu
 
-
-	bool addCustomerKontoEntry(long ktnr, int userid) {
-	
-		if (userid != 0) {
-			CUSTOMER* cust = readUser(userid);
-
-			if (cust->getKtnr1() == 0) {
-				cust->setKtnr1(ktnr);
-			}
-			else if (cust->getKtnr2() == 0) {
-				cust->setKtnr2(ktnr);
-			}
-			else if (cust->getKtnr3() == 0) {
-				cust->setKtnr3(ktnr);
-			}
-			else if (cust->getKtnr4() == 0) {
-				cust->setKtnr4(ktnr);
-			}
-			else if (cust->getKtnr5() == 0) {
-				cust->setKtnr5(ktnr);
-			}
-			writeUser(cust);
-			return true;
-		}
-		return false;
-	}
-
-	int addSparKontoverfüger(SPARKONTO* sk, CUSTOMER* cust) {
-
-		int userid = cust->getID();
-		if (sk->addKontoverfüger(userid)) {
-			writeSparKonto(sk);
-			addCustomerKontoEntry(sk->getKontonummer(), cust->getID());
-			return 1;
-		}
-		return 0;
-	}
 
 	/*  ---------------------  */
 	/*       KREDITKONTO       */
@@ -2118,46 +1751,6 @@
 		return false;
 	}
 
-	bool removeKontofromUser(int userid, long ktnr) {
-		if (userid != 0) {
-
-			CUSTOMER* cust = readUser(userid);
-
-			if (cust->getKtnr1() == ktnr) {
-				cust->setKtnr1(0);
-				writeUser(cust);
-			}
-			else if (cust->getKtnr2() == ktnr) {
-				cust->setKtnr2(0);
-				writeUser(cust);
-			}
-			else if (cust->getKtnr3() == ktnr) {
-				cust->setKtnr3(0);
-				writeUser(cust);
-			}
-			else if (cust->getKtnr4() == ktnr) {
-				cust->setKtnr4(0);
-				writeUser(cust);
-			}
-			else if (cust->getKtnr5() == ktnr) {
-				cust->setKtnr5(0);
-				writeUser(cust);
-			}
-
-		}
-		return false;
-	}
-
-	bool deleteKontoUserEntrys(cJSON *item, long ktnr) {
-	
-		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID")->valueint, ktnr);
-		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID2")->valueint, ktnr);
-		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID3")->valueint, ktnr);
-		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID4")->valueint, ktnr);
-		removeKontofromUser(cJSON_GetObjectItem(item, "VerfügerID5")->valueint, ktnr);
-		return true;
-	}
-
 	// Kreditkonto mit kontonr löschen
 	bool removeKreditKonto(int ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
@@ -2171,7 +1764,6 @@
 				cJSON * item = cJSON_GetArrayItem(arr, x);
 
 				if (checkKtItem(item, ktnr)) {
-					deleteKontoUserEntrys(item,ktnr);
 					cJSON_DeleteItemFromArray(arr, x);
 					cJSON* saveObj = cJSON_CreateObject();
 					cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
@@ -2204,37 +1796,7 @@
 		}
 		return false;
 	}
-	//Fügt dem KreditKonto einen neuen Verfüger hinzu
-	int addKreditKontoverfüger(KREDITKONTO* kk, CUSTOMER* cust) {
-		int userid = cust->getID();
-		if (kk->addKontoverfüger(userid)) {
-			writeKreditKonto(kk);
-			addCustomerKontoEntry(kk->getKontonummer(), cust->getID());
-			return 1;
-		}
-		return 0;
-	}
-	int deleteKreditkontoVerfüger(KREDITKONTO* kk, CUSTOMER* cust) {
-	
-		int userid = cust->getID();
-		if (kk->delKontoverfüger(userid)) {
-			writeKreditKonto(kk);		
-			return 1;
-		}
-		return 0;
 
-	}
-
-	int deleteSparkontoVerfüger(SPARKONTO* sk, CUSTOMER* cust) {
-
-		int userid = cust->getID();
-		if (sk->delKontoverfüger(userid)) {
-			writeSparKonto(sk);
-			return 1;
-		}
-		return 0;
-
-	}
 
 	/* ------------------------- */
 	/*   Funktionen der Kunden   */
@@ -2258,11 +1820,6 @@
 		Kunde->setAdresse(_Adresse);
 		Kunde->setWohnort(_Wohnort);
 		Kunde->setTelefon(_Telefon);
-		Kunde->setKtnr1(0);
-		Kunde->setKtnr2(0);
-		Kunde->setKtnr3(0);
-		Kunde->setKtnr4(0);
-		Kunde->setKtnr5(0);
 
 		/* gibt false zurück wenn user nicht geadded werden konnte*/
 		if (addUser(Kunde) == true) {
@@ -2441,31 +1998,15 @@
 		SPARKONTO *Konto = new SPARKONTO();
 		long SparKontonummer = Konto->getKontonummer();
 		Konto->setVerfüger(Kunde);
-
-		Konto->addKontoverfüger(Kunde->getID());
-	
-		if (Kunde->getKtnr1() == 0) {
-			Kunde->setKtnr1(Konto->getKontonummer());
-		}
-		else if(Kunde->getKtnr2() == 0){
-			Kunde->setKtnr2(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr3() == 0) {
-			Kunde->setKtnr3(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr4() == 0) {
-			Kunde->setKtnr4(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr5() == 0) {
-			Kunde->setKtnr5(Konto->getKontonummer());
-		}
-		else{
-			LOGGING("Ein Kunde kann nur maximal 5 Konten besitzen.","ERROR");
-		}
-		writeUser(Kunde);
+		
 
 		if (addSparKonto(Konto) == true) {
-			LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
+			addSparkontoVerfüger(Kunde->getID(), Konto->getKontonummer());
+			addKontotoUser(Kunde->getID(), Konto->getKontonummer());
+			
+
+			
+			LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");			
 		}
 		else {
 			LOGGING("Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.", "ERROR");
@@ -2487,29 +2028,10 @@
 		long KreditKontonummer = Konto->getKontonummer();
 		Konto->setVerfüger(Kunde);
 
-		Konto->addKontoverfüger(Kunde->getID());
-
-		if (Kunde->getKtnr1() == 0) {
-			Kunde->setKtnr1(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr2() == 0) {
-			Kunde->setKtnr2(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr3() == 0) {
-			Kunde->setKtnr3(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr4() == 0) {
-			Kunde->setKtnr4(Konto->getKontonummer());
-		}
-		else if (Kunde->getKtnr5() == 0) {
-			Kunde->setKtnr5(Konto->getKontonummer());
-		}
-		else {
-			LOGGING("Ein Kunde kann nur maximal 5 Konten besitzen.", "ERROR");
-		}
-		writeUser(Kunde);
 
 		if (addKreditKonto(Konto) == true) {
+			addKreditkontoVerfüger(Kunde->getID(), Konto->getKontonummer());
+			addKontotoUser(Kunde->getID(), Konto->getKontonummer());
 			LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");
 		}
 		else {
@@ -2561,69 +2083,6 @@
 		}
 	}
 
-	int removeSparKontoverfüger(int userid, SPARKONTO* kk) {
-		if (kk != NULL) {
-			if (kk->getKontoverfüger(1) == userid) {
-				kk->setKontoverfüger(1, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeSparKonto(kk);
-			}
-			else if (kk->getKontoverfüger(2) == userid) {
-				kk->setKontoverfüger(2, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeSparKonto(kk);
-			}
-			else if (kk->getKontoverfüger(3) == userid) {
-				kk->setKontoverfüger(3, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeSparKonto(kk);
-			}
-			else if (kk->getKontoverfüger(4) == userid) {
-				kk->setKontoverfüger(4, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeSparKonto(kk);
-			}
-			else if (kk->getKontoverfüger(5) == userid) {
-				kk->setKontoverfüger(5, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeSparKonto(kk);
-			}
-			return 1;
-		}
-		return 0;
-	}
-	int removeKreditKontoverfüger(int userid, KREDITKONTO* kk) {
-
-		if (kk != NULL) {
-			if (kk->getKontoverfüger(1) == userid) {
-				kk->setKontoverfüger(1, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeKreditKonto(kk);
-			}
-			else if (kk->getKontoverfüger(2) == userid) {
-				kk->setKontoverfüger(2, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeKreditKonto(kk);
-			}
-			else if (kk->getKontoverfüger(3) == userid) {
-				kk->setKontoverfüger(3, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeKreditKonto(kk);
-			}
-			else if (kk->getKontoverfüger(4) == userid) {
-				kk->setKontoverfüger(4, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeKreditKonto(kk);
-			}
-			else if (kk->getKontoverfüger(5) == userid) {
-				kk->setKontoverfüger(5, 0);
-				removeKontofromUser(userid, kk->getKontonummer());
-				writeKreditKonto(kk);
-			}
-			return 1;
-		}
-		return 0;
-	}
 	/* ------------------ */
 	/*  Kontofunktionen   */
 	/* ------------------ */
@@ -2822,7 +2281,7 @@
 		return konto->getKontonummer();
 	}
 
-	long getSparKontonummer(SPARKONTO* konto)
+	long deleteKreditkontoVerfügernummer(SPARKONTO* konto)
 	{
 		return konto->getKontonummer();
 	}
@@ -2858,50 +2317,12 @@
 		return konto->getKontostand();
 	}
 
-	int getSparkontoverfüger(SPARKONTO* konto, int whichcust) {
-
-		return konto->getKontoverfüger(whichcust);
-	}
-
 	double getKreditkontostand(KREDITKONTO* konto) {
 
 		return konto->getKontostand();
 	}
 
-	int getKreditkontoverfüger(KREDITKONTO* konto, int whichcust) {
 
-		return konto->getKontoverfüger(whichcust);
-	}
-
-	// liefert 0 bei ungültigen Parameter zurück
-	long getKontonummer(CUSTOMER* kunde, int whichKonto)
-	{
-		if (whichKonto == 1)
-		{
-			return kunde->getKtnr1();
-		}
-		else if (whichKonto == 2)
-		{
-			return kunde->getKtnr2();
-		}
-		else if (whichKonto == 3)
-		{
-			return kunde->getKtnr3();
-		}
-		else if (whichKonto == 4)
-		{
-			return kunde->getKtnr4();
-		}
-		else if (whichKonto == 5)
-		{
-			return kunde->getKtnr5();
-		}
-		else
-		{
-			LOGGING("Ungültiger Parameter - Konto existiert nicht", "ERROR");
-			return 0;
-		}
-	}
 
 	// Rechnet auf Euro um
 	double waehrungsumrechnung(int _currency, double _value)

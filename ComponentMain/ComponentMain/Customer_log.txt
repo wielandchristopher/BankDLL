@@ -321,3 +321,67 @@
 07 11 2016 00:49:32 - OK: Das SparKonto wurde erfolgreich erstellt.
 07 11 2016 00:53:00 - OK: Der Kunde wurde erfolgreich angelegt.
 07 11 2016 00:53:00 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 11 2016 01:41:25 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 01:41:25 - OK: Das SparKonto wurde erfolgreich erstellt.
+10 11 2016 02:30:28 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:32:10 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:32:39 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:32:49 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:33:02 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:34:07 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:38:53 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:39:33 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:39:49 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:40:22 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:40:43 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:42:08 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:42:30 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:42:30 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:42:36 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:42:36 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:42:47 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:42:47 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:43:50 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:43:50 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:44:03 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:48:44 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:48:44 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:49:29 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:49:34 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:49:34 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:49:36 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:49:36 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:53:15 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:53:15 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:53:26 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:53:32 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:53:32 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:55:02 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:55:02 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:55:18 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:56:16 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:56:16 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 02:56:26 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:56:54 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:57:24 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:58:10 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:58:42 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 02:59:50 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:14:24 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:14:24 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+10 11 2016 03:14:34 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:14:43 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:14:43 - ERROR: Fehler beim oeffnen der JSON Datei.
+10 11 2016 03:14:43 - ERROR: Fehler beim oeffnen der JSON Datei.
+10 11 2016 03:14:48 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:14:48 - ERROR: Fehler beim oeffnen der JSON Datei.
+10 11 2016 03:14:48 - ERROR: Fehler beim oeffnen der JSON Datei.
+10 11 2016 03:14:52 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:14:52 - ERROR: Fehler beim oeffnen der JSON Datei.
+10 11 2016 03:14:52 - ERROR: Fehler beim oeffnen der JSON Datei.
+10 11 2016 03:15:59 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:17:44 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:18:45 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:22:52 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:24:38 - OK: Der Kunde wurde erfolgreich angelegt.
+10 11 2016 03:29:25 - OK: Der Kunde wurde erfolgreich angelegt.

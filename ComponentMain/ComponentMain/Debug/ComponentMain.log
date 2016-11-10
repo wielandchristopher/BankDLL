@@ -1,11 +1,11 @@
-﻿Der Buildvorgang wurde am 07.11.2016 00:49:08 gestartet.
+﻿Der Buildvorgang wurde am 10.11.2016 03:29:24 gestartet.
      1>Projekt "C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\ComponentMain.vcxproj" auf Knoten "2", Build Ziel(e).
      1>Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\ComponentMain.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\ComponentMain.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\ComponentMain.lib" /MACHINE:X86 Debug\Main.obj
-         C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\Bank.lib
-         ComponentMain.vcxproj -> C:\Users\Wiesorium\Documents\GitHub\BankSST01\Bank\Bank\Debug\ComponentMain.exe
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.lib" /MACHINE:X86 Debug\Main.obj
+         C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.lib
+         ComponentMain.vcxproj -> C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\ComponentMain.exe
      1>Die Erstellung von Projekt "C:\Users\Wiesorium\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\ComponentMain.vcxproj" ist abgeschlossen (Build Ziel(e)).
 
 Der Buildvorgang wurde erfolgreich ausgeführt.
 
-Verstrichene Zeit 00:00:00.23
+Verstrichene Zeit 00:00:00.24
