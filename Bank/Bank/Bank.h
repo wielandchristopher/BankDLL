@@ -61,7 +61,7 @@ extern "C" {
 
 	BANK_API int UserKontoExists(int userid, long ktnr);
 	BANK_API int removeSparKontoVerfüger(int userid, long ktnr);
-	BANK_API char* getUserKonten(int id);
+	
 	BANK_API int rmvKontofromUser(int userid, long ktnr);
 	BANK_API int addKontotoUser(int userid, long ktnr);
 	BANK_API int addSparkontoVerfüger(int userid, long ktnr);
@@ -69,6 +69,13 @@ extern "C" {
 	BANK_API int removeKreditKontoVerfüger(int userid, long ktnr);
 	BANK_API int addKreditkontoVerfüger(int userid, long ktnr);
 	BANK_API int kkverfügerExists(long ktnr, int userid);
+	
+	BANK_API char* getUserKonten(int id);
+	BANK_API void SparkontoVerfügerHinzufügen(SPARKONTO* Konto, CUSTOMER* cust);
+	BANK_API void KreditkontoVerfügerHinzufügen(KREDITKONTO* Konto, CUSTOMER* cust);
+	BANK_API void SparkontoVerfügerLoeschen(SPARKONTO* Konto, CUSTOMER* cust);
+	BANK_API void KreditkontoVerfügerLoeschen(KREDITKONTO* Konto, CUSTOMER* cust);
+	BANK_API int getUserId(CUSTOMER* cust);
 
 #ifdef __cplusplus
 }

@@ -66,7 +66,7 @@
 		return actNr;
 	}
 
-	// Generiert zu jedem Konto eine IBAN
+	// Generiert zu jedem Konto eine IBAN -- TODO
 	long generateIBAN(long _kontonummer)	  
 	{
 		long dr = (1 + (_kontonummer - 1) % 9);
@@ -76,7 +76,8 @@
 		string kontonummerString = to_string(_kontonummer);
 		string ibanString = pruefZiffer + kontonummerString;
 
-		return atol(ibanString.c_str());
+		//cout << atol(ibanString.c_str()) << endl; // for testing
+		return _kontonummer; // atol(ibanString.c_str()); // + _kontonummer TODO
 	}
 
 	// returns BIC
@@ -84,6 +85,7 @@
 	{
 		return BIC;
 	}
+
 
 	/* ----------------- */
 	/* Benötigte Klassen */
@@ -560,7 +562,6 @@
 	/* Write a json file with a filename and an cJSON element*/
 	bool writeJsonFile(char *filename, cJSON * jobj) {
 
-		//cout << "JSONTOFILE" <<cJSON_Print(jobj);
 		FILE *datei;
 		datei = fopen(filename, "w");
 		if (datei == NULL)
@@ -673,7 +674,6 @@
 
 		for (int ct = 0; ct < size; ct++) {
 			cJSON * item = cJSON_GetArrayItem(arr, ct);
-			cout << x << entry << cJSON_Print(arr);
 			if (cJSON_GetObjectItem(item, entry)->valueint == x) {
 				return true;
 			}
@@ -873,6 +873,11 @@
 
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
+		if (fileObj == NULL) {
+			createKreditKontoFile();
+			fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
+		}
+
 		if (fileObj != NULL) {
 			cJSON * arr = cJSON_GetObjectItem(fileObj, KREDITKONTO_ROOT);
 
@@ -902,12 +907,18 @@
 		return -1;
 	}
 
+	/* R */
 	int addKreditkontoVerfüger(int userid, long ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
 
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
+
+		if (fileObj == NULL) {
+			createKreditKontoFile();
+			fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
+		}
 
 		if (fileObj != NULL) 
 		{
@@ -921,33 +932,25 @@
 
 				if (checkKonto(item, ktnr)){ // ist es das konto?
 
-					cJSON * newVerfüger = cJSON_GetObjectItem(item, "Verfueger"); // jetzt habe ich das arr
-
+					cJSON * newVerfügerArr = cJSON_GetObjectItem(item, "Verfueger"); // jetzt habe ich das arr
+																					 //cJSON_AddItemToArray(newVerfügerArr, cJSON_CreateObject());
 
 					cJSON * newObj = cJSON_CreateObject(); // neues Arrayobjekt vorbereiten
 					cJSON_AddItemToObject(newObj, "VerfuegerId", cJSON_CreateNumber(userid)); // id hinzufügen
+					cJSON_AddItemToArray(newVerfügerArr, newObj);
 
-					// in das array das neue item hinzufügen
-					cJSON_AddItemToArray(newVerfüger, newObj);
+					cJSON* newit = cJSON_Parse(cJSON_Print(item));
+					cJSON_ReplaceItemInObject(newit, "Verfueger", newVerfügerArr);
 
-					cJSON_ReplaceItemInObject(item, "Verfueger", newVerfüger);
-					// jetzt ist das item fertig und muss wieder ins array der konten geschreiben werden
-					
-					cJSON* newarr = cJSON_CreateArray();
+					cJSON* newfarr = cJSON_Parse(cJSON_Print(arr));
+					cJSON_ReplaceItemInArray(newfarr, x, newit);
+
 					//save obj vorbereiten
 					cJSON* saveObj = cJSON_CreateObject();
-					
-					if (size == 1) {
-						cJSON_AddItemToArray(newarr, item);
-						cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, newarr);
-						cout << cJSON_Print(saveObj);
-					}
-					else {
-						cJSON_ReplaceItemInArray(arr, x, item);
-						cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
-						cout << cJSON_Print(saveObj);
-					}
-					
+					cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, newfarr);
+
+			
+
 					if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
 						return 0;
 					}
@@ -961,12 +964,18 @@
 	return -1; // wenn file null dann false weil nicht addable
 	}
 
+	/* R */
 	int removeKreditKontoVerfüger(int userid, long ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
 
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
+
+		if (fileObj == NULL) {
+			createKreditKontoFile();
+			fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
+		}
 
 		if (fileObj != NULL) {
 			cJSON * arr = cJSON_GetObjectItem(fileObj, KREDITKONTO_ROOT);
@@ -992,11 +1001,16 @@
 						}
 					}
 
-					cJSON_ReplaceItemInObject(item, "Verfueger", verfArr);
-					cJSON_ReplaceItemInArray(arr, x, item);
+					cJSON* nitem = cJSON_Parse(cJSON_Print(item));
+					cJSON* narr = cJSON_Parse(cJSON_Print(arr));
+
+					cJSON_ReplaceItemInObject(nitem, "Verfueger", verfArr);
+
+
+					cJSON_ReplaceItemInArray(narr, x, nitem);
 
 					cJSON* saveObj = cJSON_CreateObject();
-					cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
+					cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, narr);
 
 					if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
 						return 0;
@@ -1018,8 +1032,13 @@
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
 		//durchsuchen und true oder false zurückgeben
-
+		
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+
+		if (fileObj == NULL) {
+			createSparKontoFile();
+			fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+		}
 
 		if (fileObj != NULL) {
 			cJSON * arr = cJSON_GetObjectItem(fileObj, SPARKONTO_ROOT);
@@ -1050,70 +1069,56 @@
 		return -1;
 	}
 
+	/* R */
 	int addSparkontoVerfüger(int userid, long ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
 
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+	
+		if (fileObj == NULL) {
+			createSparKontoFile();
+			fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+			
+		}
 
 		if (fileObj != NULL)
 		{
-			cJSON * arr = cJSON_GetObjectItem(fileObj, SPARKONTO_ROOT);
+			cJSON* returnItem = cJSON_CreateObject();
+			cJSON_AddItemToObject(returnItem, SPARKONTO_ROOT, cJSON_CreateArray());
 
+			
+			cJSON * arr = cJSON_GetObjectItem(fileObj, SPARKONTO_ROOT);
 			int size = cJSON_GetArraySize(arr);
 		
 			// über das array drübergehen
 			for (int x = 0; x < size; x++) {
 				cJSON * item = cJSON_GetArrayItem(arr, x); // ein obj von einem Konto
+				
 			
 				if (checkKonto(item, ktnr)) { // ist es das konto?
 					
-					cJSON * newVerfüger = cJSON_GetObjectItem(item, "Verfueger"); // jetzt habe ich das arr
+					cJSON * newVerfügerArr = cJSON_GetObjectItem(item, "Verfueger"); // jetzt habe ich das arr
+					//cJSON_AddItemToArray(newVerfügerArr, cJSON_CreateObject());
 
-			
 					cJSON * newObj = cJSON_CreateObject(); // neues Arrayobjekt vorbereiten
 					cJSON_AddItemToObject(newObj, "VerfuegerId", cJSON_CreateNumber(userid)); // id hinzufügen
-					cout << cJSON_Print(item);
-																							  // in das array das neue item hinzufügen
-					cJSON_AddItemToArray(newVerfüger, newObj);
-					cout << cJSON_Print(newVerfüger);
+					cJSON_AddItemToArray(newVerfügerArr, newObj); 
 
-					if (size == 1) {
-						
-						cJSON_DeleteItemFromObject(item, "Verfueger");
-						
-						cout << cJSON_Print(item);
-						cJSON_AddItemToObject(item, "Verfueger", newVerfüger);
-						cout << cJSON_Print(item);
-					}
-					else {
-						cJSON_ReplaceItemInObject(item, "Verfueger", newVerfüger);
-					}
-					
-					// jetzt ist das item fertig und muss wieder ins array der konten geschreiben werden
-					
-					cout << cJSON_Print(item);
+					cJSON* newit = cJSON_Parse(cJSON_Print(item));
+					cJSON_ReplaceItemInObject(newit, "Verfueger",newVerfügerArr);
 
-					cJSON* newarr = cJSON_CreateArray();
+					cJSON* newfarr = cJSON_Parse(cJSON_Print(arr));
+					cJSON_ReplaceItemInArray(newfarr, x ,newit);
+
+		
 					//save obj vorbereiten
 					cJSON* saveObj = cJSON_CreateObject();
+					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, newfarr);
 
+					cout << cJSON_Print(saveObj) << endl;
 
-
-					if (size == 1) {
-						cJSON_AddItemToArray(newarr, item);						
-						cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, newarr);
-					}
-					else {
-						cJSON_ReplaceItemInArray(arr, x, item);
-						cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
-					}
-					
-					
-
-					// aktualisiertes arr einfügen in root
-					
 					if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
 						return 0;
 					}
@@ -1127,12 +1132,18 @@
 		return -1; // wenn file null dann false weil nicht addable
 	}
 
+	/* R */
 	int removeSparKontoVerfüger(int userid, long ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
 
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+
+		if (fileObj == NULL) {
+			createSparKontoFile();
+			fileObj = readJsonFile_cJson(SPARKONTO_FILE);
+		}
 
 		if (fileObj != NULL) {
 			cJSON * arr = cJSON_GetObjectItem(fileObj, SPARKONTO_ROOT);
@@ -1158,11 +1169,14 @@
 						}
 					}
 
-					cJSON_ReplaceItemInObject(item, "Verfueger", verfArr);
-					cJSON_ReplaceItemInArray(arr, x, item);
+					cJSON* nitem = cJSON_Parse(cJSON_Print(item));
+					cJSON* narr = cJSON_Parse(cJSON_Print(arr));
+
+					cJSON_ReplaceItemInObject(nitem, "Verfueger", verfArr);
+					cJSON_ReplaceItemInArray(narr, x, nitem);
 
 					cJSON* saveObj = cJSON_CreateObject();
-					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
+					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, narr);
 
 					if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
 						return 0;
@@ -1186,6 +1200,10 @@
 		// konten einlesen von user
 		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
+		if (fileObj == NULL) {
+			createUserFile();
+			fileObj = readJsonFile_cJson(USER_FILE);
+		}
 		if (fileObj != NULL) {
 			cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
 
@@ -1215,6 +1233,7 @@
 		return -1;
 	}
 
+	/* R */
 	int addKontotoUser(int userid, long ktnr){
 
 		//user auslesen
@@ -1222,8 +1241,12 @@
 		//kontenliste add
 		//replace kontenliste mit neuer liste
 		//speichern
-
 		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+
+		if (fileObj == NULL) {
+			createUserFile();
+			fileObj = readJsonFile_cJson(USER_FILE);
+		}
 
 		if (fileObj != NULL)
 		{
@@ -1237,23 +1260,25 @@
 
 				if (cJSON_GetObjectItem(item, "id")->valueint == userid) { // ist es der user?
 
+
+
 					cJSON * newVerfüger = cJSON_GetObjectItem(item, "Konten"); // jetzt habe ich das arr
-
-
 					cJSON * newObj = cJSON_CreateObject(); // neues Arrayobjekt vorbereiten
 					cJSON_AddItemToObject(newObj, "Kontonr", cJSON_CreateNumber(ktnr)); // id hinzufügen
-
 					 // in das array das neue item hinzufügen
 					cJSON_AddItemToArray(newVerfüger, newObj);
 
-					cJSON_ReplaceItemInObject(item, "Konten", newVerfüger);
-					// jetzt ist das item fertig und muss wieder ins array der konten geschreiben werden
-					cJSON_ReplaceItemInArray(arr, x, item);
+					cJSON* newit = cJSON_Parse(cJSON_Print(item));
+					cJSON_ReplaceItemInObject(newit, "Konten", newVerfüger);
 
+					cJSON* newfarr = cJSON_Parse(cJSON_Print(arr));
+					//cJSON_AddItemToArray(newfarr, newit);
+					cJSON_ReplaceItemInArray(newfarr, x, newit);
+					
 					//save obj vorbereiten
 					cJSON* saveObj = cJSON_CreateObject();
 					// aktualisiertes arr einfügen in root
-					cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
+					cJSON_AddItemToObject(saveObj, USER_ROOT, newfarr);
 
 					if (writeJsonFile(USER_FILE, saveObj)) {
 						return 0;
@@ -1266,12 +1291,17 @@
 		}
 		return -1;
 	}
-
+	/* R */
 	int rmvKontofromUser(int userid, long ktnr){
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Konten
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
 
-		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
+		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+
+		if (fileObj == NULL) {
+			createUserFile();
+			fileObj = readJsonFile_cJson(USER_FILE);
+		}
 
 		if (fileObj != NULL) {
 			cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
@@ -1288,20 +1318,27 @@
 					cJSON * verfArr = cJSON_GetObjectItem(item, "Konten"); // kontonr arr
 					int verfsize = cJSON_GetArraySize(verfArr);
 
+					cJSON* nverfArr = cJSON_Parse(cJSON_Print(verfArr));
+
 					for (int y = 0; y < verfsize; y++) {
 						cJSON* verfitem = cJSON_GetArrayItem(verfArr, y);
-
+						
 						// schauen ob im arritem y die kontonr übereinstimmt -> wenn ja -> löschen
 						if (cJSON_GetObjectItem(verfitem, "Kontonr")->valueint == ktnr) {
-							cJSON_DeleteItemFromArray(verfArr, y);
+							
+							cJSON_DeleteItemFromArray(nverfArr, y);
+							
 						}
 					}
-
-					cJSON_ReplaceItemInObject(item, "Konten", verfArr);
-					cJSON_ReplaceItemInArray(arr, x, item);
+			
+					cJSON* nitem = cJSON_Parse(cJSON_Print(item));
+					cJSON* narr = cJSON_Parse(cJSON_Print(arr));
+					cJSON_ReplaceItemInObject(nitem, "Konten", nverfArr);
+					
+					cJSON_ReplaceItemInArray(narr, x, nitem);
 
 					cJSON* saveObj = cJSON_CreateObject();
-					cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
+					cJSON_AddItemToObject(saveObj, USER_ROOT, narr);
 
 					if (writeJsonFile(USER_FILE, saveObj)) {
 						return 0;
@@ -1314,28 +1351,6 @@
 			}
 		}
 		return -1;
-	}
-
-	char* getUserKonten(int id) {
-
-		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
-
-		if (fileObj != NULL) {
-			cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
-
-			int size = cJSON_GetArraySize(arr);
-
-			// über das array drübergehen
-			for (int x = 0; x < size; x++) {
-				cJSON * item = cJSON_GetArrayItem(arr, x); // ein obj von einem Konto
-
-				if (checkItem(item, id)) {
-					cJSON * verfArr = cJSON_GetObjectItem(item, "Konten"); // verf arr
-					return cJSON_Print(verfArr);
-				}
-			}
-		}
-		return NULL;
 	}
 
 
@@ -1376,7 +1391,6 @@
 			if (fileObj != NULL) {
 				cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
 				int size = cJSON_GetArraySize(arr);
-				cout << cJSON_Print(arr);
 
 				for (int x = 0; x < size; x++) {
 					cJSON * item = cJSON_GetArrayItem(arr, x);
@@ -1385,16 +1399,10 @@
 						//cJSON* newarr = cJSON_CreateArray();
 				
 						cJSON* ctcjson = customerTocJSON(cust, item);
-					/*	cout << "ctcjson\n" <<cJSON_Print(ctcjson);
 
-						cout << "arr\n" << cJSON_Print(arr);
-						cJSON_ReplaceItemInArray(arr, x, ctcjson);
-						
-						cout << cJSON_Print(arr);*/
 						cJSON* saveObj = cJSON_CreateObject();
 						cJSON_AddItemToObject(saveObj, USER_ROOT, arr);
 					
-						cout << cJSON_Print(saveObj);
 
 						if (writeJsonFile(USER_FILE, saveObj)) {
 							return true;
@@ -1603,8 +1611,9 @@
 				cJSON_AddItemToArray(arr, sparkontoTocJSON(kt,NULL));
 				cJSON* saveObj = cJSON_CreateObject();
 				cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, arr);
-				//printObject(saveObj);
+			
 				if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
+				
 					return true;
 				}
 				else {
@@ -1739,8 +1748,8 @@
 				cJSON* saveObj = cJSON_CreateObject();
 				cJSON_AddItemToObject(saveObj, KREDITKONTO_ROOT, arr);
 
-				//printObject(saveObj);
 				if (writeJsonFile(KREDITKONTO_FILE, saveObj)) {
+					
 					return true;
 				}
 				else {
@@ -2002,10 +2011,7 @@
 
 		if (addSparKonto(Konto) == true) {
 			addSparkontoVerfüger(Kunde->getID(), Konto->getKontonummer());
-			addKontotoUser(Kunde->getID(), Konto->getKontonummer());
-			
-
-			
+			addKontotoUser(Kunde->getID(), Konto->getKontonummer());			
 			LOGGING("Das SparKonto wurde erfolgreich erstellt.", "OK");			
 		}
 		else {
@@ -2054,13 +2060,108 @@
 
 		if (removeSparKonto(Konto->getKontonummer()) == true) {
 			delete Konto;
-		
+
 			LOGGING("Das Konto wurde erfolgreich entfernt.", "OK");
 		}
 		else {
 			LOGGING("Bei der Löschung des Kontos ist ein Fehler aufgetreten", "ERROR");
 		}
 	}
+
+	void SparkontoVerfügerHinzufügen(SPARKONTO* Konto, CUSTOMER* cust) {
+
+		if (Konto->getClassId() != "sparkonto") {
+			LOGGING("Es wurde kein SparKonto übergeben.", "ERROR");
+			return;
+		}
+
+		if (Konto == NULL || cust == NULL) {
+			LOGGING("Das übergebene Konto existiert nicht oder der Customer existiert nicht.", "ERROR");
+			return;
+		}
+
+		if (addSparkontoVerfüger(cust->getID(),Konto->getKontonummer()) == 0) {
+			if (addKontotoUser(cust->getID(), Konto->getKontonummer()) == 0) {
+				LOGGING("Das SparKonto wurde erfolgreich zum user hinzugefügt.", "OK");
+			}
+
+			LOGGING("Der User wurde erfolgreich zum Konto hinzugefügt.", "OK");
+		}
+		else {
+			LOGGING("Beim hinzufügen des Kontos ist ein Fehler aufgetreten", "ERROR");
+		}
+	}
+
+	void KreditkontoVerfügerHinzufügen(KREDITKONTO* Konto, CUSTOMER* cust) {
+
+		if (Konto->getClassId() != "kreditkonto") {
+			LOGGING("Es wurde kein Kreditkonto übergeben.", "ERROR");
+			return;
+		}
+
+		if (Konto == NULL || cust == NULL) {
+			LOGGING("Das übergebene Konto existiert nicht oder der Customer existiert nicht.", "ERROR");
+			return;
+		}
+
+		if (addKreditkontoVerfüger(cust->getID(), Konto->getKontonummer()) == 0) {
+			if (addKontotoUser(cust->getID(), Konto->getKontonummer()) == 0) {
+				LOGGING("Das KreditKonto wurde erfolgreich zum user hinzugefügt.", "OK");
+			}
+
+			LOGGING("Der User wurde erfolgreich zum Konto hinzugefügt.", "OK");
+		}
+		else {
+			LOGGING("Beim hinzufügen des Kontos ist ein Fehler aufgetreten", "ERROR");
+		}
+	}
+
+	void SparkontoVerfügerLoeschen(SPARKONTO* Konto, CUSTOMER* cust) {
+		if (Konto->getClassId() != "sparkonto") {
+			LOGGING("Es wurde kein Sparkonto übergeben.", "ERROR");
+			return;
+		}
+
+		if (Konto == NULL || cust == NULL) {
+			LOGGING("Das übergebene Konto existiert nicht oder der Customer existiert nicht.", "ERROR");
+			return;
+		}
+
+		if (removeSparKontoVerfüger(cust->getID(), Konto->getKontonummer()) == 0) {
+			if (rmvKontofromUser(cust->getID(), Konto->getKontonummer()) == 0) {
+				LOGGING("Die Sparkonteneinträge wurden erfolgreich vom User entfernt", "OK");
+			}
+
+			LOGGING("Der Usereintrag wurde erfolgreich vom Sparkonto entfernt", "OK");
+		}
+		else {
+			LOGGING("Beim löschen der Einträge ist ein Fehler aufgetaucht.", "ERROR");
+		}
+	}
+	void KreditkontoVerfügerLoeschen(KREDITKONTO* Konto, CUSTOMER* cust) {
+		if (Konto->getClassId() != "kreditkonto") {
+			LOGGING("Es wurde kein Kreditkonto übergeben.", "ERROR");
+			return;
+		}
+
+		if (Konto == NULL || cust == NULL) {
+			LOGGING("Das übergebene Konto existiert nicht oder der Customer existiert nicht.", "ERROR");
+			return;
+		}
+
+		if (removeKreditKontoVerfüger(cust->getID(), Konto->getKontonummer()) == 0) {
+		
+			if (rmvKontofromUser(cust->getID(), Konto->getKontonummer()) == 0) {
+				LOGGING("Das KreditKonto wurde erfolgreich zum user hinzugefügt.", "OK");
+			}
+
+			LOGGING("Der User wurde erfolgreich zum Konto hinzugefügt.", "OK");
+		}
+		else {
+			LOGGING("Beim hinzufügen des Kontos ist ein Fehler aufgetreten", "ERROR");
+		}
+	}
+
 	//Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
 	void Kreditkontoentfernen(KREDITKONTO* Konto) {
 
@@ -2281,9 +2382,8 @@
 		return konto->getKontonummer();
 	}
 
-	long deleteKreditkontoVerfügernummer(SPARKONTO* konto)
-	{
-		return konto->getKontonummer();
+	int getUserId(CUSTOMER* cust) {
+		return cust->getID();
 	}
 
 	//Kreditkonto = 1, Sparkonto = 0
@@ -2311,6 +2411,31 @@
 		return type;
 	}
 
+	char* getUserKonten(int id){
+
+			cJSON * fileObj = readJsonFile_cJson(USER_FILE);
+
+			if (fileObj == NULL) {
+				createUserFile();
+				fileObj = readJsonFile_cJson(USER_FILE);
+			}
+			if (fileObj != NULL) {
+				cJSON * arr = cJSON_GetObjectItem(fileObj, USER_ROOT);
+
+				int size = cJSON_GetArraySize(arr);
+
+				// über das array drübergehen
+				for (int x = 0; x < size; x++) {
+					cJSON * item = cJSON_GetArrayItem(arr, x); // ein obj von einem Konto
+
+					if (checkItem(item, id)) {
+						cJSON * verfArr = cJSON_GetObjectItem(item, "Konten"); // verf arr
+						return cJSON_Print(verfArr);
+					}
+				}
+			}
+		return NULL;
+	}
 
 	double getSparkontostand(SPARKONTO* konto) {
 
