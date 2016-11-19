@@ -36,8 +36,8 @@
 	//initialisierungen
 	CUSTOMER* readUser(int id);
 	bool userExist(int id);
-	bool kreditkontoExist(long ktnr);
-	bool sparkontoExist(long ktnr);
+	bool kreditkontoExist(char* ktnr);
+	bool sparkontoExist(char* ktnr);
 	void writeCount(int);
 	int readCount();
 	int readUserCount();
@@ -50,9 +50,19 @@
 	//generateKtnr erstellt eine Kontonummer und incrementiert immer um 1 hoch
 	int generateKtnnr() {
 
-		int actNr = readCount();
+
+		int i;
+		time_t t;
+
+		time(&t);
+		srand((time(NULL)));              /* Zufallsgenerator initialisieren */
+
+		i = rand() % 1000 + 1;
+
+		int actNr = readUserCount();
 		actNr++;
-		writeCount(actNr);
+
+		writeUserCount(actNr);
 
 		return actNr;
 	}
@@ -67,17 +77,20 @@
 	}
 
 	// Generiert zu jedem Konto eine IBAN -- TODO
-	long generateIBAN(long _kontonummer)	  
+	string generateIBAN(int _kontonummer)	  
 	{
-		long dr = (1 + (_kontonummer - 1) % 9);
-		long pz = 7 - dr % 7;
+		long long dr = (1 + (_kontonummer - 1) % 9);
+		long long pz = 7 - dr % 7;
+
+
+		pz = pz * 10000000000;
+
+		//cout << pz << endl;
+		pz = pz + _kontonummer;
 
 		string pruefZiffer = to_string(pz);
-		string kontonummerString = to_string(_kontonummer);
-		string ibanString = pruefZiffer + kontonummerString;
 
-		//cout << atol(ibanString.c_str()) << endl; // for testing
-		return _kontonummer; // atol(ibanString.c_str()); // + _kontonummer TODO
+		return pruefZiffer;
 	}
 
 	// returns BIC
@@ -178,10 +191,19 @@
 		void SPARKONTO::setKontostand(double _Kontostand) {
 			this->Kontostand = _Kontostand;
 		}
-		int SPARKONTO::getKontonummer() {
+		char* SPARKONTO::getKontonummer() {
 			return Kontonummer;
 		}
-		void SPARKONTO::setKontonummer(long _Kontonummer) {
+		void SPARKONTO::setKontonummer(string _Kontonummer) {
+			
+			char *ktnr = new char[_Kontonummer.length() + 1];
+			strcpy(ktnr, _Kontonummer.c_str());
+
+			this->Kontonummer = ktnr;
+			// do stuff
+			
+		}
+		void SPARKONTO::setKontonummer(char* _Kontonummer) {
 			this->Kontonummer = _Kontonummer;
 		}
 		int SPARKONTO::getWaehrung()
@@ -200,7 +222,7 @@
 
 	private:
 		char* sparkonto;
-		long Kontonummer;
+		char* Kontonummer;
 		double Kontostand;
 		int waehrung;
 		CUSTOMER* Kontoverfüger;
@@ -230,11 +252,21 @@
 		void KREDITKONTO::setKontostand(double _Kontostand) {
 			this->Kontostand = _Kontostand;
 		}
-		long KREDITKONTO::getKontonummer() {
+		char* KREDITKONTO::getKontonummer() {
 			return Kontonummer;
 		}
-		void KREDITKONTO::setKontonummer(long _Kontonummer) {
+		void KREDITKONTO::setKontonummer(char* _Kontonummer) {
 			this->Kontonummer = _Kontonummer;
+		}
+		void KREDITKONTO::setKontonummer(string _Kontonummer) {
+	
+			char *ktnr = new char[_Kontonummer.length() + 1];
+			strcpy(ktnr, _Kontonummer.c_str());
+
+			this->Kontonummer = ktnr;
+			// do stuff
+			
+
 		}
 		int KREDITKONTO::getWaehrung()
 		{
@@ -254,7 +286,7 @@
 	private:
 		char* kreditkonto;
 		int waehrung;
-		long Kontonummer;
+		char* Kontonummer;
 		double Kontostand;
 		CUSTOMER* Kontoverfüger;
 	};
@@ -294,17 +326,17 @@
 		void UEBERWEISUNG::setkontostand(double betrg) {
 			kontostand = betrg;
 		}
-		long UEBERWEISUNG::getkontonummer() {
+		char* UEBERWEISUNG::getkontonummer() {
 			return kontonummer;
 		}
-		void UEBERWEISUNG::setkontonummer(long kntnr) {
+		void UEBERWEISUNG::setkontonummer(char* kntnr) {
 			kontonummer = kntnr;
 		}
 
 	private:
 		double betrag;
 		double kontostand;
-		long kontonummer;
+		char* kontonummer;
 		char* empfaengername;
 		char* verwendungszweck;
 	};
@@ -329,12 +361,12 @@
 			kontostand = betrag;
 		}
 
-		void WAEHRUNGSMODUL::setKontonummer(long kontonr)
+		void WAEHRUNGSMODUL::setKontonummer(char* kontonr)
 		{
 			kontonummer = kontonr;
 		}
 
-		long WAEHRUNGSMODUL::getKontonummer()
+		char* WAEHRUNGSMODUL::getKontonummer()
 		{
 			return kontonummer;
 		}
@@ -353,7 +385,7 @@
 	private:
 		char* waehrung;
 		double kontostand;
-		long kontonummer;
+		char* kontonummer;
 	};
 
 	/* ----------------------------------- */
@@ -410,9 +442,10 @@
 	}
 
 	// Initialisierung: Header für das Buchungs File wird erstellt
-	void initializeBuchungen(long kontonummer, string textFileName)
+	void initializeBuchungen(string kontonummer, string textFileName)
 	{
 		const char* fileName = textFileName.c_str();
+		const char* ktnr = kontonummer.c_str();
 		fopen_s(&buchungsfile, fileName, "a");
 		if (buchungsfile == NULL)
 		{
@@ -420,7 +453,7 @@
 		}
 
 		fprintf(buchungsfile, "Kontoauszug \n \n");
-		fprintf(buchungsfile, "Kontonummer: %d \t BankSST \n", kontonummer);
+		fprintf(buchungsfile, "Kontonummer: %d \t BankSST \n", ktnr);
 		fprintf(buchungsfile, "Datum \t \t \t Verwendungszweck \t \t \t \t \t Betrag \n \n");
 
 		fclose(buchungsfile);
@@ -446,7 +479,7 @@
 
 		if (!fileExist(textFileName))
 		{
-			initializeBuchungen(stoi(kontonummer), textFileName);
+			initializeBuchungen(kontonummer, textFileName);
 
 			insertBuchungToFile(textFileName, verwendungszweck, betrag);
 		}
@@ -462,20 +495,20 @@
 		{
 			string betragString = to_string(betrag);
 			betragString.insert(0, "-");
-			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), (zielkonto->getKontonummer()));
 
 		}
 		else if (art == 2)
 		{
 			string betragString = to_string(betrag);
 			betragString.insert(0, "-");
-			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(),(zielkonto->getKontonummer()));
 		}
 		else if (art == 3)
 		{
 			string betragString = to_string(betrag);
 			betragString.insert(0, "+");
-			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), (zielkonto->getKontonummer()));
 
 		}
 	}
@@ -485,20 +518,20 @@
 		{
 			string betragString = to_string(betrag);
 			betragString.insert(0, "-");
-			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), (zielkonto->getKontonummer()));
 
 		}
 		else if (art == 2)
 		{
 			string betragString = to_string(betrag);
 			betragString.insert(0, "-");
-			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), (zielkonto->getKontonummer()));
 		}
 		else if (art == 3)
 		{
 			string betragString = to_string(betrag);
 			betragString.insert(0, "+");
-			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), to_string(zielkonto->getKontonummer()));
+			BUCHUNGEN(verwendungszweck, (char*)betragString.c_str(), (zielkonto->getKontonummer()));
 
 		}
 	}
@@ -724,7 +757,7 @@
 		if (sk != NULL) {
 			cJSON* kontoObject = cJSON_CreateObject();
 
-			cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
+			cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateString(sk->getKontonummer()));
 			cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
 			cJSON_AddItemToObject(kontoObject, "Waehrung", cJSON_CreateNumber(sk->getWaehrung()));
 			cJSON_AddItemToObject(kontoObject, "Verfueger", cJSON_CreateArray());
@@ -738,10 +771,10 @@
 
 		if (skItem != NULL) {
 			SPARKONTO* newktObj = new SPARKONTO();
-			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
+			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valuestring);
 			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
 			newktObj->setWaehrung(cJSON_GetObjectItem(skItem, "Waehrung")->valueint);
-		
+
 			return newktObj;
 		}
 
@@ -753,7 +786,7 @@
 		if (sk != NULL) {
 			cJSON* kontoObject = cJSON_CreateObject();
 
-			cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateNumber(sk->getKontonummer()));
+			cJSON_AddItemToObject(kontoObject, "Kontonummer", cJSON_CreateString(sk->getKontonummer()));
 			cJSON_AddItemToObject(kontoObject, "Kontostand", cJSON_CreateNumber(sk->getKontostand()));
 			cJSON_AddItemToObject(kontoObject, "Waehrung", cJSON_CreateNumber(sk->getWaehrung()));
 			cJSON_AddItemToObject(kontoObject, "Verfueger", cJSON_CreateArray());
@@ -767,7 +800,7 @@
 
 		if (skItem != NULL) {
 			KREDITKONTO* newktObj = new KREDITKONTO();
-			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valueint);
+			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valuestring);
 			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
 			newktObj->setWaehrung(cJSON_GetObjectItem(skItem, "Waehrung")->valueint);
 
@@ -794,11 +827,12 @@
 		}
 	}
 	/* Hilfsfunktion - Vergleich der ID werte von konten */
-	bool checkKtItem(cJSON * item, long id) {
+	bool checkKtItem(cJSON * item, char* id) {
+
 
 		cJSON * iditem = cJSON_GetObjectItem(item, "Kontonummer");
 
-		if (iditem->valueint == id) {
+		if (strcmp(iditem->valuestring, id) == 0) {
 			return true;
 		}
 		else {
@@ -851,11 +885,11 @@
 	/* --------------------------- */
 
 	
-	bool checkKonto(cJSON* item, long ktnr){
+	bool checkKonto(cJSON* item, char* ktnr){
 
 		cJSON * iditem = cJSON_GetObjectItem(item, "Kontonummer");
 
-		if (iditem->valueint == ktnr) {
+		if (strcmp(iditem->valuestring , ktnr)==0) {
 			return true;
 		}
 		else {
@@ -865,7 +899,7 @@
 
 	/* Kreditkonten */
 
-	int kkverfügerExists(long ktnr, int userid){
+	int kkverfügerExists(char* ktnr, int userid){
 
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
@@ -908,7 +942,7 @@
 	}
 
 	/* R */
-	int addKreditkontoVerfüger(int userid, long ktnr){
+	int addKreditkontoVerfüger(int userid, char* ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
@@ -965,7 +999,7 @@
 	}
 
 	/* R */
-	int removeKreditKontoVerfüger(int userid, long ktnr){
+	int removeKreditKontoVerfüger(int userid, char* ktnr){
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
@@ -1027,7 +1061,7 @@
 
 	/* Sparkonten */
 
-	int skverfügerExists(long ktnr, int userid) {
+	int skverfügerExists(char* ktnr, int userid) {
 
 		//konten auslesen und obj vom konto auswählen
 		//obj vom konto -> kontoverfüger wählen
@@ -1070,7 +1104,7 @@
 	}
 
 	/* R */
-	int addSparkontoVerfüger(int userid, long ktnr) {
+	int addSparkontoVerfüger(int userid, char* ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// beim obj einen verfüger hinzufügen
@@ -1133,7 +1167,7 @@
 	}
 
 	/* R */
-	int removeSparKontoVerfüger(int userid, long ktnr) {
+	int removeSparKontoVerfüger(int userid, char* ktnr) {
 
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Verfüger
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
@@ -1196,7 +1230,7 @@
 	/*   UserKonten - Funktionen   */
 	/* --------------------------- */
 
-	int UserKontoExists(int userid, long ktnr){
+	int UserKontoExists(int userid, char* ktnr){
 		// konten einlesen von user
 		cJSON * fileObj = readJsonFile_cJson(USER_FILE);
 
@@ -1223,7 +1257,7 @@
 						cJSON* verfitem = cJSON_GetArrayItem(ktnArr, y);
 
 						// schauen ob im arritem y die verfügerid übereinstimmt -> wenn ja -> löschen
-						if (cJSON_GetObjectItem(verfitem, "Kontonr")->valueint == ktnr){
+						if (strcmp(cJSON_GetObjectItem(verfitem, "Kontonr")->valuestring, ktnr)==0){
 							return 0;
 						}
 					}
@@ -1234,7 +1268,7 @@
 	}
 
 	/* R */
-	int addKontotoUser(int userid, long ktnr){
+	int addKontotoUser(int userid, char* ktnr){
 
 		//user auslesen
 		//kontenliste auslesen
@@ -1264,7 +1298,7 @@
 
 					cJSON * newVerfüger = cJSON_GetObjectItem(item, "Konten"); // jetzt habe ich das arr
 					cJSON * newObj = cJSON_CreateObject(); // neues Arrayobjekt vorbereiten
-					cJSON_AddItemToObject(newObj, "Kontonr", cJSON_CreateNumber(ktnr)); // id hinzufügen
+					cJSON_AddItemToObject(newObj, "Kontonr", cJSON_CreateString(ktnr)); // id hinzufügen
 					 // in das array das neue item hinzufügen
 					cJSON_AddItemToArray(newVerfüger, newObj);
 
@@ -1292,7 +1326,7 @@
 		return -1;
 	}
 	/* R */
-	int rmvKontofromUser(int userid, long ktnr){
+	int rmvKontofromUser(int userid, char* ktnr){
 		// konten auslesen -> obj vom gewählten konto suchen -> obj der Konten
 		// obj der verfüger durchsuchen und wenn userid vorhanden dann rauslöschen aus array element
 
@@ -1324,7 +1358,7 @@
 						cJSON* verfitem = cJSON_GetArrayItem(verfArr, y);
 						
 						// schauen ob im arritem y die kontonr übereinstimmt -> wenn ja -> löschen
-						if (cJSON_GetObjectItem(verfitem, "Kontonr")->valueint == ktnr) {
+						if (strcmp(cJSON_GetObjectItem(verfitem, "Kontonr")->valuestring, ktnr)==0) {
 							
 							cJSON_DeleteItemFromArray(nverfArr, y);
 							
@@ -1543,7 +1577,7 @@
 	/*  -------------------  */
 
 	// Sparkonto einlesen 
-	SPARKONTO* readSparKonto(long ktnr) {
+	SPARKONTO* readSparKonto(char* ktnr) {
 
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
@@ -1557,6 +1591,8 @@
 			for (int x = 0; x < size; x++) {
 				cJSON * item = cJSON_GetArrayItem(arr, x);
 
+
+				cout << "cjson item: " << cJSON_Print(item) << endl;
 				if (checkKtItem(item, ktnr)) {
 					return cJSONToSparkonto(item);
 				}
@@ -1624,7 +1660,7 @@
 		return false;
 	}
 	// Sparkonto mit kontonr löschen
-	bool removeSparKonto(long ktnr) {
+	bool removeSparKonto(char* ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -1652,7 +1688,7 @@
 		return false;
 	}
 	//Prüft, ob das angegebene SparKonto existiert
-	bool sparkontoExist(long ktnr) {
+	bool sparkontoExist(char* ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(SPARKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -1676,7 +1712,7 @@
 	/*  ---------------------  */
 
 	// Kreditkonto einlesen 
-	KREDITKONTO* readKreditKonto(long ktnr) {
+	KREDITKONTO* readKreditKonto(char* ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
 		if (fileObj == NULL) {
@@ -1761,7 +1797,7 @@
 	}
 
 	// Kreditkonto mit kontonr löschen
-	bool removeKreditKonto(int ktnr) {
+	bool removeKreditKonto(char* ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -1789,7 +1825,7 @@
 		return false;
 	}
 	//Prüft die Existenz eines angegebenen Kontos, bei existenz = true
-	bool kreditkontoExist(long ktnr) {
+	bool kreditkontoExist(char* ktnr) {
 		cJSON * fileObj = readJsonFile_cJson(KREDITKONTO_FILE);
 
 		if (fileObj != NULL) {
@@ -2005,7 +2041,7 @@
 			return NULL;
 		}
 		SPARKONTO *Konto = new SPARKONTO();
-		long SparKontonummer = Konto->getKontonummer();
+		char* SparKontonummer = Konto->getKontonummer();
 		Konto->setVerfüger(Kunde);
 		
 
@@ -2031,7 +2067,9 @@
 		}
 
 		KREDITKONTO *Konto = new KREDITKONTO();
-		long KreditKontonummer = Konto->getKontonummer();
+		char* KreditKontonummer = Konto->getKontonummer();
+
+		cout << "generated ktnr:" << KreditKontonummer << endl;
 		Konto->setVerfüger(Kunde);
 
 
@@ -2162,7 +2200,7 @@
 		}
 	}
 
-	//Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete
+	//Die Funktion Kreditkontoentfernen entfernt das übergebene KreditKonto mit der Funktion delete Todo
 	void Kreditkontoentfernen(KREDITKONTO* Konto) {
 
 		if (Konto->getClassId() != "kreditkonto") {
@@ -2287,8 +2325,8 @@
 	void umrechnung(WAEHRUNGSMODUL* waehrungsmodul, char* waehrung)
 	{
 		double kontostand = waehrungsmodul->getkontostand();
-		long kontonummer = waehrungsmodul->getKontonummer();
-		string kontonummerString = to_string(kontonummer);
+		char* kontonummer = waehrungsmodul->getKontonummer();
+		string kontonummerString(kontonummer);
 		string textFileName = kontonummerString.append("_Umrechnung.txt");
 		string waehrungsstring(waehrung);
 
@@ -2342,8 +2380,8 @@
 	}
 	void kursverwaltung(WAEHRUNGSMODUL* waehrungsmodul)
 	{
-		long kontonummer = waehrungsmodul->getKontonummer();
-		string kontonummerString = to_string(kontonummer);
+		char* kontonummer = waehrungsmodul->getKontonummer();
+		string kontonummerString(kontonummer);
 		string textFileName = kontonummerString.append("_Kursverwaltung.txt");
 
 		if (fileExist(textFileName))
@@ -2367,7 +2405,7 @@
 	WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto)
 	{
 		double kontostand = konto->getKontostand();
-		long kontonummer = konto->getKontonummer();
+		char* kontonummer = konto->getKontonummer();
 
 		WAEHRUNGSMODUL* waehrungsmodul = new WAEHRUNGSMODUL();
 		waehrungsmodul->setkontostand(kontostand);
@@ -2377,9 +2415,10 @@
 		return waehrungsmodul;
 	}
 
-	long getKreditKontonummer(KREDITKONTO* konto)
+	char* getKreditKontonummer(KREDITKONTO* konto)
 	{
-		return konto->getKontonummer();
+		char* ktnr = konto->getKontonummer();
+		return ktnr;
 	}
 
 	int getUserId(CUSTOMER* cust) {
@@ -2387,7 +2426,7 @@
 	}
 
 	//Kreditkonto = 1, Sparkonto = 0
-	int getAccountType(long kontonummer)
+	int getAccountType(char* kontonummer)
 	{
 		int type;
 

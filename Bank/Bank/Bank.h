@@ -46,29 +46,29 @@ extern "C" {
 	BANK_API WAEHRUNGSMODUL* NeuesWaehrungsmodul(KREDITKONTO* konto);
 	
 	BANK_API int searchUser(char* vorname, char* nachname, char* geb);
-	BANK_API SPARKONTO* readSparKonto(long ktnr);
-	BANK_API KREDITKONTO* readKreditKonto(long ktnr);
+	BANK_API SPARKONTO* readSparKonto(char* ktnr);
+	BANK_API KREDITKONTO* readKreditKonto(char* ktnr);
 	BANK_API CUSTOMER* readUser(int id);
 
-	BANK_API long getKreditKontonummer(KREDITKONTO* konto);
-	BANK_API long getSparKontonummer(SPARKONTO* konto);
-	BANK_API long getKontonummer(CUSTOMER* kunde, int whichKonto);
-	BANK_API int getAccountType(long kontonummer);
+	BANK_API char* getKreditKontonummer(KREDITKONTO* konto);
+	BANK_API char* getSparKontonummer(SPARKONTO* konto);
+	BANK_API char* getKontonummer(CUSTOMER* kunde, int whichKonto);
+	BANK_API int getAccountType(char* kontonummer);
 	BANK_API double getSparkontostand(SPARKONTO* konto);
 	BANK_API double getKreditkontostand(KREDITKONTO* konto);
 	BANK_API void doSparbuchabheben(SPARKONTO* zielkonto, double betrag);
 	BANK_API double waehrungsumrechnung(int _currency, double _value);
 
-	BANK_API int UserKontoExists(int userid, long ktnr);
-	BANK_API int removeSparKontoVerfüger(int userid, long ktnr);
+	BANK_API int UserKontoExists(int userid, char* ktnr);
+	BANK_API int removeSparKontoVerfüger(int userid, char* ktnr);
 	
-	BANK_API int rmvKontofromUser(int userid, long ktnr);
-	BANK_API int addKontotoUser(int userid, long ktnr);
-	BANK_API int addSparkontoVerfüger(int userid, long ktnr);
-	BANK_API int skverfügerExists(long ktnr, int userid);
-	BANK_API int removeKreditKontoVerfüger(int userid, long ktnr);
-	BANK_API int addKreditkontoVerfüger(int userid, long ktnr);
-	BANK_API int kkverfügerExists(long ktnr, int userid);
+	BANK_API int rmvKontofromUser(int userid, char* ktnr);
+	BANK_API int addKontotoUser(int userid, char* ktnr);
+	BANK_API int addSparkontoVerfüger(int userid, char* ktnr);
+	BANK_API int skverfügerExists(char* ktnr, int userid);
+	BANK_API int removeKreditKontoVerfüger(int userid, char* ktnr);
+	BANK_API int addKreditkontoVerfüger(int userid, char* ktnr);
+	BANK_API int kkverfügerExists(char* ktnr, int userid);
 	
 	BANK_API char* getUserKonten(int id);
 	BANK_API void SparkontoVerfügerHinzufügen(SPARKONTO* Konto, CUSTOMER* cust);

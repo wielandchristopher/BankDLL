@@ -1106,3 +1106,179 @@
 14 11 2016 22:55:27 - OK: Das SparKonto wurde erfolgreich erstellt.
 14 11 2016 22:55:27 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
 14 11 2016 22:55:27 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+15 11 2016 09:42:48 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:42:48 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:42:48 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:47:26 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:47:26 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:47:26 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:50:12 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:50:12 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:50:12 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:52:50 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:52:50 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:52:50 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:58:51 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:58:51 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:58:51 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:59:59 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:59:59 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 09:59:59 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:00:43 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:00:43 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:00:43 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:01:23 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:01:23 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:01:23 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:01:51 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:01:51 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:01:51 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:02:36 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:02:36 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:02:36 - OK: Der Kunde wurde erfolgreich angelegt.
+15 11 2016 10:03:00 - OK: Das SparKonto wurde erfolgreich erstellt.
+15 11 2016 10:03:03 - OK: Das SparKonto wurde erfolgreich erstellt.
+18 11 2016 21:25:52 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:25:52 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:25:52 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:26:10 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:26:10 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:26:10 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:26:55 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:26:55 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:26:55 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:08 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:08 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:08 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:21 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:21 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:21 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:28 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:28 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:28 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:43 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:43 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:27:43 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:28:11 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:28:11 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:28:11 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:30:44 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:30:44 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:30:44 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:30:59 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:30:59 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:30:59 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:33:33 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:33:33 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:33:33 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:34:18 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:34:18 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:34:18 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:35:05 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:35:05 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:35:05 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:39:05 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:39:05 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:39:05 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:42:03 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:42:03 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:42:03 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:44:00 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:44:00 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:44:00 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:45:22 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:45:22 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:45:22 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:45:44 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:45:44 - OK: Der Kunde wurde erfolgreich angelegt.
+18 11 2016 21:45:44 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 15:59:12 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 15:59:12 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 15:59:13 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:00:56 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:00:56 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:00:56 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:05:44 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:05:44 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:05:44 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:05:47 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:06:07 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:06:07 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:06:07 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:06:17 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:06:51 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:06:51 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:06:51 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:06:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:06:51 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:06:51 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:06:51 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:06:51 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+19 11 2016 16:06:51 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+19 11 2016 16:08:18 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:08:18 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:08:18 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:08:18 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:08:18 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:08:18 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:08:18 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:08:18 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+19 11 2016 16:08:18 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+19 11 2016 16:12:26 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:12:26 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:12:27 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:12:27 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:12:27 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:12:27 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:12:27 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:14:41 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:14:41 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:14:41 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:14:41 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:14:41 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:14:41 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:14:41 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:18:16 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:18:16 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:18:17 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:18:17 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:18:17 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:18:17 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:18:17 - ERROR: Bei der Erstellung des Sparkontos ist ein Fehler aufgetreten.
+19 11 2016 16:22:33 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:22:33 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:22:33 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:22:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:22:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:22:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:22:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:23:11 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:23:11 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - ERROR: Es wurde kein SparKonto übergeben.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+19 11 2016 16:23:11 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:11 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+19 11 2016 16:23:11 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+19 11 2016 16:23:11 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:23:15 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:23:15 - OK: Der Kunde wurde erfolgreich angelegt.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - ERROR: Es wurde kein SparKonto übergeben.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+19 11 2016 16:23:15 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+19 11 2016 16:23:15 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+19 11 2016 16:23:15 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.

@@ -1,0 +1,31 @@
+{
+	"sparkonten":	[{
+			"Kontonummer":	"70000000016",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	8
+				}]
+		}, {
+			"Kontonummer":	"60000000017",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	9
+				}]
+		}, {
+			"Kontonummer":	"60000000026",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	18
+				}]
+		}, {
+			"Kontonummer":	"50000000027",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	19
+				}]
+		}]
+}

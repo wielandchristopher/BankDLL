@@ -1,0 +1,101 @@
+{
+	"kreditkonten":	[{
+			"Kontonummer":	"30000000004",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	3
+				}]
+		}, {
+			"Kontonummer":	"20000000005",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	3
+				}]
+		}, {
+			"Kontonummer":	"10000000006",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	3
+				}]
+		}, {
+			"Kontonummer":	"70000000007",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	3
+				}]
+		}, {
+			"Kontonummer":	"50000000011",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[]
+		}, {
+			"Kontonummer":	"40000000012",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	10
+				}]
+		}, {
+			"Kontonummer":	"30000000013",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	10
+				}]
+		}, {
+			"Kontonummer":	"20000000014",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	10
+				}]
+		}, {
+			"Kontonummer":	"10000000015",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	8
+				}, {
+					"VerfuegerId":	8
+				}]
+		}, {
+			"Kontonummer":	"40000000021",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[]
+		}, {
+			"Kontonummer":	"30000000022",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	20
+				}]
+		}, {
+			"Kontonummer":	"20000000023",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	20
+				}]
+		}, {
+			"Kontonummer":	"10000000024",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	20
+				}]
+		}, {
+			"Kontonummer":	"70000000025",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	18
+				}, {
+					"VerfuegerId":	18
+				}]
+		}]
+}
