@@ -27,5 +27,131 @@
 			"Verfueger":	[{
 					"VerfuegerId":	19
 				}]
+		}, {
+			"Kontonummer":	"50000000036",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	28
+				}]
+		}, {
+			"Kontonummer":	"60000000037",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	29
+				}]
+		}, {
+			"Kontonummer":	"60000000046",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	38
+				}]
+		}, {
+			"Kontonummer":	"50000000047",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	39
+				}]
+		}, {
+			"Kontonummer":	"50000000056",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	48
+				}]
+		}, {
+			"Kontonummer":	"40000000057",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	49
+				}]
+		}, {
+			"Kontonummer":	"40000000066",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	58
+				}]
+		}, {
+			"Kontonummer":	"30000000067",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	59
+				}]
+		}, {
+			"Kontonummer":	"30000000076",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	68
+				}]
+		}, {
+			"Kontonummer":	"20000000077",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	69
+				}]
+		}, {
+			"Kontonummer":	"20000000086",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	78
+				}]
+		}, {
+			"Kontonummer":	"10000000087",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	79
+				}]
+		}, {
+			"Kontonummer":	"10000000096",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	88
+				}]
+		}, {
+			"Kontonummer":	"70000000097",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	89
+				}]
+		}, {
+			"Kontonummer":	"60000000107",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	99
+				}]
+		}, {
+			"Kontonummer":	"50000000108",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	100
+				}]
+		}, {
+			"Kontonummer":	"60000000118",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	110
+				}]
+		}, {
+			"Kontonummer":	"50000000119",
+			"Kontostand":	0,
+			"Waehrung":	0,
+			"Verfueger":	[{
+					"VerfuegerId":	111
+				}]
 		}]
 }

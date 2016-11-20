@@ -52,7 +52,6 @@ extern "C" {
 
 	BANK_API char* getKreditKontonummer(KREDITKONTO* konto);
 	BANK_API char* getSparKontonummer(SPARKONTO* konto);
-	BANK_API char* getKontonummer(CUSTOMER* kunde, int whichKonto);
 	BANK_API int getAccountType(char* kontonummer);
 	BANK_API double getSparkontostand(SPARKONTO* konto);
 	BANK_API double getKreditkontostand(KREDITKONTO* konto);

@@ -1,2 +1,15 @@
-﻿  Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
+﻿  Bank.cpp
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(58): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(107): warning C4099: 'CUSTOMER': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(107): note: see declaration of 'CUSTOMER'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(170): warning C4099: 'SPARKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(170): note: see declaration of 'SPARKONTO'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(230): warning C4099: 'KREDITKONTO': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(230): note: see declaration of 'KREDITKONTO'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(294): warning C4099: 'UEBERWEISUNG': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(293): note: see declaration of 'UEBERWEISUNG'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(344): warning C4099: 'WAEHRUNGSMODUL': type name first seen using 'struct' now seen using 'class'
+  c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(343): note: see declaration of 'WAEHRUNGSMODUL'
+c:\users\wieser martin\documents\github\banksst01\bank\bank\bank.cpp(456): warning C4477: 'fprintf' : format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'const char *'
+  Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.dll
   Bank.vcxproj -> C:\Users\Wieser Martin\Documents\GitHub\BankSST01\ComponentMain\ComponentMain\Debug\Bank.pdb (Full PDB)

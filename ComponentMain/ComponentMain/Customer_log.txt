@@ -1282,3 +1282,141 @@
 19 11 2016 16:23:15 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
 19 11 2016 16:23:15 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
 19 11 2016 16:23:15 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:07:45 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:07:45 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:07:45 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:07:45 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:07:45 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:07:45 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:05 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:05 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:08:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:08:05 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:08:05 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:05 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:08:05 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:08:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:12 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:12 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:08:12 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:12 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:08:12 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:08:12 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:08:51 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:08:51 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:08:51 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:08:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:34 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:09:34 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:09:34 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:09:34 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:34 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:34 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:34 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:34 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:09:34 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:34 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:09:34 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:09:35 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:09:35 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:09:35 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:09:35 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:10:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:10:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:10:51 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:10:51 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:10:51 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:10:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:05 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:17:05 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:17:05 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:17:06 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:17:06 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:17:06 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:18:33 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:18:33 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:18:33 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:18:33 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:33 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:18:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:18:51 - OK: Der Kunde wurde erfolgreich angelegt.
+20 11 2016 13:18:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:51 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:52 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:52 - ERROR: Es wurde kein SparKonto übergeben.
+20 11 2016 13:18:52 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:52 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:18:52 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:18:52 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:52 - OK: Das KreditKonto wurde erfolgreich zum user hinzugefügt.
+20 11 2016 13:18:52 - OK: Der User wurde erfolgreich zum Konto hinzugefügt.
+20 11 2016 13:18:52 - OK: Das SparKonto wurde erfolgreich erstellt.
+20 11 2016 13:18:52 - OK: Das SparKonto wurde erfolgreich erstellt.

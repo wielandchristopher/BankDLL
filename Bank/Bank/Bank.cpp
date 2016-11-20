@@ -2415,11 +2415,6 @@
 		return waehrungsmodul;
 	}
 
-	char* getKreditKontonummer(KREDITKONTO* konto)
-	{
-		char* ktnr = konto->getKontonummer();
-		return ktnr;
-	}
 
 	int getUserId(CUSTOMER* cust) {
 		return cust->getID();
@@ -2481,6 +2476,18 @@
 		return konto->getKontostand();
 	}
 
+	char* getSparKontonummer(SPARKONTO* konto) {
+
+		char* ktnr = konto->getKontonummer();
+		return ktnr;
+	}
+
+	char* getKreditKontonummer(KREDITKONTO* konto) {
+
+		char* ktnr = konto->getKontonummer();
+
+		return ktnr;
+	}
 	double getKreditkontostand(KREDITKONTO* konto) {
 
 		return konto->getKontostand();

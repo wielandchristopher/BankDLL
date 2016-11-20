@@ -26,6 +26,14 @@ int main(){
 	KreditkontoVerfügerLoeschen(kk1, customer3);
 	SPARKONTO* sk = NeuesSparkonto(customer2);
 
+	KREDITKONTO* creditAccount = NeuesKreditkonto(customer);
+	char* accountNumber = getKreditKontonummer(creditAccount);
+
+	printf("accnumber: \n");
+	printf(accountNumber);
+	printf("\naccnumber end \n");
+
+	printf(getKreditKontonummer(kk4));
 	printf(getUserKonten(getUserId(customer3)));
 
 	
