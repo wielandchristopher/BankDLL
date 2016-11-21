@@ -85,7 +85,6 @@
 
 		pz = pz * 10000000000;
 
-		//cout << pz << endl;
 		pz = pz + _kontonummer;
 
 		string pruefZiffer = to_string(pz);
@@ -772,7 +771,7 @@
 		if (skItem != NULL) {
 			SPARKONTO* newktObj = new SPARKONTO();
 			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valuestring);
-			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
+			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valuedouble);
 			newktObj->setWaehrung(cJSON_GetObjectItem(skItem, "Waehrung")->valueint);
 
 			return newktObj;
@@ -801,7 +800,7 @@
 		if (skItem != NULL) {
 			KREDITKONTO* newktObj = new KREDITKONTO();
 			newktObj->setKontonummer(cJSON_GetObjectItem(skItem, "Kontonummer")->valuestring);
-			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valueint);
+			newktObj->setKontostand(cJSON_GetObjectItem(skItem, "Kontostand")->valuedouble);
 			newktObj->setWaehrung(cJSON_GetObjectItem(skItem, "Waehrung")->valueint);
 
 			return newktObj;
@@ -1151,7 +1150,6 @@
 					cJSON* saveObj = cJSON_CreateObject();
 					cJSON_AddItemToObject(saveObj, SPARKONTO_ROOT, newfarr);
 
-					cout << cJSON_Print(saveObj) << endl;
 
 					if (writeJsonFile(SPARKONTO_FILE, saveObj)) {
 						return 0;
@@ -1592,7 +1590,6 @@
 				cJSON * item = cJSON_GetArrayItem(arr, x);
 
 
-				cout << "cjson item: " << cJSON_Print(item) << endl;
 				if (checkKtItem(item, ktnr)) {
 					return cJSONToSparkonto(item);
 				}
@@ -2069,7 +2066,6 @@
 		KREDITKONTO *Konto = new KREDITKONTO();
 		char* KreditKontonummer = Konto->getKontonummer();
 
-		cout << "generated ktnr:" << KreditKontonummer << endl;
 		Konto->setVerfüger(Kunde);
 
 
